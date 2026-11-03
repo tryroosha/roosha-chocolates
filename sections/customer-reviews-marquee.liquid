@@ -1,0 +1,846 @@
+{%- liquid
+  assign sid = section.id
+  assign pause_on_hover = section.settings.pause_on_hover
+  assign show_shadow = section.settings.show_shadow
+  assign gold_border = section.settings.show_gold_border
+  assign desktop_speed = section.settings.desktop_speed
+  assign mobile_speed = section.settings.mobile_speed
+  assign border_radius = section.settings.border_radius
+  assign review_count = section.blocks.size
+
+  comment
+    Always render exactly 2 identical track groups so translateX(-50%) loops seamlessly.
+    When there are few reviews, repeat items inside each group to avoid empty gaps.
+  endcomment
+  assign repeats_per_group = 1
+  if review_count > 0 and review_count < 4
+    assign repeats_per_group = 3
+  elsif review_count > 0 and review_count < 7
+    assign repeats_per_group = 2
+  endif
+-%}
+
+{%- style -%}
+  #crm-{{ sid }} {
+    --crm-bg: {{ section.settings.background_color }};
+    --crm-heading: {{ section.settings.heading_color }};
+    --crm-desc: {{ section.settings.description_color }};
+    --crm-pill-bg: {{ section.settings.pill_background }};
+    --crm-pill-border: {{ section.settings.pill_border }};
+    --crm-name: {{ section.settings.name_color }};
+    --crm-text: {{ section.settings.review_text_color }};
+    --crm-avatar-bg: {{ section.settings.avatar_background }};
+    --crm-avatar-text: {{ section.settings.avatar_text_color }};
+    --crm-gold: {{ section.settings.gold_accent }};
+    --crm-radius: {{ border_radius }}px;
+    --crm-gap: 1.6rem;
+    --crm-row-gap: 1.6rem;
+    --crm-speed: {{ desktop_speed }}s;
+    --crm-speed-2: calc({{ desktop_speed }}s * 1.18);
+    --crm-pad-top: {{ section.settings.padding_top }}px;
+    --crm-pad-bottom: {{ section.settings.padding_bottom }}px;
+    --crm-shadow: {% if show_shadow %}0 4px 20px rgba(28, 25, 23, 0.06), 0 1px 3px rgba(28, 25, 23, 0.04){% else %}none{% endif %};
+    --crm-shadow-hover: {% if show_shadow %}0 10px 32px rgba(28, 25, 23, 0.1), 0 2px 8px rgba(28, 25, 23, 0.06){% else %}0 6px 16px rgba(28, 25, 23, 0.06){% endif %};
+  }
+
+  #crm-{{ sid }} {
+    background-color: var(--crm-bg);
+    padding-top: calc(var(--crm-pad-top) * 0.75);
+    padding-bottom: calc(var(--crm-pad-bottom) * 0.75);
+    overflow: hidden;
+    position: relative;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  #crm-{{ sid }}.crm-is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #crm-{{ sid }} .crm__header {
+    text-align: center;
+    max-width: 68rem;
+    margin: 0 auto 2.8rem;
+    padding: 0 2rem;
+  }
+
+  #crm-{{ sid }} .crm__heading {
+    margin: 0;
+    color: var(--crm-heading);
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style, normal);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  @media screen and (min-width: 750px) {
+    #crm-{{ sid }} .crm__heading {
+      font-size: 40px;
+    }
+  }
+
+  #crm-{{ sid }} .crm__description {
+    margin: 1.2rem 0 0;
+    color: var(--crm-desc);
+    font-size: clamp(1.4rem, 0.35vw + 1.3rem, 1.6rem);
+    font-weight: 400;
+    line-height: calc(1 + 0.6 / var(--font-body-scale));
+    letter-spacing: 0.02rem;
+    opacity: 0.95;
+  }
+
+  #crm-{{ sid }} .crm__marquees {
+    display: flex;
+    flex-direction: column;
+    gap: var(--crm-row-gap);
+  }
+
+  #crm-{{ sid }} .crm__row {
+    position: relative;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%
+    );
+  }
+
+  #crm-{{ sid }} .crm__track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+  }
+
+  #crm-{{ sid }} .crm__track--ltr {
+    animation: crm-ltr-{{ sid }} var(--crm-speed) linear infinite;
+  }
+
+  #crm-{{ sid }} .crm__track--rtl {
+    animation: crm-rtl-{{ sid }} var(--crm-speed-2) linear infinite;
+  }
+
+  {% if pause_on_hover %}
+    #crm-{{ sid }} .crm__row:hover .crm__track,
+    #crm-{{ sid }} .crm__row:focus-within .crm__track {
+      animation-play-state: paused;
+    }
+  {% endif %}
+
+  @keyframes crm-ltr-{{ sid }} {
+    from { transform: translate3d(-50%, 0, 0); }
+    to { transform: translate3d(0, 0, 0); }
+  }
+
+  @keyframes crm-rtl-{{ sid }} {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+
+  #crm-{{ sid }} .crm__group {
+    display: flex;
+    gap: var(--crm-gap);
+    flex-shrink: 0;
+    /* Trailing gap baked into each group so -50% translate loops without a jump */
+    padding-inline-end: var(--crm-gap);
+  }
+
+  #crm-{{ sid }} .crm__pill {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    flex-shrink: 0;
+    width: max-content;
+    max-width: min(42rem, 88vw);
+    padding: 1.5rem 1.8rem 1.5rem 1.5rem;
+    background: color-mix(in srgb, var(--crm-pill-bg) 92%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--crm-pill-border);
+    {% if gold_border %}
+      border-color: color-mix(in srgb, var(--crm-pill-border) 55%, var(--crm-gold) 45%);
+    {% endif %}
+    border-radius: var(--crm-radius);
+    box-shadow: var(--crm-shadow);
+    letter-spacing: 0.02rem;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease;
+  }
+
+  #crm-{{ sid }} .crm__pill:hover,
+  #crm-{{ sid }} .crm__pill:focus-within {
+    transform: translateY(-3px);
+    box-shadow: var(--crm-shadow-hover);
+    {% if gold_border %}
+      border-color: var(--crm-gold);
+    {% endif %}
+  }
+
+  #crm-{{ sid }} .crm__pill:focus-visible {
+    outline: 2px solid var(--crm-gold);
+    outline-offset: 3px;
+  }
+
+  #crm-{{ sid }} .crm__pill--offset-1 { margin-top: 0.4rem; }
+  #crm-{{ sid }} .crm__pill--offset-2 { margin-top: 0; }
+  #crm-{{ sid }} .crm__pill--offset-3 { margin-top: 0.6rem; }
+  #crm-{{ sid }} .crm__pill--offset-4 { margin-top: 0.2rem; }
+
+  #crm-{{ sid }} .crm__avatar {
+    flex-shrink: 0;
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--crm-avatar-bg);
+    color: var(--crm-avatar-text);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--crm-gold) 35%, transparent);
+  }
+
+  #crm-{{ sid }} .crm__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #crm-{{ sid }} .crm__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    min-width: 0;
+    padding-top: 0.1rem;
+  }
+
+  #crm-{{ sid }} .crm__name {
+    margin: 0;
+    color: var(--crm-name);
+    font-size: 1.45rem;
+    font-weight: 600;
+    letter-spacing: 0.01rem;
+    line-height: 1.3;
+  }
+
+  #crm-{{ sid }} .crm__text {
+    margin: 0;
+    color: var(--crm-text);
+    font-size: 1.35rem;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.01rem;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: auto;
+  }
+
+  @media screen and (min-width: 750px) {
+    #crm-{{ sid }} {
+      padding-top: var(--crm-pad-top);
+      padding-bottom: var(--crm-pad-bottom);
+      --crm-gap: 2rem;
+      --crm-row-gap: 2rem;
+    }
+
+    #crm-{{ sid }} .crm__header {
+      margin-bottom: 3.6rem;
+    }
+
+    #crm-{{ sid }} .crm__pill {
+      padding: 1.7rem 2.2rem 1.7rem 1.7rem;
+      gap: 1.4rem;
+      max-width: 48rem;
+    }
+
+    #crm-{{ sid }} .crm__avatar {
+      width: 4rem;
+      height: 4rem;
+      font-size: 1.2rem;
+    }
+
+    #crm-{{ sid }} .crm__body {
+      gap: 0.65rem;
+    }
+
+    #crm-{{ sid }} .crm__name {
+      font-size: 1.5rem;
+    }
+
+    #crm-{{ sid }} .crm__text {
+      font-size: 1.4rem;
+      line-height: 1.65;
+    }
+
+    #crm-{{ sid }} .crm__row {
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        #000 6%,
+        #000 94%,
+        transparent 100%
+      );
+      mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        #000 6%,
+        #000 94%,
+        transparent 100%
+      );
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #crm-{{ sid }} {
+      --crm-speed: {{ mobile_speed }}s;
+      --crm-speed-2: calc({{ mobile_speed }}s * 1.18);
+      --crm-gap: 1.2rem;
+      --crm-row-gap: 1.3rem;
+    }
+
+    #crm-{{ sid }} .crm__header {
+      margin-bottom: 2.4rem;
+      padding: 0 1.6rem;
+    }
+
+    #crm-{{ sid }} .crm__description {
+      margin-top: 1rem;
+      font-size: 1.4rem;
+    }
+
+    #crm-{{ sid }} .crm__pill {
+      padding: 1.3rem 1.5rem 1.3rem 1.3rem;
+      gap: 1rem;
+      max-width: min(36rem, 86vw);
+    }
+
+    #crm-{{ sid }} .crm__avatar {
+      width: 3.2rem;
+      height: 3.2rem;
+      font-size: 1rem;
+    }
+
+    #crm-{{ sid }} .crm__name {
+      font-size: 1.4rem;
+    }
+
+    #crm-{{ sid }} .crm__text {
+      font-size: 1.3rem;
+      line-height: 1.55;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #crm-{{ sid }} {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    #crm-{{ sid }} .crm__track--ltr,
+    #crm-{{ sid }} .crm__track--rtl {
+      animation: none !important;
+      transform: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      max-width: 120rem;
+      margin: 0 auto;
+      padding: 0 1.6rem;
+      row-gap: 1.2rem;
+    }
+
+    #crm-{{ sid }} .crm__group:not(:first-child) {
+      display: none;
+    }
+
+    #crm-{{ sid }} .crm__row {
+      -webkit-mask-image: none;
+      mask-image: none;
+      overflow: visible;
+    }
+
+    #crm-{{ sid }} .crm__pill {
+      max-width: 100%;
+    }
+  }
+{%- endstyle -%}
+
+<section
+  id="crm-{{ sid }}"
+  class="crm"
+  aria-labelledby="crm-heading-{{ sid }}"
+  data-crm-section
+>
+  {%- if section.settings.heading != blank or section.settings.description != blank -%}
+    <header class="crm__header">
+      {%- if section.settings.heading != blank -%}
+        <h2 id="crm-heading-{{ sid }}" class="crm__heading">
+          {{ section.settings.heading | escape }}
+        </h2>
+      {%- else -%}
+        <h2 id="crm-heading-{{ sid }}" class="visually-hidden">Customer reviews</h2>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <p class="crm__description">
+          {{ section.settings.description | escape }}
+        </p>
+      {%- endif -%}
+    </header>
+  {%- else -%}
+    <h2 id="crm-heading-{{ sid }}" class="visually-hidden">Customer reviews</h2>
+  {%- endif -%}
+
+  {%- if review_count > 0 -%}
+    <div class="crm__marquees" role="region" aria-label="{{ section.settings.heading | default: 'Customer reviews' | escape }}">
+
+      {%- comment -%} Row 1 — continuous left → right {%- endcomment -%}
+      <div class="crm__row crm__row--1" tabindex="0" aria-label="Customer reviews scrolling left to right">
+        <div class="crm__track crm__track--ltr">
+          {%- for copy in (1..2) -%}
+            <div class="crm__group"{% if copy > 1 %} aria-hidden="true"{% endif %}>
+              {%- for repeat in (1..repeats_per_group) -%}
+                {%- for block in section.blocks -%}
+                  {%- liquid
+                    assign name = block.settings.customer_name
+                    assign review = block.settings.review_text
+                    assign image = block.settings.customer_image
+                    assign offset_mod = forloop.index0 | modulo: 4 | plus: 1
+                    assign words = name | split: ' '
+                    assign initials = ''
+                    for word in words
+                      if word != blank
+                        assign char = word | slice: 0, 1
+                        assign initials = initials | append: char
+                      endif
+                    endfor
+                    assign initials = initials | upcase | slice: 0, 2
+                    if initials == blank
+                      assign initials = '?'
+                    endif
+                    if name != blank
+                      assign avatar_alt = name
+                    else
+                      assign avatar_alt = 'Customer photo'
+                    endif
+                  -%}
+                  {%- if name != blank or review != blank -%}
+                    <article
+                      class="crm__pill crm__pill--offset-{{ offset_mod }}"
+                      {% if copy == 1 and repeat == 1 %}{{ block.shopify_attributes }}{% endif %}
+                      {% if copy > 1 %}tabindex="-1"{% else %}tabindex="0"{% endif %}
+                    >
+                      <div class="crm__avatar" aria-hidden="{% if image != blank %}true{% else %}false{% endif %}">
+                        {%- if image != blank -%}
+                          {{
+                            image
+                            | image_url: width: 112
+                            | image_tag:
+                              loading: 'lazy',
+                              widths: '56, 112',
+                              sizes: '40px',
+                              alt: avatar_alt
+                          }}
+                        {%- else -%}
+                          <span>{{ initials }}</span>
+                        {%- endif -%}
+                      </div>
+                      <div class="crm__body">
+                        {%- if name != blank -%}
+                          <p class="crm__name">{{ name | escape }}</p>
+                        {%- endif -%}
+                        {%- if review != blank -%}
+                          <p class="crm__text">{{ review | escape | newline_to_br }}</p>
+                        {%- endif -%}
+                      </div>
+                    </article>
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endfor -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      {%- comment -%} Row 2 — continuous right → left (reversed order for organic feel) {%- endcomment -%}
+      <div class="crm__row crm__row--2" tabindex="0" aria-label="Customer reviews scrolling right to left">
+        <div class="crm__track crm__track--rtl">
+          {%- for copy in (1..2) -%}
+            <div class="crm__group"{% if copy > 1 %} aria-hidden="true"{% endif %}>
+              {%- for repeat in (1..repeats_per_group) -%}
+                {%- for block in section.blocks reversed -%}
+                  {%- liquid
+                    assign name = block.settings.customer_name
+                    assign review = block.settings.review_text
+                    assign image = block.settings.customer_image
+                    assign offset_mod = forloop.index0 | modulo: 4 | plus: 1
+                    assign words = name | split: ' '
+                    assign initials = ''
+                    for word in words
+                      if word != blank
+                        assign char = word | slice: 0, 1
+                        assign initials = initials | append: char
+                      endif
+                    endfor
+                    assign initials = initials | upcase | slice: 0, 2
+                    if initials == blank
+                      assign initials = '?'
+                    endif
+                    if name != blank
+                      assign avatar_alt = name
+                    else
+                      assign avatar_alt = 'Customer photo'
+                    endif
+                  -%}
+                  {%- if name != blank or review != blank -%}
+                    <article
+                      class="crm__pill crm__pill--offset-{{ offset_mod }}"
+                      {% if copy > 1 %}tabindex="-1"{% else %}tabindex="0"{% endif %}
+                    >
+                      <div class="crm__avatar" aria-hidden="{% if image != blank %}true{% else %}false{% endif %}">
+                        {%- if image != blank -%}
+                          {{
+                            image
+                            | image_url: width: 112
+                            | image_tag:
+                              loading: 'lazy',
+                              widths: '56, 112',
+                              sizes: '40px',
+                              alt: avatar_alt
+                          }}
+                        {%- else -%}
+                          <span>{{ initials }}</span>
+                        {%- endif -%}
+                      </div>
+                      <div class="crm__body">
+                        {%- if name != blank -%}
+                          <p class="crm__name">{{ name | escape }}</p>
+                        {%- endif -%}
+                        {%- if review != blank -%}
+                          <p class="crm__text">{{ review | escape | newline_to_br }}</p>
+                        {%- endif -%}
+                      </div>
+                    </article>
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endfor -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+    </div>
+  {%- endif -%}
+</section>
+
+<script>
+  (function () {
+    var section = document.getElementById('crm-{{ sid }}');
+    if (!section) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      section.classList.add('crm-is-visible');
+      return;
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      section.classList.add('crm-is-visible');
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            section.classList.add('crm-is-visible');
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    observer.observe(section);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Customer Reviews Marquee",
+  "tag": "section",
+  "class": "section-customer-reviews-marquee",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Loved by our customers"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Real stories from people who chose pieces they love to wear every day."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#18302a"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description color",
+      "default": "#78716C"
+    },
+    {
+      "type": "color",
+      "id": "pill_background",
+      "label": "Pill background color",
+      "default": "#FFFCF8"
+    },
+    {
+      "type": "color",
+      "id": "pill_border",
+      "label": "Pill border color",
+      "default": "#F3EBD8"
+    },
+    {
+      "type": "color",
+      "id": "name_color",
+      "label": "Name color",
+      "default": "#1C1917"
+    },
+    {
+      "type": "color",
+      "id": "review_text_color",
+      "label": "Review text color",
+      "default": "#57534E"
+    },
+    {
+      "type": "color",
+      "id": "avatar_background",
+      "label": "Avatar background color",
+      "default": "#A27780"
+    },
+    {
+      "type": "color",
+      "id": "avatar_text_color",
+      "label": "Avatar text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "gold_accent",
+      "label": "Champagne gold accent",
+      "default": "#A27780"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_gold_border",
+      "label": "Subtle champagne gold border",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Layout & style"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 8,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "info": "100px creates a fully pill-shaped look",
+      "default": 100
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shadow",
+      "label": "Soft shadow",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "range",
+      "id": "desktop_speed",
+      "min": 20,
+      "max": 120,
+      "step": 5,
+      "unit": "s",
+      "label": "Desktop animation speed",
+      "info": "Higher values = slower, more luxurious motion",
+      "default": 55
+    },
+    {
+      "type": "range",
+      "id": "mobile_speed",
+      "min": 25,
+      "max": 140,
+      "step": 5,
+      "unit": "s",
+      "label": "Mobile animation speed",
+      "info": "Slightly slower on mobile for comfort",
+      "default": 70
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on hover",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "Customer name",
+          "default": "Priya Sharma"
+        },
+        {
+          "type": "textarea",
+          "id": "review_text",
+          "label": "Review text",
+          "default": "Absolutely loved the quality. Looks exactly like real diamonds."
+        },
+        {
+          "type": "image_picker",
+          "id": "customer_image",
+          "label": "Customer image"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [
+    {
+      "name": "Customer Reviews Marquee",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "customer_name": "Priya Sharma",
+            "review_text": "Absolutely loved the quality. Looks exactly like real diamonds."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "customer_name": "Ananya Mehta",
+            "review_text": "The craftsmanship is exquisite. I get compliments every time I wear it."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "customer_name": "Rohan Kapoor",
+            "review_text": "Gifted this to my wife, and she was speechless. Packaging felt so premium."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "customer_name": "Meera Iyer",
+            "review_text": "Elegant, lightweight, and sparkles beautifully in natural light."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "customer_name": "Sarah Chen",
+            "review_text": "Feels luxurious without being flashy. Perfect everyday piece."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "customer_name": "Aisha Khan",
+            "review_text": "Arrived faster than expected and looked even better in person."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "customer_name": "Vikram Shah",
+            "review_text": "Bought the necklace for our anniversary. Flawless finish and shine."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "customer_name": "Emily Foster",
+            "review_text": "Soft gold tones that match everything. Truly elevated my collection."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

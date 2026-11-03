@@ -1,0 +1,286 @@
+{%- comment -%}
+  Organization + WebSite + sitelink candidates + breadcrumbs.
+  Sitelinks focus on the 5 brand collections Google should surface.
+{%- endcomment -%}
+
+{%- liquid
+  assign org_description = settings.seo_default_description
+  if org_description == blank
+    assign org_description = 'Shop Ashtitva jewellery online — necklace, earrings, rings aur sets. Real photos, behtareen designs, gift aur festive looks. India delivery.'
+  endif
+
+  assign whatsapp_digits = settings.whatsapp_phone | default: '' | replace: '+', '' | replace: ' ', '' | replace: '-', ''
+
+  assign url_silver = '/collections/silver-elegance' | absolute_url
+  assign url_gold = '/collections/gold-glam' | absolute_url
+  assign url_rose = '/collections/rose-gold' | absolute_url
+  assign url_luxe = '/collections/luxe-picks' | absolute_url
+  assign url_rare = '/collections/rare-finds' | absolute_url
+
+  if collections['silver-elegance'] != blank
+    assign url_silver = collections['silver-elegance'].url | absolute_url
+  endif
+  if collections['gold-glam'] != blank
+    assign url_gold = collections['gold-glam'].url | absolute_url
+  endif
+  if collections['rose-gold'] != blank
+    assign url_rose = collections['rose-gold'].url | absolute_url
+  endif
+  if collections['luxe-picks'] != blank
+    assign url_luxe = collections['luxe-picks'].url | absolute_url
+  endif
+  if collections['rare-finds'] != blank
+    assign url_rare = collections['rare-finds'].url | absolute_url
+  endif
+-%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": {{ request.origin | append: '/#organization' | json }},
+  "name": "Ashtitva",
+  "legalName": "Ashtitva",
+  "alternateName": {% render 'seo-brand-aliases' %},
+  "url": {{ request.origin | json }},
+  "description": {{ org_description | json }},
+  "knowsLanguage": ["en", "hi", "hi-Latn"],
+  "areaServed": {
+    "@type": "Country",
+    "name": "India"
+  },
+  {% if settings.logo %}
+  "logo": {
+    "@type": "ImageObject",
+    "url": {{ settings.logo | image_url: width: 500 | prepend: 'https:' | json }}
+  },
+  "image": {{ settings.logo | image_url: width: 1200 | prepend: 'https:' | json }},
+  {% endif %}
+  "sameAs": [
+    {%- assign same_as_first = true -%}
+    {%- if settings.social_instagram_link != blank -%}{%- unless same_as_first -%},{%- endunless -%}{{ settings.social_instagram_link | json }}{%- assign same_as_first = false -%}{%- endif -%}
+    {%- if settings.social_facebook_link != blank -%}{%- unless same_as_first -%},{%- endunless -%}{{ settings.social_facebook_link | json }}{%- assign same_as_first = false -%}{%- endif -%}
+    {%- if settings.social_twitter_link != blank -%}{%- unless same_as_first -%},{%- endunless -%}{{ settings.social_twitter_link | json }}{%- assign same_as_first = false -%}{%- endif -%}
+    {%- if settings.social_pinterest_link != blank -%}{%- unless same_as_first -%},{%- endunless -%}{{ settings.social_pinterest_link | json }}{%- assign same_as_first = false -%}{%- endif -%}
+    {%- if settings.social_tiktok_link != blank -%}{%- unless same_as_first -%},{%- endunless -%}{{ settings.social_tiktok_link | json }}{%- assign same_as_first = false -%}{%- endif -%}
+    {%- if settings.social_youtube_link != blank -%}{%- unless same_as_first -%},{%- endunless -%}{{ settings.social_youtube_link | json }}{%- assign same_as_first = false -%}{%- endif -%}
+  ]
+  {%- if whatsapp_digits != blank -%}
+  ,"contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "telephone": {{ settings.whatsapp_phone | json }},
+    "availableLanguage": ["English", "Hindi", "Hinglish"],
+    "areaServed": "IN"
+  }
+  {%- endif -%}
+}
+</script>
+
+{%- if request.page_type == 'index' -%}
+  {%- assign potential_action_target = request.origin | append: routes.search_url | append: '?q={search_term_string}' -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": {{ request.origin | append: '/#website' | json }},
+    "name": "Ashtitva",
+    "alternateName": {% render 'seo-brand-aliases' %},
+    "url": {{ request.origin | json }},
+    "description": {{ org_description | json }},
+    "inLanguage": ["en-IN", "hi-Latn"],
+    "publisher": {
+      "@id": {{ request.origin | append: '/#organization' | json }}
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": {{ potential_action_target | json }}
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "JewelryStore",
+    "name": "Ashtitva",
+    "alternateName": {% render 'seo-brand-aliases' %},
+    "url": {{ request.origin | json }},
+    "description": {{ org_description | json }},
+    "image": {% if settings.logo %}{{ settings.logo | image_url: width: 1200 | prepend: 'https:' | json }}{% else %}{{ request.origin | json }}{% endif %},
+    "priceRange": "₹₹",
+    "currenciesAccepted": "INR",
+    "paymentAccepted": "UPI, Credit Card, Debit Card, Net Banking",
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    }
+    {%- if whatsapp_digits != blank -%}
+    ,"telephone": {{ settings.whatsapp_phone | json }}
+    {%- endif -%}
+  }
+  </script>
+
+  {%- comment -%} Rubans-style sitelink candidates — exact titles Google should surface {%- endcomment -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Ashtitva popular destinations",
+    "itemListElement": [
+      {
+        "@type": "SiteNavigationElement",
+        "position": 1,
+        "name": "Silver Elegance",
+        "description": "Shop Silver Elegance at Ashtitva — chandi look necklace, earrings aur sets. Real photos, everyday elegance, India delivery.",
+        "url": {{ url_silver | json }}
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 2,
+        "name": "Gold Glam",
+        "description": "Shop Gold Glam at Ashtitva — gold look jewellery for festive aur party. Necklace, earrings, sets. Real photos, behtareen designs.",
+        "url": {{ url_gold | json }}
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 3,
+        "name": "Rose Gold",
+        "description": "Shop Rose Gold at Ashtitva — soft rose gold necklace, earrings aur sets. Stylish look, real photos, gift ke liye perfect.",
+        "url": {{ url_rose | json }}
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 4,
+        "name": "Luxe Picks",
+        "description": "Shop Luxe Picks at Ashtitva — statement jewellery for special days. Premium look, real photos, India shipping.",
+        "url": {{ url_luxe | json }}
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 5,
+        "name": "Rare Find",
+        "description": "Shop Rare Find at Ashtitva — unique jewellery you won’t see everywhere. Limited styles, real photos, alag design.",
+        "url": {{ url_rare | json }}
+      }
+    ]
+  }
+  </script>
+{%- endif -%}
+
+{%- if request.page_type == 'collection' -%}
+  {%- capture collection_seo_description -%}
+    {%- render 'seo-collection-copy', collection: collection, field: 'description' -%}
+  {%- endcapture -%}
+  {%- assign collection_seo_description = collection_seo_description | strip -%}
+  {%- if collection_seo_description == blank -%}
+    {%- if collection.description != blank -%}
+      {%- assign collection_seo_description = collection.description | strip_html | strip | truncate: 160 -%}
+    {%- else -%}
+      {%- assign collection_seo_description = org_description -%}
+    {%- endif -%}
+  {%- endif -%}
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": {{ collection.title | json }},
+    "description": {{ collection_seo_description | json }},
+    "url": {{ canonical_url | json }},
+    "isPartOf": {
+      "@id": {{ request.origin | append: '/#website' | json }}
+    },
+    "about": {
+      "@type": "Thing",
+      "name": {{ collection.title | append: ' jewellery | Ashtitva' | json }}
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": {{ request.origin | json }}
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ collection.title | json }},
+        "item": {{ canonical_url | json }}
+      }
+    ]
+  }
+  </script>
+{%- endif -%}
+
+{%- if request.page_type == 'product' -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": {{ request.origin | json }}
+      }
+      {%- if product.collections.first -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ product.collections.first.title | json }},
+        "item": {{ product.collections.first.url | absolute_url | json }}
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": {{ product.title | json }},
+        "item": {{ canonical_url | json }}
+      }
+      {%- else -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ product.title | json }},
+        "item": {{ canonical_url | json }}
+      }
+      {%- endif -%}
+    ]
+  }
+  </script>
+{%- endif -%}
+
+{%- if request.page_type == 'page' -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": {{ request.origin | json }}
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ page.title | json }},
+        "item": {{ canonical_url | json }}
+      }
+    ]
+  }
+  </script>
+{%- endif -%}

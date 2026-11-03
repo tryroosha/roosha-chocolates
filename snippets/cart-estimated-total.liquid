@@ -1,0 +1,50 @@
+{% comment %}
+  Estimated total including delivery fee when below free-shipping threshold.
+
+  Usage:
+  {% render 'cart-estimated-total' %}
+{% endcomment %}
+
+{%- liquid
+  assign estimated_total = cart.total_price
+  assign delivery_cents = 0
+  assign show_delivery_breakdown = false
+  assign delivery_is_free = false
+
+  if settings.free_shipping_enable and cart != empty
+    assign threshold_rupees = settings.free_shipping_threshold | default: 499
+    assign fee_rupees = settings.delivery_fee | default: 99
+    assign threshold_cents = threshold_rupees | times: 100
+    assign fee_cents = fee_rupees | times: 100
+    assign show_delivery_breakdown = true
+
+    if cart.total_price < threshold_cents
+      assign delivery_cents = fee_cents
+      assign estimated_total = cart.total_price | plus: fee_cents
+    else
+      assign delivery_is_free = true
+    endif
+  endif
+-%}
+
+{%- if show_delivery_breakdown -%}
+  <div class="totals totals--line">
+    <span class="totals__label">Subtotal</span>
+    <span class="totals__value">{{ cart.total_price | money }}</span>
+  </div>
+  <div class="totals totals--line">
+    <span class="totals__label">Delivery</span>
+    <span class="totals__value">
+      {%- if delivery_is_free -%}
+        Free
+      {%- else -%}
+        {{ delivery_cents | money }}
+      {%- endif -%}
+    </span>
+  </div>
+{%- endif -%}
+
+<div class="totals totals--estimated" role="status">
+  <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
+  <p class="totals__total-value">{{ estimated_total | money_with_currency }}</p>
+</div>

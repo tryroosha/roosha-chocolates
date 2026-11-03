@@ -1,0 +1,95 @@
+/* Sticky mobile ATC bar */
+.pdp-sticky-atc {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .pdp-sticky-atc {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.2rem calc(1rem + env(safe-area-inset-bottom, 0px));
+    background: var(--ashtitva-ivory-soft, #fcfaf4);
+    border-top: 1px solid var(--ash-border, #e6dfd0);
+    box-shadow: 0 -8px 28px rgba(7, 23, 19, 0.08);
+    transform: translateY(110%);
+    transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+
+  .pdp-sticky-atc.is-visible {
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .pdp-sticky-atc__info {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .pdp-sticky-atc__title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--ashtitva-text, #18302a);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .pdp-sticky-atc__price {
+    margin-top: 0.2rem;
+  }
+
+  .pdp-sticky-atc__price .price,
+  .pdp-sticky-atc__price .price-item {
+    font-size: 1.25rem;
+    margin: 0;
+  }
+
+  .pdp-sticky-atc__price .price__badge-sale,
+  .pdp-sticky-atc__price .price__badge-sold-out,
+  .pdp-sticky-atc__price .unit-price {
+    display: none;
+  }
+
+  .pdp-sticky-atc__btn {
+    flex: 0 0 auto;
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 4.4rem;
+    padding: 0.9rem 1.4rem;
+    border: 0;
+    border-radius: 4px;
+    background: var(--ashtitva-green, #123c32);
+    color: var(--ashtitva-ivory, #f7f3e9);
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .pdp-sticky-atc__btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .pdp-sticky-atc__btn--restock {
+    background: var(--ashtitva-green, #123c32);
+  }
+
+  body:has(.pdp-sticky-atc.is-visible) {
+    padding-bottom: 7.2rem;
+  }
+}

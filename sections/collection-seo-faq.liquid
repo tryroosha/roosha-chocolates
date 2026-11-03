@@ -1,0 +1,289 @@
+{%- comment -%}
+  Locked mini-FAQ for occasion collections.
+  Shows only when collection.metafields.theme.show_faq is true
+  (set on wedding-guest + sangeet collections).
+{%- endcomment -%}
+
+{%- liquid
+  assign show_faq = false
+  assign faq_meta = collection.metafields.theme.show_faq.value
+  if faq_meta == true
+    assign show_faq = true
+  endif
+
+  # Fallback for wedding-guest / sangeet if metafield not set yet
+  if show_faq == false
+    if collection.handle == 'wedding-guest' or collection.handle == 'sangeet'
+      assign show_faq = true
+    endif
+  endif
+-%}
+
+{%- if show_faq -%}
+  {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
+
+  {%- style -%}
+    #collection-seo-faq-{{ section.id }} {
+      --csf-bg: {{ section.settings.color_background }};
+      --csf-surface: {{ section.settings.color_surface }};
+      --csf-heading: {{ section.settings.color_heading }};
+      --csf-text: {{ section.settings.color_text }};
+      --csf-muted: {{ section.settings.color_muted }};
+      --csf-accent: {{ section.settings.color_accent }};
+      --csf-border: {{ section.settings.color_border }};
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      background: var(--csf-bg);
+    }
+
+    @media screen and (min-width: 750px) {
+      #collection-seo-faq-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top_desktop }}px;
+        padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+      }
+    }
+
+    #collection-seo-faq-{{ section.id }} .csf__inner {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    #collection-seo-faq-{{ section.id }} .csf__heading {
+      margin: 0 0 2rem;
+      font-family: var(--font-heading-family);
+      font-weight: 400;
+      font-size: 2.4rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--csf-heading);
+      text-align: center;
+    }
+
+    @media screen and (min-width: 750px) {
+      #collection-seo-faq-{{ section.id }} .csf__heading {
+        font-size: 3rem;
+        margin-bottom: 2.4rem;
+      }
+    }
+
+    #collection-seo-faq-{{ section.id }} .csf__list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    #collection-seo-faq-{{ section.id }} .csf__item {
+      background: var(--csf-surface);
+      border: 1px solid var(--csf-border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    #collection-seo-faq-{{ section.id }} .csf__summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      padding: 1.4rem 1.6rem;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    #collection-seo-faq-{{ section.id }} .csf__summary::-webkit-details-marker {
+      display: none;
+    }
+
+    #collection-seo-faq-{{ section.id }} .csf__question {
+      margin: 0;
+      font-family: var(--font-heading-family);
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--csf-heading);
+    }
+
+    #collection-seo-faq-{{ section.id }} .csf__icon {
+      flex-shrink: 0;
+      width: 2rem;
+      height: 2rem;
+      color: var(--csf-accent);
+      transition: transform 0.3s ease;
+    }
+
+    #collection-seo-faq-{{ section.id }} .csf__item[open] .csf__icon {
+      transform: rotate(180deg);
+    }
+
+    #collection-seo-faq-{{ section.id }} .csf__answer {
+      padding: 0 1.6rem 1.6rem;
+      color: var(--csf-text);
+      font-size: 1.45rem;
+      line-height: 1.7;
+    }
+
+    #collection-seo-faq-{{ section.id }} .csf__answer p {
+      margin: 0;
+    }
+  {%- endstyle -%}
+
+  <section
+    id="collection-seo-faq-{{ section.id }}"
+    class="collection-seo-faq{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+    aria-label="Collection FAQ"
+  >
+    <div class="csf__inner">
+      <h2 class="csf__heading">{{ section.settings.heading | escape }}</h2>
+      <div class="csf__list">
+        <details class="csf__item">
+          <summary class="csf__summary">
+            <h3 class="csf__question">Are these real gold?</h3>
+            <svg class="csf__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
+              <path d="M5 7.5 10 12.5 15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="csf__answer">
+            <p>No. Ashtitva jewellery in these edits is fashion / American Diamond jewellery for bridal and guest looks — not BIS hallmarked gold.</p>
+          </div>
+        </details>
+
+        <details class="csf__item">
+          <summary class="csf__summary">
+            <h3 class="csf__question">Are photos AI?</h3>
+            <svg class="csf__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
+              <path d="M5 7.5 10 12.5 15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="csf__answer">
+            <p>No. Every product image is a real studio photograph of the actual piece.</p>
+          </div>
+        </details>
+
+        <details class="csf__item">
+          <summary class="csf__summary">
+            <h3 class="csf__question">Do you offer COD?</h3>
+            <svg class="csf__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
+              <path d="M5 7.5 10 12.5 15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="csf__answer">
+            <p>Not at this time. We accept prepaid orders only (UPI, cards, net banking, wallets).</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Collection SEO FAQ",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Shows only when collection metafield theme.show_faq is true (wedding-guest + sangeet)."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently asked questions"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background",
+      "default": "#FCFAf4"
+    },
+    {
+      "type": "color",
+      "id": "color_surface",
+      "label": "Item surface",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_heading",
+      "label": "Heading",
+      "default": "#18302A"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text",
+      "default": "#3A4F48"
+    },
+    {
+      "type": "color",
+      "id": "color_muted",
+      "label": "Muted",
+      "default": "#5C6E67"
+    },
+    {
+      "type": "color",
+      "id": "color_accent",
+      "label": "Accent",
+      "default": "#C5A059"
+    },
+    {
+      "type": "color",
+      "id": "color_border",
+      "label": "Border",
+      "default": "#E6DFD0"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding (mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding (mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding (desktop)",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding (desktop)",
+      "default": 72
+    }
+  ]
+}
+{% endschema %}

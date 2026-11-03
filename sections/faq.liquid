@@ -1,0 +1,621 @@
+{{ 'component-accordion.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign sid = section.id
+  assign heading = section.settings.heading
+  assign subheading = section.settings.subheading
+  assign limit = section.settings.items_limit
+  if limit == blank or limit == 0
+    assign limit = section.blocks.size
+  endif
+-%}
+
+{%- style -%}
+  #faq-{{ sid }} {
+    --faq-bg: {{ section.settings.color_background }};
+    --faq-surface: {{ section.settings.color_surface }};
+    --faq-heading: {{ section.settings.color_heading }};
+    --faq-text: {{ section.settings.color_text }};
+    --faq-muted: {{ section.settings.color_muted }};
+    --faq-accent: {{ section.settings.color_accent }};
+    --faq-border: {{ section.settings.color_border }};
+    --faq-width: {{ section.settings.content_width }}px;
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    background: var(--faq-bg);
+  }
+
+  @media screen and (min-width: 750px) {
+    #faq-{{ sid }} {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+  }
+
+  #faq-{{ sid }} .faq__inner {
+    max-width: var(--faq-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  #faq-{{ sid }} .faq__header {
+    text-align: {{ section.settings.heading_alignment }};
+    margin-bottom: 2.4rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    #faq-{{ sid }} .faq__header {
+      margin-bottom: 3.2rem;
+    }
+  }
+
+  #faq-{{ sid }} .faq__eyebrow {
+    margin: 0 0 0.8rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--faq-accent);
+  }
+
+  #faq-{{ sid }} .faq__heading {
+    margin: 0;
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style);
+    font-weight: 400;
+    font-size: {{ section.settings.heading_size_mobile }}px;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--faq-heading);
+    text-wrap: balance;
+  }
+
+  @media screen and (min-width: 750px) {
+    #faq-{{ sid }} .faq__heading {
+      font-size: {{ section.settings.heading_size_desktop }}px;
+    }
+  }
+
+  #faq-{{ sid }} .faq__subheading {
+    margin: 1rem 0 0;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: var(--faq-muted);
+    max-width: 42rem;
+  }
+
+  #faq-{{ sid }} .faq__header--center .faq__subheading {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #faq-{{ sid }} .faq__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  #faq-{{ sid }} .faq__item {
+    background: var(--faq-surface);
+    border: 1px solid var(--faq-border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  #faq-{{ sid }} .faq__item[open],
+  #faq-{{ sid }} .faq__item:hover {
+    border-color: color-mix(in srgb, var(--faq-accent) 35%, transparent);
+  }
+
+  #faq-{{ sid }} .faq__item[open] {
+    box-shadow: 0 8px 24px rgba(42, 42, 42, 0.06);
+  }
+
+  #faq-{{ sid }} .faq__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2rem;
+    padding: 1.4rem 1.6rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  #faq-{{ sid }} .faq__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  #faq-{{ sid }} .faq__question {
+    margin: 0;
+    font-family: var(--font-heading-family);
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--faq-heading);
+  }
+
+  @media screen and (min-width: 750px) {
+    #faq-{{ sid }} .faq__question {
+      font-size: 1.6rem;
+    }
+
+    #faq-{{ sid }} .faq__summary {
+      padding: 1.6rem 2rem;
+    }
+  }
+
+  #faq-{{ sid }} .faq__icon {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    color: var(--faq-accent);
+    transition: transform 0.3s ease;
+  }
+
+  #faq-{{ sid }} .faq__item[open] .faq__icon {
+    transform: rotate(180deg);
+  }
+
+  #faq-{{ sid }} .faq__answer {
+    padding: 0 1.6rem 1.6rem;
+    color: var(--faq-text);
+    font-size: 1.45rem;
+    line-height: 1.7;
+  }
+
+  @media screen and (min-width: 750px) {
+    #faq-{{ sid }} .faq__answer {
+      padding: 0 2rem 2rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  #faq-{{ sid }} .faq__answer p {
+    margin: 0 0 0.9rem;
+  }
+
+  #faq-{{ sid }} .faq__answer p:last-child {
+    margin-bottom: 0;
+  }
+
+  #faq-{{ sid }} .faq__answer ul,
+  #faq-{{ sid }} .faq__answer ol {
+    margin: 0.6rem 0 1rem;
+    padding-left: 1.4rem;
+  }
+
+  #faq-{{ sid }} .faq__answer li + li {
+    margin-top: 0.45rem;
+  }
+
+  #faq-{{ sid }} .faq__answer a {
+    color: var(--faq-accent);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  #faq-{{ sid }} .faq__answer strong {
+    color: var(--faq-heading);
+    font-weight: 600;
+  }
+
+  #faq-{{ sid }} .faq__footer {
+    margin-top: 2.4rem;
+    text-align: center;
+  }
+
+  #faq-{{ sid }} .faq__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 4.4rem;
+    padding: 0.9rem 2.2rem;
+    border-radius: 8px;
+    background: {{ section.settings.button_bg }};
+    color: {{ section.settings.button_text }};
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+
+  #faq-{{ sid }} .faq__button:hover {
+    background: {{ section.settings.button_hover }};
+  }
+{%- endstyle -%}
+
+<section
+  id="faq-{{ sid }}"
+  class="faq-section{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+>
+  <div class="faq__inner">
+    <div class="faq__header faq__header--{{ section.settings.heading_alignment }}">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="faq__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      {%- if heading != blank -%}
+        <h2 class="faq__heading">{{ heading | escape }}</h2>
+      {%- endif -%}
+
+      {%- if subheading != blank -%}
+        <p class="faq__subheading">{{ subheading | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="faq__list">
+        {%- for block in section.blocks limit: limit -%}
+          {%- if block.settings.question != blank -%}
+            <details
+              id="Faq-{{ block.id }}-{{ sid }}"
+              class="faq__item"
+              {{ block.shopify_attributes }}
+              {% if section.settings.open_first and forloop.first %}
+                open
+              {% endif %}
+            >
+              <summary class="faq__summary" id="FaqSummary-{{ block.id }}-{{ sid }}">
+                <h3 class="faq__question">{{ block.settings.question | escape }}</h3>
+                <svg class="faq__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </summary>
+              <div
+                class="faq__answer rte"
+                id="FaqAnswer-{{ block.id }}-{{ sid }}"
+                role="region"
+                aria-labelledby="FaqSummary-{{ block.id }}-{{ sid }}"
+              >
+                {{ block.settings.answer }}
+              </div>
+            </details>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.show_button and section.settings.button_label != blank and section.settings.button_link != blank -%}
+      <div class="faq__footer">
+        <a class="faq__button" href="{{ section.settings.button_link }}">
+          {{ section.settings.button_label | escape }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{%- if section.blocks.size > 0 -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {%- assign faq_json_first = true -%}
+      {%- for block in section.blocks -%}
+        {%- if block.settings.question != blank and block.settings.answer != blank -%}
+          {%- unless faq_json_first -%},{%- endunless -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.question | json }},
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ block.settings.answer | strip_html | strip | json }}
+            }
+          }
+          {%- assign faq_json_first = false -%}
+        {%- endif -%}
+      {%- endfor -%}
+    ]
+  }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "section",
+  "class": "section-faq",
+  "max_blocks": 30,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Support"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Quick answers about our products, shipping, returns, and support."
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 24,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size (desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 22,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading size (mobile)",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "min": 600,
+      "max": 1000,
+      "step": 20,
+      "unit": "px",
+      "label": "Content width",
+      "default": 780
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "Open first question by default",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "items_limit",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "label": "Max questions to show",
+      "default": 0,
+      "info": "Set to 0 to show all questions. Useful on the homepage to show fewer FAQs."
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show button",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "View all FAQs"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background",
+      "default": "#C5A059"
+    },
+    {
+      "type": "color",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_hover",
+      "label": "Button hover",
+      "default": "#C5A059"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_surface",
+      "label": "Card background",
+      "default": "#FDF9F2"
+    },
+    {
+      "type": "color",
+      "id": "color_heading",
+      "label": "Heading",
+      "default": "#18302a"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Answer text",
+      "default": "#5a4e44"
+    },
+    {
+      "type": "color",
+      "id": "color_muted",
+      "label": "Subheading",
+      "default": "#8A7D72"
+    },
+    {
+      "type": "color",
+      "id": "color_accent",
+      "label": "Accent",
+      "default": "#C5A059"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top (desktop)",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom (desktop)",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top (mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom (mobile)",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Your question here?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Add the answer here. You can use bold text, links, and lists.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are these product photos real?",
+            "answer": "<p>Yes. All images on our website are real photographs of the actual products. We do not use AI for product images. Slight colour differences can happen because of screen settings or lighting.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer Cash on Delivery (COD)?",
+            "answer": "<p>At the moment, Cash on Delivery (COD) is not available. We currently accept prepaid orders only through secure payment methods such as UPI, credit/debit cards, net banking, and digital wallets. This helps us process orders faster and keep payments secure.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are the shipping charges?",
+            "answer": "<p>We offer FREE shipping across India on all prepaid orders above ₹499.</p><p>For orders below ₹499, a standard shipping charge will be applied at checkout.</p><p>All applicable shipping charges will be clearly displayed during checkout before you complete your purchase. There are no hidden charges.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long will it take to receive my order?",
+            "answer": "<p>Orders are usually processed within 1 to 2 business days. Delivery timelines may vary depending on your location, but most orders are delivered within 3 to 7 business days across India.</p><p>Once your order is shipped, tracking details will be shared via SMS and Email.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I return my order?",
+            "answer": "<p>Yes. You can request a return within 3 days of receiving your order, provided the jewellery is unused, unworn, and returned in its original condition with all original packaging and tags intact.</p><p>To initiate a return, simply contact us on WhatsApp with your Order ID.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What if I don’t like the design or want a different product?",
+            "answer": "<p>We understand that choosing jewellery online can sometimes be difficult. If the design does not meet your expectations or you’d prefer a different style, we’re here to help.</p><p>You can request a return or exchange within 3 days of delivery, provided the jewellery is unused, unworn, and returned in its original condition with all tags and packaging intact.</p><p><strong>For Exchanges</strong></p><ul><li>You may exchange your product for another design (subject to availability).</li><li>Any price difference will be adjusted accordingly.</li><li>No shipping charges will be deducted for approved exchanges.</li></ul><p><strong>For Returns</strong></p><ul><li>If you choose a refund instead of an exchange, a flat ₹99 shipping and handling charge will be deducted from your refund amount, even if your original order qualified for free shipping (orders above ₹499).</li><li>This charge covers the logistics and return handling costs involved in processing your return.</li></ul><p>To get started, contact us on WhatsApp with your Order ID, and our team will guide you through the process.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What if I receive a damaged or incorrect product?",
+            "answer": "<p>If you receive a damaged, defective, or incorrect item, please contact us within 24 hours of delivery.</p><p>Kindly share clear photographs and, if possible, an uninterrupted unboxing video to help us verify the issue quickly. Once approved, we’ll arrange a replacement or suitable resolution at no additional cost.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "When will I receive my refund?",
+            "answer": "<p>Once your returned product is received and approved after inspection, your refund will be processed to the original payment method within 5 to 10 business days.</p><p>The time taken for the amount to reflect in your account may vary depending on your bank or payment provider.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I start a return or exchange?",
+            "answer": "<p>Simply contact us on WhatsApp within 3 days of delivery with your Order ID and the reason for your request.</p><p>Our support team will review your concern and guide you through the return or exchange process. Please do not send the product back until you receive confirmation from our team.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I contact Ashtitva for support?",
+            "answer": "<p>We’re always happy to help!</p><p><strong>WhatsApp:</strong> <a href=\"https://wa.me/917777877253\" target=\"_blank\" rel=\"noopener\">+91 77778 77253</a></p><p><strong>Email:</strong> <a href=\"mailto:contact@ashtitva.com\">contact@ashtitva.com</a></p><p>Whether you have questions about your order, shipping, returns, exchanges, payments, or our products, our customer support team is here to assist you.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

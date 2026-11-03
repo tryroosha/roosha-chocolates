@@ -1,0 +1,763 @@
+{% doc %}
+  @prompt
+    Create a "Our Differentiators" section block with cards that each have an icon, a heading, and a subheading (similar to a "Why Choose Us" layout). The cards should use a subtle border and/or box shadow consistent with the store's existing card style — soft, minimal, and elegant. The section should include a main section heading at the top. Each card should be cleanly laid out with the icon centered or top-aligned above the heading and subheading text. The overall aesthetic should be premium, minimal luxury — refined spacing, subtle shadows, and a light border. Cards should be responsive across desktop and mobile. All content (icon, heading, subheading) should be editable via the theme editor., there should be option to set padding from left right top bottom and weight for heading as well as container
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-differentiators-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding-top: {{ block.settings.section_padding_top }}px;
+    padding-bottom: {{ block.settings.section_padding_bottom }}px;
+    padding-left: {{ block.settings.section_padding_left }}px;
+    padding-right: {{ block.settings.section_padding_right }}px;
+  }
+
+  .ai-differentiators-container-{{ ai_gen_id }} {
+    max-width: {{ settings.page_width }}px;
+    margin: 0 auto;
+    padding-top: {{ block.settings.container_padding_top }}px;
+    padding-bottom: {{ block.settings.container_padding_bottom }}px;
+    padding-left: {{ block.settings.container_padding_left }}px;
+    padding-right: {{ block.settings.container_padding_right }}px;
+  }
+
+  .ai-differentiators-heading-{{ ai_gen_id }} {
+    text-align: center;
+    margin: 0 0 48px;
+    font-size: {{ block.settings.heading_size }}px;
+    font-weight: {{ block.settings.heading_weight }};
+    color: {{ block.settings.heading_color }};
+  }
+
+  .ai-differentiators-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+    gap: {{ block.settings.card_spacing }}px;
+  }
+
+  .ai-differentiator-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_background }};
+    border: {{ block.settings.card_border_thickness }}px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding-top: {{ block.settings.card_padding_top }}px;
+    padding-bottom: {{ block.settings.card_padding_bottom }}px;
+    padding-left: {{ block.settings.card_padding_left }}px;
+    padding-right: {{ block.settings.card_padding_right }}px;
+    text-align: {{ block.settings.card_text_alignment }};
+    display: flex;
+    flex-direction: column;
+    align-items: {{ block.settings.card_text_alignment }};
+    box-shadow: {{ block.settings.card_shadow_horizontal }}px {{ block.settings.card_shadow_vertical }}px {{ block.settings.card_shadow_blur }}px rgba(0, 0, 0, {{ block.settings.card_shadow_opacity }});
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ai-differentiator-card-{{ ai_gen_id }}:hover {
+    transform: translateY(-4px);
+    box-shadow: {{ block.settings.card_shadow_horizontal }}px {{ block.settings.card_shadow_vertical | plus: 4 }}px {{ block.settings.card_shadow_blur | plus: 5 }}px rgba(0, 0, 0, {{ block.settings.card_shadow_opacity | times: 1.5 | at_most: 0.3 }});
+  }
+
+  .ai-differentiator-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    margin-bottom: {{ block.settings.icon_spacing }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-differentiator-icon-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .ai-differentiator-icon-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-differentiator-icon-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-differentiator-card-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.card_heading_size }}px;
+    font-weight: {{ block.settings.card_heading_weight }};
+    color: {{ block.settings.card_heading_color }};
+    margin: 0 0 12px;
+  }
+
+  .ai-differentiator-card-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.card_text_size }}px;
+    color: {{ block.settings.card_text_color }};
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-differentiators-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_tablet }}, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-differentiators-{{ ai_gen_id }} {
+      padding-top: {{ block.settings.section_padding_top | times: 0.7 }}px;
+      padding-bottom: {{ block.settings.section_padding_bottom | times: 0.7 }}px;
+      padding-left: {{ block.settings.section_padding_left | times: 0.8 }}px;
+      padding-right: {{ block.settings.section_padding_right | times: 0.8 }}px;
+    }
+
+    .ai-differentiators-container-{{ ai_gen_id }} {
+      padding-top: {{ block.settings.container_padding_top | times: 0.7 }}px;
+      padding-bottom: {{ block.settings.container_padding_bottom | times: 0.7 }}px;
+      padding-left: {{ block.settings.container_padding_left | times: 0.8 }}px;
+      padding-right: {{ block.settings.container_padding_right | times: 0.8 }}px;
+    }
+
+    .ai-differentiators-heading-{{ ai_gen_id }} {
+      margin-bottom: 32px;
+      font-size: {{ block.settings.heading_size | times: 0.8 }}px;
+    }
+
+    .ai-differentiators-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_mobile }}, 1fr);
+      gap: {{ block.settings.card_spacing | times: 0.75 }}px;
+    }
+
+    .ai-differentiator-card-{{ ai_gen_id }} {
+      padding-top: {{ block.settings.card_padding_top | times: 0.75 }}px;
+      padding-bottom: {{ block.settings.card_padding_bottom | times: 0.75 }}px;
+      padding-left: {{ block.settings.card_padding_left | times: 0.75 }}px;
+      padding-right: {{ block.settings.card_padding_right | times: 0.75 }}px;
+    }
+
+    .ai-differentiator-icon-{{ ai_gen_id }} {
+      width: {{ block.settings.icon_size | times: 0.8 }}px;
+      height: {{ block.settings.icon_size | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}
+
+<differentiators-block-{{ ai_gen_id }} class="ai-differentiators-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-differentiators-container-{{ ai_gen_id }}">
+    {% if block.settings.section_heading != blank %}
+      <h2 class="ai-differentiators-heading-{{ ai_gen_id }}">{{ block.settings.section_heading }}</h2>
+    {% endif %}
+
+    <div class="ai-differentiators-grid-{{ ai_gen_id }}">
+      {% for i in (1..6) %}
+        {% liquid
+          assign card_enabled_key = 'card_' | append: i | append: '_enabled'
+          assign card_icon_key = 'card_' | append: i | append: '_icon'
+          assign card_heading_key = 'card_' | append: i | append: '_heading'
+          assign card_text_key = 'card_' | append: i | append: '_text'
+
+          assign card_enabled = block.settings[card_enabled_key]
+          assign card_icon = block.settings[card_icon_key]
+          assign card_heading = block.settings[card_heading_key]
+          assign card_text = block.settings[card_text_key]
+        %}
+
+        {% if card_enabled %}
+          <div class="ai-differentiator-card-{{ ai_gen_id }}">
+            <div class="ai-differentiator-icon-{{ ai_gen_id }}">
+              {% if card_icon %}
+                <img
+                  src="{{ card_icon | image_url: width: 200 }}"
+                  alt="{{ card_heading | escape }}"
+                  loading="lazy"
+                  width="200"
+                  height="200"
+                >
+              {% else %}
+                <div class="ai-differentiator-icon-placeholder-{{ ai_gen_id }}">
+                  {{ 'image' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+            </div>
+
+            {% if card_heading != blank %}
+              <h3 class="ai-differentiator-card-heading-{{ ai_gen_id }}">{{ card_heading }}</h3>
+            {% endif %}
+
+            {% if card_text != blank %}
+              <div class="ai-differentiator-card-text-{{ ai_gen_id }}">{{ card_text }}</div>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</differentiators-block-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class DifferentiatorsBlock{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+      }
+    }
+
+    customElements.define('differentiators-block-{{ ai_gen_id }}', DifferentiatorsBlock{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Our differentiators",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "section_padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Left",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "section_padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Right",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Container padding"
+    },
+    {
+      "type": "range",
+      "id": "container_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "container_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "container_padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Left",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "container_padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Right",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Section heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "section_heading",
+      "label": "Heading",
+      "default": "Why choose us"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Size",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "heading_weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Weight",
+      "default": 600
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Color",
+      "default": "#18302a"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Columns on desktop",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Columns on tablet",
+      "default": 2
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns on mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "range",
+      "id": "card_spacing",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "label": "Card spacing",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Card style"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "card_padding_top",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "card_padding_bottom",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "card_padding_left",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding left",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "card_padding_right",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding right",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "card_border_thickness",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Border thickness",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Border color",
+      "default": "#c5a059"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "card_shadow_horizontal",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Shadow horizontal offset",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "card_shadow_vertical",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Shadow vertical offset",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "card_shadow_blur",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Shadow blur",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "card_shadow_opacity",
+      "min": 0,
+      "max": 0.5,
+      "step": 0.1,
+      "label": "Shadow opacity",
+      "default": 0.1
+    },
+    {
+      "type": "select",
+      "id": "card_text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Icon"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 40,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Icon size",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "icon_spacing",
+      "min": 8,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Icon spacing",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Card text"
+    },
+    {
+      "type": "range",
+      "id": "card_heading_size",
+      "min": 14,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_heading_weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Heading weight",
+      "default": 600
+    },
+    {
+      "type": "color",
+      "id": "card_heading_color",
+      "label": "Heading color",
+      "default": "#18302a"
+    },
+    {
+      "type": "range",
+      "id": "card_text_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Text size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Text color",
+      "default": "#c5a059"
+    },
+    {
+      "type": "header",
+      "content": "Card 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "card_1_enabled",
+      "label": "Enable card 1",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "card_1_icon",
+      "label": "Icon"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "card_1_heading",
+      "label": "Heading",
+      "default": "Premium quality"
+    },
+    {
+      "type": "richtext",
+      "id": "card_1_text",
+      "label": "Text",
+      "default": "<p>Handcrafted with the finest materials for lasting elegance.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Card 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "card_2_enabled",
+      "label": "Enable card 2",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "card_2_icon",
+      "label": "Icon"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "card_2_heading",
+      "label": "Heading",
+      "default": "Timeless design"
+    },
+    {
+      "type": "richtext",
+      "id": "card_2_text",
+      "label": "Text",
+      "default": "<p>Classic pieces that transcend trends and seasons.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Card 3"
+    },
+    {
+      "type": "checkbox",
+      "id": "card_3_enabled",
+      "label": "Enable card 3",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "card_3_icon",
+      "label": "Icon"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "card_3_heading",
+      "label": "Heading",
+      "default": "Ethical sourcing"
+    },
+    {
+      "type": "richtext",
+      "id": "card_3_text",
+      "label": "Text",
+      "default": "<p>Responsibly sourced materials with full transparency.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Card 4"
+    },
+    {
+      "type": "checkbox",
+      "id": "card_4_enabled",
+      "label": "Enable card 4",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "card_4_icon",
+      "label": "Icon"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "card_4_heading",
+      "label": "Heading",
+      "default": "Expert craftsmanship"
+    },
+    {
+      "type": "richtext",
+      "id": "card_4_text",
+      "label": "Text",
+      "default": "<p>Every piece is meticulously crafted by skilled artisans.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Card 5"
+    },
+    {
+      "type": "checkbox",
+      "id": "card_5_enabled",
+      "label": "Enable card 5",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "card_5_icon",
+      "label": "Icon"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "card_5_heading",
+      "label": "Heading",
+      "default": "Lifetime warranty"
+    },
+    {
+      "type": "richtext",
+      "id": "card_5_text",
+      "label": "Text",
+      "default": "<p>We stand behind our quality with a comprehensive warranty.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Card 6"
+    },
+    {
+      "type": "checkbox",
+      "id": "card_6_enabled",
+      "label": "Enable card 6",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "card_6_icon",
+      "label": "Icon"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "card_6_heading",
+      "label": "Heading",
+      "default": "Personalized service"
+    },
+    {
+      "type": "richtext",
+      "id": "card_6_text",
+      "label": "Text",
+      "default": "<p>Dedicated support to help you find the perfect piece.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our differentiators"
+    }
+  ]
+}
+{% endschema %}

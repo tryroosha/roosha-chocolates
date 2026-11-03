@@ -1,0 +1,139 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are these product photos real?",
+            "answer": "<p>Yes. Every product image is a real studio photograph of the actual jewellery on a dark green background, not AI. Slight colour differences can still happen because of screen settings or lighting, and we’re always honest about that.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer Cash on Delivery (COD)?",
+            "answer": "<p>At the moment, Cash on Delivery (COD) is not available. We currently accept prepaid orders only through secure payment methods such as UPI, credit/debit cards, net banking, and digital wallets. This helps us process orders faster and keep payments secure.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are the shipping charges?",
+            "answer": "<p>We offer FREE shipping across India on all prepaid orders above ₹499.</p><p>For orders below ₹499, a standard shipping charge will be applied at checkout.</p><p>All applicable shipping charges will be clearly displayed during checkout before you complete your purchase. There are no hidden charges.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long will it take to receive my order?",
+            "answer": "<p>Orders are usually processed within 1 to 2 business days. Delivery timelines may vary depending on your location, but most orders are delivered within 3 to 7 business days across India.</p><p>Once your order is shipped, tracking details will be shared via SMS and Email.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I return my order?",
+            "answer": "<p>Yes. You can request a return within 3 days of receiving your order, provided the jewellery is unused, unworn, and returned in its original condition with all original packaging and tags intact.</p><p>To initiate a return, simply contact us on WhatsApp with your Order ID.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What if I don’t like the design or want a different product?",
+            "answer": "<p>We understand that choosing jewellery online can sometimes be difficult. If the design does not meet your expectations or you’d prefer a different style, we’re here to help.</p><p>You can request a return or exchange within 3 days of delivery, provided the jewellery is unused, unworn, and returned in its original condition with all tags and packaging intact.</p><p><strong>For Exchanges</strong></p><ul><li>You may exchange your product for another design (subject to availability).</li><li>Any price difference will be adjusted accordingly.</li><li>No shipping charges will be deducted for approved exchanges.</li></ul><p><strong>For Returns</strong></p><ul><li>If you choose a refund instead of an exchange, a flat ₹99 shipping and handling charge will be deducted from your refund amount, even if your original order qualified for free shipping (orders above ₹499).</li><li>This charge covers the logistics and return handling costs involved in processing your return.</li></ul><p>To get started, contact us on WhatsApp with your Order ID, and our team will guide you through the process.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What if I receive a damaged or incorrect product?",
+            "answer": "<p>If you receive a damaged, defective, or incorrect item, please contact us within 24 hours of delivery.</p><p>Kindly share clear photographs and, if possible, an uninterrupted unboxing video to help us verify the issue quickly. Once approved, we’ll arrange a replacement or suitable resolution at no additional cost.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "faq_item",
+          "settings": {
+            "question": "When will I receive my refund?",
+            "answer": "<p>Once your returned product is received and approved after inspection, your refund will be processed to the original payment method within 5 to 10 business days.</p><p>The time taken for the amount to reflect in your account may vary depending on your bank or payment provider.</p>"
+          }
+        },
+        "faq_9": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I start a return or exchange?",
+            "answer": "<p>Simply contact us on WhatsApp within 3 days of delivery with your Order ID and the reason for your request.</p><p>Our support team will review your concern and guide you through the return or exchange process. Please do not send the product back until you receive confirmation from our team.</p>"
+          }
+        },
+        "faq_10": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I contact Ashtitva for support?",
+            "answer": "<p>We’re always happy to help!</p><p><strong>WhatsApp:</strong> <a href=\"https://wa.me/917777877253\" target=\"_blank\" rel=\"noopener\">+91 77778 77253</a></p><p><strong>Email:</strong> <a href=\"mailto:contact@ashtitva.com\">contact@ashtitva.com</a></p><p>Whether you have questions about your order, shipping, returns, exchanges, payments, or our products, our customer support team is here to assist you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8",
+        "faq_9",
+        "faq_10"
+      ],
+      "settings": {
+        "eyebrow": "We’re here for you",
+        "heading": "Questions, answered with care",
+        "subheading": "Honest answers about our jewellery, photography, shipping, returns, and support.",
+        "heading_alignment": "center",
+        "heading_size_desktop": 40,
+        "heading_size_mobile": 28,
+        "content_width": 780,
+        "open_first": true,
+        "items_limit": 0,
+        "show_button": false,
+        "button_label": "View all FAQs",
+        "button_link": "",
+        "button_bg": "#c5a059",
+        "button_text": "#ffffff",
+        "button_hover": "#a8843f",
+        "color_background": "#ffffff",
+        "color_surface": "#fdf9f2",
+        "color_heading": "#18302a",
+        "color_text": "#5a4e44",
+        "color_muted": "#8a7d72",
+        "color_accent": "#c5a059",
+        "padding_top_desktop": 72,
+        "padding_bottom_desktop": 88,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 56
+      }
+    }
+  },
+  "order": [
+    "main",
+    "faq"
+  ]
+}

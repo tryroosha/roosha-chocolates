@@ -1,0 +1,47 @@
+{%- comment -%}
+  Unique sitelink titles + short 2-line collection blurbs. No em dashes.
+{%- endcomment -%}
+{%- liquid
+  assign field = field | default: 'description'
+  assign handle = collection.handle | default: ''
+-%}
+{%- case handle -%}
+  {%- when 'silver-elegance' -%}
+    {%- if field == 'title' -%}Silver Elegance{%- else -%}Chandi-look American Diamond jewellery for everyday shine and cocktail evenings. Every piece is photographed from the real product.{%- endif -%}
+  {%- when 'gold-glam' -%}
+    {%- if field == 'title' -%}Gold Glam{%- else -%}Festive gold-look American Diamond jewellery for sarees, lehengas and celebration outfits. Every piece is shot in a real studio.{%- endif -%}
+  {%- when 'rose-gold' -%}
+    {%- if field == 'title' -%}Rose Gold{%- else -%}Soft rose gold finishes with American Diamond sparkle for dinners, receptions and gifting. Curated styles with honest photography.{%- endif -%}
+  {%- when 'luxe-picks' -%}
+    {%- if field == 'title' -%}Luxe Picks{%- else -%}Statement Ashtitva pieces for celebrations that need more presence. Richer silhouettes and occasion necklaces in real studio photos.{%- endif -%}
+  {%- when 'rare-finds' -%}
+    {%- if field == 'title' -%}Rare Find{%- else -%}A rotating edit of limited and distinctive styles that may not return once sold out. Real photography and honest presentation.{%- endif -%}
+  {%- when 'best-seller' -%}
+    {%- if field == 'title' -%}Best Seller{%- else -%}A shortlist of Ashtitva favourites, updated as new loves emerge. Real photography and prepaid shipping across India.{%- endif -%}
+  {%- when 'earrings' -%}
+    {%- if field == 'title' -%}Earrings{%- else -%}Everyday studs to statement chandeliers for wedding guests, festive looks and evenings out. Real photos with skin-friendly finishes.{%- endif -%}
+  {%- when 'necklace' -%}
+    {%- if field == 'title' -%}Necklace{%- else -%}Necklaces and sets from riviera silhouettes to rani haar looks for bridal, guest and festive evenings. Real studio images on every listing.{%- endif -%}
+  {%- when 'rings' -%}
+    {%- if field == 'title' -%}Rings{%- else -%}Adjustable cocktail and statement rings in American Diamond for parties and celebrations. Real studio photography on every page.{%- endif -%}
+  {%- when 'kada' -%}
+    {%- if field == 'title' -%}Kada{%- else -%}Openable and adjustable kadas with American Diamond sparkle for receptions and cocktail nights. Photographed from the real product.{%- endif -%}
+  {%- when 'cocktail-party-jewellery' -%}
+    {%- if field == 'title' -%}Cocktail & Party Jewellery{%- else -%}Statement sparkle for cocktail nights, receptions and dinners. Rings, chandelier earrings, necklace sets and openable kadas in real photos.{%- endif -%}
+  {%- when 'wedding-guest-jewellery' -%}
+    {%- if field == 'title' -%}Wedding Guest Jewellery{%- else -%}Necklace sets, earrings and kadas for receptions, sangeet and festive guest looks. Real product photos. Free shipping above ₹499 prepaid.{%- endif -%}
+  {%- when 'sangeet-bridal-look' -%}
+    {%- if field == 'title' -%}Sangeet & Bridal Look{%- else -%}Fashion jewellery for sangeet, mehendi and bridal functions with heirloom presence. Real product photos. Not BIS hallmarked gold.{%- endif -%}
+  {%- when 'jewellery-under-499' -%}
+    {%- if field == 'title' -%}Jewellery Under ₹499{%- else -%}Shop Ashtitva pieces under ₹499, including openable kadas, rings and everyday earrings. Real studio photos and prepaid checkout.{%- endif -%}
+  {%- when 'jewellery-under-999' -%}
+    {%- if field == 'title' -%}Jewellery Under ₹999{%- else -%}Shop Ashtitva pieces under ₹999, from earrings and kadas to necklace sets. Real studio photos and prepaid checkout.{%- endif -%}
+  {%- when 'jewellery-under-1499' -%}
+    {%- if field == 'title' -%}Jewellery Under ₹1499{%- else -%}Shop Ashtitva pieces under ₹1499, from earrings and kadas to necklace sets. Real studio photos and prepaid checkout.{%- endif -%}
+  {%- when 'jewellery-under-1999' -%}
+    {%- if field == 'title' -%}Jewellery Under ₹1999{%- else -%}Shop Ashtitva pieces under ₹1999, from earrings and kadas to necklace sets. Real studio photos and prepaid checkout.{%- endif -%}
+  {%- when 'pearl-stories' -%}
+    {%- if field == 'title' -%}Pearl Stories{%- else -%}Soft pearl jewellery for classic Indian looks, festive rituals and elegant evenings. Real studio photography of every piece.{%- endif -%}
+  {%- when 'gifts-for-her' -%}
+    {%- if field == 'title' -%}Gifts for Her{%- else -%}Thoughtful Ashtitva jewellery gifts with real studio photos. Ideal for birthdays, anniversaries and just because.{%- endif -%}
+{%- endcase -%}

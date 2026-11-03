@@ -1,0 +1,86 @@
+{% comment %}
+  Shows free-shipping progress / delivery fee notice in cart.
+
+  Usage:
+  {% render 'free-shipping-banner' %}
+{% endcomment %}
+
+{%- if settings.free_shipping_enable and cart != empty -%}
+  {%- liquid
+    assign threshold_rupees = settings.free_shipping_threshold | default: 499
+    assign fee_rupees = settings.delivery_fee | default: 99
+    assign threshold_cents = threshold_rupees | times: 100
+    assign cart_total = cart.total_price
+    assign remaining_cents = threshold_cents | minus: cart_total
+    if remaining_cents < 0
+      assign remaining_cents = 0
+    endif
+    assign progress = cart_total | times: 100.0 | divided_by: threshold_cents
+    if progress > 100
+      assign progress = 100
+    endif
+  -%}
+
+  <div class="free-shipping-banner" role="status">
+    {%- if remaining_cents > 0 -%}
+      <p class="free-shipping-banner__text">
+        Add <strong>{{ remaining_cents | money }}</strong> more for free delivery.
+        Delivery charge of <strong>₹{{ fee_rupees }}</strong> applies below ₹{{ threshold_rupees }}.
+      </p>
+      <div class="free-shipping-banner__bar" aria-hidden="true">
+        <span class="free-shipping-banner__progress" style="width: {{ progress }}%;"></span>
+      </div>
+    {%- else -%}
+      <p class="free-shipping-banner__text free-shipping-banner__text--success">
+        You’ve unlocked <strong>free delivery</strong>!
+      </p>
+      <div class="free-shipping-banner__bar" aria-hidden="true">
+        <span class="free-shipping-banner__progress free-shipping-banner__progress--complete" style="width: 100%;"></span>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {% style %}
+    .free-shipping-banner {
+      margin: 0 0 1.2rem;
+      padding: 1.2rem 1.4rem;
+      border-radius: 4px;
+      background: color-mix(in srgb, var(--ashtitva-gold, #b89a5a) 12%, var(--ashtitva-ivory-soft, #fcfaf4));
+      border: 1px solid color-mix(in srgb, var(--ashtitva-gold, #b89a5a) 35%, var(--ash-border, #e6dfd0));
+    }
+
+    .free-shipping-banner__text {
+      margin: 0 0 0.8rem;
+      font-size: 1.3rem;
+      line-height: 1.4;
+      color: var(--ashtitva-text, #18302a);
+    }
+
+    .free-shipping-banner__text--success {
+      margin-bottom: 0.8rem;
+    }
+
+    .free-shipping-banner__bar {
+      height: 6px;
+      border-radius: 999px;
+      background: var(--ash-border, #e6dfd0);
+      overflow: hidden;
+    }
+
+    .free-shipping-banner__progress {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--ashtitva-green, #123c32);
+      transition: width 0.35s ease;
+    }
+
+    .free-shipping-banner__progress--complete {
+      background: var(--ashtitva-gold, #b89a5a);
+    }
+
+    .cart-drawer__footer .free-shipping-banner {
+      margin-top: 0.4rem;
+    }
+  {% endstyle %}
+{%- endif -%}

@@ -1,0 +1,155 @@
+{% comment %}
+  DAY9-01 — Up to 3 in-stock alternates: same product type + finish.
+  Renders only when the current product is unavailable.
+{% endcomment %}
+{%- if product.available == false -%}
+  {%- liquid
+    assign alt_limit = limit | default: 3
+    assign finish_handle = ''
+    assign finish_keyword = ''
+
+    for c in product.collections
+      assign ch = c.handle
+      if ch == 'gold-glam' or ch == 'rose-gold' or ch == 'silver-elegance'
+        assign finish_handle = ch
+        break
+      endif
+    endfor
+
+    assign haystack = product.title | downcase
+    for t in product.tags
+      assign haystack = haystack | append: ' ' | append: t | downcase
+    endfor
+
+    if finish_handle == blank
+      if haystack contains 'rose gold'
+        assign finish_handle = 'rose-gold'
+      elsif haystack contains 'antique'
+        assign finish_keyword = 'antique'
+        assign finish_handle = 'gold-glam'
+      elsif haystack contains 'silver' or haystack contains 'rhodium'
+        assign finish_handle = 'silver-elegance'
+      elsif haystack contains 'gold'
+        assign finish_handle = 'gold-glam'
+      endif
+    endif
+
+    if haystack contains 'antique'
+      assign finish_keyword = 'antique'
+    endif
+
+    assign pool_ready = false
+    if finish_handle != blank and collections[finish_handle] != blank
+      assign pool = collections[finish_handle].products
+      assign pool_ready = true
+    endif
+
+    assign type_handle = ''
+    assign ptype_down = product.type | downcase
+    if ptype_down == 'earrings' or ptype_down == 'earring'
+      assign type_handle = 'earrings'
+    elsif ptype_down == 'necklace set' or ptype_down == 'necklace'
+      assign type_handle = 'necklace'
+    elsif ptype_down == 'ring' or ptype_down == 'rings'
+      assign type_handle = 'rings'
+    elsif ptype_down == 'kada' or ptype_down == 'kadas'
+      assign type_handle = 'kada'
+    endif
+
+    if pool_ready == false and type_handle != blank and collections[type_handle] != blank
+      assign pool = collections[type_handle].products
+      assign pool_ready = true
+    endif
+
+    assign shown = 0
+    assign alt_ids = ','
+  -%}
+
+  {%- if pool_ready -%}
+    {%- capture alt_cards -%}
+      {%- for alt in pool -%}
+        {%- if shown >= alt_limit -%}{%- break -%}{%- endif -%}
+        {%- liquid
+          assign skip_alt = false
+          if alt.id == product.id or alt.available == false
+            assign skip_alt = true
+          endif
+          if alt.type != product.type
+            assign skip_alt = true
+          endif
+          if finish_keyword != blank
+            assign alt_hay = alt.title | downcase
+            unless alt_hay contains finish_keyword
+              assign skip_alt = true
+            endunless
+          endif
+          assign id_token = ',' | append: alt.id | append: ','
+          if alt_ids contains id_token
+            assign skip_alt = true
+          endif
+        -%}
+        {%- unless skip_alt -%}
+          {%- assign alt_ids = alt_ids | append: alt.id | append: ',' -%}
+          {%- assign shown = shown | plus: 1 -%}
+          <li class="grid__item">
+            {% render 'card-product',
+              card_product: alt,
+              media_aspect_ratio: image_ratio,
+              show_secondary_image: true,
+              show_vendor: false,
+              show_rating: false,
+              skip_styles: false
+            %}
+          </li>
+        {%- endunless -%}
+      {%- endfor -%}
+
+      {%- if shown < alt_limit and type_handle != blank and collections[type_handle] != blank -%}
+        {%- for alt in collections[type_handle].products -%}
+          {%- if shown >= alt_limit -%}{%- break -%}{%- endif -%}
+          {%- liquid
+            assign skip_alt = false
+            if alt.id == product.id or alt.available == false
+              assign skip_alt = true
+            endif
+            if alt.type != product.type
+              assign skip_alt = true
+            endif
+            assign id_token = ',' | append: alt.id | append: ','
+            if alt_ids contains id_token
+              assign skip_alt = true
+            endif
+          -%}
+          {%- unless skip_alt -%}
+            {%- assign alt_ids = alt_ids | append: alt.id | append: ',' -%}
+            {%- assign shown = shown | plus: 1 -%}
+            <li class="grid__item">
+              {% render 'card-product',
+                card_product: alt,
+                media_aspect_ratio: image_ratio,
+                show_secondary_image: true,
+                show_vendor: false,
+                show_rating: false,
+                skip_styles: false
+              %}
+            </li>
+          {%- endunless -%}
+        {%- endfor -%}
+      {%- endif -%}
+    {%- endcapture -%}
+
+    {%- if shown > 0 -%}
+      <div class="soldout-alternates page-width">
+        <h2 class="soldout-alternates__heading related-products__heading inline-richtext h2">
+          {{ heading | default: 'Similar in stock' }}
+        </h2>
+        <ul
+          class="grid product-grid grid--3-col-desktop grid--2-col-tablet-down"
+          role="list"
+        >
+          {{ alt_cards }}
+        </ul>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}

@@ -1,0 +1,1410 @@
+{% doc %}
+  Premium Contact Us for Ashtitva. Warm, honest, modern premium contact experience.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-contact-us-{{ ai_gen_id }} {
+    --cu-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --cu-gold: var(--ashtitva-gold, #b89a5a);
+    --cu-forest: var(--ashtitva-green, #123c32);
+    --cu-ivory: var(--ashtitva-ivory, #f7f3e9);
+    --cu-soft: var(--ashtitva-ivory-soft, #fcfaf4);
+    display: block;
+    width: 100%;
+    color: {{ block.settings.card_text_color }};
+    background: var(--cu-ivory);
+  }
+
+  .ai-contact-hero-{{ ai_gen_id }} {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 80% 70% at 50% 0%, color-mix(in srgb, {{ block.settings.hero_bg_color }} 88%, #fff) 0%, transparent 70%),
+      linear-gradient(180deg, {{ block.settings.hero_bg_color }} 0%, #ffffff 100%);
+    padding: {{ block.settings.hero_padding_mobile }}px 24px {{ block.settings.hero_padding_mobile | times: 0.75 | round }}px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .ai-contact-hero-{{ ai_gen_id }}::before {
+    content: '';
+    position: absolute;
+    inset: auto 10% -40% 10%;
+    height: 55%;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, color-mix(in srgb, #c5a059 8%, transparent), transparent 70%);
+  }
+
+  .ai-contact-hero-content-{{ ai_gen_id }} {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .ai-contact-hero-eyebrow-{{ ai_gen_id }} {
+    display: block;
+    margin: 0 0 0.8rem;
+    font-family: var(--ash-font-body, var(--font-body-family));
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cu-gold);
+    line-height: 1.3;
+  }
+
+  .ai-contact-hero-eyebrow-{{ ai_gen_id }}::before,
+  .ai-contact-hero-eyebrow-{{ ai_gen_id }}::after {
+    display: none;
+  }
+
+  .ai-contact-hero-title-{{ ai_gen_id }} {
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style, normal);
+    font-size: {{ block.settings.hero_title_size_mobile }}px;
+    color: {{ block.settings.hero_text_color }};
+    margin: 0 0 18px;
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .ai-contact-hero-subtext-{{ ai_gen_id }} {
+    font-family: var(--font-body-family);
+    font-style: var(--font-body-style, normal);
+    font-weight: 400;
+    font-size: {{ block.settings.hero_subtext_size_mobile }}px;
+    color: {{ block.settings.card_text_color }};
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .ai-contact-hero-subtext-{{ ai_gen_id }} p {
+    margin: 0;
+  }
+
+  .ai-contact-hero-rule-{{ ai_gen_id }} {
+    display: none;
+  }
+
+  .ai-contact-details-{{ ai_gen_id }} {
+    position: relative;
+    padding: {{ block.settings.details_padding_mobile }}px 24px;
+    background: {{ block.settings.details_bg_color }};
+    width: 100%;
+  }
+
+  .ai-contact-details-container-{{ ai_gen_id }} {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .ai-contact-cards-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .ai-contact-card-{{ ai_gen_id }},
+  a.ai-contact-card-{{ ai_gen_id }} {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100%;
+    background-color: {{ block.settings.card_bg_color }};
+    border: none;
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: 32px 24px 28px;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 10px 30px rgba(42, 42, 42, 0.05);
+    cursor: default;
+    transition:
+      transform 0.45s var(--cu-ease),
+      box-shadow 0.45s var(--cu-ease),
+      background-color 0.45s var(--cu-ease);
+  }
+
+  a.ai-contact-card-{{ ai_gen_id }} {
+    cursor: pointer;
+  }
+
+  a.ai-contact-card-{{ ai_gen_id }}:focus-visible {
+    outline: 2px solid #c5a059;
+    outline-offset: 3px;
+  }
+
+  .ai-contact-card-{{ ai_gen_id }}::after,
+  a.ai-contact-card-{{ ai_gen_id }}::after {
+    content: '';
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    bottom: 0;
+    height: 2px;
+    border-radius: 2px 2px 0 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, #c5a059 40%, transparent),
+      transparent
+    );
+    opacity: 0;
+    transition: opacity 0.45s var(--cu-ease), left 0.45s var(--cu-ease), right 0.45s var(--cu-ease);
+  }
+
+  @media (hover: hover) {
+    .ai-contact-card-{{ ai_gen_id }}:hover,
+    a.ai-contact-card-{{ ai_gen_id }}:hover {
+      transform: translateY(-3px);
+      background: color-mix(in srgb, {{ block.settings.card_bg_color }} 94%, #fdf9f2);
+      box-shadow: 0 18px 40px rgba(42, 42, 42, 0.08);
+    }
+
+    .ai-contact-card-{{ ai_gen_id }}:hover::after,
+    a.ai-contact-card-{{ ai_gen_id }}:hover::after {
+      opacity: 1;
+      left: 24%;
+      right: 24%;
+    }
+
+    .ai-contact-card-{{ ai_gen_id }}:hover .ai-contact-card-icon-{{ ai_gen_id }},
+    a.ai-contact-card-{{ ai_gen_id }}:hover .ai-contact-card-icon-{{ ai_gen_id }} {
+      background: color-mix(in srgb, {{ block.settings.icon_bg_color }} 55%, #fff);
+      color: #c5a059;
+    }
+
+    a.ai-contact-card-{{ ai_gen_id }}:hover .ai-contact-card-text-{{ ai_gen_id }} {
+      color: {{ block.settings.card_link_color }};
+    }
+  }
+
+  .ai-contact-card-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    margin: 0 0 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ block.settings.icon_bg_color }};
+    border-radius: 50%;
+    color: {{ block.settings.icon_color }};
+    box-shadow: none;
+    transition:
+      background-color 0.45s var(--cu-ease),
+      color 0.45s var(--cu-ease);
+  }
+
+  .ai-contact-card-icon-{{ ai_gen_id }} svg {
+    width: calc({{ block.settings.icon_size }}px * 0.42);
+    height: calc({{ block.settings.icon_size }}px * 0.42);
+  }
+
+  .ai-contact-card-title-{{ ai_gen_id }} {
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style, normal);
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+    color: {{ block.settings.card_title_color }};
+    margin: 0 0 4px;
+  }
+
+  .ai-contact-card-text-{{ ai_gen_id }} {
+    font-family: var(--font-body-family);
+    font-size: 16px;
+    font-weight: 400;
+    color: {{ block.settings.card_text_color }};
+    line-height: 1.45;
+    margin: 6px 0 0;
+    white-space: normal;
+    transition: color 0.3s ease;
+  }
+
+  .ai-contact-card-text-{{ ai_gen_id }}--multiline {
+    white-space: pre-line;
+  }
+
+  a.ai-contact-card-{{ ai_gen_id }} .ai-contact-card-text-{{ ai_gen_id }} {
+    color: {{ block.settings.card_link_color }};
+  }
+
+
+  /* —— Form —— */
+  .ai-contact-form-wrap-{{ ai_gen_id }} {
+    position: relative;
+    padding: {{ block.settings.form_padding_mobile }}px 24px;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 0%, color-mix(in srgb, #fdf9f2 90%, #fff), transparent 70%),
+      linear-gradient(180deg, #ffffff 0%, #fdf9f2 55%, #ffffff 100%);
+    width: 100%;
+  }
+
+  .ai-contact-form-inner-{{ ai_gen_id }} {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .ai-contact-form-intro-{{ ai_gen_id }} {
+    text-align: center;
+    margin: 0 0 28px;
+  }
+
+  .ai-contact-form-eyebrow-{{ ai_gen_id }} {
+    display: block;
+    margin: 0 0 0.8rem;
+    font-family: var(--ash-font-body, var(--font-body-family));
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cu-gold);
+    line-height: 1.3;
+  }
+
+  .ai-contact-form-eyebrow-{{ ai_gen_id }}::before,
+  .ai-contact-form-eyebrow-{{ ai_gen_id }}::after {
+    display: none;
+  }
+
+  .ai-contact-form-title-{{ ai_gen_id }} {
+    font-family: var(--ash-font-display, var(--font-heading-family));
+    font-style: var(--font-heading-style, normal);
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: {{ block.settings.form_title_color }};
+    margin: 0 0 12px;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .ai-contact-form-subtitle-{{ ai_gen_id }} {
+    margin: 0;
+    font-family: var(--font-body-family);
+    font-size: 16px;
+    line-height: 1.7;
+    color: {{ block.settings.card_text_color }};
+  }
+
+  .ai-contact-form-panel-{{ ai_gen_id }} {
+    position: relative;
+    background: {{ block.settings.form_background }};
+    border: none;
+    border-radius: {{ block.settings.form_border_radius }}px;
+    padding: 36px 28px 40px;
+    box-shadow: 0 16px 48px rgba(42, 42, 42, 0.07);
+  }
+
+  .ai-contact-form-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 20px;
+  }
+
+  .ai-contact-form-field-{{ ai_gen_id }} {
+    margin-bottom: 18px;
+  }
+
+  .ai-contact-form-field-{{ ai_gen_id }}--full {
+    grid-column: 1 / -1;
+  }
+
+  .ai-contact-form-label-{{ ai_gen_id }} {
+    display: block;
+    font-family: var(--font-body-family);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    color: {{ block.settings.form_label_color }};
+    margin-bottom: 8px;
+  }
+
+  .ai-contact-form-input-{{ ai_gen_id }},
+  .ai-contact-form-textarea-{{ ai_gen_id }} {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 18px;
+    border: none;
+    border-radius: 12px;
+    font-family: var(--font-body-family);
+    font-size: 16px;
+    color: {{ block.settings.form_input_text }};
+    background: {{ block.settings.form_input_background }};
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    appearance: none;
+  }
+
+  .ai-contact-form-input-{{ ai_gen_id }}::placeholder,
+  .ai-contact-form-textarea-{{ ai_gen_id }}::placeholder {
+    color: color-mix(in srgb, {{ block.settings.card_text_color }} 65%, transparent);
+  }
+
+  .ai-contact-form-input-{{ ai_gen_id }}:focus,
+  .ai-contact-form-textarea-{{ ai_gen_id }}:focus {
+    outline: none;
+    background: #ffffff;
+    box-shadow: 0 0 0 2px color-mix(in srgb, {{ block.settings.form_input_focus_border }} 30%, transparent);
+  }
+
+  .ai-contact-form-textarea-{{ ai_gen_id }} {
+    min-height: 150px;
+    resize: vertical;
+    line-height: 1.6;
+  }
+
+  .ai-contact-form-actions-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .ai-contact-form-button-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 280px;
+    min-height: 52px;
+    padding: 16px 28px;
+    background: {{ block.settings.form_button_background }};
+    color: {{ block.settings.form_button_text_color }};
+    border: 1px solid rgba(43, 43, 43, 0.35);
+    border-radius: 6px;
+    box-shadow: none;
+    font-family: var(--font-body-family);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+      border-color 0.3s ease,
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  @media (hover: hover) {
+    .ai-contact-form-button-{{ ai_gen_id }}:hover {
+      background: {{ block.settings.form_button_hover_background }};
+      border-color: #a8843f;
+      color: {{ block.settings.form_button_text_color }};
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  .ai-contact-form-button-{{ ai_gen_id }}:focus-visible {
+    outline: 2px solid #c5a059;
+    outline-offset: 3px;
+  }
+
+  .ai-contact-form-success-{{ ai_gen_id }},
+  .ai-contact-form-error-{{ ai_gen_id }} {
+    padding: 14px 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .ai-contact-form-success-{{ ai_gen_id }} {
+    background: color-mix(in srgb, #fdf9f2 70%, #dce9df);
+    color: #2f4a38;
+    border: none;
+  }
+
+  .ai-contact-form-error-{{ ai_gen_id }} {
+    background: #fbf2f2;
+    color: #6b3030;
+    border: none;
+  }
+
+  .ai-contact-trust-line-{{ ai_gen_id }} {
+    margin: 24px auto 0;
+    max-width: 480px;
+    text-align: center;
+    font-family: var(--font-body-family);
+    font-size: 15px;
+    line-height: 1.65;
+    color: {{ block.settings.trust_text_color }};
+  }
+
+  .ai-contact-social-{{ ai_gen_id }} {
+    position: relative;
+    padding: {{ block.settings.social_padding_mobile }}px 24px;
+    background: linear-gradient(180deg, #ffffff 0%, {{ block.settings.social_bg_color }} 28%, {{ block.settings.social_bg_color }} 100%);
+    text-align: center;
+    width: 100%;
+  }
+
+  .ai-contact-social-container-{{ ai_gen_id }} {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .ai-contact-social-title-{{ ai_gen_id }} {
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style, normal);
+    font-size: {{ block.settings.social_title_size_mobile }}px;
+    color: {{ block.settings.social_text_color }};
+    margin: 0 0 14px;
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .ai-contact-social-note-{{ ai_gen_id }} {
+    margin: 0 0 32px;
+    font-family: var(--font-body-family);
+    font-size: 16px;
+    line-height: 1.65;
+    color: {{ block.settings.card_text_color }};
+  }
+
+  .ai-contact-social-{{ ai_gen_id }} .list-social.ai-contact-social-icons-{{ ai_gen_id }} {
+    --social-hit-size: 56px;
+    --social-icon-size: calc(56px * 0.42);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .ai-contact-social-{{ ai_gen_id }} .list-social.ai-contact-social-icons-{{ ai_gen_id }} .list-social__link,
+  .ai-contact-social-{{ ai_gen_id }} .ai-contact-social-link-{{ ai_gen_id }} {
+    width: var(--social-hit-size);
+    height: var(--social-hit-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background-color: {{ block.settings.social_icon_bg_color }};
+    border: none;
+    border-radius: 50%;
+    color: {{ block.settings.social_icon_color }};
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(42, 42, 42, 0.06);
+    transition:
+      transform 0.4s var(--cu-ease),
+      background-color 0.4s var(--cu-ease),
+      color 0.4s var(--cu-ease),
+      box-shadow 0.4s var(--cu-ease);
+  }
+
+  @media (hover: hover) {
+    .ai-contact-social-{{ ai_gen_id }} .list-social.ai-contact-social-icons-{{ ai_gen_id }} .list-social__link:hover,
+    .ai-contact-social-{{ ai_gen_id }} .ai-contact-social-link-{{ ai_gen_id }}:hover {
+      transform: translateY(-2px);
+      background-color: {{ block.settings.social_icon_hover_bg }};
+      color: #c5a059;
+      box-shadow: 0 12px 26px rgba(42, 42, 42, 0.09);
+    }
+  }
+
+  .ai-contact-social-{{ ai_gen_id }} .list-social.ai-contact-social-icons-{{ ai_gen_id }} .list-social__link:focus-visible,
+  .ai-contact-social-{{ ai_gen_id }} .ai-contact-social-link-{{ ai_gen_id }}:focus-visible {
+    outline: 2px solid #c5a059;
+    outline-offset: 3px;
+  }
+
+  .ai-contact-social-{{ ai_gen_id }} .list-social.ai-contact-social-icons-{{ ai_gen_id }} .list-social__link .svg-wrapper,
+  .ai-contact-social-{{ ai_gen_id }} .list-social.ai-contact-social-icons-{{ ai_gen_id }} .list-social__link svg,
+  .ai-contact-social-{{ ai_gen_id }} .ai-contact-social-link-{{ ai_gen_id }} svg {
+    width: var(--social-icon-size);
+    height: var(--social-icon-size);
+  }
+
+  .ai-contact-reveal-{{ ai_gen_id }} {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.75s var(--cu-ease), transform 0.75s var(--cu-ease);
+  }
+
+  .ai-contact-reveal-{{ ai_gen_id }}.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .ai-contact-card-{{ ai_gen_id }}.ai-contact-reveal-{{ ai_gen_id }} {
+    transition-delay: calc(var(--cu-stagger, 0) * 60ms);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ai-contact-reveal-{{ ai_gen_id }},
+    .ai-contact-card-{{ ai_gen_id }},
+    .ai-contact-social-link-{{ ai_gen_id }},
+    .ai-contact-card-icon-{{ ai_gen_id }} {
+      transition: none !important;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-contact-hero-{{ ai_gen_id }} {
+      padding: {{ block.settings.hero_padding_desktop }}px 48px {{ block.settings.hero_padding_desktop | times: 0.8 | round }}px;
+    }
+
+    .ai-contact-hero-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.hero_title_size_desktop }}px;
+    }
+
+    .ai-contact-hero-subtext-{{ ai_gen_id }} {
+      font-size: {{ block.settings.hero_subtext_size_desktop }}px;
+    }
+
+    .ai-contact-details-{{ ai_gen_id }} {
+      padding: {{ block.settings.details_padding_desktop }}px 48px;
+    }
+
+    .ai-contact-cards-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .ai-contact-card-{{ ai_gen_id }} {
+      padding: 36px 28px 32px;
+    }
+
+    .ai-contact-card-title-{{ ai_gen_id }} {
+      font-size: 20px;
+    }
+
+    .ai-contact-card-text-{{ ai_gen_id }} {
+      font-size: 16px;
+    }
+
+    .ai-contact-form-wrap-{{ ai_gen_id }} {
+      padding: {{ block.settings.form_padding_desktop }}px 48px;
+    }
+
+    .ai-contact-form-title-{{ ai_gen_id }} {
+      font-size: 40px;
+    }
+
+    .ai-contact-form-panel-{{ ai_gen_id }} {
+      padding: 44px 40px 48px;
+    }
+
+    .ai-contact-form-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .ai-contact-social-{{ ai_gen_id }} {
+      padding: {{ block.settings.social_padding_desktop }}px 48px;
+    }
+
+    .ai-contact-social-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.social_title_size_desktop }}px;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .ai-contact-cards-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+  }
+{% endstyle %}
+
+<contact-us-section-{{ ai_gen_id }} class="ai-contact-us-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-contact-hero-{{ ai_gen_id }}">
+    <div class="ai-contact-hero-content-{{ ai_gen_id }} ai-contact-reveal-{{ ai_gen_id }}" data-cu-reveal>
+      <p class="ai-contact-hero-eyebrow-{{ ai_gen_id }}">We’re here for you</p>
+      {% if block.settings.hero_title != blank %}
+        <h1 class="ai-contact-hero-title-{{ ai_gen_id }}">{{ block.settings.hero_title }}</h1>
+      {% endif %}
+      {% if block.settings.hero_subtext != blank %}
+        <div class="ai-contact-hero-subtext-{{ ai_gen_id }}">{{ block.settings.hero_subtext }}</div>
+      {% endif %}
+      <div class="ai-contact-hero-rule-{{ ai_gen_id }}" aria-hidden="true">
+        <span></span>
+        <svg viewBox="0 0 12 12" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 0.8 7.2 4.8 11.2 6 7.2 7.2 6 11.2 4.8 7.2 0.8 6 4.8 4.8Z"/></svg>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ai-contact-details-{{ ai_gen_id }}">
+    <div class="ai-contact-details-container-{{ ai_gen_id }}">
+      {%- liquid
+        assign cu_phone = settings.whatsapp_phone
+        assign cu_phone_display = settings.contact_phone_display
+        if cu_phone_display == blank
+          assign cu_phone_display = cu_phone
+        endif
+        assign cu_phone_digits = cu_phone | default: '' | replace: ' ', '' | replace: '-', '' | replace: '(', '' | replace: ')', '' | replace: '+', ''
+        assign cu_email = settings.contact_email
+      -%}
+      <div class="ai-contact-cards-grid-{{ ai_gen_id }}">
+        {% assign cu_card_index = 0 %}
+        {% if block.settings.show_phone %}
+          {% if cu_phone != blank %}
+            <a
+              class="ai-contact-card-{{ ai_gen_id }} ai-contact-reveal-{{ ai_gen_id }}"
+              data-cu-reveal
+              style="--cu-stagger: {{ cu_card_index }};"
+              href="tel:{{ cu_phone | replace: ' ', '' | replace: '-', '' }}"
+              aria-label="Call {{ cu_phone_display | escape }}"
+            >
+          {% else %}
+            <div class="ai-contact-card-{{ ai_gen_id }} ai-contact-reveal-{{ ai_gen_id }}" data-cu-reveal style="--cu-stagger: {{ cu_card_index }};">
+          {% endif %}
+            <div class="ai-contact-card-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </div>
+            <h3 class="ai-contact-card-title-{{ ai_gen_id }}">{{ block.settings.phone_title }}</h3>
+            <p class="ai-contact-card-text-{{ ai_gen_id }}">{% if cu_phone_display != blank %}{{ cu_phone_display }}{% else %}+91-XXXXXXXXXX{% endif %}</p>
+          {% if cu_phone != blank %}</a>{% else %}</div>{% endif %}
+          {% assign cu_card_index = cu_card_index | plus: 1 %}
+        {% endif %}
+
+        {% if block.settings.show_whatsapp %}
+          {% if cu_phone_digits != blank %}
+            <a
+              class="ai-contact-card-{{ ai_gen_id }} ai-contact-reveal-{{ ai_gen_id }}"
+              data-cu-reveal
+              style="--cu-stagger: {{ cu_card_index }};"
+              href="https://wa.me/{{ cu_phone_digits }}"
+              target="_blank"
+              rel="noopener"
+              aria-label="Chat on WhatsApp"
+            >
+          {% else %}
+            <div class="ai-contact-card-{{ ai_gen_id }} ai-contact-reveal-{{ ai_gen_id }}" data-cu-reveal style="--cu-stagger: {{ cu_card_index }};">
+          {% endif %}
+            <div class="ai-contact-card-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            </div>
+            <h3 class="ai-contact-card-title-{{ ai_gen_id }}">{{ block.settings.whatsapp_title }}</h3>
+            <p class="ai-contact-card-text-{{ ai_gen_id }}">{% if cu_phone_display != blank %}{{ cu_phone_display }}{% else %}Chat with us instantly{% endif %}</p>
+          {% if cu_phone_digits != blank %}</a>{% else %}</div>{% endif %}
+          {% assign cu_card_index = cu_card_index | plus: 1 %}
+        {% endif %}
+
+        {% if block.settings.show_email %}
+          {% if cu_email != blank %}
+            <a
+              class="ai-contact-card-{{ ai_gen_id }} ai-contact-reveal-{{ ai_gen_id }}"
+              data-cu-reveal
+              style="--cu-stagger: {{ cu_card_index }};"
+              href="mailto:{{ cu_email }}"
+              aria-label="Email {{ cu_email | escape }}"
+            >
+          {% else %}
+            <div class="ai-contact-card-{{ ai_gen_id }} ai-contact-reveal-{{ ai_gen_id }}" data-cu-reveal style="--cu-stagger: {{ cu_card_index }};">
+          {% endif %}
+            <div class="ai-contact-card-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <h3 class="ai-contact-card-title-{{ ai_gen_id }}">{{ block.settings.email_title }}</h3>
+            <p class="ai-contact-card-text-{{ ai_gen_id }}">{% if cu_email != blank %}{{ cu_email }}{% else %}contact@ashtitva.com{% endif %}</p>
+          {% if cu_email != blank %}</a>{% else %}</div>{% endif %}
+          {% assign cu_card_index = cu_card_index | plus: 1 %}
+        {% endif %}
+
+        {% if block.settings.show_hours %}
+          <div class="ai-contact-card-{{ ai_gen_id }} ai-contact-reveal-{{ ai_gen_id }}" data-cu-reveal style="--cu-stagger: {{ cu_card_index }};">
+            <div class="ai-contact-card-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <h3 class="ai-contact-card-title-{{ ai_gen_id }}">{{ block.settings.hours_title }}</h3>
+            <p class="ai-contact-card-text-{{ ai_gen_id }} ai-contact-card-text-{{ ai_gen_id }}--multiline">{{ block.settings.hours_text }}</p>
+          </div>
+          {% assign cu_card_index = cu_card_index | plus: 1 %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+
+  {% if block.settings.show_form %}
+    <div class="ai-contact-form-wrap-{{ ai_gen_id }}">
+      <div class="ai-contact-form-inner-{{ ai_gen_id }} ai-contact-reveal-{{ ai_gen_id }}" data-cu-reveal>
+        <div class="ai-contact-form-intro-{{ ai_gen_id }}">
+          <p class="ai-contact-form-eyebrow-{{ ai_gen_id }}">Say hello</p>
+          {% if block.settings.form_title != blank %}
+            <h2 class="ai-contact-form-title-{{ ai_gen_id }}">{{ block.settings.form_title }}</h2>
+          {% endif %}
+          {% if block.settings.form_subtitle != blank %}
+            <p class="ai-contact-form-subtitle-{{ ai_gen_id }}">{{ block.settings.form_subtitle }}</p>
+          {% endif %}
+        </div>
+
+        <div class="ai-contact-form-panel-{{ ai_gen_id }}">
+          {%- assign contact_form_id = 'ContactForm-' | append: ai_gen_id -%}
+          {%- form 'contact', id: contact_form_id -%}
+            {%- if form.posted_successfully? -%}
+              <div class="ai-contact-form-success-{{ ai_gen_id }}" tabindex="-1">
+                {{ block.settings.form_success_message }}
+              </div>
+            {%- endif -%}
+
+            {%- if form.errors -%}
+              <div class="ai-contact-form-error-{{ ai_gen_id }}" role="alert">
+                {{ form.errors | default_errors }}
+              </div>
+            {%- endif -%}
+
+            <div class="ai-contact-form-grid-{{ ai_gen_id }}">
+              <div class="ai-contact-form-field-{{ ai_gen_id }}">
+                <label for="ContactForm-name-{{ ai_gen_id }}" class="ai-contact-form-label-{{ ai_gen_id }}">Name</label>
+                <input
+                  type="text"
+                  id="ContactForm-name-{{ ai_gen_id }}"
+                  name="contact[name]"
+                  class="ai-contact-form-input-{{ ai_gen_id }}"
+                  autocomplete="name"
+                  placeholder="Your full name"
+                  required
+                  aria-required="true"
+                  value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                >
+              </div>
+
+              <div class="ai-contact-form-field-{{ ai_gen_id }}">
+                <label for="ContactForm-email-{{ ai_gen_id }}" class="ai-contact-form-label-{{ ai_gen_id }}">Email</label>
+                <input
+                  type="email"
+                  id="ContactForm-email-{{ ai_gen_id }}"
+                  name="contact[email]"
+                  class="ai-contact-form-input-{{ ai_gen_id }}"
+                  autocomplete="email"
+                  spellcheck="false"
+                  autocapitalize="off"
+                  placeholder="you@email.com"
+                  required
+                  aria-required="true"
+                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                >
+              </div>
+
+              <div class="ai-contact-form-field-{{ ai_gen_id }}">
+                <label for="ContactForm-phone-{{ ai_gen_id }}" class="ai-contact-form-label-{{ ai_gen_id }}">Phone <span style="opacity:0.55;font-weight:400;">(optional)</span></label>
+                <input
+                  type="tel"
+                  id="ContactForm-phone-{{ ai_gen_id }}"
+                  name="contact[phone]"
+                  class="ai-contact-form-input-{{ ai_gen_id }}"
+                  autocomplete="tel"
+                  placeholder="+91"
+                  value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                >
+              </div>
+
+              <div class="ai-contact-form-field-{{ ai_gen_id }}">
+                <label for="ContactForm-order-{{ ai_gen_id }}" class="ai-contact-form-label-{{ ai_gen_id }}">Order ID <span style="opacity:0.55;font-weight:400;">(optional)</span></label>
+                <input
+                  type="text"
+                  id="ContactForm-order-{{ ai_gen_id }}"
+                  name="contact[order_id]"
+                  class="ai-contact-form-input-{{ ai_gen_id }}"
+                  placeholder="e.g. #1234"
+                >
+              </div>
+
+              <div class="ai-contact-form-field-{{ ai_gen_id }} ai-contact-form-field-{{ ai_gen_id }}--full">
+                <label for="ContactForm-body-{{ ai_gen_id }}" class="ai-contact-form-label-{{ ai_gen_id }}">Message</label>
+                <textarea
+                  id="ContactForm-body-{{ ai_gen_id }}"
+                  name="contact[body]"
+                  class="ai-contact-form-textarea-{{ ai_gen_id }}"
+                  placeholder="How can we help you?"
+                  required
+                  aria-required="true"
+                >{% if form.body %}{{ form.body }}{% endif %}</textarea>
+              </div>
+            </div>
+
+            <div class="ai-contact-form-actions-{{ ai_gen_id }}">
+              <button type="submit" class="ai-contact-form-button-{{ ai_gen_id }}">
+                {{ block.settings.form_button_label }}
+              </button>
+            </div>
+          {%- endform -%}
+        </div>
+
+        {% if block.settings.trust_line != blank %}
+          <p class="ai-contact-trust-line-{{ ai_gen_id }}">{{ block.settings.trust_line }}</p>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="ai-contact-social-{{ ai_gen_id }}">
+    <div class="ai-contact-social-container-{{ ai_gen_id }} ai-contact-reveal-{{ ai_gen_id }}" data-cu-reveal>
+      {% if block.settings.social_title != blank %}
+        <h2 class="ai-contact-social-title-{{ ai_gen_id }}">{{ block.settings.social_title }}</h2>
+      {% endif %}
+      <p class="ai-contact-social-note-{{ ai_gen_id }}">Follow along and tag us. We love seeing you feel beautiful and confident.</p>
+      {%- capture contact_social_class -%}ai-contact-social-icons-{{ ai_gen_id }}{%- endcapture -%}
+      {%- capture contact_social_link_class -%}ai-contact-social-link-{{ ai_gen_id }}{%- endcapture -%}
+      {% render 'social-icons', class: contact_social_class, link_class: contact_social_link_class %}
+    </div>
+  </div>
+</contact-us-section-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ContactUsSection{{ ai_gen_id }} extends HTMLElement {
+      connectedCallback() {
+        var items = this.querySelectorAll('[data-cu-reveal]');
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduceMotion || !('IntersectionObserver' in window)) {
+          items.forEach(function (el) { el.classList.add('is-visible'); });
+          return;
+        }
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -20px 0px' });
+        items.forEach(function (el) { observer.observe(el); });
+      }
+    }
+    if (!customElements.get('contact-us-section-{{ ai_gen_id }}')) {
+      customElements.define('contact-us-section-{{ ai_gen_id }}', ContactUsSection{{ ai_gen_id }});
+    }
+  })();
+</script>
+
+
+{% schema %}
+{
+  "name": "Contact us",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero section"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "hero_title",
+      "label": "Title",
+      "default": "We're here for you"
+    },
+    {
+      "type": "richtext",
+      "id": "hero_subtext",
+      "label": "Subtext",
+      "default": "<p>Whether you have a question about our jewellery, need help with your order, or just want to say hello, we're always here for you.</p>"
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_color",
+      "label": "Background color",
+      "default": "#fdf9f2"
+    },
+    {
+      "type": "color",
+      "id": "hero_text_color",
+      "label": "Text color",
+      "default": "#18302a"
+    },
+    {
+      "type": "range",
+      "id": "hero_title_size_mobile",
+      "label": "Title size (mobile)",
+      "min": 20,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "hero_title_size_desktop",
+      "label": "Title size (desktop)",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "hero_subtext_size_mobile",
+      "label": "Subtext size (mobile)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "hero_subtext_size_desktop",
+      "label": "Subtext size (desktop)",
+      "min": 14,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "hero_padding_mobile",
+      "label": "Padding (mobile)",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "hero_padding_desktop",
+      "label": "Padding (desktop)",
+      "min": 40,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Contact details"
+    },
+    {
+      "type": "color",
+      "id": "details_bg_color",
+      "label": "Background color",
+      "default": "#fdf9f2"
+    },
+    {
+      "type": "range",
+      "id": "details_padding_mobile",
+      "label": "Padding (mobile)",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "details_padding_desktop",
+      "label": "Padding (desktop)",
+      "min": 40,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Contact cards"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Border color",
+      "default": "#f3ebd8"
+    },
+    {
+      "type": "range",
+      "id": "card_border_thickness",
+      "label": "Border thickness",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Title color",
+      "default": "#18302a"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Text color",
+      "default": "#5a4e44"
+    },
+    {
+      "type": "color",
+      "id": "card_link_color",
+      "label": "Link color",
+      "default": "#c5a059"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 40,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "color",
+      "id": "icon_bg_color",
+      "label": "Icon background",
+      "default": "#fdf9f2"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#c5a059"
+    },
+    {
+      "type": "header",
+      "content": "Phone"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone",
+      "label": "Show phone",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "phone_title",
+      "label": "Title",
+      "default": "Phone"
+    },
+    {
+      "type": "paragraph",
+      "content": "Phone, WhatsApp, and email come from Theme settings → Contact & WhatsApp."
+    },
+    {
+      "type": "header",
+      "content": "WhatsApp"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_whatsapp",
+      "label": "Show WhatsApp",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_title",
+      "label": "Title",
+      "default": "WhatsApp"
+    },
+    {
+      "type": "header",
+      "content": "Email"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_email",
+      "label": "Show email",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "email_title",
+      "label": "Title",
+      "default": "Email"
+    },
+    {
+      "type": "header",
+      "content": "Business hours"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_hours",
+      "label": "Show hours",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "hours_title",
+      "label": "Title",
+      "default": "Business Hours"
+    },
+    {
+      "type": "textarea",
+      "id": "hours_text",
+      "label": "Hours text",
+      "default": "Monday to Saturday\n10:00 AM to 7:00 PM IST"
+    },
+
+    {
+      "type": "header",
+      "content": "Contact form"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_form",
+      "label": "Show contact form",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "form_title",
+      "label": "Form title",
+      "default": "Send Us a Message"
+    },
+    {
+      "type": "text",
+      "id": "form_subtitle",
+      "label": "Form subtitle",
+      "default": "Share your question or request, and our team typically replies within 24 hours."
+    },
+    {
+      "type": "text",
+      "id": "form_button_label",
+      "label": "Button label",
+      "default": "Send Message"
+    },
+    {
+      "type": "textarea",
+      "id": "form_success_message",
+      "label": "Success message",
+      "default": "Thank you. Your message has been received, and we will respond within 24 hours."
+    },
+    {
+      "type": "textarea",
+      "id": "trust_line",
+      "label": "Trust line",
+      "default": "Your trust means everything to us, just like every piece of jewellery we craft."
+    },
+    {
+      "type": "color",
+      "id": "form_background",
+      "label": "Form panel background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "form_border_color",
+      "label": "Form panel border",
+      "default": "#f3ebd8"
+    },
+    {
+      "type": "range",
+      "id": "form_border_radius",
+      "label": "Form corner radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "form_title_color",
+      "label": "Form title color",
+      "default": "#18302a"
+    },
+    {
+      "type": "color",
+      "id": "form_label_color",
+      "label": "Label color",
+      "default": "#c5a059"
+    },
+    {
+      "type": "color",
+      "id": "form_input_text",
+      "label": "Input text color",
+      "default": "#0e2c20"
+    },
+    {
+      "type": "color",
+      "id": "form_input_background",
+      "label": "Input background",
+      "default": "#fdf9f2"
+    },
+    {
+      "type": "color",
+      "id": "form_input_border",
+      "label": "Input border",
+      "default": "#f3ebd8"
+    },
+    {
+      "type": "color",
+      "id": "form_input_focus_border",
+      "label": "Input focus border",
+      "default": "#c5a059"
+    },
+    {
+      "type": "color",
+      "id": "form_button_background",
+      "label": "Button background",
+      "default": "#c5a059"
+    },
+    {
+      "type": "color",
+      "id": "form_button_text_color",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "form_button_hover_background",
+      "label": "Button hover background",
+      "default": "#c5a059"
+    },
+    {
+      "type": "color",
+      "id": "trust_text_color",
+      "label": "Trust line color",
+      "default": "#5a4e44"
+    },
+    {
+      "type": "range",
+      "id": "form_padding_mobile",
+      "label": "Form padding (mobile)",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "form_padding_desktop",
+      "label": "Form padding (desktop)",
+      "min": 40,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 70
+    },
+    {
+      "type": "header",
+      "content": "Social media"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "social_title",
+      "label": "Title",
+      "default": "Follow Us"
+    },
+    {
+      "type": "color",
+      "id": "social_bg_color",
+      "label": "Background color",
+      "default": "#fdf9f2"
+    },
+    {
+      "type": "color",
+      "id": "social_text_color",
+      "label": "Text color",
+      "default": "#18302a"
+    },
+    {
+      "type": "range",
+      "id": "social_title_size_mobile",
+      "label": "Title size (mobile)",
+      "min": 18,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "social_title_size_desktop",
+      "label": "Title size (desktop)",
+      "min": 20,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "social_padding_mobile",
+      "label": "Padding (mobile)",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "social_padding_desktop",
+      "label": "Padding (desktop)",
+      "min": 40,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "social_icon_size",
+      "label": "Icon size",
+      "min": 40,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 52
+    },
+    {
+      "type": "color",
+      "id": "social_icon_bg_color",
+      "label": "Icon background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "social_icon_color",
+      "label": "Icon color",
+      "default": "#c5a059"
+    },
+    {
+      "type": "color",
+      "id": "social_icon_hover_bg",
+      "label": "Icon hover background",
+      "default": "#c5a059"
+    },
+    {
+      "type": "paragraph",
+      "content": "Social profile links are managed in Theme settings → Social media. Update them once to apply across the site."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact us"
+    }
+  ]
+}
+{% endschema %}

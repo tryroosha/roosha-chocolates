@@ -1,0 +1,107 @@
+/* =========================================================
+   Ashtitva — Shopify Checkout branding
+   Paste into Checkout editor → Custom CSS (Checkout Extensibility)
+   Palette: ivory · forest · gold
+   ========================================================= */
+
+:root {
+  --ash-green: #123c32;
+  --ash-green-dark: #0b2924;
+  --ash-ivory: #f7f3e9;
+  --ash-ivory-soft: #fcfaf4;
+  --ash-gold: #b89a5a;
+  --ash-text: #18302a;
+  --ash-muted: #5c6e67;
+  --ash-border: #e6dfd0;
+}
+
+html,
+body {
+  background-color: var(--ash-ivory) !important;
+  color: var(--ash-text);
+}
+
+.main,
+.page,
+[data-checkout] {
+  background-color: var(--ash-ivory);
+  color: var(--ash-text);
+}
+
+.sidebar,
+.order-summary,
+.os-header {
+  background-color: var(--ash-ivory-soft);
+}
+
+.heading,
+h1,
+h2,
+h3 {
+  color: var(--ash-text);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.button,
+.btn,
+[type='submit'],
+.shown-if-js .step__footer .btn {
+  background-color: var(--ash-green) !important;
+  color: var(--ash-ivory) !important;
+  border: 1px solid var(--ash-green) !important;
+  border-radius: 4px !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.button:hover,
+.btn:hover,
+[type='submit']:hover {
+  background-color: var(--ash-green-dark) !important;
+  border-color: var(--ash-green-dark) !important;
+}
+
+.field__input,
+.input-group__field,
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+select {
+  border-color: var(--ash-border) !important;
+  border-radius: 4px !important;
+  background-color: var(--ash-ivory-soft) !important;
+  color: var(--ash-text) !important;
+}
+
+.field__input:focus,
+input:focus,
+select:focus {
+  border-color: var(--ash-gold) !important;
+  outline: 1px solid var(--ash-gold);
+}
+
+a,
+.link {
+  color: var(--ash-green);
+}
+
+a:hover,
+.link:hover {
+  color: var(--ash-gold);
+}
+
+.logo,
+.logo__image,
+.header__logo img {
+  max-height: 56px;
+}
+
+.reduction-code,
+.tag,
+.badge {
+  background: color-mix(in srgb, var(--ash-gold) 16%, var(--ash-ivory-soft));
+  color: var(--ash-green);
+  border-radius: 4px;
+}

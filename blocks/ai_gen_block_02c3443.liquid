@@ -1,0 +1,675 @@
+{% doc %}
+  @prompt
+    Shopify Page / Theme Customization Prompt — AdHouse.in USP Sections
+    
+    Create a fully customizable USP (Why Choose Us) section for the AdHouse.in Shopify store. This section should be added to the About Us page or usable as a standalone homepage section. All settings must be editable from the Shopify Theme Editor with separate controls for mobile and desktop where specified.
+    
+    SECTION 1 — Real Photos vs AI Images Comparison
+    Purpose: Build trust by showing customers that our product images are real, not AI-generated.
+    Layout:
+    
+    Two-column side-by-side layout on desktop
+    Stacked single column on mobile
+    Left card labeled "AI Generated Image" with a red or pink subtle badge
+    Right card labeled "Our Actual Product Photo" with a green badge
+    A short line of text below each image explaining the difference
+    Optional divider line or VS badge between the two columns
+    
+    Customizable settings in Theme Editor:
+    
+    Section heading text (default: "What You See Is What You Get")
+    Subheading text (default: "Unlike others, we never use AI-generated images. Every photo is our actual product.")
+    Left image upload (AI example photo)
+    Right image upload (actual product photo)
+    Left card badge text & badge color
+    Right card badge text & badge color
+    Caption text below each image
+    Desktop font size for heading — range 24px to 48px
+    Mobile font size for heading — range 18px to 32px
+    Desktop caption font size — range 12px to 16px
+    Mobile caption font size — range 11px to 14px
+    Section background color
+    Card background color
+    Text color
+    Toggle to show/hide the VS badge in the center
+    Toggle to show/hide this entire section
+    
+    
+    SECTION 2 — Honest Discounts, No Fake Pricing
+    Purpose: Reassure customers that our discounts are genuine — we never inflate MRP to fake a sale.
+    Layout:
+    
+    Full-width section with a bold headline
+    Two comparison cards side by side on desktop, stacked on mobile
+    Card 1 titled "How others do it" — showing inflated price → fake 50% off
+    Card 2 titled "How AdHouse does it" — showing fair original price → real honest discount
+    A short trust statement below both cards
+    
+    Customizable settings in Theme Editor:
+    
+    Section heading text (default: "No Drama. No Fake Discounts.")
+    Subheading (default: "The price you see is honest. Always.")
+    Card 1 title, description text, and accent color (default: soft red)
+    Card 2 title, description text, and accent color (default: soft green)
+    Trust statement text below cards
+    Desktop heading font size — range 24px to 48px
+    Mobile heading font size — range 18px to 32px
+    Desktop card body font size — range 13px to 16px
+    Mobile card body font size — range 12px to 15px
+    Section background color
+    Card background color
+    Toggle to show/hide the comparison cards
+    Toggle to show/hide this entire section
+    
+    
+    SECTION 3 — Top-Notch Quality & Design
+    Purpose: Highlight that every piece is handpicked, premium quality, and designed with care.
+    Layout:
+    
+    Centered headline and subheading
+    Icon + text grid below — 3 columns on desktop, 2 columns on mobile, 1 column on very small screens
+    Each grid item has an icon (uploadable or emoji), a bold label, and a short description
+    Optional product lifestyle image on the side or above the grid
+    
+    Default grid items (all editable):
+    
+    Handpicked Designs — "Every piece is personally curated, not bulk sourced"
+    Premium Finish — "Smooth edges, rich plating, flawless look"
+    Occasion Ready — "From festivals to everyday wear"
+    Attention to Detail — "Crafted to look expensive, priced to be accessible"
+    
+    Customizable settings in Theme Editor:
+    
+    Section heading and subheading text
+    Number of grid columns on desktop (2, 3, or 4)
+    Number of grid columns on mobile (1 or 2)
+    Up to 6 grid items — each with icon upload, label text, description text, toggle to show/hide
+    Desktop heading font size — range 24px to 44px
+    Mobile heading font size — range 18px to 30px
+    Desktop grid label font size — range 14px to 18px
+    Mobile grid label font size — range 13px to 16px
+    Desktop grid description font size — range 12px to 15px
+    Mobile grid description font size — range 11px to 14px
+    Icon size on desktop (range 32px to 64px)
+    Icon size on mobile (range 24px to 48px)
+    Section background color
+    Icon accent color
+    Label text color
+    Description text color
+    Toggle to show/hide this entire section
+    
+    
+    SECTION 4 — Anti-Tarnish Tested
+    Purpose: Show that AdHouse jewellery is physically tested for durability, tarnish resistance, and skin safety.
+    Layout:
+    
+    Left side: bold headline, subheading, and a short paragraph
+    Right side: a checklist of tested properties with checkmark icons
+    On mobile: stacked, headline first then checklist
+    Optional badge or seal image (e.g., "Lab Tested" or "Quality Assured")
+    
+    Default checklist items (all editable):
+    
+    Anti-tarnish tested
+    Sweat and water resistant
+    Long-lasting gold/silver plating
+    Skin-safe and nickel-free
+    Stress-tested for clasps and settings
+    
+    Customizable settings in Theme Editor:
+    
+    Section heading text (default: "Built to Last. Tested to Prove It.")
+    Subheading and paragraph text
+    Up to 8 checklist items — each with text and toggle to show/hide
+    Ch, all the section are not build we need all of them 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-support-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: 40px 20px;
+    background-color: {{ block.settings.section_bg_color }};
+  }
+
+  .ai-support-container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ai-support-header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .ai-support-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.desktop_heading_size }}px;
+    color: {{ block.settings.text_color }};
+    margin: 0 0 12px;
+    font-weight: 600;
+    font-family: var(--font-heading-family);
+  }
+
+  .ai-support-subheading-{{ ai_gen_id }} {
+    font-size: 16px;
+    color: {{ block.settings.text_color }};
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  .ai-support-channels-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.desktop_columns }}, 1fr);
+    gap: 24px;
+  }
+
+  .ai-support-channel-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_bg_color }};
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ai-support-channel-{{ ai_gen_id }}:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .ai-support-channel-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.desktop_icon_size }}px;
+    height: {{ block.settings.desktop_icon_size }}px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: {{ block.settings.icon_bg_color }};
+    color: {{ block.settings.icon_color }};
+    font-size: calc({{ block.settings.desktop_icon_size }}px * 0.5);
+  }
+
+  .ai-support-channel-icon-{{ ai_gen_id }} img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+  }
+
+  .ai-support-channel-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.desktop_title_size }}px;
+    font-weight: 600;
+    color: {{ block.settings.text_color }};
+    margin: 0 0 8px;
+  }
+
+  .ai-support-channel-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.desktop_description_size }}px;
+    color: {{ block.settings.text_color }};
+    opacity: 0.85;
+    margin: 0 0 16px;
+    line-height: 1.5;
+  }
+
+  .ai-support-channel-link-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: {{ block.settings.button_bg_color }};
+    color: {{ block.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-support-channel-link-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_color }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-support-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.mobile_heading_size }}px;
+    }
+
+    .ai-support-channels-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.mobile_columns }}, 1fr);
+      gap: 20px;
+    }
+
+    .ai-support-channel-icon-{{ ai_gen_id }} {
+      width: {{ block.settings.mobile_icon_size }}px;
+      height: {{ block.settings.mobile_icon_size }}px;
+      font-size: calc({{ block.settings.mobile_icon_size }}px * 0.5);
+    }
+
+    .ai-support-channel-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.mobile_title_size }}px;
+    }
+
+    .ai-support-channel-description-{{ ai_gen_id }} {
+      font-size: {{ block.settings.mobile_description_size }}px;
+    }
+  }
+{% endstyle %}
+
+{% if block.settings.show_section %}
+  <ai-support-{{ ai_gen_id }} class="ai-support-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+    <div class="ai-support-container-{{ ai_gen_id }}">
+      <div class="ai-support-header-{{ ai_gen_id }}">
+        {% if block.settings.heading != blank %}
+          <h2 class="ai-support-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+        {% endif %}
+        {% if block.settings.subheading != blank %}
+          <p class="ai-support-subheading-{{ ai_gen_id }}">{{ block.settings.subheading }}</p>
+        {% endif %}
+      </div>
+
+      <div class="ai-support-channels-{{ ai_gen_id }}">
+        {% for i in (1..4) %}
+          {% liquid
+            assign show_key = 'channel_' | append: i | append: '_show'
+            assign icon_key = 'channel_' | append: i | append: '_icon'
+            assign title_key = 'channel_' | append: i | append: '_title'
+            assign description_key = 'channel_' | append: i | append: '_description'
+            assign link_text_key = 'channel_' | append: i | append: '_link_text'
+            assign link_url_key = 'channel_' | append: i | append: '_link_url'
+
+            assign show_channel = block.settings[show_key]
+            assign icon = block.settings[icon_key]
+            assign title = block.settings[title_key]
+            assign description = block.settings[description_key]
+            assign link_text = block.settings[link_text_key]
+            assign link_url = block.settings[link_url_key]
+          %}
+
+          {% if show_channel %}
+            <div class="ai-support-channel-{{ ai_gen_id }}">
+              <div class="ai-support-channel-icon-{{ ai_gen_id }}">
+                {% if icon %}
+                  <img src="{{ icon | image_url: width: 100 }}" alt="{{ title | escape }}" loading="lazy">
+                {% else %}
+                  <span>💬</span>
+                {% endif %}
+              </div>
+              {% if title != blank %}
+                <h3 class="ai-support-channel-title-{{ ai_gen_id }}">{{ title }}</h3>
+              {% endif %}
+              {% if description != blank %}
+                <p class="ai-support-channel-description-{{ ai_gen_id }}">{{ description }}</p>
+              {% endif %}
+              {% if link_text != blank and link_url != blank %}
+                <a href="{{ link_url }}" class="ai-support-channel-link-{{ ai_gen_id }}">
+                  {{ link_text }}
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </ai-support-{{ ai_gen_id }}>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Customer support",
+  "tag": null,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_section",
+      "label": "Show section",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "We're Here to Help"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Reach out anytime. We respond fast"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "desktop_columns",
+      "label": "Desktop columns",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "select",
+      "id": "mobile_columns",
+      "label": "Mobile columns",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "header",
+      "content": "Channel 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "channel_1_show",
+      "label": "Show channel",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "channel_1_icon",
+      "label": "Icon"
+    },
+    {
+      "type": "text",
+      "id": "channel_1_title",
+      "label": "Title",
+      "default": "WhatsApp"
+    },
+    {
+      "type": "textarea",
+      "id": "channel_1_description",
+      "label": "Description",
+      "default": "Chat with us instantly"
+    },
+    {
+      "type": "text",
+      "id": "channel_1_link_text",
+      "label": "Link text",
+      "default": "Chat Now"
+    },
+    {
+      "type": "url",
+      "id": "channel_1_link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Channel 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "channel_2_show",
+      "label": "Show channel",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "channel_2_icon",
+      "label": "Icon"
+    },
+    {
+      "type": "text",
+      "id": "channel_2_title",
+      "label": "Title",
+      "default": "Email"
+    },
+    {
+      "type": "textarea",
+      "id": "channel_2_description",
+      "label": "Description",
+      "default": "contact@ashtitva.com"
+    },
+    {
+      "type": "text",
+      "id": "channel_2_link_text",
+      "label": "Link text",
+      "default": "Send Email"
+    },
+    {
+      "type": "url",
+      "id": "channel_2_link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Channel 3"
+    },
+    {
+      "type": "checkbox",
+      "id": "channel_3_show",
+      "label": "Show channel",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "channel_3_icon",
+      "label": "Icon"
+    },
+    {
+      "type": "text",
+      "id": "channel_3_title",
+      "label": "Title",
+      "default": "Phone"
+    },
+    {
+      "type": "textarea",
+      "id": "channel_3_description",
+      "label": "Description",
+      "default": "Mon to Sat, 10 AM to 6 PM"
+    },
+    {
+      "type": "text",
+      "id": "channel_3_link_text",
+      "label": "Link text",
+      "default": "Call Us"
+    },
+    {
+      "type": "url",
+      "id": "channel_3_link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Channel 4"
+    },
+    {
+      "type": "checkbox",
+      "id": "channel_4_show",
+      "label": "Show channel",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "channel_4_icon",
+      "label": "Icon"
+    },
+    {
+      "type": "text",
+      "id": "channel_4_title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "channel_4_description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "channel_4_link_text",
+      "label": "Link text"
+    },
+    {
+      "type": "url",
+      "id": "channel_4_link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font",
+      "default": "plus_jakarta_sans_n4"
+    },
+    {
+      "type": "range",
+      "id": "desktop_heading_size",
+      "label": "Desktop heading size",
+      "min": 24,
+      "max": 44,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_size",
+      "label": "Mobile heading size",
+      "min": 18,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "desktop_title_size",
+      "label": "Desktop title size",
+      "min": 16,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "mobile_title_size",
+      "label": "Mobile title size",
+      "min": 14,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "desktop_description_size",
+      "label": "Desktop description size",
+      "min": 13,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "mobile_description_size",
+      "label": "Mobile description size",
+      "min": 12,
+      "max": 15,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "desktop_icon_size",
+      "label": "Desktop icon size",
+      "min": 48,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "mobile_icon_size",
+      "label": "Mobile icon size",
+      "min": 40,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Background",
+      "default": "#f7f7f7"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#a8843f"
+    },
+    {
+      "type": "color",
+      "id": "icon_bg_color",
+      "label": "Icon background",
+      "default": "#a46959"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button background",
+      "default": "#a46959"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover",
+      "default": "#835447"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer support"
+    }
+  ]
+}
+{% endschema %}

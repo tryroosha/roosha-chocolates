@@ -1,0 +1,1215 @@
+{%- liquid
+  assign sid = section.id
+  assign block_count = section.blocks.size
+-%}
+
+{%- comment -%}
+  Creator Reviews Marquee
+  Premium horizontal infinite marquee of vertical creator testimonial cards.
+{%- endcomment -%}
+
+{%- style -%}
+  #crvm-{{ sid }} {
+    --crvm-bg: {{ section.settings.background_color }};
+    --crvm-card-bg: {{ section.settings.card_background }};
+    --crvm-text: {{ section.settings.text_color }};
+    --crvm-muted: {{ section.settings.muted_color }};
+    --crvm-accent: {{ section.settings.accent_color }};
+    --crvm-border: {{ section.settings.card_border_color }};
+    --crvm-title: {{ section.settings.title_color }};
+    --crvm-subtitle: {{ section.settings.subtitle_color }};
+    --crvm-card-w: {{ section.settings.card_width }}px;
+    --crvm-gap: {{ section.settings.card_gap }}px;
+    --crvm-radius: 22px;
+    --crvm-speed: {{ section.settings.animation_speed }}s;
+    --crvm-pad-top: {{ section.settings.padding_top }}px;
+    --crvm-pad-bottom: {{ section.settings.padding_bottom }}px;
+    --crvm-desktop-visible: {{ section.settings.desktop_card_count }};
+    --crvm-mobile-visible: {{ section.settings.mobile_card_count | times: 0.1 }};
+    --crvm-shadow: 0 2px 10px rgba(42, 42, 42, 0.04);
+    --crvm-shadow-hover: 0 8px 24px rgba(42, 42, 42, 0.08);
+  }
+
+  #crvm-{{ sid }} {
+    background: var(--crvm-bg);
+    padding-top: calc(var(--crvm-pad-top) * 0.75);
+    padding-bottom: calc(var(--crvm-pad-bottom) * 0.75);
+    overflow: hidden;
+    color: var(--crvm-text);
+  }
+
+  /* —— Header —— */
+  #crvm-{{ sid }} .crvm__header {
+    text-align: center;
+    max-width: 68rem;
+    margin: 0 auto 2.8rem;
+    padding: 0 2rem;
+  }
+
+  #crvm-{{ sid }} .crvm__title {
+    margin: 0;
+    color: var(--crvm-title);
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style, normal);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  @media screen and (min-width: 750px) {
+    #crvm-{{ sid }} .crvm__title {
+      font-size: 40px;
+    }
+  }
+
+  #crvm-{{ sid }} .crvm__subtitle {
+    margin: 1.2rem 0 0;
+    color: var(--crvm-subtitle);
+    font-size: clamp(1.4rem, 0.35vw + 1.3rem, 1.6rem);
+    line-height: calc(1 + 0.6 / var(--font-body-scale));
+    letter-spacing: 0.02rem;
+    font-weight: 400;
+  }
+
+  /* —— Marquee viewport —— */
+  #crvm-{{ sid }} .crvm__viewport {
+    position: relative;
+    width: 100%;
+    {% if section.settings.enable_fade_edges %}
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+    {% endif %}
+  }
+
+  #crvm-{{ sid }} .crvm__track-wrap {
+    overflow: hidden;
+    width: 100%;
+    cursor: grab;
+    touch-action: pan-y;
+  }
+
+  #crvm-{{ sid }} .crvm__track-wrap.is-dragging {
+    cursor: grabbing;
+  }
+
+  #crvm-{{ sid }} .crvm__track {
+    display: flex;
+    align-items: stretch;
+    width: max-content;
+    gap: var(--crvm-gap);
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+  }
+
+  #crvm-{{ sid }} .crvm__track.is-animated {
+    animation: crvm-scroll-{{ sid }} var(--crvm-speed) linear infinite;
+  }
+
+  {% if section.settings.pause_on_hover %}
+    @media (hover: hover) {
+      #crvm-{{ sid }} .crvm__viewport:hover .crvm__track.is-animated {
+        animation-play-state: paused;
+      }
+    }
+  {% endif %}
+
+  #crvm-{{ sid }} .crvm__track.is-paused,
+  #crvm-{{ sid }} .crvm__track.is-dragging {
+    animation-play-state: paused !important;
+  }
+
+  @keyframes crvm-scroll-{{ sid }} {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(calc(-1 * var(--crvm-loop-distance, 50%)), 0, 0); }
+  }
+
+  /* —— Card —— */
+  #crvm-{{ sid }} .crvm__card {
+    --crvm-local-w: var(--crvm-card-w);
+    flex: 0 0 var(--crvm-local-w);
+    width: var(--crvm-local-w);
+    height: auto;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    background: var(--crvm-card-bg);
+    border: 1px solid var(--crvm-border);
+    border-radius: var(--crvm-radius);
+    box-shadow: var(--crvm-shadow);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    isolation: isolate;
+    letter-spacing: 0.02rem;
+    transition: {% if section.settings.enable_hover_effect %}transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1){% else %}none{% endif %};
+  }
+
+  #crvm-{{ sid }} .crvm__card:focus-visible {
+    outline: 2px solid var(--crvm-accent);
+    outline-offset: 3px;
+  }
+
+  {% if section.settings.enable_hover_effect %}
+    @media (hover: hover) {
+      #crvm-{{ sid }} .crvm__card:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: var(--crvm-shadow-hover);
+        z-index: 2;
+      }
+    }
+  {% endif %}
+
+  /* Photo — fixed aspect ratio; card height follows content */
+  #crvm-{{ sid }} .crvm__media {
+    position: relative;
+    flex: 0 0 auto;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--crvm-accent) 8%, #fdf9f2);
+  }
+
+  #crvm-{{ sid }} .crvm__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  #crvm-{{ sid }} .crvm__media-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--crvm-accent);
+    opacity: 0.45;
+  }
+
+  /* Body */
+  #crvm-{{ sid }} .crvm__body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1.4rem 1.8rem 1.2rem;
+    min-height: 0;
+    position: relative;
+    gap: 0.8rem;
+  }
+
+  #crvm-{{ sid }} .crvm__identity {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: 1rem;
+    row-gap: 0.2rem;
+    align-items: center;
+    margin-bottom: 0;
+  }
+
+  #crvm-{{ sid }} .crvm__avatar {
+    grid-row: 1 / span 3;
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--crvm-accent);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--crvm-accent) 40%, transparent);
+  }
+
+  #crvm-{{ sid }} .crvm__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #crvm-{{ sid }} .crvm__name-row {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  #crvm-{{ sid }} .crvm__name {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.01rem;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #crvm-{{ sid }} .crvm__verified {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--crvm-accent);
+  }
+
+  #crvm-{{ sid }} .crvm__handle {
+    grid-column: 2;
+    grid-row: 2;
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--crvm-muted);
+    line-height: 1.35;
+    letter-spacing: 0.01rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #crvm-{{ sid }} .crvm__meta {
+    grid-column: 2;
+    grid-row: 3;
+    margin: 0.1rem 0 0;
+    font-size: 1.15rem;
+    color: var(--crvm-muted);
+    letter-spacing: 0.01rem;
+    line-height: 1.35;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Review */
+  #crvm-{{ sid }} .crvm__review-wrap {
+    position: relative;
+    flex: 0 1 auto;
+    min-height: 0;
+  }
+
+  #crvm-{{ sid }} .crvm__quote {
+    position: absolute;
+    top: -0.4rem;
+    left: -0.2rem;
+    width: 3.2rem;
+    height: 3.2rem;
+    color: var(--crvm-accent);
+    opacity: 0.14;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  #crvm-{{ sid }} .crvm__review {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    font-size: 1.35rem;
+    line-height: 1.55;
+    letter-spacing: 0.01rem;
+    color: var(--crvm-text);
+  }
+
+  /* Platform footer */
+  #crvm-{{ sid }} .crvm__platform {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: auto;
+    padding-top: 0.2rem;
+    color: var(--crvm-muted);
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.02rem;
+  }
+
+  #crvm-{{ sid }} .crvm__platform-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+    color: var(--crvm-accent);
+  }
+
+  #crvm-{{ sid }} .crvm__platform-name {
+    text-transform: capitalize;
+  }
+
+  /* Responsive widths from visible-count settings */
+  @media screen and (min-width: 990px) {
+    #crvm-{{ sid }} {
+      padding-top: var(--crvm-pad-top);
+      padding-bottom: var(--crvm-pad-bottom);
+    }
+
+    #crvm-{{ sid }} .crvm__header {
+      margin-bottom: 3.6rem;
+    }
+
+    #crvm-{{ sid }} .crvm__card {
+      --crvm-local-w: min(
+        var(--crvm-card-w),
+        calc((100vw - 4rem - (var(--crvm-desktop-visible) - 1) * var(--crvm-gap)) / var(--crvm-desktop-visible))
+      );
+    }
+
+    {% if section.settings.enable_fade_edges %}
+      #crvm-{{ sid }} .crvm__viewport {
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 4%, #000 96%, transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0%, #000 4%, #000 96%, transparent 100%);
+      }
+    {% endif %}
+  }
+
+  @media screen and (min-width: 750px) and (max-width: 989px) {
+    #crvm-{{ sid }} .crvm__card {
+      --crvm-local-w: min(var(--crvm-card-w), calc((100vw - 3rem - 2 * var(--crvm-gap)) / 2.6));
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #crvm-{{ sid }} {
+      --crvm-speed: calc({{ section.settings.animation_speed }}s * 1.25);
+      --crvm-gap: max(12px, calc({{ section.settings.card_gap }}px * 0.75));
+    }
+
+    #crvm-{{ sid }} .crvm__header {
+      margin-bottom: 2.4rem;
+      padding: 0 1.6rem;
+    }
+
+    #crvm-{{ sid }} .crvm__subtitle {
+      margin-top: 1rem;
+      font-size: 1.4rem;
+    }
+
+    #crvm-{{ sid }} .crvm__card {
+      --crvm-local-w: calc((100vw - 1.5rem) / var(--crvm-mobile-visible));
+      height: auto;
+    }
+
+    #crvm-{{ sid }} .crvm__body {
+      padding: 1.2rem 1.5rem 1rem;
+      gap: 0.7rem;
+    }
+
+    #crvm-{{ sid }} .crvm__identity {
+      column-gap: 0.9rem;
+      margin-bottom: 0;
+    }
+
+    #crvm-{{ sid }} .crvm__avatar {
+      width: 3.2rem;
+      height: 3.2rem;
+      font-size: 1rem;
+    }
+
+    #crvm-{{ sid }} .crvm__name {
+      font-size: 1.4rem;
+    }
+
+    #crvm-{{ sid }} .crvm__handle {
+      font-size: 1.15rem;
+    }
+
+    #crvm-{{ sid }} .crvm__meta {
+      font-size: 1.1rem;
+    }
+
+    #crvm-{{ sid }} .crvm__review {
+      font-size: 1.3rem;
+    }
+
+    #crvm-{{ sid }} .crvm__platform {
+      padding-top: 0.2rem;
+      font-size: 1.15rem;
+    }
+
+    {% if section.settings.enable_fade_edges %}
+      #crvm-{{ sid }} .crvm__viewport {
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+      }
+    {% endif %}
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #crvm-{{ sid }} .crvm__track.is-animated {
+      animation: none !important;
+      transform: none !important;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      max-width: 120rem;
+      margin: 0 auto;
+      padding: 0 1.6rem;
+      row-gap: var(--crvm-gap);
+    }
+
+    #crvm-{{ sid }} .crvm__viewport {
+      -webkit-mask-image: none;
+      mask-image: none;
+      overflow: visible;
+    }
+
+    #crvm-{{ sid }} .crvm__track-wrap {
+      overflow: visible;
+      cursor: default;
+    }
+
+    #crvm-{{ sid }} .crvm__card {
+      --crvm-local-w: min(var(--crvm-card-w), 100%);
+      height: auto;
+    }
+
+    #crvm-{{ sid }} .crvm__media {
+      flex-basis: auto;
+      aspect-ratio: 4 / 5;
+      max-height: none;
+    }
+
+    #crvm-{{ sid }} .crvm__review {
+      display: block;
+      overflow: visible;
+    }
+  }
+{%- endstyle -%}
+
+<section
+  id="crvm-{{ sid }}"
+  class="crvm"
+  data-crvm
+  data-section-id="{{ sid }}"
+  aria-labelledby="crvm-title-{{ sid }}"
+>
+  {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+    <header class="crvm__header">
+      {%- if section.settings.title != blank -%}
+        <h2 id="crvm-title-{{ sid }}" class="crvm__title">{{ section.settings.title | escape }}</h2>
+      {%- else -%}
+        <h2 id="crvm-title-{{ sid }}" class="visually-hidden">Creator reviews</h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="crvm__subtitle">{{ section.settings.subtitle | escape }}</p>
+      {%- endif -%}
+    </header>
+  {%- else -%}
+    <h2 id="crvm-title-{{ sid }}" class="visually-hidden">Creator reviews</h2>
+  {%- endif -%}
+
+  {%- if block_count > 0 -%}
+    <div class="crvm__viewport">
+      <div class="crvm__track-wrap" data-crvm-wrap>
+        <div class="crvm__track" data-crvm-track role="list">
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign name = block.settings.creator_name
+              assign handle = block.settings.social_handle
+              assign creator_type = block.settings.creator_type
+              assign followers = block.settings.followers
+              assign review = block.settings.review
+              assign platform = block.settings.platform
+              assign platform_url = block.settings.platform_url
+              assign verified = block.settings.verified
+              assign photo = block.settings.creator_photo
+              assign avatar = block.settings.profile_avatar
+
+              assign words = name | split: ' '
+              assign initials = ''
+              for word in words
+                if word != blank
+                  assign char = word | slice: 0, 1
+                  assign initials = initials | append: char
+                endif
+              endfor
+              assign initials = initials | upcase | slice: 0, 2
+              if initials == blank
+                assign initials = '?'
+              endif
+
+              if handle != blank and handle contains '@'
+                assign handle_display = handle
+              elsif handle != blank
+                assign handle_display = handle | prepend: '@'
+              else
+                assign handle_display = ''
+              endif
+
+              case platform
+                when 'instagram'
+                  assign platform_label = 'Instagram'
+                when 'youtube'
+                  assign platform_label = 'YouTube'
+                when 'facebook'
+                  assign platform_label = 'Facebook'
+                when 'pinterest'
+                  assign platform_label = 'Pinterest'
+                when 'threads'
+                  assign platform_label = 'Threads'
+                when 'tiktok'
+                  assign platform_label = 'TikTok'
+                else
+                  assign platform_label = 'Social'
+              endcase
+
+              if photo != blank
+                assign photo_alt = name | default: 'Creator photo' | append: ' creator review'
+              endif
+              if avatar != blank
+                assign avatar_alt = name | default: 'Creator' | append: ' profile photo'
+              elsif photo != blank
+                assign avatar_alt = name | default: 'Creator' | append: ' profile photo'
+              else
+                assign avatar_alt = 'Creator profile'
+              endif
+            -%}
+
+            {%- capture card_inner -%}
+              <div class="crvm__media">
+                {%- if photo != blank -%}
+                  {{
+                    photo
+                    | image_url: width: 800
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '340, 500, 680, 800',
+                      sizes: '(max-width: 749px) 78vw, 340px',
+                      alt: photo_alt
+                  }}
+                {%- else -%}
+                  <div class="crvm__media-placeholder" aria-hidden="true">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                      <rect x="3" y="5" width="18" height="14" rx="2"/>
+                      <circle cx="8.5" cy="10" r="1.5"/>
+                      <path d="M21 16l-5.5-5.5L6 20"/>
+                    </svg>
+                  </div>
+                {%- endif -%}
+              </div>
+
+              <div class="crvm__body">
+                <div class="crvm__identity">
+                  <div class="crvm__avatar" aria-hidden="{% if avatar != blank %}true{% else %}false{% endif %}">
+                    {%- if avatar != blank -%}
+                      {{
+                        avatar
+                        | image_url: width: 96
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: '48, 96',
+                          sizes: '36px',
+                          alt: avatar_alt
+                      }}
+                    {%- elsif photo != blank -%}
+                      {{
+                        photo
+                        | image_url: width: 96
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: '48, 96',
+                          sizes: '36px',
+                          alt: avatar_alt
+                      }}
+                    {%- else -%}
+                      <span>{{ initials }}</span>
+                    {%- endif -%}
+                  </div>
+
+                  <div class="crvm__name-row">
+                    {%- if name != blank -%}
+                      <p class="crvm__name">{{ name | escape }}</p>
+                    {%- endif -%}
+                    {%- if verified -%}
+                      <svg class="crvm__verified" viewBox="0 0 16 16" aria-label="Verified" role="img">
+                        <circle cx="8" cy="8" r="8" fill="currentColor"/>
+                        <path d="M4.7 8.1l2.1 2.1 4.5-4.5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    {%- endif -%}
+                  </div>
+
+                  {%- if handle_display != blank -%}
+                    <p class="crvm__handle">{{ handle_display | escape }}</p>
+                  {%- endif -%}
+
+                  {%- if creator_type != blank or followers != blank -%}
+                    <p class="crvm__meta">
+                      {%- if creator_type != blank -%}{{ creator_type | escape }}{%- endif -%}
+                      {%- if creator_type != blank and followers != blank %} · {% endif -%}
+                      {%- if followers != blank -%}{{ followers | escape }}{%- endif -%}
+                    </p>
+                  {%- endif -%}
+                </div>
+
+                {%- if review != blank -%}
+                  <div class="crvm__review-wrap">
+                    <svg class="crvm__quote" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+                      <path fill="currentColor" d="M12.4 28.5c-2.8 0-5-0.8-6.6-2.5C4.1 24.2 3.2 21.8 3.2 18.8c0-3.5 1.1-6.7 3.3-9.5C8.7 6.5 11.8 4.5 15.8 3.4l1.1 2.5c-2.6 0.8-4.6 2-6 3.5-1.4 1.5-2.2 3.1-2.4 4.8 0.6-0.3 1.4-0.5 2.4-0.5 2.1 0 3.8 0.7 5 2.1 1.2 1.4 1.9 3.1 1.9 5.2 0 2-0.7 3.6-2 4.9-1.4 1.2-3.1 1.9-5.4 1.9zm17.2 0c-2.8 0-5-0.8-6.6-2.5-1.7-1.8-2.6-4.2-2.6-7.2 0-3.5 1.1-6.7 3.3-9.5 2.2-2.8 5.3-4.8 9.3-5.9l1.1 2.5c-2.6 0.8-4.6 2-6 3.5-1.4 1.5-2.2 3.1-2.4 4.8 0.6-0.3 1.4-0.5 2.4-0.5 2.1 0 3.8 0.7 5 2.1 1.2 1.4 1.9 3.1 1.9 5.2 0 2-0.7 3.6-2 4.9-1.4 1.2-3.1 1.9-5.4 1.9z"/>
+                    </svg>
+                    <p class="crvm__review">{{ review | escape }}</p>
+                  </div>
+                {%- endif -%}
+
+                <div class="crvm__platform">
+                  <span class="crvm__platform-icon" aria-hidden="true">
+                    {%- case platform -%}
+                      {%- when 'instagram' -%}
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                      {%- when 'youtube' -%}
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.5s-.2-1.6-.9-2.3c-.8-.9-1.8-.9-2.2-1C16.2 4 12 4 12 4h0s-4.2 0-7.9.2c-.5.1-1.4.1-2.2 1-.7.7-.9 2.3-.9 2.3S1 9.4 1 11.2v1.6c0 1.9.2 3.7.2 3.7s.2 1.6.9 2.3c.8.9 1.9.8 2.4.9 1.7.2 7.5.2 7.5.2s4.2 0 7.9-.2c.5-.1 1.4-.1 2.2-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.7v-1.6c0-1.8-.2-3.7-.2-3.7zM9.8 14.8V8.7l5.9 3.1-5.9 3z"/></svg>
+                      {%- when 'facebook' -%}
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg>
+                      {%- when 'pinterest' -%}
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 4.1 2.5 7.6 6.1 9.1-.1-.8-.2-2 0-2.9.2-.8 1.3-5.4 1.3-5.4s-.3-.7-.3-1.6c0-1.5.9-2.7 2-2.7.9 0 1.4.7 1.4 1.5 0 .9-.6 2.3-.9 3.5-.3 1.1.5 1.9 1.6 1.9 1.9 0 3.2-2.4 3.2-5.3 0-2.2-1.5-3.8-4.2-3.8-3.1 0-5 2.3-5 4.8 0 .9.3 1.8.7 2.3.1.1.1.2.1.3l-.3 1c0 .2-.2.2-.3.1-1.3-.6-1.9-2.1-1.9-3.8 0-2.8 2.4-6.2 7.1-6.2 3.8 0 6.3 2.8 6.3 5.7 0 3.9-2.2 6.8-5.4 6.8-1.1 0-2.1-.6-2.4-1.3l-.7 2.5c-.2.9-.9 2-1.4 2.7 1.2.4 2.5.6 3.8.6 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+                      {%- when 'threads' -%}
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 11.1c-.1-2.2-1.3-3.8-3.7-4.1v-.1c1-.2 1.8-.7 2.3-1.4.6-.8.8-1.8.7-2.9h-2.3c.1.8 0 1.5-.4 2-.5.6-1.3.9-2.4.9h-.1v2.1c.1 0 .2 0 .3 0 2.1.1 3.1 1.2 3.2 3.1-.5-.3-1.1-.5-1.8-.5-2.4 0-4 1.8-4 4.2 0 2.5 1.8 4.3 4.3 4.3 1.6 0 2.9-.6 3.8-1.8.7-1 1.1-2.3 1.2-4.1.1-.5.1-1 .1-1.7zm-3.9 5.2c-1.3 0-2.2-.9-2.2-2.2 0-1.4 1-2.3 2.4-2.3.6 0 1.1.2 1.5.4v.5c0 1.3-.2 2.3-.6 3-.4.6-.8.6-1.1.6z"/></svg>
+                      {%- when 'tiktok' -%}
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 7.8a5.8 5.8 0 01-3.4-1.1v7.2a5.7 5.7 0 11-5.7-5.7c.3 0 .6 0 .9.1v2.9a2.8 2.8 0 100 5.5 2.8 2.8 0 002.8-2.8V2h2.9a5.8 5.8 0 003.4 5.3v.5z"/></svg>
+                      {%- else -%}
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9S14.5 18.3 12 21c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>
+                    {%- endcase -%}
+                  </span>
+                  <span class="crvm__platform-name">{{ platform_label }}</span>
+                </div>
+              </div>
+            {%- endcapture -%}
+
+            {%- if platform_url != blank -%}
+              <a
+                class="crvm__card"
+                href="{{ platform_url }}"
+                role="listitem"
+                {{ block.shopify_attributes }}
+                {% if platform_url contains 'http' %}target="_blank" rel="noopener noreferrer"{% endif %}
+                aria-label="{{ name | default: 'Creator' | escape }} on {{ platform_label }}"
+              >
+                {{ card_inner }}
+              </a>
+            {%- else -%}
+              <article class="crvm__card" role="listitem" tabindex="0" {{ block.shopify_attributes }}>
+                {{ card_inner }}
+              </article>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</section>
+
+<script>
+  (function () {
+    var root = document.getElementById('crvm-{{ sid }}');
+    if (!root) return;
+
+    var wrap = root.querySelector('[data-crvm-wrap]');
+    var track = root.querySelector('[data-crvm-track]');
+    if (!wrap || !track) return;
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var originals = Array.prototype.slice.call(track.children);
+    if (!originals.length) return;
+
+    /* Measure one set width (cards + gaps) */
+    function setWidth() {
+      var nodes = track.querySelectorAll('[data-crvm-original="1"]');
+      if (!nodes.length) nodes = originals;
+      var total = 0;
+      var gap = parseFloat(getComputedStyle(track).gap) || 0;
+      nodes.forEach(function (node, i) {
+        total += node.getBoundingClientRect().width;
+        if (i < nodes.length - 1) total += gap;
+      });
+      /* Include trailing gap so loop lands on identical frame */
+      total += gap;
+      root.style.setProperty('--crvm-loop-distance', total + 'px');
+      return total;
+    }
+
+    /* Match every card to the tallest content-driven height */
+    function equalizeHeights() {
+      var cards = track.querySelectorAll('.crvm__card');
+      if (!cards.length) return;
+
+      cards.forEach(function (card) {
+        card.style.minHeight = '';
+        card.style.height = 'auto';
+      });
+
+      var maxH = 0;
+      originals.forEach(function (card) {
+        maxH = Math.max(maxH, card.getBoundingClientRect().height);
+      });
+
+      if (maxH > 0) {
+        cards.forEach(function (card) {
+          card.style.minHeight = Math.ceil(maxH) + 'px';
+        });
+      }
+    }
+
+    /* Duplicate original cards until track covers > 2× viewport (seamless + no gaps) */
+    function ensureCopies() {
+      if (reduceMotion) {
+        equalizeHeights();
+        return;
+      }
+
+      track.querySelectorAll('[data-crvm-clone]').forEach(function (n) { n.remove(); });
+
+      originals.forEach(function (node) {
+        node.setAttribute('data-crvm-original', '1');
+      });
+
+      var viewportW = wrap.getBoundingClientRect().width || window.innerWidth;
+      var guard = 0;
+      while (track.scrollWidth < viewportW * 2.2 && guard < 12) {
+        originals.forEach(function (node) {
+          var clone = node.cloneNode(true);
+          clone.setAttribute('data-crvm-clone', '1');
+          clone.setAttribute('aria-hidden', 'true');
+          clone.removeAttribute('data-crvm-original');
+          clone.tabIndex = -1;
+          clone.querySelectorAll('a, button, [tabindex]').forEach(function (el) {
+            el.setAttribute('tabindex', '-1');
+          });
+          track.appendChild(clone);
+        });
+        guard++;
+      }
+
+      /* Ensure at least one full duplicate set for -50%-style looping via pixel distance */
+      if (guard === 0) {
+        originals.forEach(function (node) {
+          var clone = node.cloneNode(true);
+          clone.setAttribute('data-crvm-clone', '1');
+          clone.setAttribute('aria-hidden', 'true');
+          clone.removeAttribute('data-crvm-original');
+          clone.tabIndex = -1;
+          track.appendChild(clone);
+        });
+      }
+
+      equalizeHeights();
+      setWidth();
+      track.classList.add('is-animated');
+    }
+
+    /* —— Touch / drag scrubbing —— */
+    var startX = 0;
+    var currentX = 0;
+    var dragging = false;
+    var baseTransform = 0;
+
+    function getTranslateX() {
+      var style = window.getComputedStyle(track).transform;
+      if (!style || style === 'none') return 0;
+      var matrix = style.match(/matrix.*\((.+)\)/);
+      if (!matrix) return 0;
+      var parts = matrix[1].split(',');
+      return parseFloat(parts[4]) || 0;
+    }
+
+    function onPointerDown(e) {
+      if (reduceMotion) return;
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      dragging = true;
+      startX = e.clientX;
+      baseTransform = getTranslateX();
+      track.classList.add('is-dragging');
+      wrap.classList.add('is-dragging');
+      track.style.animation = 'none';
+      track.style.transform = 'translate3d(' + baseTransform + 'px, 0, 0)';
+      wrap.setPointerCapture(e.pointerId);
+    }
+
+    function onPointerMove(e) {
+      if (!dragging) return;
+      currentX = e.clientX - startX;
+      track.style.transform = 'translate3d(' + (baseTransform + currentX) + 'px, 0, 0)';
+    }
+
+    function onPointerUp(e) {
+      if (!dragging) return;
+      dragging = false;
+      wrap.classList.remove('is-dragging');
+      track.classList.remove('is-dragging');
+      /* Resume seamless CSS animation from start — instantaneous join via duplicated set */
+      track.style.animation = '';
+      track.style.transform = '';
+      track.classList.add('is-animated');
+      try { wrap.releasePointerCapture(e.pointerId); } catch (err) {}
+    }
+
+    wrap.addEventListener('pointerdown', onPointerDown, { passive: true });
+    wrap.addEventListener('pointermove', onPointerMove, { passive: true });
+    wrap.addEventListener('pointerup', onPointerUp);
+    wrap.addEventListener('pointercancel', onPointerUp);
+
+    /* Pause while focused for keyboard users */
+    track.addEventListener('focusin', function () { track.classList.add('is-paused'); });
+    track.addEventListener('focusout', function () { track.classList.remove('is-paused'); });
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(ensureCopies, 150);
+    });
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(ensureCopies);
+    } else {
+      ensureCopies();
+    }
+
+    /* Re-init after images load (card heights/widths can shift) */
+    track.querySelectorAll('img').forEach(function (img) {
+      if (!img.complete) {
+        img.addEventListener('load', function () {
+          equalizeHeights();
+          setWidth();
+        }, { once: true });
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Creator Reviews Marquee",
+  "tag": "section",
+  "class": "section-creator-reviews-marquee",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Loved by creators"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Authentic moments from creators who style our pieces every day."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border color",
+      "default": "#F3EBD8"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#18302a"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#78716C"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#1C1917"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Muted text color",
+      "default": "#8A837B"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#C5A059"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "card_width",
+      "min": 260,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "label": "Card width",
+      "default": 340
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "min": 12,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Card gap",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "desktop_card_count",
+      "min": 3,
+      "max": 5,
+      "step": 1,
+      "label": "Desktop visible cards",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "mobile_card_count",
+      "min": 12,
+      "max": 15,
+      "step": 1,
+      "label": "Mobile visible cards (÷10)",
+      "info": "12 = 1.2 cards, 15 = 1.5 cards",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top spacing",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom spacing",
+      "default": 72
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "range",
+      "id": "animation_speed",
+      "min": 20,
+      "max": 120,
+      "step": 5,
+      "unit": "s",
+      "label": "Animation speed",
+      "info": "Higher = slower, more luxurious motion",
+      "default": 50
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on hover",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_fade_edges",
+      "label": "Enable fade edges",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_hover_effect",
+      "label": "Enable hover effect",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "creator_review",
+      "name": "Creator review",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "creator_photo",
+          "label": "Creator photo"
+        },
+        {
+          "type": "image_picker",
+          "id": "profile_avatar",
+          "label": "Profile avatar",
+          "info": "Falls back to creator photo, then initials"
+        },
+        {
+          "type": "text",
+          "id": "creator_name",
+          "label": "Creator name",
+          "default": "Aditi Sharma"
+        },
+        {
+          "type": "text",
+          "id": "social_handle",
+          "label": "Social handle",
+          "default": "@aditi_style"
+        },
+        {
+          "type": "text",
+          "id": "creator_type",
+          "label": "Creator type",
+          "default": "Fashion Creator",
+          "info": "Examples: Fashion Creator, Lifestyle Creator, Bride, Customer"
+        },
+        {
+          "type": "text",
+          "id": "followers",
+          "label": "Followers",
+          "default": "145K"
+        },
+        {
+          "type": "textarea",
+          "id": "review",
+          "label": "Review",
+          "default": "The sparkle is unreal. I've received compliments every single time I wear it."
+        },
+        {
+          "type": "select",
+          "id": "platform",
+          "label": "Platform",
+          "options": [
+            { "value": "instagram", "label": "Instagram" },
+            { "value": "youtube", "label": "YouTube" },
+            { "value": "facebook", "label": "Facebook" },
+            { "value": "pinterest", "label": "Pinterest" },
+            { "value": "threads", "label": "Threads" },
+            { "value": "tiktok", "label": "TikTok" },
+            { "value": "other", "label": "Other" }
+          ],
+          "default": "instagram"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Verified badge",
+          "default": true
+        },
+        {
+          "type": "url",
+          "id": "platform_url",
+          "label": "Platform URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Creator Reviews Marquee",
+      "blocks": [
+        {
+          "type": "creator_review",
+          "settings": {
+            "creator_name": "Aditi Sharma",
+            "social_handle": "@aditi_style",
+            "creator_type": "Fashion Creator",
+            "followers": "145K",
+            "review": "The sparkle is unreal. I've received compliments every single time I wear it.",
+            "platform": "instagram",
+            "verified": true
+          }
+        },
+        {
+          "type": "creator_review",
+          "settings": {
+            "creator_name": "Meera Kapoor",
+            "social_handle": "@meerakapoor",
+            "creator_type": "Lifestyle Creator",
+            "followers": "89K",
+            "review": "Elegant enough for weddings, light enough for everyday. Absolute favourite piece.",
+            "platform": "instagram",
+            "verified": true
+          }
+        },
+        {
+          "type": "creator_review",
+          "settings": {
+            "creator_name": "Riya Patel",
+            "social_handle": "@riyastyles",
+            "creator_type": "Bride",
+            "followers": "62K",
+            "review": "Wore these on my wedding week, and they caught every camera flash beautifully.",
+            "platform": "youtube",
+            "verified": true
+          }
+        },
+        {
+          "type": "creator_review",
+          "settings": {
+            "creator_name": "Ananya Desai",
+            "social_handle": "@ananyad",
+            "creator_type": "Content Creator",
+            "followers": "210K",
+            "review": "Looks expensive, feels delicate, photographs like a dream. Obsessed.",
+            "platform": "instagram",
+            "verified": true
+          }
+        },
+        {
+          "type": "creator_review",
+          "settings": {
+            "creator_name": "Sana Khan",
+            "social_handle": "@sanakhan",
+            "creator_type": "Customer",
+            "followers": "",
+            "review": "Gifted myself these earrings and I get asked about them constantly.",
+            "platform": "instagram",
+            "verified": false
+          }
+        },
+        {
+          "type": "creator_review",
+          "settings": {
+            "creator_name": "Priya Nair",
+            "social_handle": "@priyanair",
+            "creator_type": "Fashion Creator",
+            "followers": "178K",
+            "review": "The craftsmanship is quiet luxury at its best: refined, radiant, timeless.",
+            "platform": "pinterest",
+            "verified": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,475 @@
+{% doc %}
+  @prompt
+    Create a product benefits section with the following exact structure and behavior:
+    
+    LAYOUT: Top section has a bold headline and a lighter subtitle tagline. Below that, a two-column layout (50/50 on desktop, stacked on mobile, max-width 960px centered): left column has a lifestyle product image with soft background color (#F2F8F9) and rounded corners; right column has a toggle button and a feature list.
+    
+    TOGGLE BUTTON: Amber/gold styled button (#FBF1E6 background, #8F5A17 text), labeled "Click to Know More" with an eye-slash icon (Font Awesome fa-regular fa-eye-slash). Clicking it toggles all feature descriptions open or closed simultaneously. When open, icon changes to eye (fa-regular fa-eye) and label changes to "Click to Hide".
+    
+    FEATURE LIST: 5 feature items stacked vertically with a light border divider (#DEE6E8) between each item (not after the last). Each item has:
+    - A small 20x20px icon image on the left
+    - A bold feature title (font-weight 500, color #404543) next to the icon
+    - A collapsible description paragraph below (color #A0A2A1) that animates open/closed using max-height and opacity CSS transitions over 700ms. Hidden by default (max-height: 0, opacity: 0). When revealed: max-height: 200px, opacity: 1.
+    
+    All content editable via theme editor settings: headline, tagline, image, button label, and for each of the 5 features: icon image upload, title text, description text.
+    
+    Responsive: single column on mobile, two columns on desktop.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-product-benefits-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: 40px 20px;
+  }
+
+  .ai-product-benefits-header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .ai-product-benefits-headline-{{ ai_gen_id }} {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--ash-heading, #18302a);
+    margin: 0 0 12px 0;
+  }
+
+  .ai-product-benefits-tagline-{{ ai_gen_id }} {
+    font-size: 18px;
+    font-weight: 300;
+    color: #A0A2A1;
+    margin: 0;
+  }
+
+  .ai-product-benefits-container-{{ ai_gen_id }} {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .ai-product-benefits-image-wrapper-{{ ai_gen_id }} {
+    background-color: #F2F8F9;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-product-benefits-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .ai-product-benefits-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E8F0F1;
+    border-radius: 12px;
+  }
+
+  .ai-product-benefits-image-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-product-benefits-features-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ai-product-benefits-toggle-{{ ai_gen_id }} {
+    background-color: #FBF1E6;
+    color: #8F5A17;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    width: 100%;
+  }
+
+  .ai-product-benefits-toggle-{{ ai_gen_id }}:hover {
+    background-color: #F5E5D0;
+  }
+
+  .ai-product-benefits-toggle-icon-{{ ai_gen_id }} {
+    width: 16px;
+    height: 16px;
+  }
+
+  .ai-product-benefits-list-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ai-product-benefits-item-{{ ai_gen_id }} {
+    padding: 20px 0;
+    border-bottom: 1px solid #DEE6E8;
+  }
+
+  .ai-product-benefits-item-{{ ai_gen_id }}:last-child {
+    border-bottom: none;
+  }
+
+  .ai-product-benefits-item-header-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .ai-product-benefits-icon-{{ ai_gen_id }} {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .ai-product-benefits-icon-placeholder-{{ ai_gen_id }} {
+    width: 20px;
+    height: 20px;
+    background-color: #DEE6E8;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .ai-product-benefits-title-{{ ai_gen_id }} {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ash-heading, #18302a);
+    margin: 0;
+  }
+
+  .ai-product-benefits-description-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: #A0A2A1;
+    line-height: 1.6;
+    margin: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.7s ease, opacity 0.7s ease;
+  }
+
+  .ai-product-benefits-description-{{ ai_gen_id }}.active {
+    max-height: 200px;
+    opacity: 1;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-product-benefits-container-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .ai-product-benefits-headline-{{ ai_gen_id }} {
+      font-size: 24px;
+    }
+
+    .ai-product-benefits-tagline-{{ ai_gen_id }} {
+      font-size: 16px;
+    }
+  }
+{% endstyle %}
+
+<product-benefits-{{ ai_gen_id }} class="ai-product-benefits-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-product-benefits-header-{{ ai_gen_id }}">
+    {% if block.settings.headline != blank %}
+      <h2 class="ai-product-benefits-headline-{{ ai_gen_id }}">{{ block.settings.headline }}</h2>
+    {% endif %}
+    {% if block.settings.tagline != blank %}
+      <p class="ai-product-benefits-tagline-{{ ai_gen_id }}">{{ block.settings.tagline }}</p>
+    {% endif %}
+  </div>
+
+  <div class="ai-product-benefits-container-{{ ai_gen_id }}">
+    <div class="ai-product-benefits-image-wrapper-{{ ai_gen_id }}">
+      {% if block.settings.product_image %}
+        <img
+          src="{{ block.settings.product_image | image_url: width: 600 }}"
+          alt="{{ block.settings.product_image.alt | escape }}"
+          class="ai-product-benefits-image-{{ ai_gen_id }}"
+          loading="lazy"
+          width="{{ block.settings.product_image.width }}"
+          height="{{ block.settings.product_image.height }}"
+        >
+      {% else %}
+        <div class="ai-product-benefits-image-placeholder-{{ ai_gen_id }}">
+          {{ 'product-1' | placeholder_svg_tag }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="ai-product-benefits-features-{{ ai_gen_id }}">
+      <button class="ai-product-benefits-toggle-{{ ai_gen_id }}" aria-expanded="false">
+        <svg class="ai-product-benefits-toggle-icon-{{ ai_gen_id }} ai-icon-hidden-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor">
+          <path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/>
+        </svg>
+        <svg class="ai-product-benefits-toggle-icon-{{ ai_gen_id }} ai-icon-visible-{{ ai_gen_id }}" style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor">
+          <path d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm0-144c53 0 96 43 96 96s-43 96-96 96s-96-43-96-96s43-96 96-96z"/>
+        </svg>
+        <span class="ai-toggle-label-{{ ai_gen_id }}">{{ block.settings.toggle_label_show }}</span>
+      </button>
+
+      <div class="ai-product-benefits-list-{{ ai_gen_id }}">
+        {% for i in (1..5) %}
+          {% liquid
+            assign feature_title_key = 'feature_' | append: i | append: '_title'
+            assign feature_description_key = 'feature_' | append: i | append: '_description'
+            assign feature_icon_key = 'feature_' | append: i | append: '_icon'
+            
+            assign feature_title = block.settings[feature_title_key]
+            assign feature_description = block.settings[feature_description_key]
+            assign feature_icon = block.settings[feature_icon_key]
+          %}
+          
+          {% if feature_title != blank %}
+            <div class="ai-product-benefits-item-{{ ai_gen_id }}">
+              <div class="ai-product-benefits-item-header-{{ ai_gen_id }}">
+                {% if feature_icon %}
+                  <img
+                    src="{{ feature_icon | image_url: width: 40 }}"
+                    alt="{{ feature_title | escape }}"
+                    class="ai-product-benefits-icon-{{ ai_gen_id }}"
+                    loading="lazy"
+                    width="20"
+                    height="20"
+                  >
+                {% else %}
+                  <div class="ai-product-benefits-icon-placeholder-{{ ai_gen_id }}"></div>
+                {% endif %}
+                <h3 class="ai-product-benefits-title-{{ ai_gen_id }}">{{ feature_title }}</h3>
+              </div>
+              {% if feature_description != blank %}
+                <p class="ai-product-benefits-description-{{ ai_gen_id }}">{{ feature_description }}</p>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</product-benefits-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ProductBenefits{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.toggleButton = this.querySelector('.ai-product-benefits-toggle-{{ ai_gen_id }}');
+        this.descriptions = this.querySelectorAll('.ai-product-benefits-description-{{ ai_gen_id }}');
+        this.iconHidden = this.querySelector('.ai-icon-hidden-{{ ai_gen_id }}');
+        this.iconVisible = this.querySelector('.ai-icon-visible-{{ ai_gen_id }}');
+        this.toggleLabel = this.querySelector('.ai-toggle-label-{{ ai_gen_id }}');
+        this.isExpanded = false;
+      }
+
+      connectedCallback() {
+        this.toggleButton.addEventListener('click', () => this.toggleDescriptions());
+      }
+
+      toggleDescriptions() {
+        this.isExpanded = !this.isExpanded;
+        
+        this.descriptions.forEach(description => {
+          if (this.isExpanded) {
+            description.classList.add('active');
+          } else {
+            description.classList.remove('active');
+          }
+        });
+
+        if (this.isExpanded) {
+          this.iconHidden.style.display = 'none';
+          this.iconVisible.style.display = 'block';
+          this.toggleLabel.textContent = '{{ block.settings.toggle_label_hide }}';
+          this.toggleButton.setAttribute('aria-expanded', 'true');
+        } else {
+          this.iconHidden.style.display = 'block';
+          this.iconVisible.style.display = 'none';
+          this.toggleLabel.textContent = '{{ block.settings.toggle_label_show }}';
+          this.toggleButton.setAttribute('aria-expanded', 'false');
+        }
+      }
+    }
+
+    customElements.define('product-benefits-{{ ai_gen_id }}', ProductBenefits{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product benefits",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Why Choose Our Product"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Discover the features that make us stand out"
+    },
+    {
+      "type": "header",
+      "content": "Product image"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Toggle button"
+    },
+    {
+      "type": "text",
+      "id": "toggle_label_show",
+      "label": "Show label",
+      "default": "Click to Know More"
+    },
+    {
+      "type": "text",
+      "id": "toggle_label_hide",
+      "label": "Hide label",
+      "default": "Click to Hide"
+    },
+    {
+      "type": "header",
+      "content": "Feature 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_1_icon",
+      "label": "Icon"
+    },
+    {
+      "type": "text",
+      "id": "feature_1_title",
+      "label": "Title",
+      "default": "Premium Quality"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_1_description",
+      "label": "Description",
+      "default": "Crafted with the finest materials to ensure lasting durability and exceptional performance."
+    },
+    {
+      "type": "header",
+      "content": "Feature 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_2_icon",
+      "label": "Icon"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_title",
+      "label": "Title",
+      "default": "Sustainable Design"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_2_description",
+      "label": "Description",
+      "default": "Environmentally conscious production methods that minimize our carbon footprint."
+    },
+    {
+      "type": "header",
+      "content": "Feature 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_3_icon",
+      "label": "Icon"
+    },
+    {
+      "type": "text",
+      "id": "feature_3_title",
+      "label": "Title",
+      "default": "Expert Craftsmanship"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_3_description",
+      "label": "Description",
+      "default": "Each piece is meticulously handcrafted by skilled artisans with years of experience."
+    },
+    {
+      "type": "header",
+      "content": "Feature 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_4_icon",
+      "label": "Icon"
+    },
+    {
+      "type": "text",
+      "id": "feature_4_title",
+      "label": "Title",
+      "default": "Lifetime Warranty"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_4_description",
+      "label": "Description",
+      "default": "We stand behind our products with a comprehensive lifetime warranty for your peace of mind."
+    },
+    {
+      "type": "header",
+      "content": "Feature 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_5_icon",
+      "label": "Icon"
+    },
+    {
+      "type": "text",
+      "id": "feature_5_title",
+      "label": "Title",
+      "default": "Free Shipping"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_5_description",
+      "label": "Description",
+      "default": "Enjoy complimentary shipping on all orders with fast and reliable delivery worldwide."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product benefits"
+    }
+  ]
+}
+{% endschema %}

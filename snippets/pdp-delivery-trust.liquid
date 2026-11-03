@@ -1,0 +1,48 @@
+{% comment %}
+  Locked PDP delivery + prepaid trust (DAY6-01).
+  part: 'shipping' | 'clarity' | blank (both)
+  Variation: fact tiles (big value + short note)
+{% endcomment %}
+{%- liquid
+  assign trust_part = part | default: 'both'
+-%}
+{%- if trust_part == 'shipping' or trust_part == 'both' -%}
+  <div class="pdp-trust pdp-trust--shipping" {{ block.shopify_attributes }}>
+    <p class="pdp-trust__title">Ships prepaid across India</p>
+    <div class="pdp-trust__tiles">
+      <div class="pdp-trust__tile">
+        <p class="pdp-trust__value">Free shipping</p>
+        <p class="pdp-trust__note">Prepaid orders above ₹499</p>
+      </div>
+      <div class="pdp-trust__tile">
+        <p class="pdp-trust__value">1–2 days</p>
+        <p class="pdp-trust__note">Processed on business days</p>
+      </div>
+      <div class="pdp-trust__tile">
+        <p class="pdp-trust__value">3–7 days</p>
+        <p class="pdp-trust__note">Most deliveries across India</p>
+      </div>
+      <div class="pdp-trust__tile">
+        <p class="pdp-trust__value">No COD</p>
+        <p class="pdp-trust__note">Cash on Delivery is not available</p>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{%- if trust_part == 'clarity' or trust_part == 'both' -%}
+  <div class="pdp-trust pdp-trust--clarity"{% if trust_part == 'clarity' %} {{ block.shopify_attributes }}{% endif %}>
+    <p class="pdp-trust__title">Shop with clarity</p>
+    <div class="pdp-trust__tiles pdp-trust__tiles--two">
+      <div class="pdp-trust__tile">
+        <p class="pdp-trust__value">Real photos</p>
+        <p class="pdp-trust__note">Product photos only · no AI images</p>
+      </div>
+      <div class="pdp-trust__tile">
+        <p class="pdp-trust__value">3-day returns</p>
+        <p class="pdp-trust__note">Unused pieces · via WhatsApp</p>
+      </div>
+    </div>
+    <p class="pdp-trust__meta">GST registered · Made in India · Skin friendly</p>
+  </div>
+{%- endif -%}

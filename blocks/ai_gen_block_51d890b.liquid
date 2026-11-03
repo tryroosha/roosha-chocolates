@@ -1,0 +1,264 @@
+{% doc %}
+  @prompt
+    Create a warm and elegant Contact Us page for AdHouse.in, an online jewellery brand. The tone should be friendly yet sophisticated, reflecting the beauty and trust associated with jewellery shopping.
+    Hero/Welcome Section:
+    Add a welcoming headline such as "We'd Love to Hear From You ✨" with a subtext like "Whether you have a question about our jewellery, need help with your order, or just want to say hello. We're always here for you."
+    Contact Details Section:
+    Display the following contact information with icons in a clean card or grid layout:
+    
+    📞 Phone: +91-XXXXXXXXXX (replace with your number)
+    💬 WhatsApp: Chat with us on WhatsApp. "Tap to chat instantly!"
+    📧 Email: contact@ashtitva.com
+    🕐 Business Hours: Monday to Saturday, 10:00 AM to 7:00 PM IST
+    📍 Address: (Add your city/state or warehouse address if applicable)
+    
+    Social Media Links Section:
+    Add a heading like "Follow Us & Stay Inspired 💎" and include clickable icons for:
+    
+    Instagram – @adhouse.in
+    Facebook – AdHouse Jewellery
+    Pinterest – AdHouse.in
+    YouTube – AdHouse Official (if applicable)
+    
+    Contact Form Section:
+    Include a simple inquiry form with fields for: Name, Email, Phone Number, Order ID (optional), and Message, with a submit button labeled "Send Message 💌"
+    Trust/Reassurance Line at Bottom:
+    End with a short note like: "We typically respond within 24 hours. Your trust means everything to us, just like every piece of jewellery we craft."
+    Design Notes:
+    Use gold, ivory, or rose gold tones to match a jewellery brand aesthetic. Keep the layout minimal, elegant, and mobile friendly., Generate some hero section as well in top , Keep other things as well as it below form and contact detail , Create a warm and elegant Contact Us page for AdHouse.in, an online jewellery brand. The tone should be friendly yet sophisticated, reflecting the beauty and trust associated with jewellery shopping.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-trust-message-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: {{ block.settings.section_padding }}px 20px;
+    background-color: {{ block.settings.background_color }};
+    text-align: center;
+  }
+
+  .ai-trust-message-container-{{ ai_gen_id }} {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: {{ block.settings.inner_padding }}px;
+    background-color: {{ block.settings.card_bg_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    border: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+  }
+
+  .ai-trust-message-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    margin: 0 auto 20px;
+    color: {{ block.settings.icon_color }};
+  }
+
+  .ai-trust-message-icon-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+  }
+
+  .ai-trust-message-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.text_size }}px;
+    line-height: 1.7;
+    color: {{ block.settings.text_color }};
+    margin: 0;
+  }
+
+  .ai-trust-message-highlight-{{ ai_gen_id }} {
+    color: {{ block.settings.highlight_color }};
+    font-weight: 600;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-trust-message-text-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.text_size }}px * 0.9);
+    }
+
+    .ai-trust-message-container-{{ ai_gen_id }} {
+      padding: {{ block.settings.inner_padding | times: 0.7 }}px;
+    }
+  }
+{% endstyle %}
+
+<trust-message-{{ ai_gen_id }} class="ai-trust-message-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-trust-message-container-{{ ai_gen_id }}">
+    {% if block.settings.show_icon %}
+      <div class="ai-trust-message-icon-{{ ai_gen_id }}">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+        </svg>
+      </div>
+    {% endif %}
+
+    {% if block.settings.message != blank %}
+      <p class="ai-trust-message-text-{{ ai_gen_id }}">
+        {{ block.settings.message }}
+      </p>
+    {% endif %}
+  </div>
+</trust-message-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class TrustMessage{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+    }
+
+    customElements.define('trust-message-{{ ai_gen_id }}', TrustMessage{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Trust message",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "textarea",
+      "id": "message",
+      "label": "Message",
+      "default": "We typically respond within 24 hours. Your trust means everything to us, just like every piece of jewellery we craft."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "Show icon",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "inner_padding",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Card padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Border width",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "label": "Text size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Icon size",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#f7f7f7"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card background",
+      "default": "#fdf9f2"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border",
+      "default": "#a46959"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#a8843f"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight",
+      "default": "#a46959"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon",
+      "default": "#a46959"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust message"
+    }
+  ]
+}
+{% endschema %}

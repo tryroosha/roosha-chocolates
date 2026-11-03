@@ -1,0 +1,66 @@
+{% comment %}
+  Sticky mobile ATC bar — title truncated + price + Add to cart / restock.
+{% endcomment %}
+{%- liquid
+  assign check_against_inventory = true
+  if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
+    assign check_against_inventory = false
+  endif
+  assign quantity_rule_soldout = false
+  if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
+    assign quantity_rule_soldout = true
+  endif
+  assign variant_available = true
+  if product.selected_or_first_available_variant == null or product.selected_or_first_available_variant.available == false or quantity_rule_soldout
+    assign variant_available = false
+  endif
+
+  assign restock_phone = settings.whatsapp_phone | default: '+917777877253' | replace: ' ', '' | replace: '-', '' | replace: '+', '' | replace: '(', '' | replace: ')', ''
+  assign restock_message = 'Hi! Please notify me when ' | append: product.title | append: ' is back.'
+  assign restock_message_encoded = restock_message | url_encode
+  assign restock_url = 'https://wa.me/' | append: restock_phone | append: '?text=' | append: restock_message_encoded
+-%}
+
+<div
+  id="PdpStickyAtc-{{ section_id }}"
+  class="pdp-sticky-atc"
+  data-section-id="{{ section_id }}"
+  data-observe="#ProductBuyButtons-{{ section_id }}"
+  hidden
+>
+  <div class="pdp-sticky-atc__info">
+    <p class="pdp-sticky-atc__title">{{ product.title | escape }}</p>
+    <div class="pdp-sticky-atc__price" id="PdpStickyPrice-{{ section_id }}">
+      {%- render 'price', product: product, use_variant: true, show_badges: false -%}
+    </div>
+  </div>
+
+  <button
+    type="button"
+    id="PdpStickySubmit-{{ section_id }}"
+    class="pdp-sticky-atc__btn{% unless variant_available %} hidden{% endunless %}"
+    data-target-submit="ProductSubmitButton-{{ section_id }}"
+    {% unless variant_available %}
+      hidden
+      disabled
+    {% endunless %}
+  >
+    Add to cart
+  </button>
+
+  <a
+    id="PdpStickyRestock-{{ section_id }}"
+    class="pdp-sticky-atc__btn pdp-sticky-atc__btn--restock{% if variant_available %} hidden{% endif %}"
+    href="{{ restock_url }}"
+    target="_blank"
+    rel="noopener noreferrer"
+    {% if variant_available %}
+      hidden
+      aria-hidden="true"
+      tabindex="-1"
+    {% endif %}
+  >
+    WhatsApp restock
+  </a>
+</div>
+{%- comment -%} Sticky keeps a short label; PDP uses the clearer text link below Sold out. {%- endcomment -%}

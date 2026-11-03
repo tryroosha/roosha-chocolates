@@ -1,0 +1,85 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "1775040118e17c42a8": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_65325a0_D7ddxB": {
+          "type": "ai_gen_block_65325a0",
+          "settings": {
+            "hero_eyebrow": "Ashtitva",
+            "hero_title": "Jewellery That Celebrates You",
+            "hero_text": "Jewellery that celebrates people, not just occasions, helping you feel loved, confident, and beautiful through life’s most meaningful moments.",
+            "story_eyebrow": "Our Story",
+            "story_title": "More than something you wear",
+            "story_lead": "Jewellery is something people feel: part of celebrations, memories, milestones, and the love you give yourself.",
+            "story_body": "<p>We created Ashtitva to help people celebrate themselves and the people they love through thoughtfully curated jewellery that feels expressive, meaningful, and beautiful.</p><p>In a world filled with repetitive designs and artificial imagery, we chose a different path. We believe trust begins with authenticity: real photography, carefully curated collections, and honest presentation.</p><p>Everything we create is guided by one simple belief: everyone deserves to feel loved, confident, and beautiful.</p><p>Whether it is a wedding, a celebration, a meaningful gift, or simply choosing yourself, we hope every piece becomes part of your story.</p>",
+            "why_eyebrow": "Why Ashtitva",
+            "why_title": "What makes us different",
+            "why_intro": "Emotionally meaningful jewellery with thoughtfully curated designs and authentic photography you can truly trust.",
+            "why_1_title": "Authenticity",
+            "why_1_text": "Real photography. Real products. Real experiences, so you can shop with clarity and confidence.",
+            "why_2_title": "Emotional meaning",
+            "why_2_text": "Every piece is chosen to help you celebrate love, confidence, beauty, and personal expression.",
+            "why_3_title": "Thoughtful curation",
+            "why_3_text": "Carefully curated designs for weddings, festivals, gifting, everyday styling, and moments that matter.",
+            "why_4_title": "Trust",
+            "why_4_text": "Honesty, quality, and transparent experiences that build lasting relationships, not just single purchases.",
+            "mission_title": "Our Mission",
+            "mission_quote": "We thoughtfully curate jewellery and present it authentically to help people celebrate themselves and the people they love with confidence, beauty, and joy.",
+            "mission_body": "Our vision is to become the most loved modern jewellery brand that celebrates confidence, personal expression, and life’s meaningful moments.",
+            "founder_title": "Our belief",
+            "founder_quote": "Celebrate Love. Inspire Confidence. Create Beautiful Moments.",
+            "founder_attr": "We don’t simply sell jewellery. We help people celebrate themselves.",
+            "reassure_eyebrow": "Authenticity you can trust",
+            "reassure_title": "Real photography. Honest presentation.",
+            "reassure_text": "Every Ashtitva product image is a real studio photograph of the actual jewellery. If you still have questions about quality, finish, or colour, message us on WhatsApp. We’re here with warmth and honesty.",
+            "reassure_btn": "Chat on WhatsApp",
+            "cta_eyebrow": "Explore the collection",
+            "cta_title": "Find the piece that celebrates you.",
+            "cta_text": "Thoughtfully curated jewellery made for life’s beautiful moments, and the everyday ones, too.",
+            "cta_label": "Find your piece",
+            "cta_link": "shopify://collections/all",
+            "cta_button_bg": "#123c32",
+            "cta_button_text": "#f7f3e9",
+            "cta_button_hover": "#0b2924",
+            "social_text": "Follow along and tag us. We love seeing you shine.",
+            "promise_1_word": "Loved",
+            "promise_1_note": "Celebrate yourself",
+            "promise_2_word": "Confident",
+            "promise_2_note": "Wear your shine",
+            "promise_3_word": "Beautiful",
+            "promise_3_note": "Feel it fully",
+            "promise_4_word": "Celebrated",
+            "promise_4_note": "Every moment"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_65325a0_D7ddxB"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "1775040118e17c42a8"
+  ]
+}

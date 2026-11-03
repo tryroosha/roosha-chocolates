@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none" role="img" aria-hidden="true">
+  <circle cx="120" cy="120" r="112" fill="#F7F3E9"/>
+  <circle cx="120" cy="120" r="96" stroke="#B89A5A" stroke-width="1.5" opacity="0.55"/>
+
+  <!-- necklace chain -->
+  <path
+    d="M72 78c0-22 21.5-38 48-38s48 16 48 38"
+    stroke="#123C32"
+    stroke-width="2.5"
+    stroke-linecap="round"
+  />
+  <path
+    d="M88 78c0-14 14-24 32-24s32 10 32 24"
+    stroke="#B89A5A"
+    stroke-width="1.75"
+    stroke-linecap="round"
+    opacity="0.85"
+  />
+
+  <!-- drop chain -->
+  <line x1="120" y1="78" x2="120" y2="128" stroke="#123C32" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- pendant -->
+  <circle cx="120" cy="156" r="26" fill="#FCFAF4" stroke="#123C32" stroke-width="2.5"/>
+  <circle cx="120" cy="156" r="14" fill="#B89A5A"/>
+  <circle cx="120" cy="156" r="6" fill="#123C32"/>
+
+  <!-- soft highlight on gem -->
+  <circle cx="114" cy="150" r="3.5" fill="#F7F3E9" opacity="0.7"/>
+
+  <!-- sparkles -->
+  <path d="M54 118v-10M49 113h10" stroke="#B89A5A" stroke-width="1.75" stroke-linecap="round"/>
+  <path d="M186 118v-10M181 113h10" stroke="#B89A5A" stroke-width="1.75" stroke-linecap="round"/>
+  <path d="M160 52v-8M156 48h8" stroke="#123C32" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
+</svg>

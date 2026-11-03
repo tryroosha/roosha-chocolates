@@ -1,0 +1,1045 @@
+{%- comment -%}
+  Store Metrics
+  Foundation-style stats row: orders delivered, today’s orders, totals, repeat orders, etc.
+  Fully theme-editor configurable via settings + repeatable blocks.
+{%- endcomment -%}
+
+{%- liquid
+  assign sid = section.id
+  assign block_count = 0
+  for block in section.blocks
+    if block.type == 'metric' and block.settings.enabled and block.settings.stat != blank
+      assign block_count = block_count | plus: 1
+    endif
+  endfor
+  if block_count == 0
+    assign block_count = 1
+  endif
+  assign cols_desktop = section.settings.columns_desktop | default: 4
+  if block_count < cols_desktop
+    assign cols_desktop = block_count
+  endif
+-%}
+
+{%- style -%}
+  #smx-{{ sid }} {
+    --smx-bg: {{ section.settings.color_background }};
+    --smx-surface: {{ section.settings.color_surface }};
+    --smx-border: {{ section.settings.color_border }};
+    --smx-label: {{ section.settings.color_label }};
+    --smx-heading: {{ section.settings.color_heading }};
+    --smx-stat: {{ section.settings.color_stat }};
+    --smx-text: {{ section.settings.color_text }};
+    --smx-accent: {{ section.settings.color_accent }};
+    --smx-radius: {{ section.settings.card_radius }}px;
+    --smx-cols: {{ cols_desktop }};
+    --smx-cols-tablet: {{ section.settings.columns_tablet }};
+    --smx-gap: {{ section.settings.column_gap }}px;
+    --smx-container: {% if section.settings.full_width %}100%{% else %}{{ section.settings.container_width }}px{% endif %};
+    --smx-pad-top-d: {{ section.settings.padding_top_desktop }}px;
+    --smx-pad-bottom-d: {{ section.settings.padding_bottom_desktop }}px;
+    --smx-pad-top-m: {{ section.settings.padding_top_mobile }}px;
+    --smx-pad-bottom-m: {{ section.settings.padding_bottom_mobile }}px;
+    --smx-heading-size-d: {{ section.settings.heading_size_desktop }}px;
+    --smx-heading-size-m: {{ section.settings.heading_size_mobile }}px;
+    --smx-stat-size-d: {{ section.settings.stat_size_desktop }}px;
+    --smx-stat-size-m: {{ section.settings.stat_size_mobile }}px;
+    --smx-label-size: {{ section.settings.label_size }}px;
+    --smx-text-size: {{ section.settings.text_size }}px;
+    --smx-card-pad-y: {{ section.settings.card_padding_y }}px;
+    --smx-card-pad-x: {{ section.settings.card_padding_x }}px;
+    --smx-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  #smx-{{ sid }} {
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--smx-accent) 7%, var(--smx-bg)) 0%,
+        var(--smx-bg) 48%,
+        color-mix(in srgb, var(--smx-surface) 55%, var(--smx-bg)) 100%
+      );
+    padding-top: var(--smx-pad-top-m);
+    padding-bottom: var(--smx-pad-bottom-m);
+    color: var(--smx-text);
+    overflow: hidden;
+  }
+
+  #smx-{{ sid }} .smx__inner {
+    width: 100%;
+    max-width: var(--smx-container);
+    margin: 0 auto;
+    padding-left: 1.35rem;
+    padding-right: 1.35rem;
+    box-sizing: border-box;
+  }
+
+  #smx-{{ sid }} .smx__header {
+    text-align: {{ section.settings.text_alignment }};
+    max-width: {{ section.settings.header_max_width }}px;
+    margin: 0 auto {{ section.settings.header_spacing }}px;
+  }
+
+  #smx-{{ sid }} .smx__label-row {
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+
+  #smx-{{ sid }} .smx__label {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--smx-label);
+    line-height: 1.3;
+  }
+
+  #smx-{{ sid }} .smx__label-rule {
+    display: none;
+  }
+
+  #smx-{{ sid }} .smx__heading {
+    margin: 0;
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style, normal);
+    font-weight: 400;
+    font-size: var(--smx-heading-size-m);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    color: var(--smx-heading);
+    text-wrap: balance;
+  }
+
+  #smx-{{ sid }} .smx__description {
+    margin: 1rem 0 0;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: var(--smx-text);
+    max-width: 42rem;
+    {% if section.settings.text_alignment == 'center' %}
+      margin-left: auto;
+      margin-right: auto;
+    {% elsif section.settings.text_alignment == 'right' %}
+      margin-left: auto;
+    {% endif %}
+  }
+
+  /* Editorial metrics — refined hairline borders */
+  #smx-{{ sid }} .smx__grid {
+    list-style: none;
+    margin: 0;
+    padding: 1px 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    background:
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        color-mix(in srgb, var(--smx-border) 85%, var(--smx-accent)) 18%,
+        color-mix(in srgb, var(--smx-border) 90%, var(--smx-accent)) 50%,
+        color-mix(in srgb, var(--smx-border) 85%, var(--smx-accent)) 82%,
+        transparent 100%
+      ) top center / 100% 1px no-repeat,
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        color-mix(in srgb, var(--smx-border) 85%, var(--smx-accent)) 18%,
+        color-mix(in srgb, var(--smx-border) 90%, var(--smx-accent)) 50%,
+        color-mix(in srgb, var(--smx-border) 85%, var(--smx-accent)) 82%,
+        transparent 100%
+      ) bottom center / 100% 1px no-repeat;
+    border: 0;
+    border-radius: 0;
+    position: relative;
+  }
+
+  #smx-{{ sid }} .smx__item {
+    position: relative;
+    text-align: {{ section.settings.metrics_alignment }};
+    padding: calc(var(--smx-card-pad-y) * 0.85) var(--smx-card-pad-x);
+    min-width: 0;
+    border: 0;
+  }
+
+  /* Mobile: short centered horizontal rules between items */
+  #smx-{{ sid }} .smx__item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: min(4.5rem, 42%);
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, var(--smx-border) 80%, var(--smx-accent)),
+      transparent
+    );
+  }
+
+  #smx-{{ sid }} .smx__index {
+    display: {% if section.settings.show_index %}block{% else %}none{% endif %};
+    margin: 0 0 0.55rem;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--smx-accent);
+    line-height: 1;
+  }
+
+  #smx-{{ sid }} .smx__stat {
+    margin: 0 0 0.55rem;
+    font-family: var(--font-heading-family);
+    font-weight: {{ section.settings.stat_weight }};
+    font-size: var(--smx-stat-size-m);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--smx-stat);
+    word-break: break-word;
+  }
+
+  #smx-{{ sid }} .smx__stat-prefix,
+  #smx-{{ sid }} .smx__stat-suffix {
+    font-weight: inherit;
+    color: inherit;
+  }
+
+  #smx-{{ sid }} .smx__caption {
+    margin: 0;
+    font-size: var(--smx-text-size);
+    font-weight: 450;
+    letter-spacing: 0.04em;
+    line-height: 1.45;
+    color: var(--smx-text);
+  }
+
+  #smx-{{ sid }} .smx__subtext {
+    margin: 0.4rem 0 0;
+    font-size: calc(var(--smx-text-size) * 0.88);
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    color: color-mix(in srgb, var(--smx-text) 68%, transparent);
+  }
+
+  {% if section.settings.show_stat_accent %}
+    #smx-{{ sid }} .smx__stat::after {
+      content: '';
+      display: block;
+      width: 1.25rem;
+      height: 1px;
+      margin: 0.7rem 0 0;
+      {% if section.settings.metrics_alignment == 'center' %}
+        margin-left: auto;
+        margin-right: auto;
+      {% elsif section.settings.metrics_alignment == 'right' %}
+        margin-left: auto;
+      {% endif %}
+      background: var(--smx-accent);
+      opacity: 0.65;
+    }
+  {% endif %}
+
+  /* Animations */
+  #smx-{{ sid }} .smx-anim {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.85s var(--smx-ease),
+      transform 0.85s var(--smx-ease);
+  }
+
+  #smx-{{ sid }} .smx-anim.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  #smx-{{ sid }} .smx__item.smx-anim {
+    transition-delay: calc(var(--smx-stagger, 0) * 80ms + 80ms);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #smx-{{ sid }} .smx-anim {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    #smx-{{ sid }} {
+      padding-top: var(--smx-pad-top-d);
+      padding-bottom: var(--smx-pad-bottom-d);
+    }
+
+    #smx-{{ sid }} .smx__inner {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    #smx-{{ sid }} .smx__heading {
+      font-size: var(--smx-heading-size-d);
+    }
+
+    #smx-{{ sid }} .smx__stat {
+      font-size: var(--smx-stat-size-d);
+    }
+
+    #smx-{{ sid }} .smx__grid {
+      grid-template-columns: repeat(var(--smx-cols-tablet), minmax(0, 1fr));
+      gap: 0;
+    }
+
+    #smx-{{ sid }} .smx__item {
+      padding: var(--smx-card-pad-y) calc(var(--smx-card-pad-x) + 6px);
+    }
+
+    /* Remove mobile short rules */
+    #smx-{{ sid }} .smx__item:not(:last-child)::after {
+      content: none;
+    }
+
+    /* Vertical hairlines — short, faded, centered (not full height) */
+    #smx-{{ sid }} .smx__item:not(:nth-child({{ section.settings.columns_tablet }}n))::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 1px;
+      height: {% case section.settings.divider_length %}
+        {% when 'short' %}42%
+        {% when 'long' %}78%
+        {% else %}58%
+      {% endcase %};
+      transform: translateY(-50%);
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        color-mix(in srgb, var(--smx-border) 75%, var(--smx-accent)) 22%,
+        color-mix(in srgb, var(--smx-border) 90%, var(--smx-accent)) 50%,
+        color-mix(in srgb, var(--smx-border) 75%, var(--smx-accent)) 78%,
+        transparent 100%
+      );
+      pointer-events: none;
+    }
+
+    /* Soft row separators when metrics wrap */
+    #smx-{{ sid }} .smx__item:nth-child(n + {{ section.settings.columns_tablet | plus: 1 }}) {
+      border-top: 0;
+    }
+
+    #smx-{{ sid }} .smx__item:nth-child(n + {{ section.settings.columns_tablet | plus: 1 }})::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 12%;
+      right: 12%;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        color-mix(in srgb, var(--smx-border) 80%, var(--smx-accent)),
+        transparent
+      );
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    #smx-{{ sid }} .smx__inner {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+
+    #smx-{{ sid }} .smx__grid {
+      grid-template-columns: repeat(var(--smx-cols), minmax(0, 1fr));
+    }
+
+    #smx-{{ sid }} .smx__item:not(:nth-child({{ section.settings.columns_tablet }}n))::before {
+      content: none;
+    }
+
+    #smx-{{ sid }} .smx__item:not(:nth-child({{ cols_desktop }}n))::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 1px;
+      height: {% case section.settings.divider_length %}
+        {% when 'short' %}42%
+        {% when 'long' %}78%
+        {% else %}58%
+      {% endcase %};
+      transform: translateY(-50%);
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        color-mix(in srgb, var(--smx-border) 75%, var(--smx-accent)) 22%,
+        color-mix(in srgb, var(--smx-border) 90%, var(--smx-accent)) 50%,
+        color-mix(in srgb, var(--smx-border) 75%, var(--smx-accent)) 78%,
+        transparent 100%
+      );
+      pointer-events: none;
+    }
+
+    #smx-{{ sid }} .smx__item:nth-child(n + {{ section.settings.columns_tablet | plus: 1 }})::after {
+      content: none;
+    }
+
+    #smx-{{ sid }} .smx__item:nth-child(n + {{ cols_desktop | plus: 1 }})::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 12%;
+      right: 12%;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        color-mix(in srgb, var(--smx-border) 80%, var(--smx-accent)),
+        transparent
+      );
+    }
+  }
+{%- endstyle -%}
+
+<section
+  id="smx-{{ sid }}"
+  class="smx"
+  {% if section.settings.heading != blank %}
+    aria-labelledby="smx-heading-{{ sid }}"
+  {% else %}
+    aria-label="{{ section.settings.label | default: 'Store metrics' | escape }}"
+  {% endif %}
+  data-smx-section
+  data-count-up="{{ section.settings.enable_count_up }}"
+>
+  <div class="smx__inner">
+    {%- if section.settings.label != blank or section.settings.heading != blank or section.settings.description != blank -%}
+      <header class="smx__header">
+        {%- if section.settings.label != blank -%}
+          <div class="smx__label-row smx-anim" data-smx-anim>
+            <p class="smx__label">{{ section.settings.label | escape }}</p>
+            <span class="smx__label-rule" aria-hidden="true"></span>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h2 id="smx-heading-{{ sid }}" class="smx__heading smx-anim" data-smx-anim>
+            {{ section.settings.heading | escape }}
+          </h2>
+        {%- endif -%}
+
+        {%- if section.settings.description != blank -%}
+          <div class="smx__description smx-anim" data-smx-anim>
+            {{ section.settings.description | escape | newline_to_br }}
+          </div>
+        {%- endif -%}
+      </header>
+    {%- endif -%}
+
+    {%- if block_count > 0 -%}
+      <ul class="smx__grid" role="list">
+        {%- assign metric_index = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'metric' and block.settings.enabled -%}
+            {%- if block.settings.stat != blank or block.settings.caption != blank -%}
+              <li
+                class="smx__item smx-anim"
+                data-smx-anim
+                style="--smx-stagger: {{ metric_index }};"
+                {{ block.shopify_attributes }}
+              >
+                {%- assign display_index = metric_index | plus: 1 -%}
+                <p class="smx__index">
+                  {%- if display_index < 10 -%}0{%- endif -%}{{ display_index }}
+                </p>
+
+                <p class="smx__stat">
+                  {%- if block.settings.prefix != blank -%}
+                    <span class="smx__stat-prefix">{{ block.settings.prefix | escape }}</span>
+                  {%- endif -%}
+                  <span
+                    class="smx__stat-value"
+                    {% if section.settings.enable_count_up and block.settings.count_value != blank %}
+                      data-smx-count="{{ block.settings.count_value | escape }}"
+                      data-smx-decimals="{{ block.settings.count_decimals }}"
+                    {% endif %}
+                  >
+                    {{ block.settings.stat | escape }}
+                  </span>
+                  {%- if block.settings.suffix != blank -%}
+                    <span class="smx__stat-suffix">{{ block.settings.suffix | escape }}</span>
+                  {%- endif -%}
+                </p>
+
+                {%- if block.settings.caption != blank -%}
+                  <p class="smx__caption">{{ block.settings.caption | escape }}</p>
+                {%- endif -%}
+
+                {%- if block.settings.subtext != blank -%}
+                  <p class="smx__subtext">{{ block.settings.subtext | escape }}</p>
+                {%- endif -%}
+              </li>
+              {%- assign metric_index = metric_index | plus: 1 -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+  (function () {
+    var root = document.getElementById('smx-{{ sid }}');
+    if (!root) return;
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var items = root.querySelectorAll('[data-smx-anim]');
+    var enableCount = root.getAttribute('data-count-up') === 'true';
+
+    function animateCount(el) {
+      var target = parseFloat(el.getAttribute('data-smx-count'));
+      if (isNaN(target)) return;
+
+      var decimals = parseInt(el.getAttribute('data-smx-decimals') || '0', 10);
+      var duration = 1400;
+      var start = null;
+
+      function format(n) {
+        if (decimals > 0) return n.toFixed(decimals);
+        return Math.round(n).toLocaleString();
+      }
+
+      if (reduceMotion) {
+        el.textContent = format(target);
+        return;
+      }
+
+      function frame(ts) {
+        if (!start) start = ts;
+        var p = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = format(target * eased);
+        if (p < 1) requestAnimationFrame(frame);
+      }
+
+      requestAnimationFrame(frame);
+    }
+
+    function reveal(el) {
+      el.classList.add('is-visible');
+      if (!enableCount) return;
+      var value = el.querySelector && el.querySelector('[data-smx-count]');
+      if (value && !value.getAttribute('data-smx-counted')) {
+        value.setAttribute('data-smx-counted', '1');
+        animateCount(value);
+      }
+    }
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      items.forEach(reveal);
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          reveal(entry.target);
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -30px 0px' }
+    );
+
+    items.forEach(function (el) {
+      observer.observe(el);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Store Metrics",
+  "tag": "section",
+  "class": "section-store-metrics",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Small label",
+      "default": "By the numbers"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Crafted with care. Chosen with confidence."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "info": "Optional supporting line under the heading."
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Header alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "metrics_alignment",
+      "label": "Metrics alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_index",
+      "label": "Show metric index (01, 02…)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stat_accent",
+      "label": "Show accent line under stats",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "divider_length",
+      "label": "Vertical divider length",
+      "options": [
+        { "value": "short", "label": "Short" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "long", "label": "Long" }
+      ],
+      "default": "medium",
+      "info": "Desktop/tablet vertical hairlines between metrics."
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "min": 900,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "label": "Container width",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "header_max_width",
+      "min": 320,
+      "max": 900,
+      "step": 10,
+      "unit": "px",
+      "label": "Header max width",
+      "default": 640
+    },
+    {
+      "type": "range",
+      "id": "header_spacing",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Space below header",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "label": "Columns (desktop)",
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "columns_tablet",
+      "label": "Columns (tablet)",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Column gap",
+      "default": 0,
+      "info": "Keep at 0 for the hairline divider layout."
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Corner radius",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "card_padding_y",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Metric padding vertical",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "card_padding_x",
+      "min": 8,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Metric padding horizontal",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "label": "Desktop padding top",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "label": "Desktop padding bottom",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Mobile padding top",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Mobile padding bottom",
+      "default": 56
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Section background",
+      "default": "#FDF9F2"
+    },
+    {
+      "type": "color",
+      "id": "color_surface",
+      "label": "Surface tint",
+      "default": "#F3EBD8"
+    },
+    {
+      "type": "color",
+      "id": "color_border",
+      "label": "Hairline divider",
+      "default": "#D5CBBE"
+    },
+    {
+      "type": "color",
+      "id": "color_label",
+      "label": "Small label",
+      "default": "#C5A059"
+    },
+    {
+      "type": "color",
+      "id": "color_heading",
+      "label": "Heading",
+      "default": "#18302a"
+    },
+    {
+      "type": "color",
+      "id": "color_stat",
+      "label": "Stat number",
+      "default": "#0E2C20"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Caption text",
+      "default": "#6B6258"
+    },
+    {
+      "type": "color",
+      "id": "color_accent",
+      "label": "Accent",
+      "default": "#A27780"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 24,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size (desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 22,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading size (mobile)",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading weight",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "stat_size_desktop",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Stat size (desktop)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "stat_size_mobile",
+      "min": 22,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Stat size (mobile)",
+      "default": 36
+    },
+    {
+      "type": "select",
+      "id": "stat_weight",
+      "label": "Stat weight",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "300"
+    },
+    {
+      "type": "range",
+      "id": "label_size",
+      "min": 11,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Small label size",
+      "default": 11
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Caption size",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_count_up",
+      "label": "Enable count-up animation",
+      "default": true,
+      "info": "Uses each block’s Count value. Display text still shows as Stat text until animation starts."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "metric",
+      "name": "Metric",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "enabled",
+          "label": "Enable",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "stat",
+          "label": "Stat text",
+          "default": "1,250",
+          "info": "What visitors see (e.g. 1,250 or US FDA)."
+        },
+        {
+          "type": "text",
+          "id": "prefix",
+          "label": "Prefix",
+          "info": "Optional, e.g. No."
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": "Suffix",
+          "info": "Optional, e.g. + or %"
+        },
+        {
+          "type": "text",
+          "id": "count_value",
+          "label": "Count value (for animation)",
+          "info": "Numeric only, e.g. 1250. Leave blank to skip count-up for this item."
+        },
+        {
+          "type": "range",
+          "id": "count_decimals",
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "label": "Count decimals",
+          "default": 0
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption",
+          "default": "Orders delivered"
+        },
+        {
+          "type": "text",
+          "id": "subtext",
+          "label": "Subtext",
+          "info": "Optional smaller line under the caption."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Store Metrics",
+      "blocks": [
+        {
+          "type": "metric",
+          "settings": {
+            "enabled": true,
+            "stat": "12,480",
+            "count_value": "12480",
+            "caption": "Orders delivered",
+            "subtext": "All time"
+          }
+        },
+        {
+          "type": "metric",
+          "settings": {
+            "enabled": true,
+            "stat": "186",
+            "count_value": "186",
+            "caption": "Orders today",
+            "subtext": "Updated live in editor"
+          }
+        },
+        {
+          "type": "metric",
+          "settings": {
+            "enabled": true,
+            "stat": "48,920",
+            "count_value": "48920",
+            "caption": "Total customers",
+            "subtext": "Till date"
+          }
+        },
+        {
+          "type": "metric",
+          "settings": {
+            "enabled": true,
+            "stat": "42",
+            "count_value": "42",
+            "caption": "Repeat orders today",
+            "subtext": "Returning customers"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

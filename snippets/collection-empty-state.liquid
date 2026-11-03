@@ -1,0 +1,32 @@
+{% comment %}
+  Empty collection / filtered results state
+
+  Accepts:
+  - clear_url: {String} URL to clear filters / browse collection
+{% endcomment %}
+
+<div class="sv-empty">
+  <div class="sv-empty__art" aria-hidden="true">
+    <img
+      src="{{ 'sv-empty-jewelry.svg' | asset_url }}"
+      alt=""
+      width="160"
+      height="160"
+      loading="lazy"
+      class="sv-empty__img"
+    >
+  </div>
+
+  <h2 class="sv-empty__title">{{ 'sections.collection_template.empty' | t }}</h2>
+
+  <p class="sv-empty__text">
+    {{
+      'sections.collection_template.use_fewer_filters_html'
+      | t: link: clear_url, class: 'sv-empty__link'
+    }}
+  </p>
+
+  <a href="{{ clear_url }}" class="sv-empty__btn">
+    {{ 'products.facets.clear_all' | t }}
+  </a>
+</div>

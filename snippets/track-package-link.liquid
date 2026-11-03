@@ -1,0 +1,37 @@
+{% comment %}
+  Renders a Track Order link that opens WhatsApp with a predefined message.
+
+  Accepts:
+  - class: {String} Optional CSS classes for the anchor
+  - id: {String} Optional id attribute
+
+  Usage:
+  {% render 'track-package-link', class: 'link link--text' %}
+{% endcomment %}
+
+{%- if settings.track_package_enable and settings.whatsapp_phone != blank -%}
+  {%- liquid
+    assign track_phone = settings.whatsapp_phone | replace: ' ', '' | replace: '-', '' | replace: '+', '' | replace: '(', '' | replace: ')', ''
+    assign track_message = settings.track_package_message
+    if track_message == blank
+      assign track_message = 'Hi Ashtitva! Please share tracking for my order. Mobile number:'
+    endif
+    assign track_label = settings.track_package_label
+    if track_label == blank
+      assign track_label = 'Track Order'
+    endif
+    assign track_message_encoded = track_message | url_encode
+    assign track_url = 'https://wa.me/' | append: track_phone | append: '?text=' | append: track_message_encoded
+  -%}
+  <a
+    href="{{ track_url }}"
+    class="{{ class }}"
+    {% if id != blank %}
+      id="{{ id }}"
+    {% endif %}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    {{ track_label | escape }}
+  </a>
+{%- endif -%}

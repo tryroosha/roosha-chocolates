@@ -1,0 +1,188 @@
+{% comment %}
+  Renders social icons from Theme settings → Social media.
+  Edit links once there; they apply across the site.
+
+  Accepts:
+  - class: {String} optional class on the <ul>
+  - link_class: {String} optional extra class on each <a>
+  - platforms: {String} optional comma-separated list to limit platforms
+      (facebook,instagram,youtube,tiktok,twitter,pinterest,snapchat,tumblr,vimeo).
+      Blank = show all configured platforms.
+
+  Usage:
+  {% render 'social-icons' %}
+  {% render 'social-icons', class: 'footer__list-social' %}
+  {% render 'social-icons', class: 'sv-socials', link_class: 'sv-social' %}
+{% endcomment %}
+
+{%- liquid
+  assign platforms_filter = platforms | default: '' | downcase | strip
+  assign show_all = true
+  if platforms_filter != blank
+    assign show_all = false
+  endif
+-%}
+
+<ul class="list-unstyled list-social{% if class %} {{ class }}{% endif %}" role="list">
+  {%- if settings.social_facebook_link != blank -%}
+    {%- if show_all or platforms_filter contains 'facebook' -%}
+      <li class="list-social__item">
+        <a
+          href="{{ settings.social_facebook_link }}"
+          class="link list-social__link{% if link_class %} {{ link_class }}{% endif %}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="svg-wrapper">
+            {{- 'icon-facebook.svg' | inline_asset_content -}}
+          </span>
+          <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
+        </a>
+      </li>
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if settings.social_instagram_link != blank -%}
+    {%- if show_all or platforms_filter contains 'instagram' -%}
+      <li class="list-social__item">
+        <a
+          href="{{ settings.social_instagram_link }}"
+          class="link list-social__link{% if link_class %} {{ link_class }}{% endif %}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="svg-wrapper">
+            {{- 'icon-instagram.svg' | inline_asset_content -}}
+          </span>
+          <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
+        </a>
+      </li>
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if settings.social_youtube_link != blank -%}
+    {%- if show_all or platforms_filter contains 'youtube' -%}
+      <li class="list-social__item">
+        <a
+          href="{{ settings.social_youtube_link }}"
+          class="link list-social__link{% if link_class %} {{ link_class }}{% endif %}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="svg-wrapper">
+            {{- 'icon-youtube.svg' | inline_asset_content -}}
+          </span>
+          <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
+        </a>
+      </li>
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if settings.social_tiktok_link != blank -%}
+    {%- if show_all or platforms_filter contains 'tiktok' -%}
+      <li class="list-social__item">
+        <a
+          href="{{ settings.social_tiktok_link }}"
+          class="link list-social__link{% if link_class %} {{ link_class }}{% endif %}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="svg-wrapper">
+            {{- 'icon-tiktok.svg' | inline_asset_content -}}
+          </span>
+          <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
+        </a>
+      </li>
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if settings.social_twitter_link != blank -%}
+    {%- if show_all or platforms_filter contains 'twitter' -%}
+      <li class="list-social__item">
+        <a
+          href="{{ settings.social_twitter_link }}"
+          class="link list-social__link{% if link_class %} {{ link_class }}{% endif %}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="svg-wrapper">
+            {{- 'icon-twitter.svg' | inline_asset_content -}}
+          </span>
+          <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
+        </a>
+      </li>
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if settings.social_pinterest_link != blank -%}
+    {%- if show_all or platforms_filter contains 'pinterest' -%}
+      <li class="list-social__item">
+        <a
+          href="{{ settings.social_pinterest_link }}"
+          class="link list-social__link{% if link_class %} {{ link_class }}{% endif %}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="svg-wrapper">
+            {{- 'icon-pinterest.svg' | inline_asset_content -}}
+          </span>
+          <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
+        </a>
+      </li>
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if settings.social_snapchat_link != blank -%}
+    {%- if show_all or platforms_filter contains 'snapchat' -%}
+      <li class="list-social__item">
+        <a
+          href="{{ settings.social_snapchat_link }}"
+          class="link list-social__link{% if link_class %} {{ link_class }}{% endif %}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="svg-wrapper">
+            {{- 'icon-snapchat.svg' | inline_asset_content -}}
+          </span>
+          <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
+        </a>
+      </li>
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if settings.social_tumblr_link != blank -%}
+    {%- if show_all or platforms_filter contains 'tumblr' -%}
+      <li class="list-social__item">
+        <a
+          href="{{ settings.social_tumblr_link }}"
+          class="link list-social__link{% if link_class %} {{ link_class }}{% endif %}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="svg-wrapper">
+            {{- 'icon-tumblr.svg' | inline_asset_content -}}
+          </span>
+          <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
+        </a>
+      </li>
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if settings.social_vimeo_link != blank -%}
+    {%- if show_all or platforms_filter contains 'vimeo' -%}
+      <li class="list-social__item">
+        <a
+          href="{{ settings.social_vimeo_link }}"
+          class="link list-social__link{% if link_class %} {{ link_class }}{% endif %}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="svg-wrapper">
+            {{- 'icon-vimeo.svg' | inline_asset_content -}}
+          </span>
+          <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
+        </a>
+      </li>
+    {%- endif -%}
+  {%- endif -%}
+</ul>

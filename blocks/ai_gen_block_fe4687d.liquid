@@ -1,0 +1,728 @@
+{% doc %}
+  @prompt
+    Create a fully customizable "Section Heading" block component with the following features:
+    
+    **Content:**
+    - Heading text (plain text input)
+    - Optional subtext/description below the heading
+    - Optional eyebrow/label text above the heading
+    
+    **Alignment & Layout:**
+    - Text alignment options: Left, Center, Right — configurable separately for desktop and mobile
+    
+    **Typography - Heading:**
+    - Font size control for desktop (range: 16px–96px)
+    - Font size control for mobile (range: 14px–64px)
+    - Font weight options: Light (300), Regular (400), Medium (500), Semi-Bold (600), Bold (700)
+    - Letter spacing control
+    - Line height control
+    - Text transform: None, Uppercase, Capitalize
+    
+    **Typography - Subtext:**
+    - Font size control for desktop
+    - Font size control for mobile
+    - Font weight options
+    - Text color (separate from heading color)
+    
+    **Colors:**
+    - Heading text color
+    - Subtext text color
+    - Optional decorative accent/underline color
+    
+    **Spacing:**
+    - Top and bottom padding (desktop)
+    - Top and bottom padding (mobile)
+    - Gap between heading and subtext
+    
+    **Decorative Options:**
+    - Optional animated or static underline/accent line below heading
+    - Underline width: Full, Auto, Fixed px
+    
+    The block should be responsive, use CSS custom properties for all configurable values, and be compatible with Shopify's Dawn theme. All settings should be accessible from the theme editor sidebar.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-section-heading-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding-top: {{ block.settings.padding_top_desktop }}px;
+    padding-bottom: {{ block.settings.padding_bottom_desktop }}px;
+  }
+
+  .ai-section-heading__container-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: {% if block.settings.text_alignment_desktop == 'center' %}center{% elsif block.settings.text_alignment_desktop == 'right' %}flex-end{% else %}flex-start{% endif %};
+    gap: {{ block.settings.gap_heading_subtext }}px;
+    text-align: {{ block.settings.text_alignment_desktop }};
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .ai-section-heading__eyebrow-{{ ai_gen_id }} {
+    font-size: {{ block.settings.eyebrow_font_size_desktop }}px;
+    font-weight: {{ block.settings.eyebrow_font_weight }};
+    color: {{ block.settings.eyebrow_color }};
+    margin: 0;
+    text-transform: {{ block.settings.eyebrow_text_transform }};
+    letter-spacing: {{ block.settings.eyebrow_letter_spacing }}px;
+  }
+
+  .ai-section-heading__heading-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    display: inline-block;
+    {% if block.settings.text_alignment_desktop == 'center' %}
+      margin: 0 auto;
+    {% elsif block.settings.text_alignment_desktop == 'right' %}
+      margin-left: auto;
+    {% endif %}
+  }
+
+  .ai-section-heading__heading-{{ ai_gen_id }} {
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style, normal);
+    font-size: {{ block.settings.heading_font_size_desktop }}px;
+    font-weight: {{ block.settings.heading_font_weight }};
+    color: {{ block.settings.heading_color }};
+    margin: 0;
+    text-transform: {{ block.settings.heading_text_transform }};
+    letter-spacing: {{ block.settings.heading_letter_spacing }}px;
+    line-height: {{ block.settings.heading_line_height }};
+    text-wrap: balance;
+  }
+
+  {% if block.settings.show_underline %}
+    .ai-section-heading__underline-{{ ai_gen_id }} {
+      height: {{ block.settings.underline_thickness }}px;
+      background-color: {{ block.settings.underline_color }};
+      margin-top: {{ block.settings.underline_spacing }}px;
+      {% if block.settings.underline_width == 'full' %}
+        width: 100%;
+      {% elsif block.settings.underline_width == 'auto' %}
+        width: 100%;
+      {% else %}
+        width: {{ block.settings.underline_width_px }}px;
+        {% if block.settings.text_alignment_desktop == 'center' %}
+          margin-left: auto;
+          margin-right: auto;
+        {% elsif block.settings.text_alignment_desktop == 'right' %}
+          margin-left: auto;
+        {% endif %}
+      {% endif %}
+      {% if block.settings.underline_animated %}
+        transform-origin: left;
+        animation: ai-section-heading-underline-grow-{{ ai_gen_id }} 0.8s ease-out forwards;
+      {% endif %}
+    }
+
+    {% if block.settings.underline_animated %}
+      @keyframes ai-section-heading-underline-grow-{{ ai_gen_id }} {
+        from {
+          transform: scaleX(0);
+        }
+        to {
+          transform: scaleX(1);
+        }
+      }
+    {% endif %}
+  {% endif %}
+
+  .ai-section-heading__subtext-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subtext_font_size_desktop }}px;
+    font-weight: {{ block.settings.subtext_font_weight }};
+    color: {{ block.settings.subtext_color }};
+    margin: 0;
+    line-height: 1.7;
+    max-width: 38rem;
+    width: 100%;
+    text-align: {{ block.settings.text_alignment_desktop }};
+    {% if block.settings.text_alignment_desktop == 'center' %}
+      margin-left: auto;
+      margin-right: auto;
+    {% elsif block.settings.text_alignment_desktop == 'right' %}
+      margin-left: auto;
+    {% endif %}
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-section-heading-{{ ai_gen_id }} {
+      padding-top: {{ block.settings.padding_top_mobile }}px;
+      padding-bottom: {{ block.settings.padding_bottom_mobile }}px;
+    }
+
+    .ai-section-heading__container-{{ ai_gen_id }} {
+      text-align: {{ block.settings.text_alignment_mobile }};
+      align-items: {% if block.settings.text_alignment_mobile == 'center' %}center{% elsif block.settings.text_alignment_mobile == 'right' %}flex-end{% else %}flex-start{% endif %};
+    }
+
+    .ai-section-heading__eyebrow-{{ ai_gen_id }} {
+      font-size: {{ block.settings.eyebrow_font_size_mobile }}px;
+    }
+
+    .ai-section-heading__heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_font_size_mobile }}px;
+    }
+
+    .ai-section-heading__subtext-{{ ai_gen_id }} {
+      font-size: {{ block.settings.subtext_font_size_mobile }}px;
+      text-align: {{ block.settings.text_alignment_mobile }};
+      {% if block.settings.text_alignment_mobile == 'center' %}
+        margin-left: auto;
+        margin-right: auto;
+      {% elsif block.settings.text_alignment_mobile == 'right' %}
+        margin-left: auto;
+        margin-right: 0;
+      {% else %}
+        margin-left: 0;
+        margin-right: auto;
+      {% endif %}
+    }
+
+    .ai-section-heading__heading-wrapper-{{ ai_gen_id }} {
+      {% if block.settings.text_alignment_mobile == 'center' %}
+        margin: 0 auto;
+      {% elsif block.settings.text_alignment_mobile == 'right' %}
+        margin-left: auto;
+        margin-right: 0;
+      {% else %}
+        margin-left: 0;
+        margin-right: auto;
+      {% endif %}
+    }
+
+    {% if block.settings.show_underline %}
+      .ai-section-heading__underline-{{ ai_gen_id }} {
+        {% if block.settings.text_alignment_mobile == 'center' %}
+          margin-left: auto;
+          margin-right: auto;
+        {% elsif block.settings.text_alignment_mobile == 'right' %}
+          margin-left: auto;
+          margin-right: 0;
+        {% else %}
+          margin-left: 0;
+          margin-right: auto;
+        {% endif %}
+      }
+    {% endif %}
+  }
+{% endstyle %}
+
+<section-heading-{{ ai_gen_id }} class="ai-section-heading-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-section-heading__container-{{ ai_gen_id }}">
+    {% if block.settings.eyebrow_text != blank %}
+      <p class="ai-section-heading__eyebrow-{{ ai_gen_id }}">{{ block.settings.eyebrow_text }}</p>
+    {% endif %}
+
+    {% if block.settings.heading_text != blank %}
+      <div class="ai-section-heading__heading-wrapper-{{ ai_gen_id }}">
+        <h2 class="ai-section-heading__heading-{{ ai_gen_id }}">{{ block.settings.heading_text }}</h2>
+        {% if block.settings.show_underline %}
+          <div class="ai-section-heading__underline-{{ ai_gen_id }}"></div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if block.settings.subtext != blank %}
+      <p class="ai-section-heading__subtext-{{ ai_gen_id }}">{{ block.settings.subtext }}</p>
+    {% endif %}
+  </div>
+</section-heading-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class SectionHeading{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        {% if block.settings.underline_animated %}
+          this.setupIntersectionObserver();
+        {% endif %}
+      }
+
+      setupIntersectionObserver() {
+        const underline = this.querySelector('.ai-section-heading__underline-{{ ai_gen_id }}');
+        if (!underline) return;
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              underline.style.animation = 'ai-section-heading-underline-grow-{{ ai_gen_id }} 0.8s ease-out forwards';
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.5
+        });
+
+        observer.observe(this);
+      }
+    }
+
+    customElements.define('section-heading-{{ ai_gen_id }}', SectionHeading{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Section heading",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading text",
+      "default": "Section heading"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_desktop",
+      "label": "Desktop alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_mobile",
+      "label": "Mobile alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Heading typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "label": "Desktop font size",
+      "min": 16,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Mobile font size",
+      "min": 14,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "heading_font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "heading_letter_spacing",
+      "label": "Letter spacing",
+      "min": -2,
+      "max": 4,
+      "step": 0.5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "heading_line_height",
+      "label": "Line height",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.2
+    },
+    {
+      "type": "select",
+      "id": "heading_text_transform",
+      "label": "Text transform",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "header",
+      "content": "Eyebrow typography"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_font_size_desktop",
+      "label": "Desktop font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_font_size_mobile",
+      "label": "Mobile font size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_letter_spacing",
+      "label": "Letter spacing",
+      "min": 0,
+      "max": 4,
+      "step": 0.5,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_text_transform",
+      "label": "Text transform",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize"
+        }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "header",
+      "content": "Subtext typography"
+    },
+    {
+      "type": "range",
+      "id": "subtext_font_size_desktop",
+      "label": "Desktop font size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "subtext_font_size_mobile",
+      "label": "Mobile font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "subtext_font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#18302a"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow",
+      "default": "#c5a059"
+    },
+    {
+      "type": "color",
+      "id": "subtext_color",
+      "label": "Subtext",
+      "default": "#c5a059"
+    },
+    {
+      "type": "color",
+      "id": "underline_color",
+      "label": "Underline accent",
+      "default": "#c5a059"
+    },
+    {
+      "type": "header",
+      "content": "Decorative underline"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_underline",
+      "label": "Show underline",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "underline_animated",
+      "label": "Animate underline on scroll",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "underline_width",
+      "label": "Width",
+      "options": [
+        {
+          "value": "full",
+          "label": "Full width"
+        },
+        {
+          "value": "auto",
+          "label": "Auto"
+        },
+        {
+          "value": "fixed",
+          "label": "Fixed"
+        }
+      ],
+      "default": "auto"
+    },
+    {
+      "type": "range",
+      "id": "underline_width_px",
+      "label": "Fixed width",
+      "min": 20,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "underline_thickness",
+      "label": "Thickness",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "unit": "px",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "underline_spacing",
+      "label": "Spacing from heading",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Desktop top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Desktop bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "gap_heading_subtext",
+      "label": "Gap between elements",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "Section heading"
+    }
+  ]
+}
+{% endschema %}

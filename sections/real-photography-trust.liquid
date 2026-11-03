@@ -1,0 +1,1633 @@
+{%- comment -%}
+  Real Photography Trust
+  Luxury two-column section highlighting authentic product photography.
+  Self-contained: HTML + Liquid + CSS + JS + Schema.
+{%- endcomment -%}
+
+{%- liquid
+  assign sid = section.id
+  assign image_desktop = section.settings.image_desktop
+  assign image_mobile = section.settings.image_mobile
+  if image_mobile == blank
+    assign image_mobile = image_desktop
+  endif
+  assign image_stack_2 = section.settings.image_stack_2
+  assign image_stack_3 = section.settings.image_stack_3
+  if image_stack_2 == blank
+    assign image_stack_2 = image_desktop
+  endif
+  if image_stack_3 == blank
+    assign image_stack_3 = image_stack_2
+  endif
+  assign image_alt = section.settings.image_alt | default: section.settings.heading | escape
+  assign layout_reverse = false
+  if section.settings.image_position == 'left'
+    assign layout_reverse = true
+  endif
+-%}
+
+{%- style -%}
+  #rpt-{{ sid }} {
+    --rpt-bg: {{ section.settings.color_background }};
+    --rpt-heading: {{ section.settings.color_heading }};
+    --rpt-desc: {{ section.settings.color_description }};
+    --rpt-label: {{ section.settings.color_label }};
+    --rpt-accent: {{ section.settings.color_accent }};
+    --rpt-blush: {{ section.settings.color_blush }};
+    --rpt-icon-bg: {{ section.settings.color_icon_bg }};
+    --rpt-icon: {{ section.settings.color_icon }};
+    --rpt-benefit: {{ section.settings.color_benefit }};
+    --rpt-badge-bg: {{ section.settings.badge_bg }};
+    --rpt-badge-border: {{ section.settings.badge_border }};
+    --rpt-badge-text: {{ section.settings.badge_text }};
+    --rpt-radius: {{ section.settings.border_radius }}px;
+    --rpt-img-radius: {{ section.settings.image_border_radius }}px;
+    --rpt-gap: {{ section.settings.column_gap }}px;
+    --rpt-content-max: {{ section.settings.content_max_width }}px;
+    --rpt-container: {% if section.settings.full_width %}100%{% else %}{{ section.settings.container_width }}px{% endif %};
+    --rpt-pad-top-d: {{ section.settings.padding_top_desktop }}px;
+    --rpt-pad-bottom-d: {{ section.settings.padding_bottom_desktop }}px;
+    --rpt-pad-top-m: {{ section.settings.padding_top_mobile }}px;
+    --rpt-pad-bottom-m: {{ section.settings.padding_bottom_mobile }}px;
+    --rpt-heading-size-d: {{ section.settings.heading_size_desktop }}px;
+    --rpt-heading-size-m: {{ section.settings.heading_size_mobile }}px;
+    --rpt-desc-size: {{ section.settings.description_size }}px;
+    --rpt-benefit-size: {{ section.settings.benefit_text_size }}px;
+    --rpt-label-size: {{ section.settings.label_size }}px;
+    --rpt-font-weight: {{ section.settings.font_weight }};
+    --rpt-letter-spacing: {{ section.settings.letter_spacing | divided_by: 100.0 }}em;
+    --rpt-text-align: {{ section.settings.text_alignment }};
+    --rpt-img-height: {{ section.settings.image_height }}px;
+    --rpt-stack-spread: {% case section.settings.stack_spread %}
+      {% when 'tight' %}0.7
+      {% when 'wide' %}1.35
+      {% else %}1
+    {% endcase %};
+    --rpt-shadow:
+      {% case section.settings.shadow_strength %}
+        {% when 'none' %}none
+        {% when 'soft' %}0 4px 24px rgba(28, 22, 16, 0.05), 0 1px 3px rgba(28, 22, 16, 0.03)
+        {% when 'medium' %}0 12px 40px rgba(28, 22, 16, 0.08), 0 2px 8px rgba(28, 22, 16, 0.04)
+        {% when 'strong' %}0 20px 56px rgba(28, 22, 16, 0.12), 0 6px 16px rgba(28, 22, 16, 0.06)
+      {% endcase %};
+    --rpt-badge-size: {% case section.settings.badge_size %}
+      {% when 'small' %}0.88
+      {% when 'large' %}1.12
+      {% else %}1
+    {% endcase %};
+    --rpt-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  #rpt-{{ sid }} {
+    background: var(--rpt-bg);
+    padding-top: var(--rpt-pad-top-m);
+    padding-bottom: var(--rpt-pad-bottom-m);
+    color: var(--rpt-desc);
+    overflow-x: clip;
+    overflow-y: visible;
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
+  /* Visible highlight on dark green — global ::selection uses light-scheme foreground */
+  #rpt-{{ sid }} ::selection {
+    background-color: color-mix(in srgb, var(--rpt-accent) 55%, transparent);
+    color: var(--rpt-heading);
+  }
+
+  #rpt-{{ sid }} ::-moz-selection {
+    background-color: color-mix(in srgb, var(--rpt-accent) 55%, transparent);
+    color: var(--rpt-heading);
+  }
+
+  #rpt-{{ sid }}.rpt--on-dark .rpt__benefit {
+    border-bottom-color: color-mix(in srgb, var(--rpt-accent) 28%, transparent);
+  }
+
+  #rpt-{{ sid }}.rpt--on-dark .rpt__benefits {
+    border-top-color: color-mix(in srgb, var(--rpt-accent) 32%, transparent);
+  }
+
+  #rpt-{{ sid }}.rpt--on-dark .rpt__card {
+    border-color: color-mix(in srgb, var(--rpt-accent) 35%, transparent);
+    box-shadow:
+      0 2px 6px rgba(7, 23, 19, 0.2),
+      0 16px 36px rgba(7, 23, 19, 0.28);
+  }
+
+  #rpt-{{ sid }}.rpt--on-dark .rpt__card--front::after {
+    background:
+      linear-gradient(160deg, rgba(247, 243, 233, 0.08) 0%, transparent 40%, rgba(7, 23, 19, 0.18) 100%);
+  }
+
+  #rpt-{{ sid }} .rpt__inner {
+    width: 100%;
+    max-width: var(--rpt-container);
+    margin: 0 auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    box-sizing: border-box;
+  }
+
+  #rpt-{{ sid }} .rpt__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2.75rem;
+    align-items: stretch;
+  }
+
+  /* —— Text column (keeps copy above/away from image hit area) —— */
+  #rpt-{{ sid }} .rpt__text {
+    display: contents;
+  }
+
+  #rpt-{{ sid }} .rpt__content {
+    order: 1;
+    width: 100%;
+    max-width: var(--rpt-content-max);
+    text-align: var(--rpt-text-align);
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+    -webkit-user-select: text !important;
+    user-select: text !important;
+    {% if section.settings.text_alignment == 'center' %}
+      margin-left: auto;
+      margin-right: auto;
+    {% elsif section.settings.text_alignment == 'right' %}
+      margin-left: auto;
+    {% endif %}
+  }
+
+  #rpt-{{ sid }} .rpt__benefits-wrap {
+    order: 3;
+    width: 100%;
+    max-width: var(--rpt-content-max);
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+    -webkit-user-select: text !important;
+    user-select: text !important;
+    {% if section.settings.text_alignment == 'center' %}
+      margin-left: auto;
+      margin-right: auto;
+    {% elsif section.settings.text_alignment == 'right' %}
+      margin-left: auto;
+    {% endif %}
+  }
+
+  #rpt-{{ sid }} .rpt__label,
+  #rpt-{{ sid }} .rpt__heading,
+  #rpt-{{ sid }} .rpt__description,
+  #rpt-{{ sid }} .rpt__benefit-title {
+    -webkit-user-select: text !important;
+    user-select: text !important;
+    -webkit-touch-callout: default;
+    cursor: text;
+  }
+
+  #rpt-{{ sid }} .rpt__label-row {
+    display: block;
+    margin: 0 0 0.8rem;
+  }
+
+  #rpt-{{ sid }} .rpt__label {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rpt-label);
+    line-height: 1.3;
+  }
+
+  #rpt-{{ sid }} .rpt__label-rule {
+    display: none;
+  }
+
+  #rpt-{{ sid }} .rpt__heading {
+    margin: 0 0 1rem;
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style, normal);
+    font-weight: 400;
+    font-size: var(--rpt-heading-size-m);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    color: var(--rpt-heading);
+    text-wrap: balance;
+  }
+
+  #rpt-{{ sid }} .rpt__description {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    font-weight: 400;
+    color: var(--rpt-desc);
+    max-width: 42rem;
+    opacity: 0.92;
+    {% if section.settings.text_alignment == 'center' %}
+      margin-left: auto;
+      margin-right: auto;
+    {% elsif section.settings.text_alignment == 'right' %}
+      margin-left: auto;
+    {% endif %}
+  }
+
+  /* —— Benefits: editorial rows, not chips —— */
+  #rpt-{{ sid }} .rpt__benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid color-mix(in srgb, var(--rpt-accent) 28%, transparent);
+  }
+
+  #rpt-{{ sid }} .rpt__benefit {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 3.25rem;
+    padding: 0.95rem 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--rpt-accent) 22%, transparent);
+  }
+
+  #rpt-{{ sid }} .rpt__benefit-icon {
+    flex-shrink: 0;
+    width: 1.35rem;
+    height: 1.35rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    background: transparent;
+    color: var(--rpt-icon);
+    box-shadow: none;
+  }
+
+  #rpt-{{ sid }} .rpt__benefit-icon svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    display: block;
+    stroke-width: 1.25;
+  }
+
+  #rpt-{{ sid }} .rpt__benefit-title {
+    margin: 0;
+    font-size: var(--rpt-benefit-size);
+    font-weight: 450;
+    color: var(--rpt-benefit);
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+  }
+
+  #rpt-{{ sid }} .rpt__media {
+    position: relative;
+    z-index: 0;
+    order: 2;
+    width: 100%;
+    max-width: 100%;
+    padding: 1.15rem 0.35rem 1.35rem;
+    box-sizing: border-box;
+    overflow: hidden;
+    /* Do not let the image column steal drag/selection from copy */
+    pointer-events: none;
+  }
+
+  #rpt-{{ sid }} .rpt__stack {
+    position: relative;
+    width: 86%;
+    max-width: 22rem;
+    margin: 0 auto;
+    pointer-events: auto;
+    {% case section.settings.image_aspect %}
+      {% when 'portrait' %}
+        aspect-ratio: 4 / 5;
+      {% when 'tall' %}
+        aspect-ratio: 3 / 4;
+      {% when 'square' %}
+        aspect-ratio: 1 / 1;
+      {% else %}
+        height: min(68vw, var(--rpt-img-height));
+        min-height: 260px;
+        aspect-ratio: auto;
+    {% endcase %}
+  }
+
+  #rpt-{{ sid }} .rpt__card {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--rpt-img-radius);
+    overflow: hidden;
+    background: color-mix(in srgb, var(--rpt-accent) 8%, var(--rpt-bg));
+    box-shadow:
+      0 2px 6px rgba(28, 22, 16, 0.06),
+      0 12px 28px rgba(28, 22, 16, 0.1);
+    border: 1px solid color-mix(in srgb, var(--rpt-accent) 18%, #fff);
+    transform-origin: 50% 80%;
+    transition: transform 0.85s var(--rpt-ease), box-shadow 0.85s var(--rpt-ease);
+  }
+
+  #rpt-{{ sid }} .rpt__card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+
+  /* Decorative stack cards must not steal clicks/selection from copy */
+  #rpt-{{ sid }} .rpt__card--back,
+  #rpt-{{ sid }} .rpt__card--mid {
+    pointer-events: none;
+  }
+
+  #rpt-{{ sid }} .rpt__card--front img {
+    {% if section.settings.hover_zoom %}
+      transition: transform 1.1s var(--rpt-ease);
+    {% endif %}
+  }
+
+  /* Soft light on front card */
+  #rpt-{{ sid }} .rpt__card--front::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(160deg, rgba(255, 255, 255, 0.14) 0%, transparent 40%, rgba(28, 22, 16, 0.08) 100%);
+  }
+
+  {% if section.settings.enable_stack_effect %}
+    /* Mobile: tighter fan so cards stay in container */
+    {% if section.settings.image_position == 'left' %}
+      #rpt-{{ sid }} .rpt__card--back {
+        z-index: 1;
+        transform:
+          translateX(calc(6px * var(--rpt-stack-spread)))
+          translateY(calc(4px * var(--rpt-stack-spread)))
+          rotate(calc(4.5deg * var(--rpt-stack-spread)));
+        filter: brightness(0.92) saturate(0.9);
+      }
+
+      #rpt-{{ sid }} .rpt__card--mid {
+        z-index: 2;
+        transform:
+          translateX(calc(-5px * var(--rpt-stack-spread)))
+          translateY(calc(2px * var(--rpt-stack-spread)))
+          rotate(calc(-3deg * var(--rpt-stack-spread)));
+        filter: brightness(0.96) saturate(0.95);
+      }
+
+      #rpt-{{ sid }} .rpt__card--front {
+        z-index: 3;
+        transform: translateX(0) translateY(0) rotate(-0.8deg);
+      }
+    {% else %}
+      #rpt-{{ sid }} .rpt__card--back {
+        z-index: 1;
+        transform:
+          translateX(calc(-6px * var(--rpt-stack-spread)))
+          translateY(calc(4px * var(--rpt-stack-spread)))
+          rotate(calc(-4.5deg * var(--rpt-stack-spread)));
+        filter: brightness(0.92) saturate(0.9);
+      }
+
+      #rpt-{{ sid }} .rpt__card--mid {
+        z-index: 2;
+        transform:
+          translateX(calc(5px * var(--rpt-stack-spread)))
+          translateY(calc(2px * var(--rpt-stack-spread)))
+          rotate(calc(3deg * var(--rpt-stack-spread)));
+        filter: brightness(0.96) saturate(0.95);
+      }
+
+      #rpt-{{ sid }} .rpt__card--front {
+        z-index: 3;
+        transform: translateX(0) translateY(0) rotate(0.8deg);
+      }
+    {% endif %}
+
+    /* Hover fan only on devices that support hover (desktop) */
+    @media (hover: hover) and (min-width: 750px) {
+      {% if section.settings.image_position == 'left' %}
+        #rpt-{{ sid }} .rpt__stack:hover .rpt__card--back {
+          transform:
+            translateX(calc(22px * var(--rpt-stack-spread)))
+            translateY(calc(10px * var(--rpt-stack-spread)))
+            rotate(calc(14deg * var(--rpt-stack-spread)));
+        }
+
+        #rpt-{{ sid }} .rpt__stack:hover .rpt__card--mid {
+          transform:
+            translateX(calc(-18px * var(--rpt-stack-spread)))
+            translateY(calc(6px * var(--rpt-stack-spread)))
+            rotate(calc(-11deg * var(--rpt-stack-spread)));
+        }
+
+        #rpt-{{ sid }} .rpt__stack:hover .rpt__card--front {
+          transform: translateY(-6px) rotate(-1deg);
+          box-shadow:
+            0 8px 16px rgba(28, 22, 16, 0.08),
+            0 24px 48px rgba(28, 22, 16, 0.14);
+        }
+      {% else %}
+        #rpt-{{ sid }} .rpt__stack:hover .rpt__card--back {
+          transform:
+            translateX(calc(-22px * var(--rpt-stack-spread)))
+            translateY(calc(10px * var(--rpt-stack-spread)))
+            rotate(calc(-14deg * var(--rpt-stack-spread)));
+        }
+
+        #rpt-{{ sid }} .rpt__stack:hover .rpt__card--mid {
+          transform:
+            translateX(calc(18px * var(--rpt-stack-spread)))
+            translateY(calc(6px * var(--rpt-stack-spread)))
+            rotate(calc(11deg * var(--rpt-stack-spread)));
+        }
+
+        #rpt-{{ sid }} .rpt__stack:hover .rpt__card--front {
+          transform: translateY(-6px) rotate(1deg);
+          box-shadow:
+            0 8px 16px rgba(28, 22, 16, 0.08),
+            0 24px 48px rgba(28, 22, 16, 0.14);
+        }
+      {% endif %}
+
+      {% if section.settings.hover_zoom %}
+        #rpt-{{ sid }} .rpt__stack:hover .rpt__card--front img {
+          transform: scale(1.04);
+        }
+      {% endif %}
+    }
+  {% else %}
+    #rpt-{{ sid }} .rpt__card--back,
+    #rpt-{{ sid }} .rpt__card--mid {
+      display: none;
+    }
+
+    #rpt-{{ sid }} .rpt__card--front {
+      position: relative;
+      inset: auto;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      transform: none;
+      box-shadow: var(--rpt-shadow);
+    }
+
+    #rpt-{{ sid }} .rpt__stack {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    #rpt-{{ sid }} .rpt__media {
+      overflow: visible;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  {% endif %}
+
+  #rpt-{{ sid }} .rpt__card-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--rpt-accent);
+    opacity: 0.35;
+  }
+
+  #rpt-{{ sid }} .rpt__card-placeholder svg {
+    width: 36%;
+    max-width: 140px;
+    height: auto;
+  }
+
+  /* —— Badge: quiet seal —— */
+  #rpt-{{ sid }} .rpt__badge {
+    position: absolute;
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.15rem;
+    width: calc(4.35rem * var(--rpt-badge-size));
+    height: calc(4.35rem * var(--rpt-badge-size));
+    padding: 0.55rem;
+    box-sizing: border-box;
+    background: color-mix(in srgb, var(--rpt-badge-bg) 92%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--rpt-badge-border);
+    border-radius: 50%;
+    box-shadow: 0 8px 28px rgba(28, 22, 16, 0.08);
+    color: var(--rpt-badge-text);
+    line-height: 1.15;
+    pointer-events: none;
+    {% case section.settings.badge_position %}
+      {% when 'top-left' %}
+        top: 0.5rem; left: 0.5rem;
+      {% when 'top-right' %}
+        top: 0.5rem; right: 0.5rem;
+      {% when 'bottom-left' %}
+        bottom: 0.5rem; left: 0.5rem;
+      {% when 'center' %}
+        top: 50%; left: 50%;
+        --rpt-badge-x: -50%;
+        --rpt-badge-y: -50%;
+        transform: translate(var(--rpt-badge-x), var(--rpt-badge-y));
+      {% else %}
+        bottom: 0.55rem; right: 0.55rem;
+    {% endcase %}
+  }
+
+  #rpt-{{ sid }} .rpt__badge-line {
+    margin: 0;
+    font-size: calc(0.5rem * var(--rpt-badge-size));
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    max-width: 100%;
+  }
+
+  #rpt-{{ sid }} .rpt__badge-line--accent {
+    color: var(--rpt-accent);
+    font-size: calc(0.54rem * var(--rpt-badge-size));
+    letter-spacing: 0.12em;
+  }
+
+  #rpt-{{ sid }} .rpt__img--desktop { display: none; }
+  #rpt-{{ sid }} .rpt__img--mobile { display: block; }
+
+  /* —— Animations —— */
+  #rpt-{{ sid }} .rpt-anim {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.9s var(--rpt-ease),
+      transform 0.9s var(--rpt-ease);
+  }
+
+  #rpt-{{ sid }} .rpt-anim.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* Badge: opacity only — keep position/float transforms intact */
+  #rpt-{{ sid }} .rpt__badge.rpt-anim {
+    transform: {% if section.settings.badge_position == 'center' %}translate(var(--rpt-badge-x, -50%), var(--rpt-badge-y, -50%)){% else %}none{% endif %};
+  }
+
+  #rpt-{{ sid }} .rpt__badge.rpt-anim.is-visible {
+    opacity: 1;
+    transform: {% if section.settings.badge_position == 'center' %}translate(var(--rpt-badge-x, -50%), var(--rpt-badge-y, -50%)){% else %}none{% endif %};
+  }
+
+  /* Stack fans open on reveal */
+  #rpt-{{ sid }} .rpt__stack.rpt-anim {
+    opacity: 0;
+    transform: scale(0.96);
+    transition:
+      opacity 1s var(--rpt-ease),
+      transform 1s var(--rpt-ease);
+  }
+
+  #rpt-{{ sid }} .rpt__stack.rpt-anim.is-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  {% if section.settings.enable_stack_effect %}
+    #rpt-{{ sid }} .rpt__stack.rpt-anim:not(.is-visible) .rpt__card--back,
+    #rpt-{{ sid }} .rpt__stack.rpt-anim:not(.is-visible) .rpt__card--mid,
+    #rpt-{{ sid }} .rpt__stack.rpt-anim:not(.is-visible) .rpt__card--front {
+      transform: translateX(0) translateY(8px) rotate(0deg);
+    }
+  {% endif %}
+
+  #rpt-{{ sid }} .rpt__benefit.rpt-anim {
+    transition-delay: calc(var(--rpt-stagger, 0) * 90ms + 120ms);
+  }
+
+  #rpt-{{ sid }} .rpt__badge.rpt-anim.is-visible {
+    animation: rpt-float-{{ sid }} 5.5s ease-in-out infinite;
+  }
+
+  @keyframes rpt-float-{{ sid }} {
+    0%, 100% { transform: {% if section.settings.badge_position == 'center' %}translate(-50%, -50%){% else %}translateY(0){% endif %}; }
+    50% { transform: {% if section.settings.badge_position == 'center' %}translate(-50%, calc(-50% - 5px)){% else %}translateY(-5px){% endif %}; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #rpt-{{ sid }} .rpt-anim {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    #rpt-{{ sid }} .rpt__stack.rpt-anim,
+    #rpt-{{ sid }} .rpt__card {
+      transition: none !important;
+    }
+
+    #rpt-{{ sid }} .rpt__badge.rpt-anim.is-visible {
+      animation: none !important;
+    }
+
+    {% if section.settings.hover_zoom %}
+      #rpt-{{ sid }} .rpt__card--front img {
+        transition: none;
+      }
+    {% endif %}
+  }
+
+  /* —— Desktop —— */
+  @media screen and (min-width: 750px) {
+    #rpt-{{ sid }} {
+      padding-top: var(--rpt-pad-top-d);
+      padding-bottom: var(--rpt-pad-bottom-d);
+    }
+
+    #rpt-{{ sid }} .rpt__inner {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+
+    #rpt-{{ sid }} .rpt__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      column-gap: var(--rpt-gap);
+      row-gap: 2rem;
+      align-items: center;
+      {% if layout_reverse %}
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        grid-template-areas: "media text";
+      {% else %}
+        grid-template-areas: "text media";
+      {% endif %}
+    }
+
+    #rpt-{{ sid }} .rpt__text {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      grid-area: text;
+      align-self: center;
+      max-width: var(--rpt-content-max);
+      width: 100%;
+      min-width: 0;
+      position: relative;
+      z-index: 2;
+      pointer-events: auto;
+      -webkit-user-select: text !important;
+      user-select: text !important;
+    }
+
+    #rpt-{{ sid }} .rpt__content,
+    #rpt-{{ sid }} .rpt__benefits-wrap {
+      order: unset;
+      max-width: none;
+    }
+
+    #rpt-{{ sid }} .rpt__media {
+      grid-area: media;
+      order: unset;
+      align-self: center;
+      padding: 2rem 1.75rem 2.25rem;
+      overflow: hidden;
+    }
+
+    #rpt-{{ sid }} .rpt__heading {
+      font-size: var(--rpt-heading-size-d);
+      line-height: 1.12;
+    }
+
+    #rpt-{{ sid }} .rpt__benefits {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 1.75rem;
+      row-gap: 0;
+      border-top: 1px solid color-mix(in srgb, var(--rpt-accent) 28%, transparent);
+    }
+
+    #rpt-{{ sid }} .rpt__benefit {
+      padding: 1.05rem 0;
+      min-height: 3.4rem;
+    }
+
+    /* Keep hairlines clean in 2-col grid */
+    #rpt-{{ sid }} .rpt__benefit:nth-child(odd) {
+      padding-right: 0.5rem;
+    }
+
+    #rpt-{{ sid }} .rpt__stack {
+      width: 100%;
+      max-width: 100%;
+      {% case section.settings.image_aspect %}
+        {% when 'portrait' %}
+          aspect-ratio: 4 / 5;
+          max-height: min(var(--rpt-img-height), 85vh);
+        {% when 'tall' %}
+          aspect-ratio: 3 / 4;
+          max-height: min(var(--rpt-img-height), 85vh);
+        {% when 'square' %}
+          aspect-ratio: 1 / 1;
+          max-height: min(var(--rpt-img-height), 85vh);
+        {% else %}
+          height: var(--rpt-img-height);
+          min-height: 420px;
+          aspect-ratio: auto;
+      {% endcase %}
+    }
+
+    {% if section.settings.enable_stack_effect %}
+      {% if section.settings.image_position == 'left' %}
+        #rpt-{{ sid }} .rpt__card--back {
+          transform:
+            translateX(calc(14px * var(--rpt-stack-spread)))
+            translateY(calc(8px * var(--rpt-stack-spread)))
+            rotate(calc(9deg * var(--rpt-stack-spread)));
+        }
+
+        #rpt-{{ sid }} .rpt__card--mid {
+          transform:
+            translateX(calc(-10px * var(--rpt-stack-spread)))
+            translateY(calc(4px * var(--rpt-stack-spread)))
+            rotate(calc(-6deg * var(--rpt-stack-spread)));
+        }
+
+        #rpt-{{ sid }} .rpt__card--front {
+          transform: translateX(0) translateY(0) rotate(-1.5deg);
+        }
+      {% else %}
+        #rpt-{{ sid }} .rpt__card--back {
+          transform:
+            translateX(calc(-14px * var(--rpt-stack-spread)))
+            translateY(calc(8px * var(--rpt-stack-spread)))
+            rotate(calc(-9deg * var(--rpt-stack-spread)));
+        }
+
+        #rpt-{{ sid }} .rpt__card--mid {
+          transform:
+            translateX(calc(10px * var(--rpt-stack-spread)))
+            translateY(calc(4px * var(--rpt-stack-spread)))
+            rotate(calc(6deg * var(--rpt-stack-spread)));
+        }
+
+        #rpt-{{ sid }} .rpt__card--front {
+          transform: translateX(0) translateY(0) rotate(1.5deg);
+        }
+      {% endif %}
+    {% endif %}
+
+    #rpt-{{ sid }} .rpt__img--desktop { display: block; }
+    #rpt-{{ sid }} .rpt__img--mobile { display: none; }
+
+    #rpt-{{ sid }} .rpt__badge {
+      width: calc(5.1rem * var(--rpt-badge-size));
+      height: calc(5.1rem * var(--rpt-badge-size));
+      padding: 0.7rem;
+      {% case section.settings.badge_position %}
+        {% when 'top-left' %}
+          top: 1.15rem; left: 1.15rem;
+        {% when 'top-right' %}
+          top: 1.15rem; right: 1.15rem;
+        {% when 'bottom-left' %}
+          bottom: 1.15rem; left: 1.15rem;
+        {% when 'center' %}
+          top: 50%; left: 50%;
+        {% else %}
+          bottom: 1.25rem; right: 1.25rem;
+      {% endcase %}
+    }
+
+    #rpt-{{ sid }} .rpt__badge-line {
+      font-size: calc(0.58rem * var(--rpt-badge-size));
+      letter-spacing: 0.14em;
+    }
+
+    #rpt-{{ sid }} .rpt__badge-line--accent {
+      font-size: calc(0.62rem * var(--rpt-badge-size));
+      letter-spacing: 0.16em;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    #rpt-{{ sid }} .rpt__inner {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+
+    #rpt-{{ sid }} .rpt__grid {
+      column-gap: var(--rpt-gap);
+    }
+  }
+{%- endstyle -%}
+
+<section
+  id="rpt-{{ sid }}"
+  class="rpt rpt--on-dark"
+  {% if section.settings.heading != blank %}
+    aria-labelledby="rpt-heading-{{ sid }}"
+  {% else %}
+    aria-label="Real photography trust"
+  {% endif %}
+  data-rpt-section
+>
+  <div class="rpt__inner">
+    <div class="rpt__grid">
+      <div class="rpt__text">
+      {%- comment -%} Content: label, heading, description {%- endcomment -%}
+      <div class="rpt__content">
+        {%- if section.settings.label != blank -%}
+          <div class="rpt__label-row rpt-anim" data-rpt-anim>
+            <p class="rpt__label">{{ section.settings.label | escape }}</p>
+            <span class="rpt__label-rule" aria-hidden="true"></span>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h2 id="rpt-heading-{{ sid }}" class="rpt__heading rpt-anim" data-rpt-anim>
+            {{ section.settings.heading | escape }}
+          </h2>
+        {%- endif -%}
+
+        {%- if section.settings.description != blank -%}
+          <div class="rpt__description rpt-anim" data-rpt-anim>
+            {{ section.settings.description | escape | newline_to_br }}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Benefits (mobile order after media via CSS order) {%- endcomment -%}
+      {%- assign has_benefits = false -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'benefit' and block.settings.enabled and block.settings.title != blank -%}
+          {%- assign has_benefits = true -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- if has_benefits -%}
+      <div class="rpt__benefits-wrap">
+        <ul class="rpt__benefits" aria-label="{{ section.settings.benefits_aria_label | escape }}">
+          {%- assign benefit_index = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'benefit' and block.settings.enabled -%}
+              {%- if block.settings.title != blank -%}
+                <li
+                  class="rpt__benefit rpt-anim"
+                  data-rpt-anim
+                  style="--rpt-stagger: {{ benefit_index }};"
+                  {{ block.shopify_attributes }}
+                >
+                  <span class="rpt__benefit-icon" aria-hidden="true">
+                    {%- case block.settings.icon -%}
+                      {%- when 'camera' -%}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                      {%- when 'diamond' -%}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 21 21 9.5 16.5 3h-9L3 9.5z"/><path d="M3 9.5h18M8.2 3.4 12 9.5l3.8-6.1"/></svg>
+                      {%- when 'shield' -%}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                      {%- when 'sparkle' -%}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3"/></svg>
+                      {%- when 'heart' -%}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+                      {%- when 'trophy' -%}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 4h2a2 2 0 0 1 2 2v1a4 4 0 0 1-4 4h0M7 4H5a2 2 0 0 0-2 2v1a4 4 0 0 0 4 4h0"/></svg>
+                      {%- when 'check' -%}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg>
+                      {%- when 'eye' -%}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                      {%- when 'star' -%}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 2.9 6.9L22 9.2l-5 4.8 1.5 7L12 17.8 5.5 21l1.5-7-5-4.8 7.1-0.3z"/></svg>
+                      {%- when 'leaf' -%}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 5.5 2 8a7 7 0 0 1-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                      {%- else -%}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg>
+                    {%- endcase -%}
+                  </span>
+                  <p class="rpt__benefit-title">{{ block.settings.title | escape }}</p>
+                </li>
+                {%- assign benefit_index = benefit_index | plus: 1 -%}
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+      {%- endif -%}
+      </div>
+
+      {%- comment -%} Stacked photo cards {%- endcomment -%}
+      <div class="rpt__media">
+        {%- assign widths = '400, 600, 800, 1000, 1200, 1600' -%}
+        {%- capture sizes -%}
+          (min-width: 990px) {% if section.settings.full_width %}calc(45vw - {{ section.settings.column_gap | divided_by: 2 }}px){% else %}min({{ section.settings.container_width | times: 0.48 | round }}px, calc(45vw - 2.5rem)){% endif %},
+          (min-width: 750px) calc(45vw - 2rem),
+          calc(100vw - 3rem)
+        {%- endcapture -%}
+
+        <div class="rpt__stack rpt-anim" data-rpt-anim>
+          {%- if section.settings.enable_stack_effect -%}
+            <div class="rpt__card rpt__card--back" aria-hidden="true">
+              {%- if image_stack_3 != blank -%}
+                {{
+                  image_stack_3
+                  | image_url: width: 1200
+                  | image_tag:
+                    widths: widths,
+                    sizes: sizes,
+                    alt: '',
+                    loading: 'lazy',
+                    decoding: 'async'
+                }}
+              {%- else -%}
+                <div class="rpt__card-placeholder"></div>
+              {%- endif -%}
+            </div>
+
+            <div class="rpt__card rpt__card--mid" aria-hidden="true">
+              {%- if image_stack_2 != blank -%}
+                {{
+                  image_stack_2
+                  | image_url: width: 1200
+                  | image_tag:
+                    widths: widths,
+                    sizes: sizes,
+                    alt: '',
+                    loading: 'lazy',
+                    decoding: 'async'
+                }}
+              {%- else -%}
+                <div class="rpt__card-placeholder"></div>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          <div class="rpt__card rpt__card--front">
+            {%- if image_desktop != blank -%}
+              {%- if section.settings.image_mobile != blank and section.settings.image_mobile != image_desktop -%}
+                {{
+                  image_desktop
+                  | image_url: width: 1600
+                  | image_tag:
+                    class: 'rpt__img rpt__img--desktop',
+                    widths: widths,
+                    sizes: sizes,
+                    alt: image_alt,
+                    loading: 'lazy',
+                    decoding: 'async'
+                }}
+                {{
+                  image_mobile
+                  | image_url: width: 1000
+                  | image_tag:
+                    class: 'rpt__img rpt__img--mobile',
+                    widths: '400, 600, 800, 1000',
+                    sizes: '(min-width: 750px) 0px, calc(100vw - 3rem)',
+                    alt: image_alt,
+                    loading: 'lazy',
+                    decoding: 'async'
+                }}
+              {%- else -%}
+                {{
+                  image_desktop
+                  | image_url: width: 1600
+                  | image_tag:
+                    class: 'rpt__img',
+                    widths: widths,
+                    sizes: sizes,
+                    alt: image_alt,
+                    loading: 'lazy',
+                    decoding: 'async'
+                }}
+              {%- endif -%}
+            {%- else -%}
+              <div class="rpt__card-placeholder" role="img" aria-label="Jewellery photography placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                  <rect x="10" y="20" width="100" height="80" rx="8" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="40" cy="48" r="10" stroke="currentColor" stroke-width="2"/>
+                  <path d="M10 78l28-22 22 16 20-14 30 28" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            {%- endif -%}
+          </div>
+
+          {%- if section.settings.badge_enable -%}
+            <div
+              class="rpt__badge rpt-anim"
+              data-rpt-anim
+              role="note"
+              aria-label="{{ section.settings.badge_line_1 | escape }} {{ section.settings.badge_line_2 | escape }} {{ section.settings.badge_line_3 | escape }}"
+            >
+              {%- if section.settings.badge_line_1 != blank -%}
+                <p class="rpt__badge-line rpt__badge-line--accent">{{ section.settings.badge_line_1 | escape }}</p>
+              {%- endif -%}
+              {%- if section.settings.badge_line_2 != blank -%}
+                <p class="rpt__badge-line">{{ section.settings.badge_line_2 | escape }}</p>
+              {%- endif -%}
+              {%- if section.settings.badge_line_3 != blank -%}
+                <p class="rpt__badge-line">{{ section.settings.badge_line_3 | escape }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var root = document.getElementById('rpt-{{ sid }}');
+    if (!root) return;
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var items = root.querySelectorAll('[data-rpt-anim]');
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      items.forEach(function (el) {
+        el.classList.add('is-visible');
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.18, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    items.forEach(function (el) {
+      observer.observe(el);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Real Photography Trust",
+  "tag": "section",
+  "class": "section-real-photography-trust",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Small label",
+      "default": "Authenticity"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why Real Photography Matters"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "We photograph every piece in our studio from the actual product, not with AI, so the colour, craft, and detail match what you receive."
+    },
+    {
+      "type": "text",
+      "id": "benefits_aria_label",
+      "label": "Benefits list accessibility label",
+      "default": "Reasons real photography matters"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Front card image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_stack_2",
+      "label": "Middle stack image",
+      "info": "Optional. Falls back to the front image."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_stack_3",
+      "label": "Back stack image",
+      "info": "Optional. Falls back to the middle/front image."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile front image",
+      "info": "Optional. Falls back to the front card image."
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "default": "Studio photograph of real jewellery"
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "min": 320,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "label": "Image height",
+      "default": 620,
+      "info": "Used when Aspect ratio is Fixed height."
+    },
+    {
+      "type": "select",
+      "id": "image_aspect",
+      "label": "Image aspect ratio",
+      "options": [
+        { "value": "fixed", "label": "Fixed height" },
+        { "value": "portrait", "label": "Portrait (4:5)" },
+        { "value": "tall", "label": "Tall (3:4)" },
+        { "value": "square", "label": "Square (1:1)" }
+      ],
+      "default": "portrait",
+      "info": "Portrait usually looks most premium for jewellery."
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 10
+    },
+    {
+      "type": "checkbox",
+      "id": "hover_zoom",
+      "label": "Enable front image hover zoom",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_stack_effect",
+      "label": "Enable stacked photo cards",
+      "default": true,
+      "info": "Fans photos like an open hand of cards."
+    },
+    {
+      "type": "select",
+      "id": "stack_spread",
+      "label": "Stack spread",
+      "options": [
+        { "value": "tight", "label": "Tight" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "wide", "label": "Wide" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "badge_enable",
+      "label": "Show badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "badge_line_1",
+      "label": "Badge line 1",
+      "default": "Real Shoot"
+    },
+    {
+      "type": "text",
+      "id": "badge_line_2",
+      "label": "Badge line 2",
+      "default": "No AI"
+    },
+    {
+      "type": "text",
+      "id": "badge_line_3",
+      "label": "Badge line 3",
+      "default": "No Filters"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg",
+      "label": "Badge background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "badge_border",
+      "label": "Badge border",
+      "default": "#F3EBD8"
+    },
+    {
+      "type": "color",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "#0E2C20"
+    },
+    {
+      "type": "select",
+      "id": "badge_position",
+      "label": "Badge position",
+      "options": [
+        { "value": "top-left", "label": "Top left" },
+        { "value": "top-right", "label": "Top right" },
+        { "value": "bottom-left", "label": "Bottom left" },
+        { "value": "bottom-right", "label": "Bottom right" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "bottom-right"
+    },
+    {
+      "type": "select",
+      "id": "badge_size",
+      "label": "Badge size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position (desktop)",
+      "options": [
+        { "value": "right", "label": "Image right" },
+        { "value": "left", "label": "Image left" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "min": 1000,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "label": "Container width",
+      "default": 1200,
+      "info": "Ignored when Full width is enabled."
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "min": 24,
+      "max": 96,
+      "step": 4,
+      "unit": "px",
+      "label": "Column gap",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "min": 320,
+      "max": 720,
+      "step": 10,
+      "unit": "px",
+      "label": "Content max width",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Desktop padding top",
+      "default": 112
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Desktop padding bottom",
+      "default": 112
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Mobile padding top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Mobile padding bottom",
+      "default": 64
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background",
+      "default": "#FDF9F2"
+    },
+    {
+      "type": "color",
+      "id": "color_heading",
+      "label": "Heading",
+      "default": "#18302a"
+    },
+    {
+      "type": "color",
+      "id": "color_description",
+      "label": "Description",
+      "default": "#5a4e44"
+    },
+    {
+      "type": "color",
+      "id": "color_label",
+      "label": "Label",
+      "default": "#C5A059"
+    },
+    {
+      "type": "color",
+      "id": "color_accent",
+      "label": "Accent (champagne gold)",
+      "default": "#C5A059"
+    },
+    {
+      "type": "color",
+      "id": "color_blush",
+      "label": "Blush highlight",
+      "default": "#F3EBD8"
+    },
+    {
+      "type": "color",
+      "id": "color_icon_bg",
+      "label": "Icon background",
+      "default": "#FDF9F2"
+    },
+    {
+      "type": "color",
+      "id": "color_icon",
+      "label": "Icon color",
+      "default": "#C5A059"
+    },
+    {
+      "type": "color",
+      "id": "color_benefit",
+      "label": "Benefit text",
+      "default": "#0E2C20"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "General border radius",
+      "default": 2
+    },
+    {
+      "type": "select",
+      "id": "shadow_strength",
+      "label": "Shadow strength",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "soft", "label": "Soft" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "strong", "label": "Strong" }
+      ],
+      "default": "soft"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 28,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size (desktop)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 22,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading size (mobile)",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "min": 13,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "label": "Description size",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "benefit_text_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Benefit text size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "label_size",
+      "min": 10,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Label size",
+      "default": 11
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Heading font weight",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "letter_spacing",
+      "min": -4,
+      "max": 8,
+      "step": 1,
+      "label": "Heading letter spacing",
+      "default": -1,
+      "info": "In hundredths of an em (−4 = −0.04em)."
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "enabled",
+          "label": "Enable",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "camera", "label": "Camera" },
+            { "value": "diamond", "label": "Diamond" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "sparkle", "label": "Sparkle" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "trophy", "label": "Trophy" },
+            { "value": "check", "label": "Check" },
+            { "value": "eye", "label": "Eye" },
+            { "value": "star", "label": "Star" },
+            { "value": "leaf", "label": "Leaf" }
+          ],
+          "default": "check"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "What You See Is What You Get"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Real Photography Trust",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "enabled": true,
+            "icon": "camera",
+            "title": "What You See Is What You Get"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "enabled": true,
+            "icon": "diamond",
+            "title": "True colour and detail"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "enabled": true,
+            "icon": "shield",
+            "title": "Builds Trust"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "enabled": true,
+            "icon": "sparkle",
+            "title": "No AI Images"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "enabled": true,
+            "icon": "heart",
+            "title": "Shop With Confidence"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "enabled": true,
+            "icon": "trophy",
+            "title": "Studio Photographed"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

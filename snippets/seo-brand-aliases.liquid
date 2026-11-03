@@ -1,0 +1,13 @@
+{%- comment -%}
+  Real search variants of Ashtitva / Astitva (typos, phonetics, Hinglish).
+  Not every letter anagram — those are never searched and look like spam.
+  Outputs a JSON array for schema alternateName.
+{%- endcomment -%}
+{%- liquid
+  assign aliases = 'Astitva|Ashtiva|Asthitva|Ashtittva|Asttitva|Ashtitwa|Astitwa|Ashthitva|Ashtitvaa|Astitvaa|Astitava|Ashtitava|Ashitva|Ashtitv|Astitv|Asthitiva|Ashtitiva|Ashtithva|Asthithva|Aashtitva|Aastitva|Ashtitba|Astitba|Ashttiva|Ashtitav|Ashtivat|Ahstitva|Ashtitva Jewellery|Astitva Jewellery|Ashtiva Jewellery|Asthitva Jewellery|The Ashtitva|The Astitva|ashtitva.com|astitva.com|ashtitva jewellery|astitva jewellery|ashtitva online|astitva online|ashtitva online shopping|astitva online shopping|ashtitva jwellery|astitva jwellery|ashtitva jewellry|astitva jewellry|Ashtitva store|Astitva store' | split: '|'
+-%}
+[
+{%- for name in aliases -%}
+  {{ name | json }}{% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+]

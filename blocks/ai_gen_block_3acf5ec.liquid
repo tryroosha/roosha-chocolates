@@ -1,0 +1,795 @@
+{% doc %}
+  @prompt
+    Create a warm and elegant Contact Us page for AdHouse.in, an online jewellery brand. The tone should be friendly yet sophisticated, reflecting the beauty and trust associated with jewellery shopping.
+    Hero/Welcome Section:
+    Add a welcoming headline such as "We'd Love to Hear From You ✨" with a subtext like "Whether you have a question about our jewellery, need help with your order, or just want to say hello. We're always here for you."
+    Contact Details Section:
+    Display the following contact information with icons in a clean card or grid layout:
+    
+    📞 Phone: +91-XXXXXXXXXX (replace with your number)
+    💬 WhatsApp: Chat with us on WhatsApp. "Tap to chat instantly!"
+    📧 Email: contact@ashtitva.com
+    🕐 Business Hours: Monday to Saturday, 10:00 AM to 7:00 PM IST
+    📍 Address: (Add your city/state or warehouse address if applicable)
+    
+    Social Media Links Section:
+    Add a heading like "Follow Us & Stay Inspired 💎" and include clickable icons for:
+    
+    Instagram – @adhouse.in
+    Facebook – AdHouse Jewellery
+    Pinterest – AdHouse.in
+    YouTube – AdHouse Official (if applicable)
+    
+    Contact Form Section:
+    Include a simple inquiry form with fields for: Name, Email, Phone Number, Order ID (optional), and Message, with a submit button labeled "Send Message 💌"
+    Trust/Reassurance Line at Bottom:
+    End with a short note like: "We typically respond within 24 hours. Your trust means everything to us, just like every piece of jewellery we craft."
+    Design Notes:
+    Use gold, ivory, or rose gold tones to match a jewellery brand aesthetic. Keep the layout minimal, elegant, and mobile friendly.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-contact-page-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background: linear-gradient(135deg, {{ block.settings.background_color }} 0%, {{ block.settings.background_gradient_color }} 100%);
+    padding: 60px 20px;
+  }
+
+  .ai-contact-container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ai-contact-hero-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .ai-contact-hero-title-{{ ai_gen_id }} {
+    font-family: var(--font-heading-family);
+    font-size: {{ block.settings.hero_title_size }}px;
+    color: {{ block.settings.hero_title_color }};
+    margin: 0 0 16px;
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+  }
+
+  .ai-contact-hero-subtitle-{{ ai_gen_id }} {
+    font-size: {{ block.settings.hero_subtitle_size }}px;
+    color: {{ block.settings.hero_subtitle_color }};
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .ai-contact-details-section-{{ ai_gen_id }} {
+    margin-bottom: 60px;
+  }
+
+  .ai-contact-details-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .ai-contact-card-{{ ai_gen_id }} {
+    background: {{ block.settings.card_background }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(42, 42, 42, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ai-contact-card-{{ ai_gen_id }}:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(42, 42, 42, 0.08);
+  }
+
+  .ai-contact-card-icon-{{ ai_gen_id }} {
+    font-size: 32px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .ai-contact-card-title-{{ ai_gen_id }} {
+    font-size: 18px;
+    font-weight: 600;
+    color: {{ block.settings.card_title_color }};
+    margin: 0 0 12px;
+  }
+
+  .ai-contact-card-content-{{ ai_gen_id }} {
+    font-size: 15px;
+    color: {{ block.settings.card_text_color }};
+    line-height: 1.6;
+  }
+
+  .ai-contact-card-link-{{ ai_gen_id }} {
+    color: {{ block.settings.link_color }};
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .ai-contact-card-link-{{ ai_gen_id }}:hover {
+    opacity: 0.7;
+  }
+
+  .ai-contact-social-section-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .ai-contact-social-title-{{ ai_gen_id }} {
+    font-size: 28px;
+    font-weight: 600;
+    color: {{ block.settings.social_title_color }};
+    margin: 0 0 24px;
+  }
+
+  .ai-contact-social-links-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .ai-contact-social-link-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: {{ block.settings.social_icon_background }};
+    color: {{ block.settings.social_icon_color }};
+    text-decoration: none;
+    font-size: 24px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  .ai-contact-social-link-{{ ai_gen_id }}:hover {
+    transform: scale(1.1);
+    background: {{ block.settings.social_icon_hover_background }};
+  }
+
+  .ai-contact-form-section-{{ ai_gen_id }} {
+    max-width: 700px;
+    margin: 0 auto 60px;
+    background: {{ block.settings.form_background }};
+    border-radius: {{ block.settings.form_border_radius }}px;
+    padding: 40px;
+    box-shadow: 0 4px 16px rgba(42, 42, 42, 0.06);
+  }
+
+  .ai-contact-form-title-{{ ai_gen_id }} {
+    font-family: var(--font-heading-family);
+    font-size: 28px;
+    font-weight: 400;
+    color: {{ block.settings.form_title_color }};
+    margin: 0 0 24px;
+    text-align: center;
+    letter-spacing: -0.02em;
+  }
+
+  .ai-contact-form-field-{{ ai_gen_id }} {
+    margin-bottom: 20px;
+  }
+
+  .ai-contact-form-label-{{ ai_gen_id }} {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: {{ block.settings.form_label_color }};
+    margin-bottom: 8px;
+  }
+
+  .ai-contact-form-input-{{ ai_gen_id }},
+  .ai-contact-form-textarea-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid {{ block.settings.form_input_border }};
+    border-radius: 8px;
+    font-size: 15px;
+    color: {{ block.settings.form_input_text }};
+    background: {{ block.settings.form_input_background }};
+    transition: border-color 0.3s ease;
+  }
+
+  .ai-contact-form-input-{{ ai_gen_id }}:focus,
+  .ai-contact-form-textarea-{{ ai_gen_id }}:focus {
+    outline: none;
+    border-color: {{ block.settings.form_input_focus_border }};
+  }
+
+  .ai-contact-form-textarea-{{ ai_gen_id }} {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .ai-contact-form-button-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 16px 32px;
+    background: {{ block.settings.form_button_background }};
+    color: {{ block.settings.form_button_text_color }};
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .ai-contact-form-button-{{ ai_gen_id }}:hover {
+    background: {{ block.settings.form_button_hover_background }};
+    transform: translateY(-2px);
+  }
+
+  .ai-contact-form-success-{{ ai_gen_id }} {
+    background: #d4edda;
+    color: #155724;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .ai-contact-form-error-{{ ai_gen_id }} {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .ai-contact-trust-line-{{ ai_gen_id }} {
+    text-align: center;
+    font-size: 15px;
+    color: {{ block.settings.trust_text_color }};
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  @media screen and (max-width: 768px) {
+    .ai-contact-page-{{ ai_gen_id }} {
+      padding: 40px 16px;
+    }
+
+    .ai-contact-hero-{{ ai_gen_id }} {
+      margin-bottom: 40px;
+    }
+
+    .ai-contact-hero-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.hero_title_size | times: 0.7 }}px;
+    }
+
+    .ai-contact-hero-subtitle-{{ ai_gen_id }} {
+      font-size: {{ block.settings.hero_subtitle_size | times: 0.9 }}px;
+    }
+
+    .ai-contact-details-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .ai-contact-form-section-{{ ai_gen_id }} {
+      padding: 24px;
+    }
+
+    .ai-contact-social-title-{{ ai_gen_id }} {
+      font-size: 24px;
+    }
+  }
+{% endstyle %}
+
+<contact-page-{{ ai_gen_id }} class="ai-contact-page-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-contact-container-{{ ai_gen_id }}">
+    {% if block.settings.show_form %}
+      <div class="ai-contact-form-section-{{ ai_gen_id }}">
+        <h2 class="ai-contact-form-title-{{ ai_gen_id }}">{{ block.settings.form_title }}</h2>
+        
+        {%- form 'contact' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="ai-contact-form-success-{{ ai_gen_id }}" id="ai-contact-form-success-{{ ai_gen_id }}">
+              {{ block.settings.form_success_message }}
+            </div>
+          {%- endif -%}
+
+          {%- if form.errors -%}
+            <div class="ai-contact-form-error-{{ ai_gen_id }}" id="ai-contact-form-error-{{ ai_gen_id }}">
+              {{ form.errors | default_errors }}
+            </div>
+          {%- endif -%}
+
+          <div class="ai-contact-form-field-{{ ai_gen_id }}">
+            <label for="contact-name-{{ ai_gen_id }}" class="ai-contact-form-label-{{ ai_gen_id }}">Name *</label>
+            <input
+              type="text"
+              id="contact-name-{{ ai_gen_id }}"
+              name="contact[name]"
+              class="ai-contact-form-input-{{ ai_gen_id }}"
+              required
+              aria-required="true"
+              {% if form.errors %}
+                aria-invalid="true"
+                aria-describedby="ai-contact-form-error-{{ ai_gen_id }}"
+              {% endif %}
+              {% if form.posted_successfully? %}
+                aria-describedby="ai-contact-form-success-{{ ai_gen_id }}"
+              {% endif %}
+            >
+          </div>
+
+          <div class="ai-contact-form-field-{{ ai_gen_id }}">
+            <label for="contact-email-{{ ai_gen_id }}" class="ai-contact-form-label-{{ ai_gen_id }}">Email *</label>
+            <input
+              type="email"
+              id="contact-email-{{ ai_gen_id }}"
+              name="contact[email]"
+              class="ai-contact-form-input-{{ ai_gen_id }}"
+              required
+              aria-required="true"
+              autocomplete="email"
+            >
+          </div>
+
+          <div class="ai-contact-form-field-{{ ai_gen_id }}">
+            <label for="contact-phone-{{ ai_gen_id }}" class="ai-contact-form-label-{{ ai_gen_id }}">Phone Number</label>
+            <input
+              type="tel"
+              id="contact-phone-{{ ai_gen_id }}"
+              name="contact[phone]"
+              class="ai-contact-form-input-{{ ai_gen_id }}"
+              autocomplete="tel"
+            >
+          </div>
+
+          <div class="ai-contact-form-field-{{ ai_gen_id }}">
+            <label for="contact-order-{{ ai_gen_id }}" class="ai-contact-form-label-{{ ai_gen_id }}">Order ID (Optional)</label>
+            <input
+              type="text"
+              id="contact-order-{{ ai_gen_id }}"
+              name="contact[order_id]"
+              class="ai-contact-form-input-{{ ai_gen_id }}"
+            >
+          </div>
+
+          <div class="ai-contact-form-field-{{ ai_gen_id }}">
+            <label for="contact-message-{{ ai_gen_id }}" class="ai-contact-form-label-{{ ai_gen_id }}">Message *</label>
+            <textarea
+              id="contact-message-{{ ai_gen_id }}"
+              name="contact[body]"
+              class="ai-contact-form-textarea-{{ ai_gen_id }}"
+              required
+              aria-required="true"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="ai-contact-form-button-{{ ai_gen_id }}">
+            {{ block.settings.form_button_label }}
+          </button>
+        {%- endform -%}
+      </div>
+    {% endif %}
+
+    {% if block.settings.trust_line != blank %}
+      <div class="ai-contact-trust-line-{{ ai_gen_id }}">
+        {{ block.settings.trust_line }}
+      </div>
+    {% endif %}
+  </div>
+</contact-page-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ContactPage{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        const form = this.querySelector('form');
+        if (form && form.classList.contains('contact-form')) {
+          const successMessage = this.querySelector('.ai-contact-form-success-{{ ai_gen_id }}');
+          if (successMessage) {
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
+      }
+    }
+
+    customElements.define('contact-page-{{ ai_gen_id }}', ContactPage{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Contact us page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero section"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "hero_title",
+      "label": "Title",
+      "default": "We'd Love to Hear From You ✨"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "hero_subtitle",
+      "label": "Subtitle",
+      "default": "Whether you have a question about our jewellery, need help with your order, or just want to say hello. We're always here for you."
+    },
+    {
+      "type": "range",
+      "id": "hero_title_size",
+      "label": "Title size",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "hero_subtitle_size",
+      "label": "Subtitle size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "hero_title_color",
+      "label": "Title color",
+      "default": "#18302a"
+    },
+    {
+      "type": "color",
+      "id": "hero_subtitle_color",
+      "label": "Subtitle color",
+      "default": "#5a4e44"
+    },
+    {
+      "type": "header",
+      "content": "Phone"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone",
+      "label": "Show phone",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "phone_title",
+      "label": "Title",
+      "default": "Phone"
+    },
+    {
+      "type": "text",
+      "id": "phone_number",
+      "label": "Phone number",
+      "default": "+91-XXXXXXXXXX"
+    },
+    {
+      "type": "header",
+      "content": "WhatsApp"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_whatsapp",
+      "label": "Show WhatsApp",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_title",
+      "label": "Title",
+      "default": "WhatsApp"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_text",
+      "label": "Link text",
+      "default": "Tap to chat instantly!"
+    },
+    {
+      "type": "url",
+      "id": "whatsapp_link",
+      "label": "WhatsApp link"
+    },
+    {
+      "type": "header",
+      "content": "Email"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_email",
+      "label": "Show email",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "email_title",
+      "label": "Title",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "email_address",
+      "label": "Email address",
+      "default": "contact@ashtitva.com"
+    },
+    {
+      "type": "header",
+      "content": "Business hours"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_hours",
+      "label": "Show business hours",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "hours_title",
+      "label": "Title",
+      "default": "Business Hours"
+    },
+    {
+      "type": "text",
+      "id": "business_hours",
+      "label": "Hours",
+      "default": "Monday to Saturday, 10:00 AM to 7:00 PM IST"
+    },
+    {
+      "type": "header",
+      "content": "Address"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_address",
+      "label": "Show address",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "address_title",
+      "label": "Title",
+      "default": "Address"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address"
+    },
+    {
+      "type": "header",
+      "content": "Social media"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "label": "Show social media",
+      "default": true
+    },
+    {
+      "type": "inline_richtext",
+      "id": "social_title",
+      "label": "Title",
+      "default": "Follow Us & Stay Inspired 💎"
+    },
+    {
+      "type": "paragraph",
+      "content": "Social profile links are managed in Theme settings → Social media. Update them once to apply across the site."
+    },
+    {
+      "type": "header",
+      "content": "Contact form"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_form",
+      "label": "Show contact form",
+      "default": true
+    },
+    {
+      "type": "inline_richtext",
+      "id": "form_title",
+      "label": "Form title",
+      "default": "Send Us a Message"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "form_button_label",
+      "label": "Button label",
+      "default": "Send Message"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "form_success_message",
+      "label": "Success message",
+      "default": "Thank you! We've received your message and will respond within 24 hours."
+    },
+    {
+      "type": "header",
+      "content": "Trust message"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "trust_line",
+      "label": "Trust message",
+      "default": "We typically respond within 24 hours. Your trust means everything to us, just like every piece of jewellery we craft."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background start",
+      "default": "#fdf9f2"
+    },
+    {
+      "type": "color",
+      "id": "background_gradient_color",
+      "label": "Background end",
+      "default": "#fdf9f2"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Card title",
+      "default": "#18302a"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card text",
+      "default": "#5a4e44"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link color",
+      "default": "#c5a059"
+    },
+    {
+      "type": "color",
+      "id": "social_title_color",
+      "label": "Social title",
+      "default": "#18302a"
+    },
+    {
+      "type": "color",
+      "id": "social_icon_background",
+      "label": "Social icon background",
+      "default": "#c5a059"
+    },
+    {
+      "type": "color",
+      "id": "social_icon_color",
+      "label": "Social icon color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "social_icon_hover_background",
+      "label": "Social icon hover",
+      "default": "#5a4e44"
+    },
+    {
+      "type": "color",
+      "id": "form_background",
+      "label": "Form background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "form_title_color",
+      "label": "Form title",
+      "default": "#18302a"
+    },
+    {
+      "type": "color",
+      "id": "form_label_color",
+      "label": "Form label",
+      "default": "#0e2c20"
+    },
+    {
+      "type": "color",
+      "id": "form_input_text",
+      "label": "Input text",
+      "default": "#0e2c20"
+    },
+    {
+      "type": "color",
+      "id": "form_input_background",
+      "label": "Input background",
+      "default": "#fdf9f2"
+    },
+    {
+      "type": "color",
+      "id": "form_input_border",
+      "label": "Input border",
+      "default": "#f3ebd8"
+    },
+    {
+      "type": "color",
+      "id": "form_input_focus_border",
+      "label": "Input focus border",
+      "default": "#c5a059"
+    },
+    {
+      "type": "color",
+      "id": "form_button_background",
+      "label": "Button background",
+      "default": "#c5a059"
+    },
+    {
+      "type": "color",
+      "id": "form_button_text_color",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "form_button_hover_background",
+      "label": "Button hover",
+      "default": "#5a4e44"
+    },
+    {
+      "type": "color",
+      "id": "trust_text_color",
+      "label": "Trust message",
+      "default": "#5a4e44"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "form_border_radius",
+      "label": "Form border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact us page"
+    }
+  ]
+}
+{% endschema %}

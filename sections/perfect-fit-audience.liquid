@@ -1,0 +1,1109 @@
+{%- comment -%}
+  Perfect Fit Audience
+  Collection cards for occasion-based shopping — each block links to a Shopify collection.
+{%- endcomment -%}
+
+{%- liquid
+  assign sid = section.id
+  assign pfa_layout = section.settings.layout_style | default: 'editorial'
+-%}
+
+{%- style -%}
+  #pfa-{{ sid }} {
+    --pfa-bg: {{ section.settings.color_background }};
+    --pfa-surface: {{ section.settings.color_surface }};
+    --pfa-heading: {{ section.settings.color_heading }};
+    --pfa-text: {{ section.settings.color_text }};
+    --pfa-accent: {{ section.settings.color_accent }};
+    --pfa-highlight-bg: {{ section.settings.color_highlight_bg }};
+    --pfa-highlight-text: {{ section.settings.color_highlight_text }};
+    --pfa-icon: {{ section.settings.color_icon }};
+    --pfa-icon-bg: {{ section.settings.color_icon_bg }};
+    --pfa-label: {{ section.settings.color_label }};
+    --pfa-container: {% if section.settings.full_width %}100%{% else %}{{ section.settings.container_width }}px{% endif %};
+    --pfa-pad-top-d: {{ section.settings.padding_top_desktop }}px;
+    --pfa-pad-bottom-d: {{ section.settings.padding_bottom_desktop }}px;
+    --pfa-pad-top-m: {{ section.settings.padding_top_mobile }}px;
+    --pfa-pad-bottom-m: {{ section.settings.padding_bottom_mobile }}px;
+    --pfa-heading-size-d: {{ section.settings.heading_size_desktop }}px;
+    --pfa-heading-size-m: {{ section.settings.heading_size_mobile }}px;
+    --pfa-subtext-size: {{ section.settings.subtext_size }}px;
+    --pfa-label-size-d: {{ section.settings.label_size_desktop }}px;
+    --pfa-label-size-m: {{ section.settings.label_size_mobile }}px;
+    --pfa-icon-size-d: {{ section.settings.icon_size_desktop }}px;
+    --pfa-icon-size-m: {{ section.settings.icon_size_mobile }}px;
+    --pfa-cols-d: {{ section.settings.columns_desktop }};
+    --pfa-cols-t: {{ section.settings.columns_tablet }};
+    --pfa-cols-m: {{ section.settings.columns_mobile }};
+    --pfa-gap: {{ section.settings.item_gap }}px;
+    --pfa-radius: {{ section.settings.item_radius }}px;
+    --pfa-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  #pfa-{{ sid }} {
+    position: relative;
+    isolation: isolate;
+    padding-top: var(--pfa-pad-top-m);
+    padding-bottom: var(--pfa-pad-bottom-m);
+    color: var(--pfa-text);
+    background-color: var(--pfa-bg);
+    overflow: clip;
+  }
+
+  #pfa-{{ sid }}::before,
+  #pfa-{{ sid }}::after {
+    content: none;
+  }
+
+  {% if section.settings.pattern_image != blank %}
+    #pfa-{{ sid }} .pfa__bottom-pattern {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: min(38%, 16rem);
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      mask-image: linear-gradient(180deg, transparent 0%, #000 55%, #000 100%);
+      -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 55%, #000 100%);
+      background-image: url({{ section.settings.pattern_image | image_url: width: 800 }});
+      background-position: center bottom;
+      background-repeat: repeat;
+      background-size: {{ section.settings.pattern_size }}px;
+    }
+  {% elsif section.settings.use_default_pattern %}
+    #pfa-{{ sid }} .pfa__bottom-pattern {
+      display: none;
+    }
+  {% endif %}
+
+  #pfa-{{ sid }} .pfa__inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: var(--pfa-container);
+    margin: 0 auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    box-sizing: border-box;
+  }
+
+  #pfa-{{ sid }} .pfa__header {
+    max-width: {{ section.settings.heading_max_width }}px;
+    margin: 0 auto {% if section.settings.subtext != blank %}1.2rem{% else %}3rem{% endif %};
+    text-align: {{ section.settings.heading_alignment }};
+  }
+
+  #pfa-{{ sid }} .pfa__eyebrow {
+    margin: 0 0 0.85rem;
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--pfa-accent);
+  }
+
+  #pfa-{{ sid }} .pfa__heading {
+    margin: 0;
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style, normal);
+    font-weight: {{ section.settings.heading_weight }};
+    font-size: var(--pfa-heading-size-m);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    color: var(--pfa-heading);
+    text-wrap: balance;
+  }
+
+  #pfa-{{ sid }} .pfa__highlight {
+    color: inherit;
+    background: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+    font-weight: inherit;
+  }
+
+  #pfa-{{ sid }} .pfa__subtext {
+    max-width: min({{ section.settings.heading_max_width }}px, 36rem);
+    margin: 0 auto 2.4rem;
+    text-align: {{ section.settings.heading_alignment }};
+    font-size: var(--pfa-subtext-size);
+    line-height: 1.7;
+    color: var(--pfa-text);
+  }
+
+  #pfa-{{ sid }} .pfa__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--pfa-cols-m), minmax(0, 1fr));
+    gap: var(--pfa-gap);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: stretch;
+  }
+
+  /* —— Icon layout (legacy) —— */
+  #pfa-{{ sid }}:not(.pfa--editorial) .pfa__item,
+  #pfa-{{ sid }}:not(.pfa--editorial) a.pfa__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    min-height: 9.5rem;
+    padding: {{ section.settings.item_padding_y }}px {{ section.settings.item_padding_x }}px;
+    border-radius: var(--pfa-radius);
+    background: var(--pfa-surface);
+    border: 1px solid color-mix(in srgb, var(--pfa-heading) 8%, transparent);
+    box-shadow: none;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition:
+      transform 0.4s var(--pfa-ease),
+      border-color 0.4s var(--pfa-ease);
+  }
+
+  #pfa-{{ sid }} .pfa__item--static {
+    cursor: default;
+  }
+
+  #pfa-{{ sid }}:not(.pfa--editorial) .pfa__icon {
+    position: relative;
+    z-index: 1;
+    flex: 0 0 auto;
+    width: var(--pfa-icon-size-m);
+    height: var(--pfa-icon-size-m);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pfa-icon);
+    margin: 0 0 0.75rem;
+    border-radius: 50%;
+    background: var(--pfa-icon-bg);
+  }
+
+  #pfa-{{ sid }}:not(.pfa--editorial) .pfa__icon svg,
+  #pfa-{{ sid }}:not(.pfa--editorial) .pfa__icon img {
+    width: 52%;
+    height: 52%;
+    display: block;
+    object-fit: contain;
+  }
+
+  #pfa-{{ sid }}:not(.pfa--editorial) .pfa__icon--photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #pfa-{{ sid }}:not(.pfa--editorial) .pfa__label {
+    margin: 0;
+    min-height: 2.7em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--pfa-label-size-m);
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--pfa-label);
+  }
+
+  /* —— Editorial layout —— */
+  #pfa-{{ sid }}.pfa--editorial .pfa__item,
+  #pfa-{{ sid }}.pfa--editorial a.pfa__item {
+    position: relative;
+    display: block;
+    height: 100%;
+    min-height: 0;
+    padding: 0;
+    border-radius: var(--pfa-radius);
+    overflow: hidden;
+    background: var(--ashtitva-green);
+    border: none;
+    text-decoration: none;
+    color: var(--ashtitva-ivory);
+    aspect-ratio: 3 / 4;
+  }
+
+  #pfa-{{ sid }}.pfa--editorial .pfa__media {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  #pfa-{{ sid }}.pfa--editorial .pfa__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.45s var(--pfa-ease);
+  }
+
+  #pfa-{{ sid }}.pfa--editorial .pfa__media-fallback {
+    width: 100%;
+    height: 100%;
+    background:
+      linear-gradient(165deg, var(--ashtitva-green) 0%, var(--ashtitva-green-dark) 100%);
+  }
+
+  #pfa-{{ sid }}.pfa--editorial .pfa__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      transparent 35%,
+      color-mix(in srgb, var(--ashtitva-deep) 55%, transparent) 72%,
+      color-mix(in srgb, var(--ashtitva-deep) 82%, transparent) 100%
+    );
+    pointer-events: none;
+  }
+
+  #pfa-{{ sid }}.pfa--editorial .pfa__content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    padding: 1.4rem 1.2rem 1.5rem;
+    text-align: left;
+  }
+
+  #pfa-{{ sid }}.pfa--editorial .pfa__label {
+    margin: 0;
+    min-height: 0;
+    display: block;
+    font-size: var(--pfa-label-size-m);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.3;
+    color: var(--ashtitva-ivory);
+    transition: color 0.35s var(--pfa-ease);
+  }
+
+  #pfa-{{ sid }}.pfa--editorial .pfa__support {
+    margin: 0.45rem 0 0;
+    font-size: 1.25rem;
+    line-height: 1.45;
+    color: color-mix(in srgb, var(--ashtitva-ivory) 78%, transparent);
+  }
+
+  {% if section.settings.enable_hover %}
+    @media (hover: hover) {
+      #pfa-{{ sid }}.pfa--editorial a.pfa__item:hover .pfa__media img {
+        transform: scale(1.03);
+      }
+
+      #pfa-{{ sid }}.pfa--editorial a.pfa__item:hover .pfa__label {
+        color: var(--pfa-accent);
+      }
+
+      #pfa-{{ sid }}:not(.pfa--editorial) .pfa__item:hover {
+        border-color: color-mix(in srgb, var(--pfa-accent) 35%, transparent);
+      }
+    }
+  {% endif %}
+
+  #pfa-{{ sid }} a.pfa__item:focus-visible {
+    outline: 2px solid var(--pfa-accent);
+    outline-offset: 3px;
+  }
+
+  #pfa-{{ sid }} .pfa-anim {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 0.5s var(--pfa-ease),
+      transform 0.5s var(--pfa-ease);
+  }
+
+  #pfa-{{ sid }} .pfa-anim.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  #pfa-{{ sid }} li.pfa-anim {
+    transition-delay: calc(var(--pfa-stagger, 0) * 40ms);
+    height: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #pfa-{{ sid }} .pfa-anim {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    #pfa-{{ sid }}.pfa--editorial .pfa__media img {
+      transition: none;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    #pfa-{{ sid }} {
+      padding-top: var(--pfa-pad-top-d);
+      padding-bottom: var(--pfa-pad-bottom-d);
+    }
+
+    #pfa-{{ sid }} .pfa__inner {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    #pfa-{{ sid }} .pfa__heading {
+      font-size: var(--pfa-heading-size-d);
+    }
+
+    #pfa-{{ sid }} .pfa__grid {
+      grid-template-columns: repeat(var(--pfa-cols-t), minmax(0, 1fr));
+    }
+
+    #pfa-{{ sid }}:not(.pfa--editorial) .pfa__icon {
+      width: var(--pfa-icon-size-d);
+      height: var(--pfa-icon-size-d);
+    }
+
+    #pfa-{{ sid }} .pfa__label {
+      font-size: var(--pfa-label-size-d);
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    #pfa-{{ sid }} .pfa__inner {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+
+    #pfa-{{ sid }} .pfa__grid {
+      grid-template-columns: repeat(var(--pfa-cols-d), minmax(0, 1fr));
+    }
+  }
+{%- endstyle -%}
+
+<section
+  id="pfa-{{ sid }}"
+  class="pfa{% if pfa_layout == 'editorial' %} pfa--editorial{% endif %}"
+  {% if section.settings.heading != blank %}
+    aria-labelledby="pfa-heading-{{ sid }}"
+  {% else %}
+    aria-label="Celebrate every moment"
+  {% endif %}
+>
+  {%- if section.settings.pattern_image != blank or section.settings.use_default_pattern -%}
+    <div class="pfa__bottom-pattern" aria-hidden="true"></div>
+  {%- endif -%}
+  <div class="pfa__inner">
+    {%- if section.settings.heading != blank or section.settings.highlight_text != blank -%}
+      <div class="pfa__header pfa-anim" data-pfa-anim>
+        {%- if section.settings.highlight_text != blank and pfa_layout == 'editorial' -%}
+          <p class="pfa__eyebrow">{{ section.settings.highlight_text | escape }}</p>
+        {%- endif -%}
+        <h2 id="pfa-heading-{{ sid }}" class="pfa__heading">
+          {%- if section.settings.heading != blank -%}
+            {{ section.settings.heading | escape }}
+          {%- endif -%}
+          {%- if section.settings.highlight_text != blank and pfa_layout != 'editorial' -%}
+            <span class="pfa__highlight">{{ section.settings.highlight_text | escape }}</span>
+          {%- endif -%}
+        </h2>
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.subtext != blank -%}
+      <p class="pfa__subtext pfa-anim" data-pfa-anim>{{ section.settings.subtext | escape }}</p>
+    {%- endif -%}
+
+    <ul class="pfa__grid" role="list">
+      {%- assign item_index = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'audience' and block.settings.enabled -%}
+          {%- assign pfa_collection = block.settings.collection -%}
+          {%- assign pfa_title = block.settings.title -%}
+          {%- if pfa_title == blank and pfa_collection != blank -%}
+            {%- assign pfa_title = pfa_collection.title -%}
+          {%- endif -%}
+          {%- assign pfa_image = block.settings.image -%}
+          {%- if pfa_image == blank and pfa_collection != blank and pfa_collection.featured_image != blank -%}
+            {%- assign pfa_image = pfa_collection.featured_image -%}
+          {%- endif -%}
+          {%- assign pfa_url = blank -%}
+          {%- if pfa_collection != blank -%}
+            {%- assign pfa_url = pfa_collection.url -%}
+          {%- endif -%}
+          {%- assign pfa_support = block.settings.support_text -%}
+
+          {%- if pfa_title != blank or pfa_image != blank or pfa_collection != blank -%}
+            <li
+              class="pfa-anim"
+              data-pfa-anim
+              style="--pfa-stagger: {{ item_index }};"
+              {{ block.shopify_attributes }}
+            >
+              {%- if pfa_url != blank -%}
+                <a
+                  class="pfa__item"
+                  href="{{ pfa_url }}"
+                  {% if pfa_title != blank %}aria-label="Shop {{ pfa_title | escape }}"{% endif %}
+                >
+              {%- else -%}
+                <div class="pfa__item pfa__item--static">
+              {%- endif -%}
+
+              {%- if pfa_layout == 'editorial' -%}
+                  <div class="pfa__media">
+                    {%- if pfa_image != blank -%}
+                      {%- assign media_alt = pfa_title | default: 'Collection' -%}
+                      {{
+                        pfa_image
+                        | image_url: width: 900
+                        | image_tag:
+                          loading: 'lazy',
+                          decoding: 'async',
+                          widths: '320, 480, 640, 800, 900',
+                          sizes: '(min-width: 990px) 20vw, (min-width: 750px) 30vw, 45vw',
+                          alt: media_alt
+                      }}
+                    {%- else -%}
+                      <div class="pfa__media-fallback" aria-hidden="true"></div>
+                    {%- endif -%}
+                  </div>
+                  <div class="pfa__overlay" aria-hidden="true"></div>
+                  <div class="pfa__content">
+                    {%- if pfa_title != blank -%}
+                      <p class="pfa__label">{{ pfa_title | escape }}</p>
+                    {%- endif -%}
+                    {%- if pfa_support != blank -%}
+                      <p class="pfa__support">{{ pfa_support | escape }}</p>
+                    {%- endif -%}
+                  </div>
+              {%- else -%}
+                  <div class="pfa__icon{% if section.settings.icon_style == 'framed' %} pfa__icon--framed{% endif %}{% if pfa_image != blank %} pfa__icon--photo{% endif %}">
+                    {%- if pfa_image != blank -%}
+                      {%- assign icon_alt = pfa_title | default: 'Collection' -%}
+                      {{
+                        pfa_image
+                        | image_url: width: 300
+                        | image_tag:
+                          loading: 'lazy',
+                          decoding: 'async',
+                          widths: '80, 120, 160, 200, 300',
+                          sizes: '(min-width: 750px) 72px, 48px',
+                          alt: icon_alt
+                      }}
+                    {%- else -%}
+                      {%- case block.settings.icon -%}
+                        {%- when 'bride' -%}
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6c-3.2 0-5.8 2.8-5.8 6.2 0 2.4 1.2 4.5 3 5.6L18 28h12l-3.2-10.2c1.8-1.1 3-3.2 3-5.6C29.8 8.8 27.2 6 24 6Z"/><path d="M16 42c1.5-5 4.4-8 8-8s6.5 3 8 8"/><path d="M12 18c2.5 1.5 5 2.2 8 2.2M36 18c-2.5 1.5-5 2.2-8 2.2"/><circle cx="24" cy="11.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+                        {%- when 'bridesmaid' -%}
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="14" r="5.5"/><path d="M14 42c1.8-7.5 5.5-11.5 10-11.5S32.2 34.5 34 42"/><path d="M18 24.5c-3.2.8-5.8 3-7 6.5M30 24.5c3.2.8 5.8 3 7 6.5"/><path d="M24 8.5V6M20.5 10l-1.5-1.5M27.5 10l1.5-1.5"/></svg>
+                        {%- when 'sisters' -%}
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="14" r="4.5"/><circle cx="32" cy="14" r="4.5"/><path d="M7 40c1.2-6.5 4.2-10 9-10s7.8 3.5 9 10"/><path d="M23 40c1.2-6.5 4.2-10 9-10s7.8 3.5 9 10"/><path d="M21 24.5c1.5 1.2 3.5 1.8 5.5 1.2"/></svg>
+                        {%- when 'family' -%}
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="13" r="4"/><circle cx="32" cy="13" r="4"/><circle cx="24" cy="20" r="3.2"/><path d="M8 40c1-6 3.5-9.5 8-9.5S23 34 24 40"/><path d="M24 40c1-6 3.5-9.5 8-9.5S39 34 40 40"/><path d="M20.5 30.5c1-.8 2.2-1.2 3.5-1.2s2.5.4 3.5 1.2"/></svg>
+                        {%- when 'gift' -%}
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="20" width="28" height="18" rx="2"/><path d="M10 28h28M24 20v18"/><path d="M24 20c-3.5-5-8-5.5-9.5-3.5S15.5 21 18 22c2 .8 4.2.2 6-2Z"/><path d="M24 20c3.5-5 8-5.5 9.5-3.5S32.5 21 30 22c-2 .8-4.2.2-6-2Z"/></svg>
+                        {%- when 'guest' -%}
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 8 28 16h8l-6.5 5 2.5 8L24 24l-8 5 2.5-8L12 16h8z"/><path d="M12 40c2-5 6-8 12-8s10 3 12 8"/></svg>
+                        {%- when 'party' -%}
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 40 34 12l2 1-8 28z"/><path d="M16 14c2 1.5 3.5 4 3.5 6.5M12 22c2.2 0 4 1.8 4 4M28 10c1.5-2 4-3 6.5-2.5M34 8c1-2.2 3.2-3.5 5.5-3.5"/><circle cx="14" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="38" cy="18" r="1.2" fill="currentColor" stroke="none"/></svg>
+                        {%- when 'birthday' -%}
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 22h28v16a2 2 0 0 1-2 2H12a2 2 0 0 1-2-2V22Z"/><path d="M10 28h28M24 10v8M24 10c0-2 1.5-3.5 1.5-3.5S27 10 24 10ZM16 14v6M32 14v6M16 14c0-1.5 1-2.8 1-2.8S18 14 16 14ZM32 14c0-1.5 1-2.8 1-2.8S34 14 32 14Z"/></svg>
+                        {%- when 'festive' -%}
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 10c-5 4.5-8 9-8 13.5a8 8 0 0 0 16 0C32 19 29 14.5 24 10Z"/><path d="M24 8v2M16 14l-1.5-1.5M32 14l1.5-1.5"/><path d="M14 36h20M18 36c1.5 3 4 5 6 5s4.5-2 6-5"/><circle cx="24" cy="22" r="2" fill="currentColor" stroke="none"/></svg>
+                        {%- when 'anniversary' -%}
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 40s-12-7.8-12-16.5A7.5 7.5 0 0 1 24 18a7.5 7.5 0 0 1 12 5.5C36 32.2 24 40 24 40Z"/><path d="M18 14c1-3 3.5-5 6-5M30 14c-1-3-3.5-5-6-5"/></svg>
+                        {%- when 'everyday' -%}
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="10"/><path d="M24 10v4M24 34v4M10 24h4M34 24h4"/><circle cx="24" cy="24" r="3"/></svg>
+                        {%- when 'sparkle' -%}
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 8l2.2 8.2L34 18l-7.8 2.8L24 30l-2.2-9.2L14 18l7.8-1.8L24 8Z"/><path d="M34 28l1.2 4.2L40 34l-4.8 1.4L34 40l-1.2-4.6L28 34l4.8-1.8L34 28Z"/><path d="M12 30l1 3.2L16 34l-3 1L12 38l-1-3-3-1 3-1.2L12 30Z"/></svg>
+                        {%- else -%}
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 40s-12-7.8-12-16.5A7.5 7.5 0 0 1 24 18a7.5 7.5 0 0 1 12 5.5C36 32.2 24 40 24 40Z"/></svg>
+                      {%- endcase -%}
+                    {%- endif -%}
+                  </div>
+                  {%- if pfa_title != blank -%}
+                    <p class="pfa__label">{{ pfa_title | escape }}</p>
+                  {%- endif -%}
+              {%- endif -%}
+
+              {%- if pfa_url != blank -%}
+                </a>
+              {%- else -%}
+                </div>
+              {%- endif -%}
+            </li>
+            {%- assign item_index = item_index | plus: 1 -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var root = document.getElementById('pfa-{{ sid }}');
+    if (!root) return;
+
+    var items = root.querySelectorAll('[data-pfa-anim]');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('is-visible'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -24px 0px' }
+    );
+
+    items.forEach(function (el) { observer.observe(el); });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Perfect Fit Audience",
+  "tag": "section",
+  "class": "section-perfect-fit-audience",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "select",
+      "id": "layout_style",
+      "label": "Layout style",
+      "options": [
+        { "value": "editorial", "label": "Editorial imagery" },
+        { "value": "icons", "label": "Icon cards" }
+      ],
+      "default": "editorial"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Celebrate Every Moment"
+    },
+    {
+      "type": "text",
+      "id": "highlight_text",
+      "label": "Eyebrow / highlighted text",
+      "default": "Shop by moment"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Jewellery styled for every celebration, from your wedding day to everyday elegance."
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "heading_max_width",
+      "min": 420,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "label": "Heading max width",
+      "default": 720
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "min": 900,
+      "max": 1400,
+      "step": 20,
+      "unit": "px",
+      "label": "Container width",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 3,
+      "max": 6,
+      "step": 1,
+      "label": "Columns (desktop)",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Columns (tablet)",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Columns (mobile)",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "item_gap",
+      "min": 8,
+      "max": 28,
+      "step": 2,
+      "unit": "px",
+      "label": "Item gap",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "item_radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Item corner radius",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "item_padding_y",
+      "min": 12,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Item padding (vertical)",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "item_padding_x",
+      "min": 8,
+      "max": 28,
+      "step": 2,
+      "unit": "px",
+      "label": "Item padding (horizontal)",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "icon_style",
+      "label": "Icon style",
+      "options": [
+        { "value": "plain", "label": "Plain (no frame)" },
+        { "value": "framed", "label": "Soft circle frame" }
+      ],
+      "default": "framed"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_hover",
+      "label": "Enable hover lift",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Background pattern"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_default_pattern",
+      "label": "Use dotted pattern overlay",
+      "info": "Optional. Animated ambiance is always on; this adds a subtle pattern on top.",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "pattern_image",
+      "label": "Custom pattern image",
+      "info": "Optional overlay. Overrides the default dotted pattern when set."
+    },
+    {
+      "type": "range",
+      "id": "pattern_size",
+      "min": 80,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "label": "Custom pattern tile size",
+      "default": 180
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_surface",
+      "label": "Item surface",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_heading",
+      "label": "Heading",
+      "default": "#18302a"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Subtext",
+      "default": "#5C5660"
+    },
+    {
+      "type": "color",
+      "id": "color_accent",
+      "label": "Accent (glow)",
+      "default": "#C5A059"
+    },
+    {
+      "type": "color",
+      "id": "color_highlight_bg",
+      "label": "Highlight background",
+      "default": "#C5A059"
+    },
+    {
+      "type": "color",
+      "id": "color_highlight_text",
+      "label": "Highlight text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_icon",
+      "label": "Icon",
+      "default": "#8A6A4A"
+    },
+    {
+      "type": "color",
+      "id": "color_icon_bg",
+      "label": "Icon circle background",
+      "default": "#FBF8F4"
+    },
+    {
+      "type": "color",
+      "id": "color_label",
+      "label": "Item label",
+      "default": "#202336"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 24,
+      "max": 56,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading size (desktop)",
+      "default": 38
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 18,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading size (mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_weight",
+      "min": 400,
+      "max": 700,
+      "step": 100,
+      "label": "Heading weight",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "subtext_size",
+      "min": 13,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtext size",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "label_size_desktop",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "label": "Label size (desktop)",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "label_size_mobile",
+      "min": 11,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Label size (mobile)",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "icon_size_desktop",
+      "min": 40,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "label": "Icon size (desktop)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "icon_size_mobile",
+      "min": 32,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Icon size (mobile)",
+      "default": 48
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top (desktop)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom (desktop)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top (mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom (mobile)",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "audience",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "enabled",
+          "label": "Enable",
+          "default": true
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection",
+          "info": "Card links to this collection. Leave title blank to use the collection name."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "info": "Optional. Leave blank to use the collection title."
+        },
+        {
+          "type": "text",
+          "id": "support_text",
+          "label": "Supporting text",
+          "info": "Optional short line under the title in editorial layout."
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "info": "Shown when no custom image is set.",
+          "options": [
+            { "value": "gift", "label": "Gift / wrapped" },
+            { "value": "sisters", "label": "Sisters / friends" },
+            { "value": "anniversary", "label": "Love / heart" },
+            { "value": "family", "label": "Family" },
+            { "value": "party", "label": "Party" },
+            { "value": "festive", "label": "Festive / diya" },
+            { "value": "birthday", "label": "Birthday" },
+            { "value": "bride", "label": "Bride" },
+            { "value": "bridesmaid", "label": "Bridesmaid" },
+            { "value": "guest", "label": "Function guest" },
+            { "value": "everyday", "label": "Everyday" },
+            { "value": "sparkle", "label": "Sparkle" }
+          ],
+          "default": "gift"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom image",
+          "info": "Optional. Replaces the icon when set. Collection images are never used."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Perfect Fit Audience",
+      "blocks": [
+        {
+          "type": "audience",
+          "settings": {
+            "enabled": true,
+            "title": "A Bride",
+            "icon": "bride"
+          }
+        },
+        {
+          "type": "audience",
+          "settings": {
+            "enabled": true,
+            "title": "A Bridesmaid",
+            "icon": "bridesmaid"
+          }
+        },
+        {
+          "type": "audience",
+          "settings": {
+            "enabled": true,
+            "title": "Attending a Function",
+            "icon": "guest"
+          }
+        },
+        {
+          "type": "audience",
+          "settings": {
+            "enabled": true,
+            "title": "Going to a Party",
+            "icon": "party"
+          }
+        },
+        {
+          "type": "audience",
+          "settings": {
+            "enabled": true,
+            "title": "Celebrating Your Day",
+            "icon": "festive"
+          }
+        },
+        {
+          "type": "audience",
+          "settings": {
+            "enabled": true,
+            "title": "Birthday",
+            "icon": "birthday"
+          }
+        },
+        {
+          "type": "audience",
+          "settings": {
+            "enabled": true,
+            "title": "Anniversary",
+            "icon": "anniversary"
+          }
+        },
+        {
+          "type": "audience",
+          "settings": {
+            "enabled": true,
+            "title": "Everyday Elegance",
+            "icon": "everyday"
+          }
+        },
+        {
+          "type": "audience",
+          "settings": {
+            "enabled": true,
+            "title": "Festive Season",
+            "icon": "sparkle"
+          }
+        },
+        {
+          "type": "audience",
+          "settings": {
+            "enabled": true,
+            "title": "Wedding Guest",
+            "icon": "guest"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

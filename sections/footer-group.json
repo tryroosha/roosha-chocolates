@@ -21,59 +21,27 @@
             "menu": "footer-shop"
           }
         },
-        "footer_finishes": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Finishes",
-            "menu": "footer-finishes"
-          }
-        },
-        "footer_occasions": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Occasions",
-            "menu": "occasions"
-          }
-        },
-        "footer_price": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Price",
-            "menu": "price"
-          }
-        },
         "footer_help": {
           "type": "link_list",
           "settings": {
             "heading": "Help",
             "menu": "help"
           }
-        },
-        "footer_trust": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Trust",
-            "menu": "trust"
-          }
         }
       },
       "block_order": [
         "footer_shop",
-        "footer_finishes",
-        "footer_occasions",
-        "footer_price",
-        "footer_help",
-        "footer_trust"
+        "footer_help"
       ],
       "settings": {
-        "color_scheme": "scheme-5",
-        "newsletter_enable": false,
-        "newsletter_heading": "Subscribe to our emails",
-        "enable_follow_on_shop": true,
+        "color_scheme": "scheme-3",
+        "newsletter_enable": true,
+        "newsletter_heading": "Join the Roosha list",
+        "enable_follow_on_shop": false,
         "show_social": true,
         "enable_country_selector": false,
         "enable_language_selector": false,
-        "payment_enable": false,
+        "payment_enable": true,
         "show_policy": true,
         "margin_top": 0,
         "padding_top": 72,

@@ -1,0 +1,204 @@
+{%- style -%}
+  .roosha-enq-{{ section.id }} {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.background }};
+  }
+  .roosha-enq-{{ section.id }}__wrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.2rem;
+  }
+  .roosha-enq-{{ section.id }}__eyebrow {
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    color: #c4a35a;
+    margin-bottom: 1.2rem;
+  }
+  .roosha-enq-{{ section.id }}__title {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(2.8rem, 4vw, 4rem);
+    color: #6b1e2a;
+    margin: 0 0 1.4rem;
+    font-weight: 500;
+  }
+  .roosha-enq-{{ section.id }}__text {
+    color: #5a4548;
+    font-size: 1.55rem;
+    line-height: 1.7;
+    margin: 0 0 1.6rem;
+  }
+  .roosha-enq-{{ section.id }}__form {
+    background: #fffcf8;
+    border: 1px solid #e6d9cc;
+    border-radius: 4px;
+    padding: 2.4rem;
+  }
+  .roosha-enq-{{ section.id }}__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+  .roosha-enq-{{ section.id }} label {
+    display: block;
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b1e2a;
+    margin-bottom: 0.6rem;
+  }
+  .roosha-enq-{{ section.id }} input,
+  .roosha-enq-{{ section.id }} select,
+  .roosha-enq-{{ section.id }} textarea {
+    width: 100%;
+    border: 1px solid #dccfc2;
+    border-radius: 4px;
+    background: #faf7f2;
+    padding: 1.2rem 1.4rem;
+    font: inherit;
+    color: #2a1a1c;
+  }
+  .roosha-enq-{{ section.id }} textarea {
+    min-height: 12rem;
+    resize: vertical;
+  }
+  .roosha-enq-{{ section.id }}__full {
+    grid-column: 1 / -1;
+  }
+  .roosha-enq-{{ section.id }}__success {
+    color: #6b1e2a;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 2rem;
+  }
+  @media screen and (min-width: 750px) {
+    .roosha-enq-{{ section.id }}__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media screen and (min-width: 990px) {
+    .roosha-enq-{{ section.id }}__wrap {
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 5.6rem;
+      align-items: start;
+    }
+  }
+{%- endstyle -%}
+
+<section class="roosha-enq-{{ section.id }}" id="enquiry">
+  <div class="page-width">
+    <div class="roosha-enq-{{ section.id }}__wrap">
+      <div>
+        {% if section.settings.eyebrow != blank %}
+          <p class="roosha-enq-{{ section.id }}__eyebrow">{{ section.settings.eyebrow }}</p>
+        {% endif %}
+        {% if section.settings.heading != blank %}
+          <h2 class="roosha-enq-{{ section.id }}__title">{{ section.settings.heading }}</h2>
+        {% endif %}
+        {% if section.settings.text != blank %}
+          <div class="roosha-enq-{{ section.id }}__text">{{ section.settings.text }}</div>
+        {% endif %}
+        {% if section.settings.image != blank %}
+          <div style="border:1px solid #c4a35a;border-radius:4px;overflow:hidden;margin-top:2rem;">
+            {{
+              section.settings.image
+              | image_url: width: 1200
+              | image_tag: loading: 'lazy', widths: '600,900,1200', sizes: '(min-width: 990px) 40vw, 100vw'
+            }}
+          </div>
+        {% elsif section.settings.fallback_asset != blank %}
+          <div style="border:1px solid #c4a35a;border-radius:4px;overflow:hidden;margin-top:2rem;">
+            <img src="{{ section.settings.fallback_asset | asset_url }}" alt="{{ section.settings.heading | escape }}" loading="lazy" width="1200" height="900">
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="roosha-enq-{{ section.id }}__form">
+        {%- form 'contact', id: 'RooshaEnquiryForm' -%}
+          {% if form.posted_successfully? %}
+            <p class="roosha-enq-{{ section.id }}__success" tabindex="-1" autofocus>
+              Thank you. Your enquiry has been received. Our team will respond shortly.
+            </p>
+          {% else %}
+            <input type="hidden" name="contact[form_type]" value="{{ section.settings.form_type }}">
+            <div class="roosha-enq-{{ section.id }}__grid">
+              <div>
+                <label for="RooshaEnquiry-name">Name</label>
+                <input id="RooshaEnquiry-name" type="text" name="contact[name]" required autocomplete="name">
+              </div>
+              <div>
+                <label for="RooshaEnquiry-email">Email</label>
+                <input id="RooshaEnquiry-email" type="email" name="contact[email]" required autocomplete="email" spellcheck="false">
+              </div>
+              <div>
+                <label for="RooshaEnquiry-phone">Phone</label>
+                <input id="RooshaEnquiry-phone" type="tel" name="contact[phone]" required autocomplete="tel">
+              </div>
+              <div>
+                <label for="RooshaEnquiry-occasion">Occasion</label>
+                <select id="RooshaEnquiry-occasion" name="contact[occasion]">
+                  <option value="Diwali">Diwali</option>
+                  <option value="Wedding">Wedding</option>
+                  <option value="Anniversary">Anniversary</option>
+                  <option value="Birthday">Birthday</option>
+                  <option value="Corporate">Corporate celebration</option>
+                  <option value="Return gifts">Festive return gifts</option>
+                  <option value="Custom bar">Custom chocolate bar</option>
+                  <option value="Other">Other special occasion</option>
+                </select>
+              </div>
+              <div>
+                <label for="RooshaEnquiry-qty">Approximate quantity</label>
+                <input id="RooshaEnquiry-qty" type="text" name="contact[quantity]" placeholder="e.g. 50 boxes">
+              </div>
+              <div>
+                <label for="RooshaEnquiry-date">Required delivery date</label>
+                <input id="RooshaEnquiry-date" type="date" name="contact[delivery_date]">
+              </div>
+              <div class="roosha-enq-{{ section.id }}__full">
+                <label for="RooshaEnquiry-products">Preferred chocolate products</label>
+                <input id="RooshaEnquiry-products" type="text" name="contact[preferred_products]" placeholder="Mini bars, filled bars, favour boxes…">
+              </div>
+              <div class="roosha-enq-{{ section.id }}__full">
+                <label for="RooshaEnquiry-personalization">Personalization requirements</label>
+                <textarea id="RooshaEnquiry-personalization" name="contact[personalization]" placeholder="Names, messages, branding, packaging…"></textarea>
+              </div>
+              <div class="roosha-enq-{{ section.id }}__full">
+                <label for="RooshaEnquiry-notes">Additional instructions</label>
+                <textarea id="RooshaEnquiry-notes" name="contact[body]" placeholder="Tell us anything else we should know."></textarea>
+              </div>
+              <div class="roosha-enq-{{ section.id }}__full">
+                <button type="submit" class="button">{{ section.settings.button_label }}</button>
+              </div>
+            </div>
+          {% endif %}
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Roosha enquiry form",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Wedding & corporate gifting" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Request a quote for your celebration." },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Share your occasion, quantity, and personalisation needs. Our team will confirm feasibility, packaging, and pricing."
+    },
+    { "type": "text", "id": "form_type", "label": "Form type tag", "default": "Wedding & Corporate Quote" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Request a Quote" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "fallback_asset", "label": "Fallback asset", "default": "roosha-wedding-gifting.jpg" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#faf7f2" },
+    { "type": "range", "id": "padding_top", "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Padding top", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Padding bottom", "default": 72 }
+  ],
+  "presets": [{ "name": "Roosha enquiry form" }]
+}
+{% endschema %}

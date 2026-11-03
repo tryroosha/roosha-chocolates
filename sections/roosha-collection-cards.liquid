@@ -1,0 +1,208 @@
+{%- style -%}
+  .roosha-cols-{{ section.id }} {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.background }};
+  }
+  .roosha-cols-{{ section.id }}__header {
+    text-align: center;
+    max-width: 68rem;
+    margin: 0 auto 3.6rem;
+  }
+  .roosha-cols-{{ section.id }}__eyebrow {
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    color: #c4a35a;
+    margin-bottom: 1.2rem;
+  }
+  .roosha-cols-{{ section.id }}__title {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(2.8rem, 4vw, 4rem);
+    color: #6b1e2a;
+    margin: 0 0 1.2rem;
+    font-weight: 500;
+  }
+  .roosha-cols-{{ section.id }}__sub {
+    color: #5a4548;
+    font-size: 1.55rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+  .roosha-cols-{{ section.id }}__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .roosha-cols-{{ section.id }}__card {
+    display: flex;
+    flex-direction: column;
+    background: #fffcf8;
+    border: 1px solid #e6d9cc;
+    border-radius: 4px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 280ms ease, box-shadow 280ms ease;
+    height: 100%;
+  }
+  .roosha-cols-{{ section.id }}__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(74, 18, 28, 0.1);
+  }
+  .roosha-cols-{{ section.id }}__media {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #f3ebe0;
+  }
+  .roosha-cols-{{ section.id }}__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .roosha-cols-{{ section.id }}__body {
+    padding: 2rem 2rem 2.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+  }
+  .roosha-cols-{{ section.id }}__name {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 2.2rem;
+    color: #6b1e2a;
+    margin: 0;
+    font-weight: 500;
+  }
+  .roosha-cols-{{ section.id }}__desc {
+    color: #5a4548;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+  }
+  .roosha-cols-{{ section.id }}__cta {
+    align-self: flex-start;
+    margin-top: 0.4rem;
+  }
+  @media screen and (min-width: 750px) {
+    .roosha-cols-{{ section.id }}__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media screen and (min-width: 990px) {
+    .roosha-cols-{{ section.id }}__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+{%- endstyle -%}
+
+<section class="roosha-cols-{{ section.id }}">
+  <div class="page-width">
+    <div class="roosha-cols-{{ section.id }}__header">
+      {% if section.settings.eyebrow != blank %}
+        <p class="roosha-cols-{{ section.id }}__eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <h2 class="roosha-cols-{{ section.id }}__title">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <p class="roosha-cols-{{ section.id }}__sub">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+    <div class="roosha-cols-{{ section.id }}__grid">
+      {% for block in section.blocks %}
+        {% assign collection = block.settings.collection %}
+        <a
+          class="roosha-cols-{{ section.id }}__card"
+          href="{% if collection != blank %}{{ collection.url }}{% else %}{{ block.settings.link }}{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          <div class="roosha-cols-{{ section.id }}__media">
+            {% if block.settings.image != blank %}
+              {{
+                block.settings.image
+                | image_url: width: 900
+                | image_tag: loading: 'lazy', widths: '400, 600, 900', sizes: '(min-width: 990px) 30vw, 90vw'
+              }}
+            {% elsif collection.featured_image %}
+              {{
+                collection.featured_image
+                | image_url: width: 900
+                | image_tag: loading: 'lazy', widths: '400, 600, 900', sizes: '(min-width: 990px) 30vw, 90vw'
+              }}
+            {% else %}
+              {{ 'product-1' | placeholder_svg_tag }}
+            {% endif %}
+          </div>
+          <div class="roosha-cols-{{ section.id }}__body">
+            <h3 class="roosha-cols-{{ section.id }}__name">
+              {% if block.settings.title != blank %}
+                {{ block.settings.title }}
+              {% elsif collection != blank %}
+                {{ collection.title }}
+              {% else %}
+                Collection
+              {% endif %}
+            </h3>
+            {% if block.settings.description != blank %}
+              <p class="roosha-cols-{{ section.id }}__desc">{{ block.settings.description }}</p>
+            {% elsif collection.description != blank %}
+              <p class="roosha-cols-{{ section.id }}__desc">{{ collection.description | strip_html | truncate: 120 }}</p>
+            {% endif %}
+            <span class="button button--secondary roosha-cols-{{ section.id }}__cta">
+              {{ block.settings.button_label | default: 'Shop Now' }}
+            </span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Roosha collection cards",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Shop by collection" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A boutique cupboard of chocolate." },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Explore bars, filled indulgences, line chocolates, festive boxes, and curated gifting."
+    },
+    { "type": "color", "id": "background", "label": "Background", "default": "#fffcf8" },
+    { "type": "range", "id": "padding_top", "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Padding top", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Padding bottom", "default": 72 }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Collection card",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "text", "id": "title", "label": "Title override" },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        { "type": "image_picker", "id": "image", "label": "Image override" },
+        { "type": "url", "id": "link", "label": "Fallback link" },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop Now" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Roosha collection cards",
+      "blocks": [
+        { "type": "card", "settings": { "title": "Chocolate Bars", "description": "Mini, regular, and large bars for everyday craving and gifting." } },
+        { "type": "card", "settings": { "title": "Filled Chocolate Bars", "description": "Kunafa, berry, mango, rasmalai, paan, and custom fillings." } },
+        { "type": "card", "settings": { "title": "Line Chocolates", "description": "Elegant individual chocolates for premium assortments." } },
+        { "type": "card", "settings": { "title": "Festive & Customized", "description": "Diwali boxes, messages, and seasonal packaging." } },
+        { "type": "card", "settings": { "title": "Wedding & Corporate", "description": "Favours, hampers, and bulk gifting with personalisation." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,7 +1,6 @@
 {% comment %}
-  Locked PDP delivery + prepaid trust (DAY6-01).
+  PDP delivery + trust tiles for Roosha.
   part: 'shipping' | 'clarity' | blank (both)
-  Variation: fact tiles (big value + short note)
 {% endcomment %}
 {%- liquid
   assign trust_part = part | default: 'both'
@@ -35,14 +34,14 @@
     <p class="pdp-trust__title">Shop with clarity</p>
     <div class="pdp-trust__tiles pdp-trust__tiles--two">
       <div class="pdp-trust__tile">
-        <p class="pdp-trust__value">Real photos</p>
-        <p class="pdp-trust__note">Product photos only · no AI images</p>
+        <p class="pdp-trust__value">Careful packing</p>
+        <p class="pdp-trust__note">Temperature-aware chocolate packaging</p>
       </div>
       <div class="pdp-trust__tile">
         <p class="pdp-trust__value">3-day returns</p>
-        <p class="pdp-trust__note">Unused pieces · via WhatsApp</p>
+        <p class="pdp-trust__note">Eligible unused products · via WhatsApp</p>
       </div>
     </div>
-    <p class="pdp-trust__meta">GST registered · Made in India · Skin friendly</p>
+    <p class="pdp-trust__meta">Premium chocolates · Curated gifting · Made in Himachal Pradesh</p>
   </div>
 {%- endif -%}

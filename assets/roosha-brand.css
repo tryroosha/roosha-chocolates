@@ -1,0 +1,224 @@
+/* =========================================================
+   Roosha — Premium Chocolate Brand System
+   Ivory · Burgundy · Metallic Gold
+   ========================================================= */
+
+:root {
+  --roosha-ivory: #faf7f2;
+  --roosha-ivory-soft: #fffcf8;
+  --roosha-cream: #f3ebe0;
+  --roosha-beige: #e8ddd0;
+  --roosha-burgundy: #6b1e2a;
+  --roosha-burgundy-soft: #8a2f3d;
+  --roosha-burgundy-deep: #4a121c;
+  --roosha-gold: #c4a35a;
+  --roosha-gold-light: #ddc48a;
+  --roosha-gold-deep: #9a7a3a;
+  --roosha-ink: #2a1a1c;
+  --roosha-body: #5a4548;
+  --roosha-muted: #7a6669;
+  --roosha-on-dark: #faf7f2;
+
+  /* Map onto existing theme tokens so shared components inherit Roosha */
+  --ashtitva-green: var(--roosha-burgundy);
+  --ashtitva-green-dark: var(--roosha-burgundy-deep);
+  --ashtitva-deep: #2a0e14;
+  --ashtitva-ivory: var(--roosha-ivory);
+  --ashtitva-ivory-soft: var(--roosha-ivory-soft);
+  --ashtitva-gold: var(--roosha-gold);
+  --ashtitva-gold-light: var(--roosha-gold-light);
+  --ashtitva-text: var(--roosha-ink);
+
+  --ash-heading: var(--roosha-burgundy);
+  --ash-heading-on-dark: var(--roosha-ivory);
+  --ash-ivory: var(--roosha-ivory);
+  --ash-cream: var(--roosha-ivory-soft);
+  --ash-sand: var(--roosha-cream);
+  --ash-surface: var(--roosha-ivory-soft);
+  --ash-blush: var(--roosha-cream);
+  --ash-mist: var(--roosha-ivory-soft);
+  --ash-gold: var(--roosha-gold);
+  --ash-gold-light: var(--roosha-gold-light);
+  --ash-gold-soft: var(--roosha-cream);
+  --ash-gold-antique: var(--roosha-gold-deep);
+  --ash-gold-deep: var(--roosha-gold-deep);
+  --ash-forest: var(--roosha-burgundy);
+  --ash-forest-soft: var(--roosha-burgundy-soft);
+  --ash-forest-deep: var(--roosha-burgundy-deep);
+  --ash-rose: var(--roosha-gold);
+  --ash-rose-deep: var(--roosha-gold-deep);
+  --ash-rose-soft: var(--roosha-cream);
+  --ash-rose-wash: var(--roosha-ivory);
+  --ash-burgundy: var(--roosha-burgundy);
+  --ash-burgundy-soft: var(--roosha-burgundy-soft);
+  --ash-burgundy-deep: var(--roosha-burgundy-deep);
+  --ash-ink: var(--roosha-ink);
+  --ash-body: var(--roosha-body);
+  --ash-muted: var(--roosha-muted);
+  --ash-on-dark: var(--roosha-on-dark);
+  --ash-on-forest: var(--roosha-on-dark);
+  --ash-border: #e6d9cc;
+  --ash-border-card: #ebded2;
+  --ash-border-input: #dccfc2;
+  --ash-border-accent: var(--roosha-gold);
+  --ash-border-luxury: var(--roosha-gold);
+
+  --ash-shadow-sm: 0 2px 8px rgba(74, 18, 28, 0.05);
+  --ash-shadow-md: 0 8px 24px rgba(74, 18, 28, 0.08);
+  --ash-shadow-lg: 0 18px 48px rgba(74, 18, 28, 0.12);
+
+  --ash-gradient-brand: linear-gradient(180deg, #fffcf8 0%, #faf7f2 100%);
+  --ash-gradient-hero: linear-gradient(120deg, #faf7f2, #fffcf8, #f3ebe0);
+  --ash-gradient-section: linear-gradient(180deg, #fffcf8, #faf7f2);
+  --ash-gradient-media: linear-gradient(165deg, #fffcf8 0%, #faf7f2 70%, #f3ebe0 140%);
+  --ash-gradient-dark: linear-gradient(160deg, #6b1e2a 0%, #4a121c 100%);
+  --ash-gradient-gold: linear-gradient(90deg, #ddc48a, #c4a35a, #9a7a3a);
+  --ash-gradient-rose: var(--ash-gradient-gold);
+  --ash-gradient-cta: linear-gradient(180deg, #6b1e2a, #4a121c);
+
+  --sv-btn-cta: var(--roosha-burgundy);
+  --sv-btn-cta-hover: var(--roosha-burgundy-deep);
+  --sv-btn-label: var(--roosha-ivory);
+  --sv-btn-gold: var(--roosha-gold);
+  --sv-qty-ink: var(--roosha-ink);
+  --sv-qty-cta: var(--roosha-burgundy);
+
+  --roosha-serif: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+  --roosha-sans: var(--font-body-family), "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background-color: var(--roosha-ivory);
+  color: var(--roosha-ink);
+  font-family: var(--roosha-sans);
+}
+
+h1,
+h2,
+h3,
+.h0,
+.h1,
+.h2,
+.h3,
+.header__heading-link,
+.roosha-serif {
+  font-family: var(--roosha-serif) !important;
+  letter-spacing: 0.02em;
+  color: var(--roosha-burgundy);
+}
+
+.header__heading-link .h2,
+.header__heading {
+  font-family: var(--roosha-serif) !important;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--roosha-burgundy) !important;
+}
+
+.button,
+.shopify-challenge__button,
+.customer button,
+button.shopify-payment-button__button--unbranded {
+  background-color: var(--roosha-burgundy) !important;
+  color: var(--roosha-ivory) !important;
+  border-color: var(--roosha-burgundy) !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: 2px !important;
+  transition: background-color 280ms cubic-bezier(0.22, 1, 0.36, 1), color 280ms ease, border-color 280ms ease;
+}
+
+.button:hover,
+.shopify-challenge__button:hover,
+.customer button:hover {
+  background-color: var(--roosha-burgundy-deep) !important;
+  color: var(--roosha-ivory) !important;
+}
+
+.button--secondary {
+  background-color: transparent !important;
+  color: var(--roosha-burgundy) !important;
+  border: 1px solid var(--roosha-gold) !important;
+}
+
+.button--secondary:hover {
+  background-color: var(--roosha-burgundy) !important;
+  color: var(--roosha-ivory) !important;
+  border-color: var(--roosha-burgundy) !important;
+}
+
+.global-media-settings,
+.contains-media .media {
+  background-color: var(--roosha-cream);
+}
+
+.ash-gold-rule,
+.ash-accent-rule,
+.roosha-gold-rule {
+  height: 1px;
+  border: 0;
+  background: var(--ash-gradient-gold);
+  opacity: 0.9;
+}
+
+.price-item--regular,
+.price .price-item {
+  color: var(--roosha-burgundy);
+}
+
+.card,
+.product-card-wrapper .card,
+.collection-card-wrapper .card {
+  border: 1px solid var(--ash-border-card);
+  background: var(--roosha-ivory-soft);
+}
+
+.card__heading a {
+  color: var(--roosha-burgundy);
+  font-family: var(--roosha-serif);
+}
+
+.announcement-bar,
+.announcement-bar__message {
+  background: var(--roosha-burgundy-deep) !important;
+  color: var(--roosha-ivory) !important;
+}
+
+.footer {
+  border-top: 1px solid var(--roosha-gold);
+}
+
+.roosha-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--roosha-gold-deep);
+  font-weight: 500;
+}
+
+.roosha-badge::before,
+.roosha-badge::after {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--roosha-gold);
+}
+
+.roosha-quote-price {
+  font-family: var(--roosha-serif);
+  font-size: 2.2rem;
+  color: var(--roosha-burgundy);
+  letter-spacing: 0.04em;
+}
+
+.roosha-enquiry-note {
+  margin-top: 0.8rem;
+  color: var(--roosha-muted);
+  font-size: 1.3rem;
+  line-height: 1.5;
+}

@@ -1,0 +1,51 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "studio": {
+      "type": "roosha-custom-studio",
+      "blocks": {
+        "c1": { "type": "chip", "settings": { "label": "Bar size" } },
+        "c2": { "type": "chip", "settings": { "label": "Chocolate type" } },
+        "c3": { "type": "chip", "settings": { "label": "Filling flavour" } },
+        "c4": { "type": "chip", "settings": { "label": "Dried fruits" } },
+        "c5": { "type": "chip", "settings": { "label": "Custom message" } },
+        "c6": { "type": "chip", "settings": { "label": "Special packaging" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4", "c5", "c6"],
+      "settings": {
+        "eyebrow": "Custom chocolate studio",
+        "heading": "Request a custom chocolate bar.",
+        "text": "Describe your size, filling, message, festive design, wedding names, corporate branding, or packaging needs. If the combination is not listed, submit an enquiry and our team will guide you.",
+        "button_label": "Explore Chocolate Bars",
+        "button_link": "/collections/chocolate-bars",
+        "secondary_label": "WhatsApp us",
+        "secondary_link": "https://wa.me/917777877253",
+        "padding_top": 64,
+        "padding_bottom": 40
+      }
+    },
+    "enquiry": {
+      "type": "roosha-enquiry-form",
+      "settings": {
+        "eyebrow": "Custom order enquiry",
+        "heading": "Tell us what you have in mind.",
+        "text": "Share quantity, delivery date, and personalisation details. We will confirm feasibility and pricing before you place a confirmed order.",
+        "form_type": "Custom Chocolate Studio",
+        "button_label": "Request Custom Order",
+        "fallback_asset": "roosha-filled-cross.jpg",
+        "background": "#faf7f2",
+        "padding_top": 40,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": ["studio", "enquiry"]
+}

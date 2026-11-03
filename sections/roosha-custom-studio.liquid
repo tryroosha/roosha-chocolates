@@ -1,0 +1,156 @@
+{%- style -%}
+  .roosha-studio-{{ section.id }} {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    background: linear-gradient(160deg, #6b1e2a 0%, #4a121c 100%);
+    color: #faf7f2;
+  }
+  .roosha-studio-{{ section.id }}__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.2rem;
+    align-items: center;
+  }
+  .roosha-studio-{{ section.id }}__eyebrow {
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    color: #ddc48a;
+    margin-bottom: 1.2rem;
+  }
+  .roosha-studio-{{ section.id }}__title {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(2.8rem, 4vw, 4.2rem);
+    margin: 0 0 1.4rem;
+    font-weight: 500;
+    color: #faf7f2;
+  }
+  .roosha-studio-{{ section.id }}__text {
+    font-size: 1.55rem;
+    line-height: 1.7;
+    opacity: 0.92;
+    margin: 0 0 2rem;
+    max-width: 48rem;
+  }
+  .roosha-studio-{{ section.id }}__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 2.4rem;
+  }
+  .roosha-studio-{{ section.id }}__chip {
+    border: 1px solid rgba(196, 163, 90, 0.7);
+    color: #ddc48a;
+    padding: 0.7rem 1.2rem;
+    border-radius: 999px;
+    font-size: 1.2rem;
+    letter-spacing: 0.06em;
+  }
+  .roosha-studio-{{ section.id }} .button {
+    background: #c4a35a !important;
+    border-color: #c4a35a !important;
+    color: #4a121c !important;
+  }
+  .roosha-studio-{{ section.id }} .button--secondary {
+    background: transparent !important;
+    color: #faf7f2 !important;
+    border-color: #c4a35a !important;
+  }
+  .roosha-studio-{{ section.id }}__media {
+    border: 1px solid #c4a35a;
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+  }
+  .roosha-studio-{{ section.id }}__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .roosha-studio-{{ section.id }}__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+  }
+  @media screen and (min-width: 900px) {
+    .roosha-studio-{{ section.id }}__grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 5.6rem;
+    }
+  }
+{%- endstyle -%}
+
+<section class="roosha-studio-{{ section.id }}" id="custom-studio">
+  <div class="page-width">
+    <div class="roosha-studio-{{ section.id }}__grid">
+      <div>
+        {% if section.settings.eyebrow != blank %}
+          <p class="roosha-studio-{{ section.id }}__eyebrow">{{ section.settings.eyebrow }}</p>
+        {% endif %}
+        <h2 class="roosha-studio-{{ section.id }}__title">{{ section.settings.heading }}</h2>
+        <div class="roosha-studio-{{ section.id }}__text">{{ section.settings.text }}</div>
+        <div class="roosha-studio-{{ section.id }}__chips">
+          {% for block in section.blocks %}
+            <span class="roosha-studio-{{ section.id }}__chip" {{ block.shopify_attributes }}>{{ block.settings.label }}</span>
+          {% endfor %}
+        </div>
+        <div class="roosha-studio-{{ section.id }}__actions">
+          {% if section.settings.button_label != blank %}
+            <a class="button" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+          {% endif %}
+          {% if section.settings.secondary_label != blank %}
+            <a class="button button--secondary" href="{{ section.settings.secondary_link }}">{{ section.settings.secondary_label }}</a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="roosha-studio-{{ section.id }}__media">
+        {% if section.settings.image != blank %}
+          {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy' }}
+        {% else %}
+          <img src="{{ 'roosha-filled-cross.jpg' | asset_url }}" alt="{{ section.settings.heading | escape }}" loading="lazy" width="1200" height="900">
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Roosha custom studio",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Custom chocolate studio" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Your Chocolate. Your Filling. Your Choice." },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Customise chocolate bars with size, chocolate type, filling, dried fruits, festive messages, wedding names, corporate branding, and special packaging. Full customisation applies primarily to chocolate bars."
+    },
+    { "type": "text", "id": "button_label", "label": "Primary button", "default": "Request Custom Order" },
+    { "type": "url", "id": "button_link", "label": "Primary link" },
+    { "type": "text", "id": "secondary_label", "label": "Secondary button", "default": "Explore Filled Bars" },
+    { "type": "url", "id": "secondary_link", "label": "Secondary link" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "range", "id": "padding_top", "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Padding top", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Padding bottom", "default": 80 }
+  ],
+  "blocks": [
+    { "type": "chip", "name": "Option", "settings": [{ "type": "text", "id": "label", "label": "Label", "default": "Bar size" }] }
+  ],
+  "presets": [
+    {
+      "name": "Roosha custom studio",
+      "blocks": [
+        { "type": "chip", "settings": { "label": "Bar size" } },
+        { "type": "chip", "settings": { "label": "Filling flavour" } },
+        { "type": "chip", "settings": { "label": "Dried fruits" } },
+        { "type": "chip", "settings": { "label": "Custom message" } },
+        { "type": "chip", "settings": { "label": "Festive design" } },
+        { "type": "chip", "settings": { "label": "Special packaging" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

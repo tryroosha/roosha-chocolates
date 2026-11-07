@@ -1,0 +1,80 @@
+{%- style -%}
+  .roosha-page-{{ section.id }} {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.background }};
+  }
+  .roosha-page-{{ section.id }}__inner {
+    max-width: 78rem;
+    margin: 0 auto;
+  }
+  .roosha-page-{{ section.id }}__eyebrow {
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    color: #c4a35a;
+    margin-bottom: 1.2rem;
+  }
+  .roosha-page-{{ section.id }}__title {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(3rem, 5vw, 4.4rem);
+    color: #6b1e2a;
+    margin: 0 0 2.4rem;
+    font-weight: 500;
+  }
+  .roosha-page-{{ section.id }}__body,
+  .roosha-page-{{ section.id }}__body.rte {
+    color: #5a4548;
+    font-size: 1.55rem;
+    line-height: 1.75;
+  }
+  .roosha-page-{{ section.id }}__body h2,
+  .roosha-page-{{ section.id }}__body h3 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    color: #6b1e2a;
+    margin-top: 2.8rem;
+  }
+  .roosha-page-{{ section.id }}__body a {
+    color: #6b1e2a;
+  }
+{%- endstyle -%}
+
+<section class="roosha-page-{{ section.id }}">
+  <div class="page-width">
+    <div class="roosha-page-{{ section.id }}__inner">
+      {% if section.settings.eyebrow != blank %}
+        <p class="roosha-page-{{ section.id }}__eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      <h1 class="roosha-page-{{ section.id }}__title">
+        {% if section.settings.heading != blank %}
+          {{ section.settings.heading }}
+        {% else %}
+          {{ page.title }}
+        {% endif %}
+      </h1>
+      <div class="roosha-page-{{ section.id }}__body rte">
+        {% if section.settings.body != blank %}
+          {{ section.settings.body }}
+        {% else %}
+          {{ page.content }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Roosha richtext page",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Roosha" },
+    { "type": "text", "id": "heading", "label": "Heading override" },
+    { "type": "html", "id": "body", "label": "Body HTML override" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#faf7f2" },
+    { "type": "range", "id": "padding_top", "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Padding top", "default": 64 },
+    { "type": "range", "id": "padding_bottom", "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Padding bottom", "default": 80 }
+  ],
+  "presets": [{ "name": "Roosha richtext page" }]
+}
+{% endschema %}

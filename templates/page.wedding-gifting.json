@@ -1,0 +1,40 @@
+{
+  "sections": {
+    "intro": {
+      "type": "roosha-feature-split",
+      "blocks": {
+        "w1": { "type": "item", "settings": { "text": "Wedding favours & personalized gift boxes" } },
+        "w2": { "type": "item", "settings": { "text": "Corporate gifting & bulk chocolate orders" } },
+        "w3": { "type": "item", "settings": { "text": "Event return gifts with special packaging" } }
+      },
+      "block_order": ["w1", "w2", "w3"],
+      "settings": {
+        "reverse": false,
+        "eyebrow": "Wedding & corporate gifting",
+        "heading": "Premium chocolate gifts for people and occasions that matter.",
+        "text": "From intimate wedding favours to branded corporate hampers, Roosha creates thoughtful chocolate gifts with burgundy-and-gold presentation.",
+        "fallback_asset": "roosha-wedding-gifting.jpg",
+        "button_label": "Browse Gifting",
+        "button_link": "/collections/wedding-corporate-gifting",
+        "background": "#faf7f2",
+        "padding_top": 64,
+        "padding_bottom": 40
+      }
+    },
+    "quote": {
+      "type": "roosha-enquiry-form",
+      "settings": {
+        "eyebrow": "Request a quote",
+        "heading": "Tell us about your event.",
+        "text": "Include occasion, approximate quantity, preferred products, personalisation, and delivery date.",
+        "form_type": "Wedding & Corporate Quote",
+        "button_label": "Request a Quote",
+        "fallback_asset": "roosha-hamper.jpg",
+        "background": "#fffcf8",
+        "padding_top": 40,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": ["intro", "quote"]
+}

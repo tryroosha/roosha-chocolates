@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "main": {
+      "type": "roosha-story",
+      "settings": {
+        "eyebrow": "Our story",
+        "heading": "Chocolate made for celebration.",
+        "quote": "At Roosha, we believe chocolate is more than a treat. It is a way to celebrate, connect, and create memories. From indulgent chocolate bars to carefully curated gifts, every creation is designed to make ordinary moments feel extraordinary.",
+        "text": "Based in Himachal Pradesh, Roosha is a premium chocolate and curated gifting brand for everyday craving, festive celebration, weddings, and thoughtful corporate gestures.",
+        "button_label": "Explore Chocolates",
+        "button_link": "/collections/shop-chocolates",
+        "background": "#faf7f2",
+        "padding_top": 64,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": ["main"]
+}

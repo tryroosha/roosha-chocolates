@@ -41,91 +41,125 @@
       assign restock_message = 'Hi! Please notify me when ' | append: product.title | append: ' is back.'
       assign restock_message_encoded = restock_message | url_encode
       assign restock_url = 'https://wa.me/' | append: restock_phone | append: '?text=' | append: restock_message_encoded
+
+      assign request_quote = false
+      if product.tags contains 'request-quote'
+        assign request_quote = true
+      endif
+      assign quote_message = 'Hi Roosha! I would like a quote for ' | append: product.title | append: '.'
+      assign quote_message_encoded = quote_message | url_encode
+      assign quote_url = 'https://wa.me/' | append: restock_phone | append: '?text=' | append: quote_message_encoded
+      assign enquiry_page = pages['custom-chocolate-studio']
+      if enquiry_page == blank
+        assign enquiry_page = pages.contact
+      endif
     -%}
 
-    <product-form
-      class="product-form"
-      data-hide-errors="{{ gift_card_recipient_feature_active }}"
-      data-section-id="{{ section_id }}"
-    >
-      <div class="product-form__error-message-wrapper" role="alert" hidden>
-        <span class="svg-wrapper">
-          {{- 'icon-error.svg' | inline_asset_content -}}
-        </span>
-        <span class="product-form__error-message"></span>
+    {%- if request_quote -%}
+      <div class="product-form">
+        <p class="roosha-quote-price">Price on request</p>
+        <p class="roosha-enquiry-note">
+          This product needs confirmation for flavour, quantity, or customisation before checkout.
+        </p>
+        <div class="product-form__buttons">
+          {% if enquiry_page != blank %}
+            <a class="product-form__submit button button--full-width" href="{{ enquiry_page.url }}">Request a Quote</a>
+          {% endif %}
+          <a
+            class="button button--secondary button--full-width"
+            href="{{ quote_url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Message on WhatsApp
+          </a>
+        </div>
       </div>
+    {%- else -%}
+      <product-form
+        class="product-form"
+        data-hide-errors="{{ gift_card_recipient_feature_active }}"
+        data-section-id="{{ section_id }}"
+      >
+        <div class="product-form__error-message-wrapper" role="alert" hidden>
+          <span class="svg-wrapper">
+            {{- 'icon-error.svg' | inline_asset_content -}}
+          </span>
+          <span class="product-form__error-message"></span>
+        </div>
 
-      {%- form 'product',
-        product,
-        id: product_form_id,
-        class: 'form',
-        novalidate: 'novalidate',
-        data-type: 'add-to-cart-form'
-      -%}
-        <input
-          type="hidden"
-          name="id"
-          value="{{ product.selected_or_first_available_variant.id }}"
-          {% unless variant_available %}
-            disabled
-          {% endunless %}
-          class="product-variant-id"
-        >
-
-        {%- if gift_card_recipient_feature_active -%}
-          {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
-        {%- endif -%}
-
-        <div class="product-form__buttons" id="ProductBuyButtons-{{ section_id }}">
-          <button
-            id="ProductSubmitButton-{{ section_id }}"
-            type="submit"
-            name="add"
-            class="product-form__submit button button--full-width button--secondary"
+        {%- form 'product',
+          product,
+          id: product_form_id,
+          class: 'form',
+          novalidate: 'novalidate',
+          data-type: 'add-to-cart-form'
+        -%}
+          <input
+            type="hidden"
+            name="id"
+            value="{{ product.selected_or_first_available_variant.id }}"
             {% unless variant_available %}
               disabled
             {% endunless %}
+            class="product-variant-id"
           >
-            <span>
-              {%- if product.selected_or_first_available_variant == null -%}
-                {{ 'products.product.unavailable' | t }}
-              {%- elsif variant_available == false -%}
-                Sold out
-              {%- else -%}
-                Add to cart
-              {%- endif -%}
-            </span>
-            {%- render 'loading-spinner' -%}
-          </button>
 
-          {%- if show_dynamic_checkout -%}
-            <div
-              id="ProductBuyNow-{{ section_id }}"
-              class="product-form__buy-now{% unless variant_available %} is-hidden{% endunless %}"
+          {%- if gift_card_recipient_feature_active -%}
+            {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
+          {%- endif -%}
+
+          <div class="product-form__buttons" id="ProductBuyButtons-{{ section_id }}">
+            <button
+              id="ProductSubmitButton-{{ section_id }}"
+              type="submit"
+              name="add"
+              class="product-form__submit button button--full-width button--secondary"
               {% unless variant_available %}
-                hidden
-                aria-hidden="true"
+                disabled
               {% endunless %}
             >
-              {{ form | payment_button }}
-            </div>
-          {%- endif -%}
-        </div>
+              <span>
+                {%- if product.selected_or_first_available_variant == null -%}
+                  {{ 'products.product.unavailable' | t }}
+                {%- elsif variant_available == false -%}
+                  Sold out
+                {%- else -%}
+                  Add to cart
+                {%- endif -%}
+              </span>
+              {%- render 'loading-spinner' -%}
+            </button>
 
-        <p
-          id="ProductRestock-{{ section_id }}"
-          class="product-form__restock{% if variant_available %} is-hidden{% endif %}"
-          {% if variant_available %}
-            hidden
-            aria-hidden="true"
-          {% endif %}
-        >
-          <a href="{{ restock_url }}" target="_blank" rel="noopener noreferrer">
-            Message us on WhatsApp for restock details
-          </a>
-        </p>
-      {%- endform -%}
-    </product-form>
+            {%- if show_dynamic_checkout -%}
+              <div
+                id="ProductBuyNow-{{ section_id }}"
+                class="product-form__buy-now{% unless variant_available %} is-hidden{% endunless %}"
+                {% unless variant_available %}
+                  hidden
+                  aria-hidden="true"
+                {% endunless %}
+              >
+                {{ form | payment_button }}
+              </div>
+            {%- endif -%}
+          </div>
+
+          <p
+            id="ProductRestock-{{ section_id }}"
+            class="product-form__restock{% if variant_available %} is-hidden{% endif %}"
+            {% if variant_available %}
+              hidden
+              aria-hidden="true"
+            {% endif %}
+          >
+            <a href="{{ restock_url }}" target="_blank" rel="noopener noreferrer">
+              Message us on WhatsApp for restock details
+            </a>
+          </p>
+        {%- endform -%}
+      </product-form>
+    {%- endif -%}
   {%- else -%}
     <div class="product-form">
       <div class="product-form__buttons form">

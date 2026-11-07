@@ -1,1066 +1,249 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "1779598554163c0064": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_1691126_JJgkjq": {
-          "type": "ai_gen_block_1691126",
-          "settings": {
-            "use_theme_hero_banner": false,
-            "desktop_image": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_06_57_35_PM.png",
-            "mobile_image": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_06_56_01_PM.png",
-            "desktop_height": 750,
-            "desktop_height_unit": "px",
-            "mobile_height": 800,
-            "mobile_height_unit": "px",
-            "subtext": "Jewellery That Celebrates You",
-            "heading": "Made to Make You Feel Beautiful",
-            "description": "Discover jewellery that celebrates your confidence, your individuality, and the moments that make you who you are",
-            "button_text": "Find your piece",
-            "button_link": "shopify://collections/all",
-            "secondary_button_text": "",
-            "secondary_button_link": "shopify://pages/about-us",
-            "content_max_width": 600,
-            "desktop_horizontal_align": "flex-start",
-            "desktop_vertical_align": "center",
-            "desktop_content_padding": 60,
-            "mobile_horizontal_align": "center",
-            "mobile_vertical_align": "flex-end",
-            "mobile_content_padding": 20,
-            "desktop_subtext_size": 13,
-            "desktop_subtext_weight": "500",
-            "desktop_subtext_color": "#d8c38f",
-            "desktop_subtext_letter_spacing": 2,
-            "mobile_subtext_size": 11,
-            "mobile_subtext_weight": "500",
-            "mobile_subtext_color": "#d8c38f",
-            "mobile_subtext_letter_spacing": 1.5,
-            "desktop_heading_size": 52,
-            "desktop_heading_weight": "400",
-            "desktop_heading_color": "#f7f3e9",
-            "desktop_heading_line_height": 1.1,
-            "mobile_heading_size": 32,
-            "mobile_heading_weight": "400",
-            "mobile_heading_color": "#f7f3e9",
-            "mobile_heading_line_height": 1.1,
-            "desktop_button_padding_vertical": 14,
-            "desktop_button_padding_horizontal": 28,
-            "desktop_button_font_size": 13,
-            "mobile_button_padding_vertical": 12,
-            "mobile_button_padding_horizontal": 20,
-            "mobile_button_font_size": 12,
-            "button_bg_color": "#123c32",
-            "button_hover_bg_color": "#0b2924",
-            "button_text_color": "#f7f3e9",
-            "secondary_button_border_color": "#b89a5a",
-            "secondary_button_text_color": "#f7f3e9",
-            "button_border_radius": 4,
-            "desktop_description_color": "#f7f3e9",
-            "desktop_description_size": 16,
-            "mobile_description_color": "#f7f3e9",
-            "mobile_description_size": 14,
-            "desktop_overlay_color": "#071713",
-            "desktop_overlay_opacity": 30,
-            "mobile_overlay_color": "#071713",
-            "mobile_overlay_opacity": 0,
-            "overlay_color": "#071713",
-            "overlay_opacity": 70,
-            "text_shadow_enabled": true
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_1691126_JJgkjq"
-      ],
-      "settings": {}
-    },
-    "17754835371621cc6e": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_fe4687d_LeHqCg": {
-          "type": "ai_gen_block_fe4687d",
-          "name": "Section heading",
-          "settings": {
-            "eyebrow_text": "Made for your moments",
-            "heading_text": "Jewellery for the moments that matter.",
-            "subtext": "From celebrations with the people you love to moments you choose just for yourself, find pieces made to make you feel beautiful, confident, and celebrated.",
-            "desktop_width_percent": 100,
-            "text_alignment_desktop": "center",
-            "text_alignment_mobile": "center",
-            "heading_font_size_desktop": 40,
-            "heading_font_size_mobile": 28,
-            "heading_font_weight": "400",
-            "heading_letter_spacing": -1,
-            "heading_line_height": 1.1,
-            "heading_text_transform": "none",
-            "eyebrow_font_size_desktop": 13,
-            "eyebrow_font_size_mobile": 11,
-            "eyebrow_font_weight": "500",
-            "eyebrow_letter_spacing": 2,
-            "eyebrow_text_transform": "uppercase",
-            "subtext_font_size_desktop": 16,
-            "subtext_font_size_mobile": 15,
-            "subtext_font_weight": "400",
-            "heading_color": "#18302a",
-            "eyebrow_color": "#b89a5a",
-            "subtext_color": "#3a4f48",
-            "underline_color": "#b89a5a",
-            "show_underline": false,
-            "underline_animated": false,
-            "underline_width": "auto",
-            "underline_width_px": 60,
-            "underline_thickness": 2,
-            "underline_spacing": 8,
-            "padding_top_desktop": 88,
-            "padding_bottom_desktop": 28,
-            "padding_top_mobile": 56,
-            "padding_bottom_mobile": 20,
-            "gap_heading_subtext": 16
-          },
-          "blocks": {}
-        },
-        "ai_gen_block_5826ff4_f3DQTM": {
-          "type": "ai_gen_block_5826ff4",
-          "settings": {
-            "collection_list": [
-              "necklace",
-              "rings",
-              "earrings",
-              "kada"
-            ],
-            "show_collection_title": true,
-            "show_product_count": false,
-            "show_description": false,
-            "heading": "",
-            "heading_size": 28,
-            "heading_color": "#18302a",
-            "heading_alignment": "center",
-            "heading_spacing": 40,
-            "min_card_width": 220,
-            "min_card_width_mobile": 160,
-            "grid_gap": 20,
-            "grid_gap_mobile": 15,
-            "container_width": 1100,
-            "horizontal_padding": 20,
-            "circular_image": true,
-            "card_background": "#123c32",
-            "card_border_width": 0,
-            "card_border_color": "#e6dfd0",
-            "image_border_radius": 6,
-            "image_aspect_ratio": 125,
-            "image_zoom_scale": 1,
-            "shadow_offset": 0,
-            "shadow_blur": 0,
-            "shadow_opacity": 0,
-            "hover_lift": 0,
-            "hover_shadow_offset": 0,
-            "hover_shadow_blur": 0,
-            "hover_shadow_opacity": 0,
-            "collection_title_size": 18,
-            "collection_title_color": "#18302a",
-            "title_font_weight": "400",
-            "title_position": "center",
-            "content_padding_top": 15,
-            "content_gap": 6,
-            "product_count_size": 13,
-            "product_count_color": "#5c6e67",
-            "description_size": 14,
-            "description_color": "#3a4f48",
-            "section_padding_top": 10,
-            "section_padding_bottom": 70
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_fe4687d_LeHqCg",
-        "ai_gen_block_5826ff4_f3DQTM"
-      ],
-      "settings": {}
-    },
-    "featured_collection_3QH7cy": {
-      "type": "featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
+    "roosha_hero": {
+      "type": "roosha-hero",
       "settings": {
-        "collection": "home-page-4-product-collection",
-        "products_to_show": 8,
-        "eyebrow": "Curated for you",
-        "title": "Find something that feels like you.",
-        "heading_size": "h2",
-        "description": "<p>Thoughtfully curated jewellery for celebrations, gifting, personal expression and everyday beauty.</p>",
-        "show_description": false,
-        "description_style": "subtitle",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_url": "shopify://collections/all",
-        "view_all_style": "solid",
-        "color_scheme": "scheme-2",
-        "image_ratio": "portrait",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "standard",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 88,
-        "padding_bottom": 88
+        "brand_name": "ROOSHA",
+        "eyebrow": "Premium chocolates · Himachal Pradesh",
+        "heading": "Crafted for Every Craving. Curated for Every Celebration.",
+        "text": "From glossy everyday bars to filled indulgences and thoughtfully wrapped gifts, Roosha brings boutique chocolate craft to moments worth sharing.",
+        "button_label": "Explore Chocolates",
+        "button_link": "/collections/shop-chocolates",
+        "secondary_label": "Discover Gifting",
+        "secondary_link": "/collections/festive-gifting",
+        "desktop_height": 680,
+        "mobile_height": 560,
+        "background_color": "#faf7f2",
+        "heading_color": "#6b1e2a",
+        "text_color": "#5a4548",
+        "accent_color": "#c4a35a"
       }
     },
-    "perfect_fit_audience_GJxzHh": {
-      "type": "perfect-fit-audience",
+    "roosha_collections": {
+      "type": "roosha-collection-cards",
       "blocks": {
-        "audience_silver": {
-          "type": "audience",
+        "card_bars": {
+          "type": "card",
           "settings": {
-            "enabled": true,
-            "collection": "silver-elegance",
-            "title": "Silver Elegance",
-            "support_text": "Chandi look for everyday shine",
-            "icon": "everyday"
+            "collection": "chocolate-bars",
+            "title": "Chocolate Bars",
+            "description": "Mini, regular, and large bars for everyday craving and gifting.",
+            "button_label": "Shop Now"
           }
         },
-        "audience_gold": {
-          "type": "audience",
+        "card_filled": {
+          "type": "card",
           "settings": {
-            "enabled": true,
-            "collection": "gold-glam",
-            "title": "Gold Glam",
-            "support_text": "Festive light and colour",
-            "icon": "festive"
+            "collection": "filled-bars",
+            "title": "Filled Chocolate Bars",
+            "description": "Kunafa, berry, mango, rasmalai, paan, and custom fillings.",
+            "button_label": "Shop Now"
           }
         },
-        "audience_rose": {
-          "type": "audience",
+        "card_line": {
+          "type": "card",
           "settings": {
-            "enabled": true,
-            "collection": "rose-gold",
-            "title": "Rose Gold",
-            "support_text": "Soft, romantic finishes",
-            "icon": "guest"
+            "collection": "line-chocolates",
+            "title": "Line Chocolates",
+            "description": "Elegant individual chocolates for premium assortments.",
+            "button_label": "Shop Now"
           }
         },
-        "audience_luxe": {
-          "type": "audience",
+        "card_festive": {
+          "type": "card",
           "settings": {
-            "enabled": true,
-            "collection": "luxe-picks",
-            "title": "Luxe Picks",
-            "support_text": "Statement pieces for special days",
-            "icon": "sparkle"
+            "collection": "festive-gifting",
+            "title": "Festive & Customized Chocolates",
+            "description": "Diwali boxes, messages, and seasonal packaging.",
+            "button_label": "Shop Now"
           }
         },
-        "audience_rare": {
-          "type": "audience",
+        "card_wedding": {
+          "type": "card",
           "settings": {
-            "enabled": true,
-            "collection": "rare-finds",
-            "title": "Rare Find",
-            "support_text": "Unique styles, limited looks",
-            "icon": "gift"
+            "collection": "wedding-corporate-gifting",
+            "title": "Wedding & Corporate Gifting",
+            "description": "Favours, hampers, and bulk gifting with personalisation.",
+            "button_label": "Shop Now"
           }
         }
       },
       "block_order": [
-        "audience_silver",
-        "audience_gold",
-        "audience_rose",
-        "audience_luxe",
-        "audience_rare"
+        "card_bars",
+        "card_filled",
+        "card_line",
+        "card_festive",
+        "card_wedding"
       ],
-      "name": "Perfect Fit Audience",
       "settings": {
-        "layout_style": "editorial",
-        "heading": "Shop Ashtitva",
-        "highlight_text": "Start here",
-        "subtext": "Silver Elegance, Gold Glam, Rose Gold, Luxe Picks and Rare Find — jewellery chosen to celebrate you.",
-        "heading_alignment": "center",
-        "heading_max_width": 720,
-        "full_width": false,
-        "container_width": 1200,
-        "columns_desktop": 5,
-        "columns_tablet": 3,
-        "columns_mobile": 2,
-        "item_gap": 16,
-        "item_radius": 6,
-        "item_padding_y": 22,
-        "item_padding_x": 14,
-        "icon_style": "framed",
-        "enable_hover": true,
-        "use_default_pattern": false,
-        "pattern_size": 180,
-        "color_background": "#f7f3e9",
-        "color_surface": "#fcfaf4",
-        "color_heading": "#18302a",
-        "color_text": "#3a4f48",
-        "color_accent": "#b89a5a",
-        "color_highlight_bg": "#efe8d8",
-        "color_highlight_text": "#18302a",
-        "color_icon": "#b89a5a",
-        "color_icon_bg": "#fcfaf4",
-        "color_label": "#18302a",
-        "heading_size_desktop": 40,
-        "heading_size_mobile": 28,
-        "heading_weight": 400,
-        "subtext_size": 15,
-        "label_size_desktop": 14,
-        "label_size_mobile": 12,
-        "icon_size_desktop": 64,
-        "icon_size_mobile": 48,
-        "padding_top_desktop": 96,
-        "padding_bottom_desktop": 96,
-        "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56
-      }
-    },
-    "real_photography_trust_Nif7jn": {
-      "type": "real-photography-trust",
-      "blocks": {
-        "benefit_xphrNy": {
-          "type": "benefit",
-          "settings": {
-            "enabled": true,
-            "icon": "camera",
-            "title": "Real product photography"
-          }
-        },
-        "benefit_wfXHHn": {
-          "type": "benefit",
-          "settings": {
-            "enabled": true,
-            "icon": "diamond",
-            "title": "True colour and detail"
-          }
-        },
-        "benefit_KLLeg8": {
-          "type": "benefit",
-          "settings": {
-            "enabled": true,
-            "icon": "sparkle",
-            "title": "No AI product images"
-          }
-        },
-        "benefit_3hQVL4": {
-          "type": "benefit",
-          "settings": {
-            "enabled": true,
-            "icon": "heart",
-            "title": "Thoughtfully curated designs"
-          }
-        },
-        "benefit_wxMy76": {
-          "type": "benefit",
-          "settings": {
-            "enabled": true,
-            "icon": "shield",
-            "title": "Shop with confidence"
-          }
-        }
-      },
-      "block_order": [
-        "benefit_xphrNy",
-        "benefit_wfXHHn",
-        "benefit_KLLeg8",
-        "benefit_3hQVL4",
-        "benefit_wxMy76"
-      ],
-      "name": "Real Photography Trust",
-      "settings": {
-        "label": "Authenticity",
-        "heading": "See it. Love it. Trust it.",
-        "description": "Every Ashtitva piece is photographed from the real product, so what catches your eye is what arrives at your door.",
-        "benefits_aria_label": "Why real photography matters",
-        "image_desktop": "shopify://shop_images/Real_Photography.jpg",
-        "image_stack_2": "shopify://shop_images/Raya_Silver-Plated_AD_Floral_Drop_Necklace_Set1.jpg",
-        "image_stack_3": "shopify://shop_images/VeraSilver-PlatedADStarburstNecklaceSet1.jpg",
-        "image_alt": "Studio photograph of real jewellery",
-        "image_height": 620,
-        "image_aspect": "portrait",
-        "image_border_radius": 6,
-        "hover_zoom": true,
-        "enable_stack_effect": true,
-        "stack_spread": "medium",
-        "badge_enable": true,
-        "badge_line_1": "Real Shoot",
-        "badge_line_2": "No AI",
-        "badge_line_3": "Honest Photos",
-        "badge_bg": "#0b2924",
-        "badge_border": "#d8c38f",
-        "badge_text": "#d8c38f",
-        "badge_position": "bottom-right",
-        "badge_size": "medium",
-        "image_position": "right",
-        "full_width": false,
-        "container_width": 1200,
-        "column_gap": 72,
-        "content_max_width": 480,
-        "padding_top_desktop": 112,
-        "padding_bottom_desktop": 112,
-        "padding_top_mobile": 64,
-        "padding_bottom_mobile": 64,
-        "color_background": "#123c32",
-        "color_heading": "#f7f3e9",
-        "color_description": "#f7f3e9",
-        "color_label": "#d8c38f",
-        "color_accent": "#d8c38f",
-        "color_blush": "#0b2924",
-        "color_icon_bg": "rgba(0,0,0,0)",
-        "color_icon": "#d8c38f",
-        "color_benefit": "#f7f3e9",
-        "border_radius": 2,
-        "shadow_strength": "soft",
-        "heading_size_desktop": 40,
-        "heading_size_mobile": 28,
-        "description_size": 15,
-        "benefit_text_size": 14,
-        "label_size": 12,
-        "font_weight": "400",
-        "letter_spacing": -2,
-        "text_alignment": "left"
-      }
-    },
-    "ash_emotional_home": {
-      "type": "custom-liquid",
-      "name": "Emotional brand message",
-      "settings": {
-        "custom_liquid": "<div class=\"ash-emotional\"><div class=\"ash-emotional__inner\"><h2 class=\"ash-emotional__heading\">You deserve to feel beautiful.</h2><p class=\"ash-emotional__body\">Whether you're celebrating a milestone, gifting someone you love, or simply choosing something for yourself, every moment deserves to feel special.</p><p class=\"ash-emotional__line\">Loved. Confident. Beautiful. Celebrated.</p></div></div>",
-        "color_scheme": "scheme-2",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
-    "blocks_hC8PWq": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_5826ff4_r8TVMN": {
-          "type": "ai_gen_block_5826ff4",
-          "settings": {
-            "collection_list": [
-              "jewellery-under-499",
-              "jewellery-under-999",
-              "jewellery-under-1499",
-              "jewellery-under-1999"
-            ],
-            "show_collection_title": true,
-            "show_product_count": false,
-            "show_description": false,
-            "heading": "Shop by price",
-            "subtitle": "Start where you feel comfortable. Real studio photos on every piece.",
-            "heading_size": 36,
-            "heading_color": "#18302a",
-            "subtitle_color": "#5c6e67",
-            "heading_alignment": "center",
-            "heading_spacing": 40,
-            "min_card_width": 240,
-            "min_card_width_mobile": 140,
-            "grid_gap": 25,
-            "grid_gap_mobile": 15,
-            "container_width": 1200,
-            "horizontal_padding": 20,
-            "circular_image": true,
-            "card_background": "#fdf9f2",
-            "card_border_width": 1,
-            "card_border_color": "#e5e5e5",
-            "image_border_radius": 18,
-            "image_aspect_ratio": 100,
-            "image_zoom_scale": 1.1,
-            "shadow_offset": 4,
-            "shadow_blur": 10,
-            "shadow_opacity": 0.1,
-            "hover_lift": 4,
-            "hover_shadow_offset": 10,
-            "hover_shadow_blur": 20,
-            "hover_shadow_opacity": 0.2,
-            "collection_title_size": 18,
-            "collection_title_color": "#18302a",
-            "title_font_weight": "700",
-            "title_position": "center",
-            "content_padding_top": 15,
-            "content_gap": 8,
-            "product_count_size": 14,
-            "product_count_color": "#a46959",
-            "description_size": 14,
-            "description_color": "#5a4e44",
-            "section_padding_top": 50,
-            "section_padding_bottom": 50
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_5826ff4_r8TVMN"
-      ],
-      "name": "Collection grid",
-      "settings": {}
-    },
-    "perfect_fit_audience_VUiqLw": {
-      "type": "perfect-fit-audience",
-      "blocks": {
-        "audience_L7cjk7": {
-          "type": "audience",
-          "settings": {
-            "enabled": true,
-            "collection": "wedding-guest-jewellery",
-            "title": "Wedding Guest",
-            "support_text": "Easy elegance for someone else's big day",
-            "icon": "guest"
-          }
-        },
-        "audience_DYTNch": {
-          "type": "audience",
-          "settings": {
-            "enabled": true,
-            "collection": "sangeet-bridal-look",
-            "title": "Sangeet & Bridal Look",
-            "support_text": "Heirloom presence for bridal functions",
-            "icon": "bride"
-          }
-        },
-        "audience_z67w7Y": {
-          "type": "audience",
-          "settings": {
-            "enabled": true,
-            "collection": "cocktail-party-jewellery",
-            "title": "Cocktail & Party",
-            "support_text": "Statement sparkle for evenings out",
-            "icon": "party"
-          }
-        }
-      },
-      "block_order": [
-        "audience_L7cjk7",
-        "audience_DYTNch",
-        "audience_z67w7Y"
-      ],
-      "name": "Perfect Fit Audience",
-      "settings": {
-        "layout_style": "editorial",
-        "heading": "Find your moment",
-        "highlight_text": "Shop by Occasion",
-        "subtext": "Pieces chosen for weddings, celebrations and nights that ask for a little more sparkle.",
-        "heading_alignment": "center",
-        "heading_max_width": 720,
-        "full_width": false,
-        "container_width": 1200,
-        "columns_desktop": 3,
-        "columns_tablet": 3,
-        "columns_mobile": 2,
-        "item_gap": 16,
-        "item_radius": 14,
-        "item_padding_y": 22,
-        "item_padding_x": 14,
-        "icon_style": "framed",
-        "enable_hover": true,
-        "use_default_pattern": false,
-        "pattern_size": 180,
-        "color_background": "#ffffff",
-        "color_surface": "#ffffff",
-        "color_heading": "#18302a",
-        "color_text": "#5c5660",
-        "color_accent": "#c5a059",
-        "color_highlight_bg": "#c5a059",
-        "color_highlight_text": "#ffffff",
-        "color_icon": "#8a6a4a",
-        "color_icon_bg": "#fbf8f4",
-        "color_label": "#202336",
-        "heading_size_desktop": 38,
-        "heading_size_mobile": 24,
-        "heading_weight": 600,
-        "subtext_size": 15,
-        "label_size_desktop": 15,
-        "label_size_mobile": 12,
-        "icon_size_desktop": 64,
-        "icon_size_mobile": 48,
-        "padding_top_desktop": 64,
-        "padding_bottom_desktop": 64,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40
-      }
-    },
-    "featured_collection_aBabXt": {
-      "type": "featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
-      "settings": {
-        "collection": "best-seller",
-        "products_to_show": 12,
-        "eyebrow": "Most loved",
-        "title": "Pieces you'll love, moments you'll remember.",
-        "heading_size": "h2",
-        "description": "<p>Designs selected to help you celebrate yourself and the people you love.</p>",
-        "show_description": false,
-        "description_style": "subtitle",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_url": "shopify://collections/all",
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "portrait",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "standard",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 48,
+        "eyebrow": "Shop by collection",
+        "heading": "A boutique cupboard of chocolate.",
+        "subheading": "Explore bars, filled indulgences, line chocolates, festive boxes, and curated gifting.",
+        "background": "#fffcf8",
+        "padding_top": 72,
         "padding_bottom": 72
       }
     },
-    "ash_final_cta_home": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "name": "Final discovery CTA",
-      "settings": {
-        "custom_liquid": "<div class=\"ash-final-cta\"><div class=\"ash-final-cta__inner\"><h2 class=\"ash-final-cta__heading\">Find the piece that celebrates you.</h2><div class=\"ash-final-cta__actions\"><a class=\"ash-final-cta__btn\" href=\"/collections/all\">Find your piece</a><a class=\"ash-final-cta__btn ash-final-cta__btn--secondary\" href=\"/collections/best-sellers\">Shop bestsellers</a></div></div></div>",
-        "color_scheme": "scheme-2",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
-    "store_metrics_Azz743": {
-      "type": "store-metrics",
+    "roosha_bars": {
+      "type": "roosha-feature-split",
       "blocks": {
-        "metric_cdQwLt": {
-          "type": "metric",
+        "b1": {
+          "type": "item",
           "settings": {
-            "enabled": true,
-            "stat": "0",
-            "prefix": "",
-            "suffix": "",
-            "count_value": "0",
-            "count_decimals": 0,
-            "caption": "Jewellery orders yesterday",
-            "subtext": "From last day’s closing"
+            "text": "Mini Bars · 10–15 g · plain ₹10 · dried fruits ₹15 · filled ₹25"
           }
         },
-        "metric_G7PVgL": {
-          "type": "metric",
+        "b2": {
+          "type": "item",
           "settings": {
-            "enabled": true,
-            "stat": "0",
-            "prefix": "",
-            "suffix": "",
-            "count_value": "0",
-            "count_decimals": 0,
-            "caption": "Pieces on their way",
-            "subtext": "Packed with care"
+            "text": "Regular Bars · 20–25 g · price on request"
           }
         },
-        "metric_BVRzKc": {
-          "type": "metric",
+        "b3": {
+          "type": "item",
           "settings": {
-            "enabled": true,
-            "stat": "0",
-            "prefix": "",
-            "suffix": "",
-            "count_value": "0",
-            "count_decimals": 0,
-            "caption": "Orders till last closing",
-            "subtext": "Counted transparently"
-          }
-        },
-        "metric_xBGkhP": {
-          "type": "metric",
-          "settings": {
-            "enabled": true,
-            "stat": "0",
-            "prefix": "",
-            "suffix": "",
-            "count_value": "0",
-            "count_decimals": 0,
-            "caption": "Customers who returned",
-            "subtext": "Love that brings them back"
+            "text": "Large Bars · 60–80 g · plain or dried fruits · price on request"
           }
         }
       },
-      "block_order": [
-        "metric_cdQwLt",
-        "metric_G7PVgL",
-        "metric_BVRzKc",
-        "metric_xBGkhP"
-      ],
-      "disabled": true,
-      "name": "Store Metrics",
+      "block_order": ["b1", "b2", "b3"],
       "settings": {
-        "label": "Honesty, every day",
-        "heading": "Trust, told in numbers",
-        "description": "After every closing day, we share a simple snapshot of Ashtitva with honest figures and no filters, so you can shop with clarity and confidence.",
-        "text_alignment": "center",
-        "metrics_alignment": "center",
-        "show_index": true,
-        "show_stat_accent": true,
-        "divider_length": "medium",
-        "full_width": false,
-        "container_width": 1200,
-        "header_max_width": 720,
-        "header_spacing": 36,
-        "columns_desktop": 4,
-        "columns_tablet": "2",
-        "column_gap": 0,
-        "card_radius": 0,
-        "card_padding_y": 40,
-        "card_padding_x": 24,
-        "padding_top_desktop": 80,
-        "padding_bottom_desktop": 80,
-        "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56,
-        "color_background": "#fcfaf4",
-        "color_surface": "#ffffff",
-        "color_border": "#e6dfd0",
-        "color_label": "#b89a5a",
-        "color_heading": "#18302a",
-        "color_stat": "#18302a",
-        "color_text": "#3a4f48",
-        "color_accent": "#b89a5a",
-        "heading_size_desktop": 40,
-        "heading_size_mobile": 28,
-        "heading_weight": "400",
-        "stat_size_desktop": 48,
-        "stat_size_mobile": 36,
-        "stat_weight": "300",
-        "label_size": 12,
-        "text_size": 15,
-        "enable_count_up": true
-      }
-    },
-    "faq_home": {
-      "type": "faq",
-      "blocks": {
-        "faq_1": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Are these product photos real?",
-            "answer": "<p>Yes. Every product image is a real studio photograph of the actual jewellery on a dark green background, not AI. Slight colour differences can still happen because of screen settings or lighting, and we’re always honest about that.</p>"
-          }
-        },
-        "faq_2": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Do you offer Cash on Delivery (COD)?",
-            "answer": "<p>At the moment, Cash on Delivery (COD) is not available. We currently accept prepaid orders only through secure payment methods such as UPI, credit/debit cards, net banking, and digital wallets. This helps us process orders faster and keep payments secure.</p>"
-          }
-        },
-        "faq_3": {
-          "type": "faq_item",
-          "settings": {
-            "question": "What are the shipping charges?",
-            "answer": "<p>We offer FREE shipping across India on all prepaid orders above ₹499.</p><p>For orders below ₹499, a standard shipping charge will be applied at checkout.</p><p>All applicable shipping charges will be clearly displayed during checkout before you complete your purchase. There are no hidden charges.</p>"
-          }
-        },
-        "faq_4": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How long will it take to receive my order?",
-            "answer": "<p>Orders are usually processed within 1 to 2 business days. Delivery timelines may vary depending on your location, but most orders are delivered within 3 to 7 business days across India.</p><p>Once your order is shipped, tracking details will be shared via SMS and Email.</p>"
-          }
-        },
-        "faq_5": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Can I return my order?",
-            "answer": "<p>Yes. You can request a return within 3 days of receiving your order, provided the jewellery is unused, unworn, and returned in its original condition with all original packaging and tags intact.</p><p>To initiate a return, simply contact us on WhatsApp with your Order ID.</p>"
-          }
-        },
-        "faq_6": {
-          "type": "faq_item",
-          "settings": {
-            "question": "What if I don’t like the design or want a different product?",
-            "answer": "<p>We understand that choosing jewellery online can sometimes be difficult. If the design does not meet your expectations or you’d prefer a different style, we’re here to help.</p><p>You can request a return or exchange within 3 days of delivery, provided the jewellery is unused, unworn, and returned in its original condition with all tags and packaging intact.</p><p><strong>For Exchanges</strong></p><ul><li>You may exchange your product for another design (subject to availability).</li><li>Any price difference will be adjusted accordingly.</li><li>No shipping charges will be deducted for approved exchanges.</li></ul><p><strong>For Returns</strong></p><ul><li>If you choose a refund instead of an exchange, a flat ₹99 shipping and handling charge will be deducted from your refund amount, even if your original order qualified for free shipping (orders above ₹499).</li><li>This charge covers the logistics and return handling costs involved in processing your return.</li></ul><p>To get started, contact us on WhatsApp with your Order ID, and our team will guide you through the process.</p>"
-          }
-        },
-        "faq_7": {
-          "type": "faq_item",
-          "settings": {
-            "question": "What if I receive a damaged or incorrect product?",
-            "answer": "<p>If you receive a damaged, defective, or incorrect item, please contact us within 24 hours of delivery.</p><p>Kindly share clear photographs and, if possible, an uninterrupted unboxing video to help us verify the issue quickly. Once approved, we’ll arrange a replacement or suitable resolution at no additional cost.</p>"
-          }
-        },
-        "faq_8": {
-          "type": "faq_item",
-          "settings": {
-            "question": "When will I receive my refund?",
-            "answer": "<p>Once your returned product is received and approved after inspection, your refund will be processed to the original payment method within 5 to 10 business days.</p><p>The time taken for the amount to reflect in your account may vary depending on your bank or payment provider.</p>"
-          }
-        },
-        "faq_9": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How do I start a return or exchange?",
-            "answer": "<p>Simply contact us on WhatsApp within 3 days of delivery with your Order ID and the reason for your request.</p><p>Our support team will review your concern and guide you through the return or exchange process. Please do not send the product back until you receive confirmation from our team.</p>"
-          }
-        },
-        "faq_10": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How can I contact Ashtitva for support?",
-            "answer": "<p>We’re always happy to help.</p><p><strong>WhatsApp:</strong> <a href=\"https://wa.me/917777877253\" target=\"_blank\" rel=\"noopener\">+91 77778 77253</a></p><p><strong>Email:</strong> <a href=\"mailto:contact@ashtitva.com\">contact@ashtitva.com</a></p><p>Whether you have questions about your order, shipping, returns, exchanges, payments, or our products. Our team is here with warmth and honesty.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "faq_1",
-        "faq_2",
-        "faq_3",
-        "faq_4",
-        "faq_5",
-        "faq_6",
-        "faq_7",
-        "faq_8",
-        "faq_9",
-        "faq_10"
-      ],
-      "settings": {
-        "eyebrow": "We’re here for you",
-        "heading": "Questions, answered with care",
-        "subheading": "Honest answers about our jewellery, photography, shipping, returns, and support.",
-        "heading_alignment": "center",
-        "heading_size_desktop": 40,
-        "heading_size_mobile": 28,
-        "content_width": 780,
-        "open_first": false,
-        "items_limit": 6,
-        "show_button": true,
-        "button_label": "See all answers",
-        "button_link": "/pages/faq",
-        "button_bg": "#123c32",
-        "button_text": "#f7f3e9",
-        "button_hover": "#0b2924",
-        "color_background": "#f7f3e9",
-        "color_surface": "#fcfaf4",
-        "color_heading": "#18302a",
-        "color_text": "#3a4f48",
-        "color_muted": "#5c6e67",
-        "color_accent": "#b89a5a",
-        "padding_top_desktop": 88,
-        "padding_bottom_desktop": 96,
-        "padding_top_mobile": 48,
-        "padding_bottom_mobile": 56
-      }
-    },
-    "brand_promise_ipNWDk": {
-      "type": "brand-promise",
-      "blocks": {
-        "icon_gst": {
-          "type": "icon",
-          "settings": {
-            "enabled": true,
-            "icon_style": "gst",
-            "title": "GST Registered"
-          }
-        },
-        "icon_whatsapp": {
-          "type": "icon",
-          "settings": {
-            "enabled": true,
-            "icon_style": "whatsapp",
-            "title": "WhatsApp Support"
-          }
-        },
-        "icon_packaging": {
-          "type": "icon",
-          "settings": {
-            "enabled": true,
-            "icon_style": "packaging",
-            "title": "Secure Packaging"
-          }
-        },
-        "icon_returns": {
-          "type": "icon",
-          "settings": {
-            "enabled": true,
-            "icon_style": "returns",
-            "title": "Easy Returns"
-          }
-        },
-        "icon_shipping": {
-          "type": "icon",
-          "settings": {
-            "enabled": true,
-            "icon_style": "shipping",
-            "title": "Free Shipping ₹499+"
-          }
-        },
-        "icon_photos": {
-          "type": "icon",
-          "settings": {
-            "enabled": true,
-            "icon_style": "photos",
-            "title": "Real Product Photos"
-          }
-        }
-      },
-      "block_order": [
-        "icon_gst",
-        "icon_whatsapp",
-        "icon_packaging",
-        "icon_returns",
-        "icon_shipping",
-        "icon_photos"
-      ],
-      "name": "Brand Promise",
-      "settings": {
-        "label": "Our promise",
-        "heading": "Feel loved in every interaction",
-        "text": "<p>Packed with care, sent with love, and always here for you, because jewellery should help you feel confident, beautiful, and celebrated.</p>",
-        "copy_alignment": "center",
-        "show_promise_icon": true,
-        "promise_icon": "check",
-        "promise_icon_size": 64,
-        "media_mode": "icons",
-        "image_alt": "Our brand promise",
-        "image_aspect": "portrait",
-        "image_fit": "cover",
-        "media_radius": 8,
-        "hover_zoom": true,
-        "enable_media_depth": false,
-        "shadow_strength": "soft",
-        "icon_size": 96,
-        "icon_gap": 28,
-        "icons_per_row_desktop": "3",
-        "icons_per_row_mobile": "2",
-        "icon_shape": "circle",
-        "icon_radius": 12,
-        "media_position": "left",
-        "full_width": false,
-        "container_width": 1200,
-        "column_gap": 48,
-        "media_max_width": 560,
-        "copy_max_width": 480,
-        "padding_top_desktop": 88,
-        "padding_bottom_desktop": 88,
-        "padding_top_mobile": 48,
-        "padding_bottom_mobile": 48,
-        "color_background": "#fcfaf4",
-        "color_surface": "#f7f3e9",
-        "color_heading": "#18302a",
-        "color_text": "#3a4f48",
-        "color_label": "#b89a5a",
-        "color_accent": "#b89a5a",
-        "color_icon_title": "#18302a",
-        "color_icon_bg": "#f7f3e9",
-        "color_promise_icon": "#b89a5a",
-        "heading_size_desktop": 40,
-        "heading_size_mobile": 28,
-        "heading_weight": "400",
-        "text_size": 15,
-        "label_size": 12,
-        "icon_title_size": 14
-      }
-    },
-    "creator_reviews_marquee_LP6jgD": {
-      "type": "creator-reviews-marquee",
-      "blocks": {
-        "creator_review_yXVWTN": {
-          "type": "creator_review",
-          "settings": {
-            "creator_name": "Aditi Sharma",
-            "social_handle": "@aditi_style",
-            "creator_type": "Fashion Creator",
-            "followers": "145K",
-            "review": "I feel more confident every time I wear it. The compliments never stop.",
-            "platform": "instagram",
-            "verified": true,
-            "platform_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "creator_review_yXVWTN"
-      ],
-      "disabled": true,
-      "name": "Creator Reviews Marquee",
-      "settings": {
-        "title": "Styled with confidence",
-        "subtitle": "Real moments from creators who wear Ashtitva and feel beautiful doing it.",
-        "background_color": "#f7f3e9",
-        "card_background": "#fcfaf4",
-        "card_border_color": "#e6dfd0",
-        "title_color": "#18302a",
-        "subtitle_color": "#3a4f48",
-        "text_color": "#18302a",
-        "muted_color": "#b89a5a",
-        "accent_color": "#b89a5a",
-        "card_width": 340,
-        "card_gap": 24,
-        "desktop_card_count": 4,
-        "mobile_card_count": 13,
+        "reverse": false,
+        "eyebrow": "Chocolate bars",
+        "heading": "Everyday bars, thoughtfully sized.",
+        "text": "Compare mini, regular, and large formats for treats, return gifts, and fuller indulgence. Prices and flavours stay editable in your product catalogue.",
+        "fallback_asset": "roosha-bars-collection.jpg",
+        "button_label": "Shop Chocolate Bars",
+        "button_link": "/collections/chocolate-bars",
+        "background": "#faf7f2",
         "padding_top": 72,
-        "padding_bottom": 72,
-        "animation_speed": 20,
-        "pause_on_hover": true,
-        "enable_fade_edges": true,
-        "enable_hover_effect": true
+        "padding_bottom": 72
       }
     },
-    "customer_reviews_marquee_9Q6UDy": {
-      "type": "customer-reviews-marquee",
+    "roosha_filled": {
+      "type": "roosha-feature-split",
       "blocks": {
-        "review_Q7dDMN": {
-          "type": "review",
-          "settings": {
-            "customer_name": "Priya Sharma",
-            "review_text": "The quality made me feel so confident. Exactly as beautiful as the photos."
-          }
-        }
+        "f1": { "type": "item", "settings": { "text": "Kunafa · Strawberry · Blueberry" } },
+        "f2": { "type": "item", "settings": { "text": "Mango · Rasmalai · Paan" } },
+        "f3": { "type": "item", "settings": { "text": "Custom filling requests welcome" } }
       },
-      "block_order": [
-        "review_Q7dDMN"
-      ],
-      "disabled": true,
-      "name": "Customer Reviews Marquee",
+      "block_order": ["f1", "f2", "f3"],
       "settings": {
-        "heading": "Loved by people like you",
-        "description": "Real stories from customers who chose pieces to celebrate themselves and the people they love.",
-        "background_color": "#f7f3e9",
-        "heading_color": "#18302a",
-        "description_color": "#3a4f48",
-        "pill_background": "#fcfaf4",
-        "pill_border": "#b89a5a",
-        "name_color": "#18302a",
-        "review_text_color": "#3a4f48",
-        "avatar_background": "#123c32",
-        "avatar_text_color": "#f7f3e9",
-        "gold_accent": "#b89a5a",
-        "show_gold_border": true,
+        "reverse": true,
+        "eyebrow": "Filled chocolate bars",
+        "heading": "Your Chocolate. Your Filling. Your Choice.",
+        "text": "Explore large filled bars with cross-section appeal. Select an available filling or submit a custom flavour request.",
+        "fallback_asset": "roosha-filled-cross.jpg",
+        "button_label": "Explore Filled Bars",
+        "button_link": "/collections/filled-bars",
+        "background": "#fffcf8",
         "padding_top": 72,
-        "padding_bottom": 72,
-        "border_radius": 100,
-        "show_shadow": false,
-        "desktop_speed": 55,
-        "mobile_speed": 70,
-        "pause_on_hover": true
+        "padding_bottom": 72
+      }
+    },
+    "roosha_line": {
+      "type": "roosha-feature-split",
+      "blocks": {
+        "l1": { "type": "item", "settings": { "text": "Plain chocolate without filling" } },
+        "l2": { "type": "item", "settings": { "text": "Chocolate with dried fruits" } },
+        "l3": { "type": "item", "settings": { "text": "Ideal for premium gift assortments" } }
+      },
+      "block_order": ["l1", "l2", "l3"],
+      "settings": {
+        "reverse": false,
+        "eyebrow": "Line chocolates",
+        "heading": "Elegant pieces for curated gifting.",
+        "text": "Individual line chocolates presented for special occasions, return gifts, and boutique assortments.",
+        "fallback_asset": "roosha-line-chocolates.jpg",
+        "button_label": "Shop Line Chocolates",
+        "button_link": "/collections/line-chocolates",
+        "background": "#faf7f2",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "roosha_studio": {
+      "type": "roosha-custom-studio",
+      "blocks": {
+        "c1": { "type": "chip", "settings": { "label": "Bar size" } },
+        "c2": { "type": "chip", "settings": { "label": "Filling flavour" } },
+        "c3": { "type": "chip", "settings": { "label": "Dried fruits" } },
+        "c4": { "type": "chip", "settings": { "label": "Custom message" } },
+        "c5": { "type": "chip", "settings": { "label": "Festive design" } },
+        "c6": { "type": "chip", "settings": { "label": "Special packaging" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4", "c5", "c6"],
+      "settings": {
+        "eyebrow": "Custom chocolate studio",
+        "heading": "Your Chocolate. Your Filling. Your Choice.",
+        "text": "Customise chocolate bars with size, chocolate type, filling, dried fruits, festive messages, wedding names, corporate branding, and special packaging. Full customisation applies primarily to chocolate bars.",
+        "button_label": "Request Custom Order",
+        "button_link": "/pages/custom-chocolate-studio",
+        "secondary_label": "Explore Filled Bars",
+        "secondary_link": "/collections/filled-bars",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "roosha_festival": {
+      "type": "roosha-feature-split",
+      "blocks": {
+        "fe1": { "type": "item", "settings": { "text": "Diwali · Weddings · Anniversaries" } },
+        "fe2": { "type": "item", "settings": { "text": "Birthdays · Corporate celebrations" } },
+        "fe3": { "type": "item", "settings": { "text": "Festive return gifts & special packaging" } }
+      },
+      "block_order": ["fe1", "fe2", "fe3"],
+      "settings": {
+        "reverse": true,
+        "eyebrow": "Festival collection",
+        "heading": "Celebrate with burgundy-and-gold packaging.",
+        "text": "Enquire about festive designs, chocolate messages, customized bars, and seasonal gift boxes. Collections stay editable for each season.",
+        "fallback_asset": "roosha-festive-diwali.jpg",
+        "button_label": "Shop Festive Gifting",
+        "button_link": "/collections/festive-gifting",
+        "background": "#fffcf8",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "roosha_quote": {
+      "type": "roosha-enquiry-form",
+      "settings": {
+        "eyebrow": "Wedding & corporate gifting",
+        "heading": "Request a quote for your celebration.",
+        "text": "Share your occasion, quantity, and personalisation needs. Our team will confirm feasibility, packaging, and pricing.",
+        "form_type": "Wedding & Corporate Quote",
+        "button_label": "Request a Quote",
+        "fallback_asset": "roosha-wedding-gifting.jpg",
+        "background": "#faf7f2",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "roosha_story": {
+      "type": "roosha-story",
+      "settings": {
+        "eyebrow": "Our story",
+        "heading": "Chocolate made for celebration.",
+        "quote": "At Roosha, we believe chocolate is more than a treat. It is a way to celebrate, connect, and create memories. From indulgent chocolate bars to carefully curated gifts, every creation is designed to make ordinary moments feel extraordinary.",
+        "text": "Based in Himachal Pradesh, Roosha is a premium chocolate and curated gifting brand for everyday craving, festive celebration, weddings, and thoughtful corporate gestures.",
+        "button_label": "Contact Roosha",
+        "button_link": "/pages/contact",
+        "background": "#fffcf8",
+        "padding_top": 72,
+        "padding_bottom": 88
       }
     }
   },
   "order": [
-    "1779598554163c0064",
-    "17754835371621cc6e",
-    "featured_collection_3QH7cy",
-    "perfect_fit_audience_GJxzHh",
-    "real_photography_trust_Nif7jn",
-    "ash_emotional_home",
-    "blocks_hC8PWq",
-    "perfect_fit_audience_VUiqLw",
-    "featured_collection_aBabXt",
-    "ash_final_cta_home",
-    "store_metrics_Azz743",
-    "faq_home",
-    "brand_promise_ipNWDk",
-    "creator_reviews_marquee_LP6jgD",
-    "customer_reviews_marquee_9Q6UDy"
+    "roosha_hero",
+    "roosha_collections",
+    "roosha_bars",
+    "roosha_filled",
+    "roosha_line",
+    "roosha_studio",
+    "roosha_festival",
+    "roosha_quote",
+    "roosha_story"
   ]
 }

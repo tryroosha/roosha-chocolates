@@ -1,0 +1,166 @@
+{%- style -%}
+  .roosha-split-{{ section.id }} {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.background }};
+  }
+  .roosha-split-{{ section.id }}__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.2rem;
+    align-items: center;
+  }
+  .roosha-split-{{ section.id }}__media {
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #c4a35a;
+    aspect-ratio: 4 / 3;
+    background: #f3ebe0;
+  }
+  .roosha-split-{{ section.id }}__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .roosha-split-{{ section.id }}__eyebrow {
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    color: #c4a35a;
+    margin-bottom: 1.2rem;
+  }
+  .roosha-split-{{ section.id }}__title {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(2.8rem, 4vw, 4rem);
+    color: #6b1e2a;
+    margin: 0 0 1.4rem;
+    font-weight: 500;
+  }
+  .roosha-split-{{ section.id }}__text {
+    color: #5a4548;
+    font-size: 1.55rem;
+    line-height: 1.7;
+    margin: 0 0 1.8rem;
+  }
+  .roosha-split-{{ section.id }}__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2.4rem;
+    display: grid;
+    gap: 1rem;
+  }
+  .roosha-split-{{ section.id }}__list li {
+    padding-left: 1.6rem;
+    position: relative;
+    color: #2a1a1c;
+    font-size: 1.45rem;
+    line-height: 1.5;
+  }
+  .roosha-split-{{ section.id }}__list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.75em;
+    width: 0.7rem;
+    height: 1px;
+    background: #c4a35a;
+  }
+  .roosha-split-{{ section.id }}--reverse .roosha-split-{{ section.id }}__grid {
+    direction: rtl;
+  }
+  .roosha-split-{{ section.id }}--reverse .roosha-split-{{ section.id }}__grid > * {
+    direction: ltr;
+  }
+  @media screen and (min-width: 900px) {
+    .roosha-split-{{ section.id }}__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 5.6rem;
+    }
+  }
+{%- endstyle -%}
+
+<section class="roosha-split-{{ section.id }}{% if section.settings.reverse %} roosha-split-{{ section.id }}--reverse{% endif %}">
+  <div class="page-width">
+    <div class="roosha-split-{{ section.id }}__grid">
+      <div class="roosha-split-{{ section.id }}__media">
+        {% if section.settings.image != blank %}
+          {{
+            section.settings.image
+            | image_url: width: 1400
+            | image_tag: loading: 'lazy', widths: '600, 900, 1400', sizes: '(min-width: 900px) 45vw, 100vw'
+          }}
+        {% elsif section.settings.fallback_asset != blank %}
+          <img
+            src="{{ section.settings.fallback_asset | asset_url }}"
+            alt="{{ section.settings.heading | escape }}"
+            loading="lazy"
+            width="1400"
+            height="1050"
+          >
+        {% else %}
+          {{ 'image' | placeholder_svg_tag }}
+        {% endif %}
+      </div>
+      <div>
+        {% if section.settings.eyebrow != blank %}
+          <p class="roosha-split-{{ section.id }}__eyebrow">{{ section.settings.eyebrow }}</p>
+        {% endif %}
+        {% if section.settings.heading != blank %}
+          <h2 class="roosha-split-{{ section.id }}__title">{{ section.settings.heading }}</h2>
+        {% endif %}
+        {% if section.settings.text != blank %}
+          <div class="roosha-split-{{ section.id }}__text">{{ section.settings.text }}</div>
+        {% endif %}
+        {% if section.blocks.size > 0 %}
+          <ul class="roosha-split-{{ section.id }}__list">
+            {% for block in section.blocks %}
+              <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        {% if section.settings.button_label != blank %}
+          <a class="button" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Roosha feature split",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "checkbox", "id": "reverse", "label": "Image on right", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Chocolate bars" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Everyday bars, thoughtfully sized." },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Compare mini and large formats for treats, return gifts, and fuller indulgence."
+    },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "fallback_asset", "label": "Fallback asset filename", "default": "roosha-bars-collection.jpg" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop Chocolate Bars" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#faf7f2" },
+    { "type": "range", "id": "padding_top", "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Padding top", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Padding bottom", "default": 72 }
+  ],
+  "blocks": [
+    { "type": "item", "name": "Bullet", "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Mini Bars · 10–15 g" }] }
+  ],
+  "presets": [
+    {
+      "name": "Roosha feature split",
+      "blocks": [
+        { "type": "item", "settings": { "text": "Mini Bars · 10–15 g · plain, dried fruits, or filled" } },
+        { "type": "item", "settings": { "text": "Large Bars · 60–80 g · plain or with dried fruits" } },
+        { "type": "item", "settings": { "text": "Regular Bars · 20–25 g · selected decorative messages" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

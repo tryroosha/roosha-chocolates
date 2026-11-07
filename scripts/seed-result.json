@@ -1,0 +1,153 @@
+{
+  "collections": {
+    "frontpage": {
+      "id": "gid://shopify/Collection/500842234133",
+      "handle": "frontpage",
+      "title": "Home page"
+    },
+    "shop-chocolates": {
+      "id": "gid://shopify/Collection/500843905301",
+      "handle": "shop-chocolates",
+      "title": "Shop Chocolates"
+    },
+    "chocolate-bars": {
+      "id": "gid://shopify/Collection/500843938069",
+      "handle": "chocolate-bars",
+      "title": "Chocolate Bars"
+    },
+    "mini-bars": {
+      "id": "gid://shopify/Collection/500843970837",
+      "handle": "mini-bars",
+      "title": "Mini Bars"
+    },
+    "regular-bars": {
+      "id": "gid://shopify/Collection/500844003605",
+      "handle": "regular-bars",
+      "title": "Regular Bars"
+    },
+    "large-bars": {
+      "id": "gid://shopify/Collection/500844036373",
+      "handle": "large-bars",
+      "title": "Large Bars"
+    },
+    "filled-bars": {
+      "id": "gid://shopify/Collection/500844069141",
+      "handle": "filled-bars",
+      "title": "Filled Bars"
+    },
+    "line-chocolates": {
+      "id": "gid://shopify/Collection/500844101909",
+      "handle": "line-chocolates",
+      "title": "Line Chocolates"
+    },
+    "festive-gifting": {
+      "id": "gid://shopify/Collection/500844134677",
+      "handle": "festive-gifting",
+      "title": "Festive Gifting"
+    },
+    "wedding-corporate-gifting": {
+      "id": "gid://shopify/Collection/500844167445",
+      "handle": "wedding-corporate-gifting",
+      "title": "Wedding & Corporate Gifting"
+    }
+  },
+  "products": [
+    {
+      "id": "gid://shopify/Product/9661645291797",
+      "handle": "mini-chocolate-bar",
+      "title": "Mini Chocolate Bar",
+      "tags": [
+        "chocolate-bars",
+        "mini-bars",
+        "ready-to-ship"
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/9661645324565",
+      "handle": "regular-chocolate-bar",
+      "title": "Regular Chocolate Bar",
+      "tags": [
+        "chocolate-bars",
+        "regular-bars",
+        "request-quote"
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/9661645357333",
+      "handle": "large-chocolate-bar",
+      "title": "Large Chocolate Bar",
+      "tags": [
+        "chocolate-bars",
+        "large-bars",
+        "request-quote"
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/9661645390101",
+      "handle": "filled-chocolate-bar",
+      "title": "Filled Chocolate Bar",
+      "tags": [
+        "filled-bars",
+        "request-quote"
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/9661645455637",
+      "handle": "line-chocolate-plain",
+      "title": "Line Chocolate — Plain",
+      "tags": [
+        "line-chocolates",
+        "request-quote"
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/9661645488405",
+      "handle": "line-chocolate-dried-fruits",
+      "title": "Line Chocolate — Dried Fruits",
+      "tags": [
+        "line-chocolates",
+        "request-quote"
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/9661645521173",
+      "handle": "festive-diwali-chocolate-box",
+      "title": "Festive Diwali Chocolate Box",
+      "tags": [
+        "diwali",
+        "festive",
+        "request-quote"
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/9661645553941",
+      "handle": "wedding-favour-chocolate-box",
+      "title": "Wedding Favour Chocolate Box",
+      "tags": [
+        "gifting",
+        "request-quote",
+        "wedding"
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/9661645586709",
+      "handle": "corporate-chocolate-hamper",
+      "title": "Corporate Chocolate Hamper",
+      "tags": [
+        "corporate",
+        "gifting",
+        "request-quote"
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/9661645619477",
+      "handle": "custom-chocolate-bar-enquiry",
+      "title": "Custom Chocolate Bar Enquiry",
+      "tags": [
+        "chocolate-bars",
+        "custom",
+        "request-quote"
+      ]
+    }
+  ]
+}

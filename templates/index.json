@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "roosha_hero": {
@@ -7,10 +16,10 @@
         "eyebrow": "Premium chocolates · Himachal Pradesh",
         "heading": "Crafted for Every Craving. Curated for Every Celebration.",
         "text": "From glossy everyday bars to filled indulgences and thoughtfully wrapped gifts, Roosha brings boutique chocolate craft to moments worth sharing.",
-        "button_label": "Explore Chocolates",
+        "button_label": "Shop the Collection",
         "button_link": "/collections/shop-chocolates",
-        "secondary_label": "Discover Gifting",
-        "secondary_link": "/collections/festive-gifting",
+        "secondary_label": "Explore Hampers",
+        "secondary_link": "/collections/hampers",
         "desktop_height": 680,
         "mobile_height": 560,
         "background_color": "#faf7f2",
@@ -22,63 +31,103 @@
     "roosha_collections": {
       "type": "roosha-collection-cards",
       "blocks": {
+        "card_dragee": {
+          "type": "card",
+          "settings": {
+            "collection": "dragees",
+            "title": "Dragée",
+            "description": "Nuts, fruit, and coffee in a thin chocolate shell.",
+            "button_label": "Shop Now"
+          }
+        },
+        "card_toffee": {
+          "type": "card",
+          "settings": {
+            "collection": "toffee",
+            "title": "Toffee",
+            "description": "Brittle, florentine, and classic toffee bites.",
+            "button_label": "Shop Now"
+          }
+        },
+        "card_bonbon": {
+          "type": "card",
+          "settings": {
+            "collection": "bonbons-pralines",
+            "title": "Bonbons & Pralines",
+            "description": "Boxes of 6, 12, and 18 for the table.",
+            "button_label": "Shop Now"
+          }
+        },
+        "card_truffle": {
+          "type": "card",
+          "settings": {
+            "collection": "chocolate-truffles",
+            "title": "Chocolate Truffles",
+            "description": "Caramel, hazelnut, and cocoa-dusted truffles.",
+            "button_label": "Shop Now"
+          }
+        },
+        "card_origin": {
+          "type": "card",
+          "settings": {
+            "collection": "single-origin-chocolate-bars",
+            "title": "Single Origin Bars",
+            "description": "Ghana, Ecuador, São Tomé, and Madagascar.",
+            "button_label": "Shop Now"
+          }
+        },
         "card_bars": {
           "type": "card",
           "settings": {
-            "collection": "chocolate-bars",
-            "title": "Chocolate Bars",
-            "description": "Mini, regular, and large bars for everyday craving and gifting.",
+            "collection": "celebration-chocolate-bars",
+            "title": "Celebration Bars",
+            "description": "Birthday, thank-you, and Diwali message bars.",
             "button_label": "Shop Now"
           }
         },
-        "card_filled": {
+        "card_hampers": {
           "type": "card",
           "settings": {
-            "collection": "filled-bars",
-            "title": "Filled Chocolate Bars",
-            "description": "Kunafa, berry, mango, rasmalai, paan, and custom fillings.",
-            "button_label": "Shop Now"
-          }
-        },
-        "card_line": {
-          "type": "card",
-          "settings": {
-            "collection": "line-chocolates",
-            "title": "Line Chocolates",
-            "description": "Elegant individual chocolates for premium assortments.",
+            "collection": "hampers",
+            "title": "Hampers",
+            "description": "Birthday, festive, and celebration hampers.",
             "button_label": "Shop Now"
           }
         },
         "card_festive": {
           "type": "card",
           "settings": {
-            "collection": "festive-gifting",
-            "title": "Festive & Customized Chocolates",
-            "description": "Diwali boxes, messages, and seasonal packaging.",
+            "collection": "diwali-collection",
+            "title": "Diwali Collection",
+            "description": "Festive boxes and hampers for the season.",
             "button_label": "Shop Now"
           }
         },
         "card_wedding": {
           "type": "card",
           "settings": {
-            "collection": "wedding-corporate-gifting",
-            "title": "Wedding & Corporate Gifting",
-            "description": "Favours, hampers, and bulk gifting with personalisation.",
+            "collection": "corporate-gifting",
+            "title": "Corporate Gifting",
+            "description": "Client hampers and welcome boxes, quoted to your brief.",
             "button_label": "Shop Now"
           }
         }
       },
       "block_order": [
+        "card_dragee",
+        "card_toffee",
+        "card_bonbon",
+        "card_truffle",
+        "card_origin",
         "card_bars",
-        "card_filled",
-        "card_line",
+        "card_hampers",
         "card_festive",
         "card_wedding"
       ],
       "settings": {
-        "eyebrow": "Shop by collection",
-        "heading": "A boutique cupboard of chocolate.",
-        "subheading": "Explore bars, filled indulgences, line chocolates, festive boxes, and curated gifting.",
+        "eyebrow": "Collections we offer",
+        "heading": "A full cupboard, ready to gift.",
+        "subheading": "Dragée, toffee, bonbons, truffles, single-origin bars, hampers, and corporate gifting.",
         "background": "#fffcf8",
         "padding_top": 72,
         "padding_bottom": 72
@@ -199,8 +248,8 @@
         "heading": "Celebrate with burgundy-and-gold packaging.",
         "text": "Enquire about festive designs, chocolate messages, customized bars, and seasonal gift boxes. Collections stay editable for each season.",
         "fallback_asset": "roosha-festive-diwali.jpg",
-        "button_label": "Shop Festive Gifting",
-        "button_link": "/collections/festive-gifting",
+        "button_label": "Shop the Diwali Collection",
+        "button_link": "/collections/diwali-collection",
         "background": "#fffcf8",
         "padding_top": 72,
         "padding_bottom": 72

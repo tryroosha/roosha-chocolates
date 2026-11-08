@@ -23,8 +23,8 @@
         "faq_1": {
           "type": "faq_item",
           "settings": {
-            "question": "Are these product photos real?",
-            "answer": "<p>Yes. Every product image is a real studio photograph of the actual jewellery on a dark green background, not AI. Slight colour differences can still happen because of screen settings or lighting, and we’re always honest about that.</p>"
+            "question": "How should I store the chocolates?",
+            "answer": "<p>Keep Roosha chocolates in a cool, dry place, away from direct sun. They are best enjoyed soon after delivery. Colour and sheen can shift slightly with temperature, which is normal for real chocolate.</p>"
           }
         },
         "faq_2": {
@@ -52,14 +52,14 @@
           "type": "faq_item",
           "settings": {
             "question": "Can I return my order?",
-            "answer": "<p>Yes. You can request a return within 3 days of receiving your order, provided the jewellery is unused, unworn, and returned in its original condition with all original packaging and tags intact.</p><p>To initiate a return, simply contact us on WhatsApp with your Order ID.</p>"
+            "answer": "<p>You can request a return within 3 days of receiving an eligible ready-to-ship order, if the chocolate is unopened and still in its original packaging. Custom, wedding, and corporate orders made to request are not returnable.</p><p>To start, message us on WhatsApp with your Order ID.</p>"
           }
         },
         "faq_6": {
           "type": "faq_item",
           "settings": {
-            "question": "What if I don’t like the design or want a different product?",
-            "answer": "<p>We understand that choosing jewellery online can sometimes be difficult. If the design does not meet your expectations or you’d prefer a different style, we’re here to help.</p><p>You can request a return or exchange within 3 days of delivery, provided the jewellery is unused, unworn, and returned in its original condition with all tags and packaging intact.</p><p><strong>For Exchanges</strong></p><ul><li>You may exchange your product for another design (subject to availability).</li><li>Any price difference will be adjusted accordingly.</li><li>No shipping charges will be deducted for approved exchanges.</li></ul><p><strong>For Returns</strong></p><ul><li>If you choose a refund instead of an exchange, a flat ₹99 shipping and handling charge will be deducted from your refund amount, even if your original order qualified for free shipping (orders above ₹499).</li><li>This charge covers the logistics and return handling costs involved in processing your return.</li></ul><p>To get started, contact us on WhatsApp with your Order ID, and our team will guide you through the process.</p>"
+            "question": "Can I exchange a box?",
+            "answer": "<p>If a ready-to-ship box is unopened, you can ask for an exchange within 3 days of delivery, subject to availability. Any price difference is adjusted. Personalised, wedding, and corporate orders are made for you and cannot be exchanged.</p><p>Message us on WhatsApp with your Order ID before sending anything back.</p>"
           }
         },
         "faq_7": {
@@ -86,8 +86,8 @@
         "faq_10": {
           "type": "faq_item",
           "settings": {
-            "question": "How can I contact Ashtitva for support?",
-            "answer": "<p>We’re always happy to help!</p><p><strong>WhatsApp:</strong> <a href=\"https://wa.me/917777877253\" target=\"_blank\" rel=\"noopener\">+91 77778 77253</a></p><p><strong>Email:</strong> <a href=\"mailto:contact@ashtitva.com\">contact@ashtitva.com</a></p><p>Whether you have questions about your order, shipping, returns, exchanges, payments, or our products, our customer support team is here to assist you.</p>"
+            "question": "How can I contact Roosha?",
+            "answer": "<p>We are happy to help with orders, hampers, and corporate gifting.</p><p><strong>WhatsApp:</strong> <a href=\"https://wa.me/917777877253\" target=\"_blank\" rel=\"noopener\">+91 77778 77253</a></p><p><strong>Email:</strong> <a href=\"mailto:hello@tryroosha.com\">hello@tryroosha.com</a></p>"
           }
         }
       },
@@ -106,7 +106,7 @@
       "settings": {
         "eyebrow": "We’re here for you",
         "heading": "Questions, answered with care",
-        "subheading": "Honest answers about our jewellery, photography, shipping, returns, and support.",
+        "subheading": "Shipping, storage, returns, and how to reach Roosha.",
         "heading_alignment": "center",
         "heading_size_desktop": 40,
         "heading_size_mobile": 28,

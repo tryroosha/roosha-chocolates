@@ -1,30 +1,30 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "contact_intro": {
-      "type": "roosha-richtext-page",
-      "settings": {
-        "eyebrow": "Contact",
-        "heading": "We're here for every craving and celebration.",
-        "body": "<p>Whether you need help with an order, a custom flavour request, or a wedding and corporate gifting enquiry, Roosha is happy to help.</p><p><strong>Email:</strong> Use the contact email in Theme settings<br><strong>WhatsApp:</strong> Use the WhatsApp number in Theme settings<br><strong>Based in:</strong> Himachal Pradesh, India</p>",
-        "background": "#faf7f2",
-        "padding_top": 64,
-        "padding_bottom": 24
-      }
-    },
     "enquiry": {
       "type": "roosha-enquiry-form",
       "settings": {
-        "eyebrow": "Send a message",
-        "heading": "Contact Roosha",
-        "text": "Share your question or enquiry and our team will respond shortly.",
+        "eyebrow": "Contact",
+        "heading": "We're here for every craving and celebration.",
+        "text": "Whether you need help with an order, a custom flavour request, or a wedding and corporate gifting enquiry, Roosha is happy to help.",
         "form_type": "Contact",
         "button_label": "Send Message",
-        "fallback_asset": "roosha-hero-gift.jpg",
-        "background": "#fffcf8",
-        "padding_top": 24,
-        "padding_bottom": 80
+        "fallback_asset": "",
+        "background": "#faf7f2",
+        "padding_top": 64,
+        "padding_bottom": 88
       }
     }
   },
-  "order": ["contact_intro", "enquiry"]
+  "order": [
+    "enquiry"
+  ]
 }

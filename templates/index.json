@@ -20,11 +20,11 @@
         "button_link": "/collections/shop-chocolates",
         "secondary_label": "Explore Hampers",
         "secondary_link": "/collections/hampers",
-        "desktop_height": 680,
-        "mobile_height": 560,
-        "background_color": "#faf7f2",
-        "heading_color": "#6b1e2a",
-        "text_color": "#5a4548",
+        "desktop_height": 760,
+        "mobile_height": 640,
+        "background_color": "#2a0e14",
+        "heading_color": "#faf7f2",
+        "text_color": "#f3ebe0",
         "accent_color": "#c4a35a"
       }
     },
@@ -129,8 +129,8 @@
         "heading": "A full cupboard, ready to gift.",
         "subheading": "Dragée, toffee, bonbons, truffles, single-origin bars, hampers, and corporate gifting.",
         "background": "#fffcf8",
-        "padding_top": 72,
-        "padding_bottom": 72
+        "padding_top": 88,
+        "padding_bottom": 88
       }
     },
     "best_sellers": {
@@ -194,14 +194,51 @@
     "roosha_studio": {
       "type": "roosha-custom-studio",
       "blocks": {
-        "c1": { "type": "chip", "settings": { "label": "Bar size" } },
-        "c2": { "type": "chip", "settings": { "label": "Filling flavour" } },
-        "c3": { "type": "chip", "settings": { "label": "Dried fruits" } },
-        "c4": { "type": "chip", "settings": { "label": "Custom message" } },
-        "c5": { "type": "chip", "settings": { "label": "Festive design" } },
-        "c6": { "type": "chip", "settings": { "label": "Special packaging" } }
+        "c1": {
+          "type": "chip",
+          "settings": {
+            "label": "Bar size"
+          }
+        },
+        "c2": {
+          "type": "chip",
+          "settings": {
+            "label": "Filling flavour"
+          }
+        },
+        "c3": {
+          "type": "chip",
+          "settings": {
+            "label": "Dried fruits"
+          }
+        },
+        "c4": {
+          "type": "chip",
+          "settings": {
+            "label": "Custom message"
+          }
+        },
+        "c5": {
+          "type": "chip",
+          "settings": {
+            "label": "Festive design"
+          }
+        },
+        "c6": {
+          "type": "chip",
+          "settings": {
+            "label": "Special packaging"
+          }
+        }
       },
-      "block_order": ["c1", "c2", "c3", "c4", "c5", "c6"],
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
       "settings": {
         "eyebrow": "Custom chocolate studio",
         "heading": "Your Chocolate. Your Filling. Your Choice.",
@@ -217,11 +254,30 @@
     "roosha_festival": {
       "type": "roosha-feature-split",
       "blocks": {
-        "fe1": { "type": "item", "settings": { "text": "Diwali · Weddings · Anniversaries" } },
-        "fe2": { "type": "item", "settings": { "text": "Birthdays · Corporate celebrations" } },
-        "fe3": { "type": "item", "settings": { "text": "Festive return gifts & special packaging" } }
+        "fe1": {
+          "type": "item",
+          "settings": {
+            "text": "Diwali · Weddings · Anniversaries"
+          }
+        },
+        "fe2": {
+          "type": "item",
+          "settings": {
+            "text": "Birthdays · Corporate celebrations"
+          }
+        },
+        "fe3": {
+          "type": "item",
+          "settings": {
+            "text": "Festive return gifts & special packaging"
+          }
+        }
       },
-      "block_order": ["fe1", "fe2", "fe3"],
+      "block_order": [
+        "fe1",
+        "fe2",
+        "fe3"
+      ],
       "settings": {
         "reverse": true,
         "eyebrow": "Festival collection",

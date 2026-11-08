@@ -87,10 +87,22 @@
   --roosha-sans: var(--font-body-family), "Helvetica Neue", Arial, sans-serif;
 }
 
+html {
+  overflow-x: clip;
+}
+
 body {
   background-color: var(--roosha-ivory);
   color: var(--roosha-ink);
   font-family: var(--roosha-sans);
+  overflow-x: clip;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
 }
 
 h1,

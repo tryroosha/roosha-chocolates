@@ -1,19 +1,52 @@
 {{ 'roosha-brand.css' | asset_url | stylesheet_tag }}
 
+{%- liquid
+  assign hero_image_url = ''
+  if section.settings.image != blank
+    assign hero_image_url = section.settings.image | image_url: width: 2400
+  else
+    assign hero_image_url = 'roosha-hero-gift.jpg' | asset_url
+  endif
+-%}
+
 {%- style -%}
   .roosha-hero-{{ section.id }} {
     position: relative;
     overflow: hidden;
-    background: {{ section.settings.background_color }};
-    color: {{ section.settings.text_color }};
     min-height: {{ section.settings.mobile_height }}px;
+    color: {{ section.settings.text_color }};
+    background:
+      linear-gradient(105deg, rgba(42, 14, 20, 0.78) 0%, rgba(74, 18, 28, 0.48) 48%, rgba(42, 14, 20, 0.28) 100%),
+      url({{ hero_image_url | json }}) center / cover no-repeat;
   }
-  .roosha-hero-{{ section.id }}__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2.4rem;
-    align-items: center;
-    padding: 4.8rem 0 5.6rem;
+  .roosha-hero-{{ section.id }}::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 28%;
+    background: linear-gradient(180deg, transparent, rgba(42, 14, 20, 0.35));
+    pointer-events: none;
+  }
+  .roosha-hero-{{ section.id }}__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    min-height: inherit;
+    padding: 7.2rem 0 5.6rem;
+  }
+  .roosha-hero-{{ section.id }}__content {
+    max-width: 58rem;
+    animation: rooshaHeroRise 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .roosha-hero-{{ section.id }}__brand {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    letter-spacing: 0.48em;
+    text-transform: uppercase;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    color: #faf7f2;
+    margin: 0 0 1.6rem;
+    font-weight: 500;
   }
   .roosha-hero-{{ section.id }}__eyebrow {
     display: inline-flex;
@@ -21,9 +54,9 @@
     gap: 1rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: {{ section.settings.accent_color }};
-    margin-bottom: 1.6rem;
+    margin: 0 0 1.6rem;
     font-weight: 500;
   }
   .roosha-hero-{{ section.id }}__eyebrow::before,
@@ -36,18 +69,18 @@
   .roosha-hero-{{ section.id }}__title {
     font-family: "Cormorant Garamond", Georgia, serif;
     font-weight: 500;
-    font-size: clamp(3.2rem, 6vw, 5.6rem);
-    line-height: 1.08;
+    font-size: clamp(3.2rem, 6vw, 5.4rem);
+    line-height: 1.06;
     letter-spacing: 0.01em;
     color: {{ section.settings.heading_color }};
     margin: 0 0 1.6rem;
     max-width: 14ch;
   }
   .roosha-hero-{{ section.id }}__text {
-    font-size: 1.6rem;
+    font-size: 1.55rem;
     line-height: 1.7;
     color: {{ section.settings.text_color }};
-    max-width: 42rem;
+    max-width: 40rem;
     margin: 0 0 2.8rem;
   }
   .roosha-hero-{{ section.id }}__actions {
@@ -55,75 +88,46 @@
     flex-wrap: wrap;
     gap: 1.2rem;
   }
-  .roosha-hero-{{ section.id }}__media {
-    position: relative;
-    border-radius: 4px;
-    overflow: hidden;
-    border: 1px solid {{ section.settings.accent_color }};
-    box-shadow: 0 24px 60px rgba(74, 18, 28, 0.12);
-    aspect-ratio: 4 / 3;
-    background: #f3ebe0;
+  .roosha-hero-{{ section.id }} .button--secondary {
+    background: transparent !important;
+    color: #faf7f2 !important;
+    border-color: rgba(196, 163, 90, 0.85) !important;
   }
-  .roosha-hero-{{ section.id }}__media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  .roosha-hero-{{ section.id }} .button--secondary:hover {
+    background: #6b1e2a !important;
+    border-color: #6b1e2a !important;
   }
-  .roosha-hero-{{ section.id }}__brand {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    letter-spacing: 0.42em;
-    text-transform: uppercase;
-    font-size: 1.4rem;
-    color: {{ section.settings.heading_color }};
-    margin-bottom: 1.2rem;
+  @keyframes rooshaHeroRise {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
   }
   @media screen and (min-width: 900px) {
     .roosha-hero-{{ section.id }} {
       min-height: {{ section.settings.desktop_height }}px;
     }
-    .roosha-hero-{{ section.id }}__grid {
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 4.8rem;
-      padding: 7.2rem 0;
+    .roosha-hero-{{ section.id }}__inner {
+      padding: 10rem 0 7.2rem;
     }
   }
 {%- endstyle -%}
 
 <section class="roosha-hero-{{ section.id }}">
-  <div class="page-width">
-    <div class="roosha-hero-{{ section.id }}__grid">
-      <div>
-        <p class="roosha-hero-{{ section.id }}__brand">{{ section.settings.brand_name }}</p>
-        {% if section.settings.eyebrow != blank %}
-          <p class="roosha-hero-{{ section.id }}__eyebrow">{{ section.settings.eyebrow }}</p>
+  <div class="page-width roosha-hero-{{ section.id }}__inner">
+    <div class="roosha-hero-{{ section.id }}__content">
+      <p class="roosha-hero-{{ section.id }}__brand">{{ section.settings.brand_name }}</p>
+      {% if section.settings.eyebrow != blank %}
+        <p class="roosha-hero-{{ section.id }}__eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      <h1 class="roosha-hero-{{ section.id }}__title">{{ section.settings.heading }}</h1>
+      {% if section.settings.text != blank %}
+        <div class="roosha-hero-{{ section.id }}__text">{{ section.settings.text }}</div>
+      {% endif %}
+      <div class="roosha-hero-{{ section.id }}__actions">
+        {% if section.settings.button_label != blank %}
+          <a class="button" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
         {% endif %}
-        <h1 class="roosha-hero-{{ section.id }}__title">{{ section.settings.heading }}</h1>
-        {% if section.settings.text != blank %}
-          <div class="roosha-hero-{{ section.id }}__text">{{ section.settings.text }}</div>
-        {% endif %}
-        <div class="roosha-hero-{{ section.id }}__actions">
-          {% if section.settings.button_label != blank %}
-            <a class="button" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
-          {% endif %}
-          {% if section.settings.secondary_label != blank %}
-            <a class="button button--secondary" href="{{ section.settings.secondary_link }}">{{ section.settings.secondary_label }}</a>
-          {% endif %}
-        </div>
-      </div>
-      <div class="roosha-hero-{{ section.id }}__media">
-        {% if section.settings.image != blank %}
-          {{
-            section.settings.image
-            | image_url: width: 1600
-            | image_tag:
-              loading: 'eager',
-              widths: '600, 900, 1200, 1600',
-              sizes: '(min-width: 900px) 48vw, 100vw',
-              alt: section.settings.image.alt | default: section.settings.heading
-          }}
-        {% else %}
-          {{ 'roosha-hero-gift.jpg' | asset_url | img_tag: section.settings.heading }}
+        {% if section.settings.secondary_label != blank %}
+          <a class="button button--secondary" href="{{ section.settings.secondary_link }}">{{ section.settings.secondary_label }}</a>
         {% endif %}
       </div>
     </div>
@@ -155,11 +159,11 @@
     { "type": "text", "id": "secondary_label", "label": "Secondary button", "default": "Discover Gifting" },
     { "type": "url", "id": "secondary_link", "label": "Secondary button link" },
     { "type": "image_picker", "id": "image", "label": "Hero image" },
-    { "type": "range", "id": "desktop_height", "min": 480, "max": 900, "step": 10, "unit": "px", "label": "Desktop min height", "default": 680 },
-    { "type": "range", "id": "mobile_height", "min": 420, "max": 900, "step": 10, "unit": "px", "label": "Mobile min height", "default": 560 },
-    { "type": "color", "id": "background_color", "label": "Background", "default": "#faf7f2" },
-    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#6b1e2a" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#5a4548" },
+    { "type": "range", "id": "desktop_height", "min": 480, "max": 900, "step": 10, "unit": "px", "label": "Desktop min height", "default": 720 },
+    { "type": "range", "id": "mobile_height", "min": 420, "max": 900, "step": 10, "unit": "px", "label": "Mobile min height", "default": 620 },
+    { "type": "color", "id": "background_color", "label": "Fallback background", "default": "#2a0e14" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#faf7f2" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#f3ebe0" },
     { "type": "color", "id": "accent_color", "label": "Gold accent", "default": "#c4a35a" }
   ],
   "presets": [{ "name": "Roosha hero" }]

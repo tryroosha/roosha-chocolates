@@ -27,16 +27,14 @@
     background: linear-gradient(180deg, transparent, rgba(42, 14, 20, 0.35));
     pointer-events: none;
   }
-  .roosha-hero-{{ section.id }}__inner {
+  .roosha-hero-{{ section.id }}__inner.page-width {
     position: relative;
     z-index: 1;
     display: flex;
     align-items: flex-end;
     min-height: inherit;
-    /* top/bottom only — keep .page-width side padding */
-    padding-top: 6.4rem;
-    padding-bottom: 4.8rem;
     box-sizing: border-box;
+    padding: 6.4rem 1.5rem 4.8rem !important;
   }
   .roosha-hero-{{ section.id }}__content {
     width: 100%;
@@ -120,7 +118,7 @@
   }
   @media screen and (min-width: 1100px) {
     .roosha-hero-{{ section.id }}__title {
-      max-width: 16ch;
+      max-width: 26ch;
       font-size: clamp(3.6rem, 4.2vw, 5.2rem);
     }
   }
@@ -137,13 +135,19 @@
     from { opacity: 0; transform: translateY(18px); }
     to { opacity: 1; transform: translateY(0); }
   }
+  @media screen and (min-width: 750px) {
+    .roosha-hero-{{ section.id }}__inner.page-width {
+      padding-left: 5rem !important;
+      padding-right: 5rem !important;
+    }
+  }
   @media screen and (min-width: 900px) {
     .roosha-hero-{{ section.id }} {
       min-height: {{ section.settings.desktop_height }}px;
     }
-    .roosha-hero-{{ section.id }}__inner {
-      padding-top: 10rem;
-      padding-bottom: 7.2rem;
+    .roosha-hero-{{ section.id }}__inner.page-width {
+      padding-top: 10rem !important;
+      padding-bottom: 7.2rem !important;
     }
   }
 {%- endstyle -%}

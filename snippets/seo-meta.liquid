@@ -1,15 +1,13 @@
 {%- comment -%}
-  Builds SEO title + description with brand, misspelling, and Hinglish fallbacks.
+  Builds SEO title + description for Roosha chocolates.
   Sets seo_og_title / seo_og_description for meta-tags.
-  DAY8-02 — Product title: {{ product.title }} | Ashtitva (no duplicate Ashtitva).
-  Product description: first 150 chars of body; exact fallback if empty.
 {%- endcomment -%}
 
 {%- liquid
   assign seo_title = page_title | strip
   assign seo_description = page_description | strip
-  assign default_home_title = 'Ashtitva: Online Shopping For Fashion Jewellery & Sets'
-  assign default_description = 'Shop Ashtitva jewellery online — necklace, earrings, rings aur sets. Real photos, behtareen designs, gift aur festive looks. India delivery.'
+  assign default_home_title = 'Roosha | Premium Chocolates & Curated Gifting'
+  assign default_description = 'Shop Roosha chocolates from Himachal Pradesh — bars, dragée, truffles, hampers and curated gifts. Packed with care for celebrations across India.'
 
   if settings.seo_homepage_title != blank
     assign default_home_title = settings.seo_homepage_title
@@ -45,20 +43,17 @@
   endif
 
   if request.page_type == 'collection'
-    capture sitelink_title
-      render 'seo-collection-copy', collection: collection, field: 'title'
-    endcapture
-    capture sitelink_description
-      render 'seo-collection-copy', collection: collection, field: 'description'
-    endcapture
-    assign sitelink_title = sitelink_title | strip
-    assign sitelink_description = sitelink_description | strip
-
-    if sitelink_title != blank
-      assign seo_title = sitelink_title
+    if collection.title != blank and seo_title == blank
+      assign seo_title = collection.title | append: ' | Roosha'
+    elsif collection.title != blank and seo_title == collection.title
+      assign seo_title = collection.title | append: ' | Roosha'
     endif
-    if sitelink_description != blank
-      assign seo_description = sitelink_description
+    if description_is_weak
+      if collection.description != blank
+        assign seo_description = collection.description | strip_html | strip | truncate: 155
+      else
+        assign seo_description = 'Shop ' | append: collection.title | append: ' at Roosha — premium chocolates and curated gifts packed in Himachal Pradesh.'
+      endif
       assign description_is_weak = false
     endif
   endif
@@ -68,11 +63,11 @@
     if page_title != blank and page_title != product.title
       assign seo_title = page_title | strip
     else
-      assign title_tail = product_title_stripped | slice: -8, 8 | downcase
-      if title_tail == 'ashtitva'
+      assign title_tail = product_title_stripped | slice: -6, 6 | downcase
+      if title_tail == 'roosha'
         assign seo_title = product_title_stripped
       else
-        assign seo_title = product_title_stripped | append: ' | Ashtitva'
+        assign seo_title = product_title_stripped | append: ' | Roosha'
       endif
     endif
 
@@ -80,42 +75,33 @@
     if product_desc_plain != blank
       assign seo_description = product_desc_plain | truncate: 150, ''
     else
-      assign seo_description = 'Shop ' | append: product.title | append: ' at Ashtitva. Real product photos, American Diamond jewellery, prepaid shipping across India.'
+      assign seo_description = 'Shop ' | append: product.title | append: ' at Roosha. Premium chocolate packed in Himachal Pradesh, ready for gifting across India.'
     endif
     assign description_is_weak = false
   endif
 
   if description_is_weak
-    if request.page_type == 'collection'
-      case collection.handle
-        when 'best-seller'
-          assign seo_description = 'Shop Ashtitva bestsellers — most-loved necklace, earrings, rings aur sets. Real photos, behtareen designs. India delivery.'
-        when 'earrings'
-          assign seo_description = 'Earrings online at Ashtitva — daily, party aur festive styles. Real photos, stylish designs, India delivery.'
-        when 'necklace'
-          assign seo_description = 'Necklace aur necklace set online at Ashtitva. Daily wear se festive tak — real photos, behtareen designs.'
-        when 'rings'
-          assign seo_description = 'Rings for daily wear, gifting aur celebration at Ashtitva. Real photos, stylish designs, India delivery.'
-        when 'kada'
-          assign seo_description = 'Kada aur bracelet designs at Ashtitva for everyday aur festive wear. Comfortable, stylish, real photos.'
-        else
-          if collection.description != blank
-            assign seo_description = collection.description | strip_html | strip | truncate: 155
-          else
-            assign seo_description = 'Shop ' | append: collection.title | append: ' at Ashtitva — fashion jewellery with real photos. Necklace, earrings, rings aur sets. India delivery.'
-          endif
-      endcase
-    elsif request.page_type == 'list-collections'
-      assign seo_title = 'Categories | Ashtitva Fashion Jewellery'
-      assign seo_description = 'Browse Ashtitva jewellery — Silver Elegance, Gold Glam, Rose Gold, Luxe Picks, Rare Find, necklace, earrings aur more.'
+    if request.page_type == 'list-collections'
+      assign seo_title = 'Collections | Roosha Chocolates'
+      assign seo_description = 'Browse Roosha chocolate collections — dragée, bars, truffles, bonbons, hampers and festive gifts.'
     elsif request.page_type == 'page'
       case page.handle
-        when 'about-us'
-          assign seo_description = 'Ashtitva jewellery that celebrates you. Real photos, thoughtful curation. Official store: ashtitva.com.'
+        when 'our-story', 'about-us'
+          assign seo_description = 'The Roosha story — premium chocolate and curated gifting from Himachal Pradesh.'
         when 'contact'
-          assign seo_description = 'Contact Ashtitva on WhatsApp, phone or email. Hum help karenge aapka piece find karne mein.'
-        when 'faq'
-          assign seo_description = 'Ashtitva FAQ — shipping, returns, photos aur ordering. Shop with confidence at ashtitva.com.'
+          assign seo_description = 'Contact Roosha for orders, custom gifts, wedding favours and corporate enquiries. Email hello@tryroosha.com or WhatsApp +91 77778 77253.'
+        when 'faqs', 'faq'
+          assign seo_description = 'Roosha FAQ — shipping, storage, returns and ordering for premium chocolates and gift hampers.'
+        when 'occasions'
+          assign seo_description = 'Shop Roosha chocolates by occasion — birthdays, weddings, anniversaries, house warming and Diwali.'
+        when 'corporate-gifting'
+          assign seo_description = 'Roosha corporate gifting — branded chocolate gifts, onboarding boxes and return favours.'
+        when 'build-your-own-hamper'
+          assign seo_description = 'Build your own Roosha chocolate hamper. Tell us the occasion, quantity and packaging.'
+        when 'bulk-order'
+          assign seo_description = 'Roosha bulk chocolate orders for weddings, festivals and corporate celebrations.'
+        when 'chocolate-tasting'
+          assign seo_description = 'Book a Roosha chocolate tasting — three tastes, guided and made for celebration.'
         else
           if page.content != blank
             assign seo_description = page.content | strip_html | strip | truncate: 155
@@ -135,17 +121,3 @@
   assign seo_og_title = seo_title
   assign seo_og_description = seo_description
 -%}
-
-<title>
-  {{ seo_title | escape }}
-  {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-  {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-  {%- if request.page_type != 'index' and request.page_type != 'product' -%}
-    {%- unless seo_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
-  {%- endif -%}
-</title>
-<meta name="description" content="{{ seo_description | escape }}">
-
-{%- if request.page_type == 'cart' or request.page_type == 'search' or request.page_type == 'password' -%}
-  <meta name="robots" content="noindex, follow">
-{%- endif -%}

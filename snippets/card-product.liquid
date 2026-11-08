@@ -332,11 +332,11 @@
               {%- liquid
                 assign card_img_alt = card_product.featured_media.alt | strip
                 if card_img_alt == blank
-                  assign card_img_alt = card_product.title | append: ' jewellery | Ashtitva'
+                  assign card_img_alt = card_product.title | append: ' chocolate | Roosha'
                 endif
                 assign card_img_alt_2 = card_product.media[1].alt | strip
                 if card_img_alt_2 == blank
-                  assign card_img_alt_2 = card_product.title | append: ' jewellery | Ashtitva'
+                  assign card_img_alt_2 = card_product.title | append: ' chocolate | Roosha'
                 endif
               -%}
               {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
@@ -763,7 +763,7 @@
                                 "
                                 src="{{ card_product.featured_media | image_url: width: 533 }}"
                                 sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
-                                alt="{% if card_product.featured_media.alt != blank %}{{ card_product.featured_media.alt | escape }}{% else %}{{ card_product.title | escape }} jewellery | Ashtitva{% endif %}"
+                                alt="{% if card_product.featured_media.alt != blank %}{{ card_product.featured_media.alt | escape }}{% else %}{{ card_product.title | escape }} chocolate | Roosha{% endif %}"
                                 class="motion-reduce"
                                 {% unless lazy_load == false %}
                                   loading="lazy"

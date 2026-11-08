@@ -4,14 +4,14 @@
 {%- liquid
   assign stylist_phone = '917777877253'
   assign product_abs_url = request.origin | append: product.url
-  assign stylist_message = 'Hi Ashtitva! I have a question about ' | append: product.title | append: ' (' | append: product_abs_url | append: ').'
+  assign stylist_message = 'Hi Roosha! I have a question about ' | append: product.title | append: ' (' | append: product_abs_url | append: ').'
   assign stylist_message_encoded = stylist_message | url_encode
   assign stylist_url = 'https://wa.me/' | append: stylist_phone | append: '?text=' | append: stylist_message_encoded
 
   assign ptype = product.type | downcase | strip
   assign fit_note = ''
   if ptype == 'ring' or ptype == 'rings'
-    assign fit_note = 'Most Ashtitva rings are adjustable. If you need help with fit, WhatsApp us a photo of your finger with a coin for scale.'
+    assign fit_note = 'Need help choosing a gift size or flavour? WhatsApp us with the occasion and how many people you are shopping for.'
   elsif ptype == 'kada' or ptype == 'kadas'
     assign fit_note = 'Many kadas are openable/adjustable for comfortable wear. Check Product Details for openable vs fixed.'
   elsif ptype == 'necklace set' or ptype == 'necklace sets' or ptype contains 'necklace set'

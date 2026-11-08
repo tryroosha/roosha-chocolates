@@ -1,36 +1,35 @@
 {%- comment -%}
-  Organization + WebSite + sitelink candidates + breadcrumbs.
-  Sitelinks focus on the 5 brand collections Google should surface.
+  Organization + WebSite + collection breadcrumbs for Roosha.
 {%- endcomment -%}
 
 {%- liquid
   assign org_description = settings.seo_default_description
   if org_description == blank
-    assign org_description = 'Shop Ashtitva jewellery online — necklace, earrings, rings aur sets. Real photos, behtareen designs, gift aur festive looks. India delivery.'
+    assign org_description = 'Shop Roosha chocolates from Himachal Pradesh — bars, dragée, truffles, hampers and curated gifts for celebrations across India.'
   endif
 
   assign whatsapp_digits = settings.whatsapp_phone | default: '' | replace: '+', '' | replace: ' ', '' | replace: '-', ''
 
-  assign url_silver = '/collections/silver-elegance' | absolute_url
-  assign url_gold = '/collections/gold-glam' | absolute_url
-  assign url_rose = '/collections/rose-gold' | absolute_url
-  assign url_luxe = '/collections/luxe-picks' | absolute_url
-  assign url_rare = '/collections/rare-finds' | absolute_url
+  assign url_shop = '/collections/shop-chocolates' | absolute_url
+  assign url_hampers = '/collections/hampers' | absolute_url
+  assign url_best = '/collections/best-sellers' | absolute_url
+  assign url_diwali = '/collections/diwali-collection' | absolute_url
+  assign url_corporate = '/collections/corporate-gifting' | absolute_url
 
-  if collections['silver-elegance'] != blank
-    assign url_silver = collections['silver-elegance'].url | absolute_url
+  if collections['shop-chocolates'] != blank
+    assign url_shop = collections['shop-chocolates'].url | absolute_url
   endif
-  if collections['gold-glam'] != blank
-    assign url_gold = collections['gold-glam'].url | absolute_url
+  if collections['hampers'] != blank
+    assign url_hampers = collections['hampers'].url | absolute_url
   endif
-  if collections['rose-gold'] != blank
-    assign url_rose = collections['rose-gold'].url | absolute_url
+  if collections['best-sellers'] != blank
+    assign url_best = collections['best-sellers'].url | absolute_url
   endif
-  if collections['luxe-picks'] != blank
-    assign url_luxe = collections['luxe-picks'].url | absolute_url
+  if collections['diwali-collection'] != blank
+    assign url_diwali = collections['diwali-collection'].url | absolute_url
   endif
-  if collections['rare-finds'] != blank
-    assign url_rare = collections['rare-finds'].url | absolute_url
+  if collections['corporate-gifting'] != blank
+    assign url_corporate = collections['corporate-gifting'].url | absolute_url
   endif
 -%}
 
@@ -39,12 +38,12 @@
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": {{ request.origin | append: '/#organization' | json }},
-  "name": "Ashtitva",
-  "legalName": "Ashtitva",
+  "name": "Roosha",
+  "legalName": "Roosha",
   "alternateName": {% render 'seo-brand-aliases' %},
   "url": {{ request.origin | json }},
   "description": {{ org_description | json }},
-  "knowsLanguage": ["en", "hi", "hi-Latn"],
+  "knowsLanguage": ["en", "hi"],
   "areaServed": {
     "@type": "Country",
     "name": "India"
@@ -70,7 +69,7 @@
     "@type": "ContactPoint",
     "contactType": "customer service",
     "telephone": {{ settings.whatsapp_phone | json }},
-    "availableLanguage": ["English", "Hindi", "Hinglish"],
+    "availableLanguage": ["English", "Hindi"],
     "areaServed": "IN"
   }
   {%- endif -%}
@@ -84,11 +83,11 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": {{ request.origin | append: '/#website' | json }},
-    "name": "Ashtitva",
+    "name": "Roosha",
     "alternateName": {% render 'seo-brand-aliases' %},
     "url": {{ request.origin | json }},
     "description": {{ org_description | json }},
-    "inLanguage": ["en-IN", "hi-Latn"],
+    "inLanguage": ["en-IN", "hi"],
     "publisher": {
       "@id": {{ request.origin | append: '/#organization' | json }}
     },
@@ -106,8 +105,8 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "JewelryStore",
-    "name": "Ashtitva",
+    "@type": "Store",
+    "name": "Roosha",
     "alternateName": {% render 'seo-brand-aliases' %},
     "url": {{ request.origin | json }},
     "description": {{ org_description | json }},
@@ -125,47 +124,46 @@
   }
   </script>
 
-  {%- comment -%} Rubans-style sitelink candidates — exact titles Google should surface {%- endcomment -%}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Ashtitva popular destinations",
+    "name": "Roosha popular destinations",
     "itemListElement": [
       {
         "@type": "SiteNavigationElement",
         "position": 1,
-        "name": "Silver Elegance",
-        "description": "Shop Silver Elegance at Ashtitva — chandi look necklace, earrings aur sets. Real photos, everyday elegance, India delivery.",
-        "url": {{ url_silver | json }}
+        "name": "Shop Chocolates",
+        "description": "Shop all Roosha chocolates — bars, dragée, truffles, bonbons and more.",
+        "url": {{ url_shop | json }}
       },
       {
         "@type": "SiteNavigationElement",
         "position": 2,
-        "name": "Gold Glam",
-        "description": "Shop Gold Glam at Ashtitva — gold look jewellery for festive aur party. Necklace, earrings, sets. Real photos, behtareen designs.",
-        "url": {{ url_gold | json }}
+        "name": "Hampers",
+        "description": "Curated Roosha chocolate hampers for birthdays, festivals and gifting.",
+        "url": {{ url_hampers | json }}
       },
       {
         "@type": "SiteNavigationElement",
         "position": 3,
-        "name": "Rose Gold",
-        "description": "Shop Rose Gold at Ashtitva — soft rose gold necklace, earrings aur sets. Stylish look, real photos, gift ke liye perfect.",
-        "url": {{ url_rose | json }}
+        "name": "Best Sellers",
+        "description": "Roosha bestsellers — the chocolates people gift and reorder.",
+        "url": {{ url_best | json }}
       },
       {
         "@type": "SiteNavigationElement",
         "position": 4,
-        "name": "Luxe Picks",
-        "description": "Shop Luxe Picks at Ashtitva — statement jewellery for special days. Premium look, real photos, India shipping.",
-        "url": {{ url_luxe | json }}
+        "name": "Diwali Collection",
+        "description": "Festive Roosha chocolate boxes and hampers for Diwali.",
+        "url": {{ url_diwali | json }}
       },
       {
         "@type": "SiteNavigationElement",
         "position": 5,
-        "name": "Rare Find",
-        "description": "Shop Rare Find at Ashtitva — unique jewellery you won’t see everywhere. Limited styles, real photos, alag design.",
-        "url": {{ url_rare | json }}
+        "name": "Corporate Gifting",
+        "description": "Roosha corporate chocolate gifts, onboarding boxes and return favours.",
+        "url": {{ url_corporate | json }}
       }
     ]
   }
@@ -173,16 +171,9 @@
 {%- endif -%}
 
 {%- if request.page_type == 'collection' -%}
-  {%- capture collection_seo_description -%}
-    {%- render 'seo-collection-copy', collection: collection, field: 'description' -%}
-  {%- endcapture -%}
-  {%- assign collection_seo_description = collection_seo_description | strip -%}
+  {%- assign collection_seo_description = collection.description | strip_html | strip | truncate: 160 -%}
   {%- if collection_seo_description == blank -%}
-    {%- if collection.description != blank -%}
-      {%- assign collection_seo_description = collection.description | strip_html | strip | truncate: 160 -%}
-    {%- else -%}
-      {%- assign collection_seo_description = org_description -%}
-    {%- endif -%}
+    {%- assign collection_seo_description = org_description -%}
   {%- endif -%}
 
   <script type="application/ld+json">
@@ -197,7 +188,7 @@
     },
     "about": {
       "@type": "Thing",
-      "name": {{ collection.title | append: ' jewellery | Ashtitva' | json }}
+      "name": {{ collection.title | append: ' chocolate | Roosha' | json }}
     }
   }
   </script>
@@ -235,49 +226,11 @@
         "position": 1,
         "name": "Home",
         "item": {{ request.origin | json }}
-      }
-      {%- if product.collections.first -%}
-      ,{
-        "@type": "ListItem",
-        "position": 2,
-        "name": {{ product.collections.first.title | json }},
-        "item": {{ product.collections.first.url | absolute_url | json }}
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": {{ product.title | json }},
-        "item": {{ canonical_url | json }}
-      }
-      {%- else -%}
-      ,{
-        "@type": "ListItem",
-        "position": 2,
-        "name": {{ product.title | json }},
-        "item": {{ canonical_url | json }}
-      }
-      {%- endif -%}
-    ]
-  }
-  </script>
-{%- endif -%}
-
-{%- if request.page_type == 'page' -%}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": {{ request.origin | json }}
       },
       {
         "@type": "ListItem",
         "position": 2,
-        "name": {{ page.title | json }},
+        "name": {{ product.title | json }},
         "item": {{ canonical_url | json }}
       }
     ]

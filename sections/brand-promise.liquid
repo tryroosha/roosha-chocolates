@@ -564,7 +564,7 @@
                       assign bpp_wa_link = blank
                       if block.settings.icon_style == 'whatsapp' and settings.whatsapp_phone != blank
                         assign bpp_wa_phone = settings.whatsapp_phone | replace: ' ', '' | replace: '-', '' | replace: '+', '' | replace: '(', '' | replace: ')', ''
-                        assign bpp_wa_message = 'Hi! I need help with my order from Ashtitva.' | url_encode
+                        assign bpp_wa_message = 'Hi! I need help with my order from Roosha.' | url_encode
                         assign bpp_wa_link = 'https://wa.me/' | append: bpp_wa_phone | append: '?text=' | append: bpp_wa_message
                       endif
                     -%}

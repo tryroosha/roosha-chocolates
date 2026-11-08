@@ -18,7 +18,7 @@
   {%- liquid
     assign product_media_alt = media.alt | strip
     if product_media_alt == blank
-      assign product_media_alt = product.title | default: shop.name | append: ' jewellery | Ashtitva'
+      assign product_media_alt = product.title | default: shop.name | append: ' chocolate | Roosha'
     endif
   -%}
   <img

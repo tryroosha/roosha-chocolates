@@ -15,6 +15,7 @@
         "eyebrow": "Contact",
         "heading": "We're here for every craving and celebration.",
         "text": "Whether you need help with an order, a custom flavour request, or a wedding and corporate gifting enquiry, Roosha is happy to help.",
+        "layout": "stacked",
         "form_type": "Contact",
         "button_label": "Send Message",
         "fallback_asset": "",
@@ -24,7 +25,5 @@
       }
     }
   },
-  "order": [
-    "enquiry"
-  ]
+  "order": ["enquiry"]
 }

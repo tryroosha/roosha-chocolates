@@ -181,13 +181,16 @@
 {%- endstyle -%}
 
 {%- liquid
-  assign layout_class = ''
-  if section.settings.layout == 'stacked'
-    assign layout_class = ' roosha-enq-' | append: section.id | append: '--stacked'
+  assign use_stacked = false
+  if section.settings.layout == 'stacked' or section.settings.form_type == 'Contact'
+    assign use_stacked = true
   endif
 -%}
 
-<section class="roosha-enq-{{ section.id }}{{ layout_class }}" id="enquiry">
+<section
+  class="roosha-enq-{{ section.id }}{% if use_stacked %} roosha-enq-{{ section.id }}--stacked{% endif %}"
+  id="enquiry"
+>
   <div class="page-width">
     <div class="roosha-enq-{{ section.id }}__wrap">
       <div class="roosha-enq-{{ section.id }}__copy">

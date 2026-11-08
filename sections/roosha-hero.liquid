@@ -12,7 +12,8 @@
 {%- style -%}
   .roosha-hero-{{ section.id }} {
     position: relative;
-    overflow: hidden;
+    overflow-x: clip;
+    overflow-y: visible;
     min-height: {{ section.settings.mobile_height }}px;
     color: {{ section.settings.text_color }};
     background:
@@ -34,7 +35,7 @@
     align-items: flex-end;
     min-height: inherit;
     box-sizing: border-box;
-    padding: 6.4rem 1.5rem 4.8rem !important;
+    padding: 5.6rem 2rem 5.6rem !important;
   }
   .roosha-hero-{{ section.id }}__content {
     width: 100%;
@@ -78,22 +79,30 @@
   .roosha-hero-{{ section.id }}__title {
     font-family: "Cormorant Garamond", Georgia, serif;
     font-weight: 500;
-    font-size: clamp(2.6rem, 4.6vw, 5rem);
-    line-height: 1.12;
+    font-size: clamp(2.4rem, 4.2vw, 4.8rem);
+    line-height: 1.15;
     letter-spacing: 0.01em;
     color: {{ section.settings.heading_color }} !important;
-    margin: 0 0 1.4rem;
+    margin: 0 0 1.2rem;
     max-width: 100%;
     overflow-wrap: normal;
     word-break: normal;
     hyphens: none;
   }
   .roosha-hero-{{ section.id }}__text {
-    font-size: clamp(1.35rem, 2.2vw, 1.55rem);
-    line-height: 1.65;
+    font-size: clamp(1.3rem, 2vw, 1.5rem);
+    line-height: 1.6;
     color: {{ section.settings.text_color }};
     max-width: 42rem;
-    margin: 0 0 2.4rem;
+    margin: 0 0 2rem;
+  }
+  @media screen and (max-width: 749px) {
+    .roosha-hero-{{ section.id }} {
+      min-height: auto;
+    }
+    .roosha-hero-{{ section.id }}__inner.page-width {
+      min-height: {{ section.settings.mobile_height }}px;
+    }
   }
   .roosha-hero-{{ section.id }}__actions {
     display: flex;

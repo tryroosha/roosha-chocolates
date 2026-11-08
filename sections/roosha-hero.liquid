@@ -33,68 +33,95 @@
     display: flex;
     align-items: flex-end;
     min-height: inherit;
-    padding: 7.2rem 0 5.6rem;
+    padding: 6.4rem 0 4.8rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .roosha-hero-{{ section.id }}__content {
-    max-width: min(58rem, 100%);
+    width: 100%;
+    max-width: 62rem;
     min-width: 0;
     animation: rooshaHeroRise 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
   .roosha-hero-{{ section.id }}__brand {
     font-family: "Cormorant Garamond", Georgia, serif;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
-    color: #faf7f2;
-    margin: 0 0 1.6rem;
-    font-weight: 500;
-    overflow-wrap: anywhere;
-  }
-  .roosha-hero-{{ section.id }}__eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 1rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    font-size: 1.15rem;
-    color: {{ section.settings.accent_color }};
-    margin: 0 0 1.6rem;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    color: #faf7f2 !important;
+    margin: 0 0 1.2rem;
     font-weight: 500;
+    padding-right: 0.22em; /* offset trailing letter-spacing */
+    max-width: 100%;
+  }
+  .roosha-hero-{{ section.id }}__eyebrow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    color: {{ section.settings.accent_color }};
+    margin: 0 0 1.4rem;
+    font-weight: 500;
+    max-width: 100%;
   }
   .roosha-hero-{{ section.id }}__eyebrow::before,
   .roosha-hero-{{ section.id }}__eyebrow::after {
     content: "";
-    width: 2.4rem;
+    width: 1.6rem;
     height: 1px;
+    flex: 0 0 auto;
     background: {{ section.settings.accent_color }};
   }
   .roosha-hero-{{ section.id }}__title {
     font-family: "Cormorant Garamond", Georgia, serif;
     font-weight: 500;
-    font-size: clamp(2.8rem, 5.2vw, 5.4rem);
-    line-height: 1.08;
+    font-size: clamp(2.6rem, 4.6vw, 5rem);
+    line-height: 1.12;
     letter-spacing: 0.01em;
-    color: {{ section.settings.heading_color }};
-    margin: 0 0 1.6rem;
-    max-width: min(14ch, 100%);
-    overflow-wrap: break-word;
-  }
-  @media screen and (min-width: 750px) {
-    .roosha-hero-{{ section.id }}__brand {
-      letter-spacing: 0.4em;
-    }
+    color: {{ section.settings.heading_color }} !important;
+    margin: 0 0 1.4rem;
+    max-width: 100%;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
   }
   .roosha-hero-{{ section.id }}__text {
-    font-size: 1.55rem;
-    line-height: 1.7;
+    font-size: clamp(1.35rem, 2.2vw, 1.55rem);
+    line-height: 1.65;
     color: {{ section.settings.text_color }};
-    max-width: 40rem;
-    margin: 0 0 2.8rem;
+    max-width: 42rem;
+    margin: 0 0 2.4rem;
   }
   .roosha-hero-{{ section.id }}__actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.2rem;
+    gap: 1rem;
+  }
+  .roosha-hero-{{ section.id }}__actions .button {
+    max-width: 100%;
+  }
+  @media screen and (min-width: 750px) {
+    .roosha-hero-{{ section.id }}__brand {
+      letter-spacing: 0.32em;
+      padding-right: 0.32em;
+      font-size: clamp(2.4rem, 3.2vw, 3.6rem);
+    }
+    .roosha-hero-{{ section.id }}__eyebrow {
+      letter-spacing: 0.18em;
+    }
+    .roosha-hero-{{ section.id }}__title {
+      max-width: 28ch;
+    }
+  }
+  @media screen and (min-width: 1100px) {
+    .roosha-hero-{{ section.id }}__title {
+      max-width: 16ch;
+      font-size: clamp(3.6rem, 4.2vw, 5.2rem);
+    }
   }
   .roosha-hero-{{ section.id }} .button--secondary {
     background: transparent !important;

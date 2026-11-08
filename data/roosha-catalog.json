@@ -1,0 +1,3296 @@
+{
+  "brand": "Roosha",
+  "note": "Original Roosha catalog. Collection structure covers shop, occasions, hampers, and corporate gifting. Product names and descriptions are written for Roosha. Do not replace imagery with another brand's photographs.",
+  "products": [
+    {
+      "title": "Coffee Pecan Dragée",
+      "handle": "coffee-pecan-dragee",
+      "productType": "Dragée",
+      "descriptionHtml": "<p>Pecan and roasted coffee, coated in dark chocolate. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship",
+        "best-seller"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "dragees",
+        "gifting",
+        "best-sellers",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Coffee Pecan Dragée | Roosha",
+        "description": "Pecan and roasted coffee, coated in dark chocolate. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "450.00"
+    },
+    {
+      "title": "Milk Hazelnut Dragée",
+      "handle": "milk-hazelnut-dragee",
+      "productType": "Dragée",
+      "descriptionHtml": "<p>Whole hazelnuts wrapped in a smooth milk-chocolate shell. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship",
+        "best-seller"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "dragees",
+        "gifting",
+        "best-sellers",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Milk Hazelnut Dragée | Roosha",
+        "description": "Whole hazelnuts wrapped in a smooth milk-chocolate shell. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "450.00"
+    },
+    {
+      "title": "Milk Almond Dragée",
+      "handle": "milk-almond-dragee",
+      "productType": "Dragée",
+      "descriptionHtml": "<p>Roasted almonds in milk chocolate, finished for sharing tins. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship",
+        "best-seller"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "dragees",
+        "gifting",
+        "best-sellers",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Milk Almond Dragée | Roosha",
+        "description": "Roasted almonds in milk chocolate, finished for sharing tins. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "450.00"
+    },
+    {
+      "title": "Strawberry Crunch Dragée",
+      "handle": "strawberry-crunch-dragee",
+      "productType": "Dragée",
+      "descriptionHtml": "<p>A bright strawberry centre with a crisp chocolate coat. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "dragees",
+        "gifting",
+        "chefs-recommendation",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Strawberry Crunch Dragée | Roosha",
+        "description": "A bright strawberry centre with a crisp chocolate coat. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "450.00"
+    },
+    {
+      "title": "Sugar-Free Hazelnut Dragée",
+      "handle": "sugar-free-hazelnut-dragee",
+      "productType": "Dragée",
+      "descriptionHtml": "<p>Hazelnut dragée made without added sugar. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "dragees",
+        "gifting",
+        "chefs-recommendation",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Sugar-Free Hazelnut Dragée | Roosha",
+        "description": "Hazelnut dragée made without added sugar. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "450.00"
+    },
+    {
+      "title": "Butterscotch Nugget Dragée",
+      "handle": "butterscotch-nugget-dragee",
+      "productType": "Dragée",
+      "descriptionHtml": "<p>Butterscotch nuggets in a glossy chocolate shell. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "dragees",
+        "gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Butterscotch Nugget Dragée | Roosha",
+        "description": "Butterscotch nuggets in a glossy chocolate shell. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "450.00"
+    },
+    {
+      "title": "Rose Almond Dragée",
+      "handle": "rose-almond-dragee",
+      "productType": "Dragée",
+      "descriptionHtml": "<p>Almonds scented with rose and coated in chocolate. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "dragees",
+        "gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Rose Almond Dragée | Roosha",
+        "description": "Almonds scented with rose and coated in chocolate. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "450.00"
+    },
+    {
+      "title": "Dark Almond Dragée",
+      "handle": "dark-almond-dragee",
+      "productType": "Dragée",
+      "descriptionHtml": "<p>Almonds in a deeper dark-chocolate coat. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship",
+        "best-seller"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "dragees",
+        "gifting",
+        "best-sellers",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Dark Almond Dragée | Roosha",
+        "description": "Almonds in a deeper dark-chocolate coat. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "450.00"
+    },
+    {
+      "title": "Cranberry Dragée",
+      "handle": "cranberry-dragee",
+      "productType": "Dragée",
+      "descriptionHtml": "<p>Tangy cranberries balanced with chocolate. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "dragees",
+        "gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Cranberry Dragée | Roosha",
+        "description": "Tangy cranberries balanced with chocolate. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "450.00"
+    },
+    {
+      "title": "Coffee Bean Dragée",
+      "handle": "coffee-bean-dragee",
+      "productType": "Dragée",
+      "descriptionHtml": "<p>Chocolate-covered coffee beans for a late-evening tin. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "dragees",
+        "gifting",
+        "chefs-recommendation",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Coffee Bean Dragée | Roosha",
+        "description": "Chocolate-covered coffee beans for a late-evening tin. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "450.00"
+    },
+    {
+      "title": "Blueberry Cream Dragée",
+      "handle": "blueberry-cream-dragee",
+      "productType": "Dragée",
+      "descriptionHtml": "<p>Blueberry and cream notes inside a chocolate shell. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "dragees",
+        "gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Blueberry Cream Dragée | Roosha",
+        "description": "Blueberry and cream notes inside a chocolate shell. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "450.00"
+    },
+    {
+      "title": "Pistachio Dragée",
+      "handle": "pistachio-dragee",
+      "productType": "Dragée",
+      "descriptionHtml": "<p>Pistachios coated in chocolate, packed for gifting. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "dragees",
+        "gifting",
+        "chefs-recommendation",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Pistachio Dragée | Roosha",
+        "description": "Pistachios coated in chocolate, packed for gifting. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "450.00"
+    },
+    {
+      "title": "Milk Hazelnut Dragée Pouch",
+      "handle": "milk-hazelnut-dragee-pouch",
+      "productType": "Dragée",
+      "descriptionHtml": "<p>A smaller pouch of milk-chocolate hazelnut dragée. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "dragees",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Milk Hazelnut Dragée Pouch | Roosha",
+        "description": "A smaller pouch of milk-chocolate hazelnut dragée. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "225.00"
+    },
+    {
+      "title": "Butterscotch Nugget Pouch",
+      "handle": "butterscotch-nugget-pouch",
+      "productType": "Dragée",
+      "descriptionHtml": "<p>A pocket pouch of butterscotch nugget dragée. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship",
+        "best-seller"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "dragees",
+        "best-sellers",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Butterscotch Nugget Pouch | Roosha",
+        "description": "A pocket pouch of butterscotch nugget dragée. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "225.00"
+    },
+    {
+      "title": "Dark Almond Dragée Pouch",
+      "handle": "dark-almond-dragee-pouch",
+      "productType": "Dragée",
+      "descriptionHtml": "<p>A small pouch of dark-chocolate almond dragée. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "dragees",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Dark Almond Dragée Pouch | Roosha",
+        "description": "A small pouch of dark-chocolate almond dragée. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "225.00"
+    },
+    {
+      "title": "Milk Almond Dragée Pouch",
+      "handle": "milk-almond-dragee-pouch",
+      "productType": "Dragée",
+      "descriptionHtml": "<p>A small pouch of milk-chocolate almond dragée. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "dragees",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Milk Almond Dragée Pouch | Roosha",
+        "description": "A small pouch of milk-chocolate almond dragée. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "225.00"
+    },
+    {
+      "title": "Cranberry Dragée Pouch",
+      "handle": "cranberry-dragee-pouch",
+      "productType": "Dragée",
+      "descriptionHtml": "<p>A small pouch of cranberry dragée. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "dragees",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Cranberry Dragée Pouch | Roosha",
+        "description": "A small pouch of cranberry dragée. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "225.00"
+    },
+    {
+      "title": "Pistachio Dragée Pouch",
+      "handle": "pistachio-dragee-pouch",
+      "productType": "Dragée",
+      "descriptionHtml": "<p>A small pouch of pistachio dragée. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "dragees",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Pistachio Dragée Pouch | Roosha",
+        "description": "A small pouch of pistachio dragée. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "225.00"
+    },
+    {
+      "title": "Almond Brittle Crunch",
+      "handle": "almond-brittle-crunch",
+      "productType": "Toffee",
+      "descriptionHtml": "<p>Toasted almonds set in buttery brittle and finished with chocolate. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship",
+        "best-seller"
+      ],
+      "imageKey": "roosha-bars-collection.jpg",
+      "collections": [
+        "toffee",
+        "baby-shower",
+        "occasions",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "best-sellers",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Almond Brittle Crunch | Roosha",
+        "description": "Toasted almonds set in buttery brittle and finished with chocolate. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "600.00"
+    },
+    {
+      "title": "Almond Brittle Pouch",
+      "handle": "almond-brittle-pouch",
+      "productType": "Toffee",
+      "descriptionHtml": "<p>A smaller pouch of almond brittle crunch. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-bars-collection.jpg",
+      "collections": [
+        "toffee",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Almond Brittle Pouch | Roosha",
+        "description": "A smaller pouch of almond brittle crunch. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "350.00"
+    },
+    {
+      "title": "Cashew Brittle Crunch",
+      "handle": "cashew-brittle-crunch",
+      "productType": "Toffee",
+      "descriptionHtml": "<p>Cashew brittle with a chocolate finish. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-bars-collection.jpg",
+      "collections": [
+        "toffee",
+        "baby-shower",
+        "occasions",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Cashew Brittle Crunch | Roosha",
+        "description": "Cashew brittle with a chocolate finish. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "600.00"
+    },
+    {
+      "title": "Almond Florentine",
+      "handle": "almond-florentine",
+      "productType": "Toffee",
+      "descriptionHtml": "<p>A thin florentine of almonds, caramel, and chocolate. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship",
+        "best-seller"
+      ],
+      "imageKey": "roosha-bars-collection.jpg",
+      "collections": [
+        "toffee",
+        "best-sellers",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Almond Florentine | Roosha",
+        "description": "A thin florentine of almonds, caramel, and chocolate. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "380.00"
+    },
+    {
+      "title": "English Toffee",
+      "handle": "english-toffee",
+      "productType": "Toffee",
+      "descriptionHtml": "<p>Classic buttery toffee, cut for gifting tins. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship",
+        "best-seller"
+      ],
+      "imageKey": "roosha-bars-collection.jpg",
+      "collections": [
+        "toffee",
+        "best-sellers",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "English Toffee | Roosha",
+        "description": "Classic buttery toffee, cut for gifting tins. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "380.00"
+    },
+    {
+      "title": "Mango Toffee Bite",
+      "handle": "mango-toffee-bite",
+      "productType": "Toffee",
+      "descriptionHtml": "<p>A mango-scented toffee bite from the Roosha counter. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-bars-collection.jpg",
+      "collections": [
+        "toffee",
+        "chefs-recommendation",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Mango Toffee Bite | Roosha",
+        "description": "A mango-scented toffee bite from the Roosha counter. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "380.00"
+    },
+    {
+      "title": "Salted Caramel Truffle",
+      "handle": "salted-caramel-truffle",
+      "productType": "Chocolate Truffles",
+      "descriptionHtml": "<p>A soft caramel centre with a pinch of salt, rolled in chocolate. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship",
+        "best-seller"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "chocolate-truffles",
+        "gifting",
+        "baby-shower",
+        "occasions",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "best-sellers",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Salted Caramel Truffle | Roosha",
+        "description": "A soft caramel centre with a pinch of salt, rolled in chocolate. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "900.00"
+    },
+    {
+      "title": "Hazelnut Truffle",
+      "handle": "hazelnut-truffle",
+      "productType": "Chocolate Truffles",
+      "descriptionHtml": "<p>Hazelnut praline folded through a chocolate truffle. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "chocolate-truffles",
+        "gifting",
+        "baby-shower",
+        "occasions",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Hazelnut Truffle | Roosha",
+        "description": "Hazelnut praline folded through a chocolate truffle. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "900.00"
+    },
+    {
+      "title": "Cocoa-Dusted Origin Truffle",
+      "handle": "cocoa-dusted-origin-truffle",
+      "productType": "Chocolate Truffles",
+      "descriptionHtml": "<p>A dark truffle dusted in cocoa, made for after-dinner gifting. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "chocolate-truffles",
+        "gifting",
+        "baby-shower",
+        "occasions",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "chefs-recommendation",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Cocoa-Dusted Origin Truffle | Roosha",
+        "description": "A dark truffle dusted in cocoa, made for after-dinner gifting. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "960.00"
+    },
+    {
+      "title": "40% Ghana Milk Chocolate Bar",
+      "handle": "ghana-milk-chocolate-bar",
+      "productType": "Single Origin Chocolate Bars",
+      "descriptionHtml": "<p>A milk bar made with cocoa from Ghana. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship",
+        "best-seller"
+      ],
+      "imageKey": "roosha-large-bar.jpg",
+      "collections": [
+        "single-origin-chocolate-bars",
+        "best-sellers",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "40% Ghana Milk Chocolate Bar | Roosha",
+        "description": "A milk bar made with cocoa from Ghana. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "800.00"
+    },
+    {
+      "title": "70% Ecuador Dark Chocolate Bar",
+      "handle": "ecuador-dark-chocolate-bar",
+      "productType": "Single Origin Chocolate Bars",
+      "descriptionHtml": "<p>A dark bar with cocoa from Ecuador. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-large-bar.jpg",
+      "collections": [
+        "single-origin-chocolate-bars",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "70% Ecuador Dark Chocolate Bar | Roosha",
+        "description": "A dark bar with cocoa from Ecuador. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "800.00"
+    },
+    {
+      "title": "70% São Tomé Dark Chocolate Bar",
+      "handle": "sao-tome-dark-chocolate-bar",
+      "productType": "Single Origin Chocolate Bars",
+      "descriptionHtml": "<p>A dark bar with cocoa from São Tomé. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-large-bar.jpg",
+      "collections": [
+        "single-origin-chocolate-bars",
+        "chefs-recommendation",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "70% São Tomé Dark Chocolate Bar | Roosha",
+        "description": "A dark bar with cocoa from São Tomé. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "800.00"
+    },
+    {
+      "title": "66% Madagascar Dark Chocolate Bar",
+      "handle": "madagascar-dark-chocolate-bar",
+      "productType": "Single Origin Chocolate Bars",
+      "descriptionHtml": "<p>A dark bar with cocoa from Madagascar. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-large-bar.jpg",
+      "collections": [
+        "single-origin-chocolate-bars",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "66% Madagascar Dark Chocolate Bar | Roosha",
+        "description": "A dark bar with cocoa from Madagascar. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "800.00"
+    },
+    {
+      "title": "Dark Chocolate Shortbread",
+      "handle": "dark-chocolate-shortbread",
+      "productType": "Chocolate Coated Shortbread Cookies",
+      "descriptionHtml": "<p>Shortbread dipped in dark chocolate. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship",
+        "best-seller"
+      ],
+      "imageKey": "roosha-bars-collection.jpg",
+      "collections": [
+        "chocolate-coated-shortbread-cookies",
+        "best-sellers",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Dark Chocolate Shortbread | Roosha",
+        "description": "Shortbread dipped in dark chocolate. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "550.00"
+    },
+    {
+      "title": "Milk Chocolate Shortbread",
+      "handle": "milk-chocolate-shortbread",
+      "productType": "Chocolate Coated Shortbread Cookies",
+      "descriptionHtml": "<p>Shortbread dipped in milk chocolate. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-bars-collection.jpg",
+      "collections": [
+        "chocolate-coated-shortbread-cookies",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Milk Chocolate Shortbread | Roosha",
+        "description": "Shortbread dipped in milk chocolate. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "550.00"
+    },
+    {
+      "title": "Nib & Nut Shortbread",
+      "handle": "nib-nut-shortbread",
+      "productType": "Chocolate Coated Shortbread Cookies",
+      "descriptionHtml": "<p>Shortbread with cocoa nibs and nuts, finished in chocolate. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-bars-collection.jpg",
+      "collections": [
+        "chocolate-coated-shortbread-cookies",
+        "chefs-recommendation",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Nib & Nut Shortbread | Roosha",
+        "description": "Shortbread with cocoa nibs and nuts, finished in chocolate. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "550.00"
+    },
+    {
+      "title": "Hazelnut Chocolate Spread",
+      "handle": "hazelnut-chocolate-spread",
+      "productType": "Chocolate Spreads",
+      "descriptionHtml": "<p>A jar of hazelnut and chocolate spread for breakfast and gifting. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-filled-bar.jpg",
+      "collections": [
+        "chocolate-spreads",
+        "chefs-recommendation",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Hazelnut Chocolate Spread | Roosha",
+        "description": "A jar of hazelnut and chocolate spread for breakfast and gifting. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "480.00"
+    },
+    {
+      "title": "Salted Caramel Spread",
+      "handle": "salted-caramel-spread",
+      "productType": "Chocolate Spreads",
+      "descriptionHtml": "<p>A jar of salted caramel spread with a chocolate finish. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-filled-bar.jpg",
+      "collections": [
+        "chocolate-spreads",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Salted Caramel Spread | Roosha",
+        "description": "A jar of salted caramel spread with a chocolate finish. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "480.00"
+    },
+    {
+      "title": "Bonbon & Praline Box of 6",
+      "handle": "bonbon-praline-box-6",
+      "productType": "Bonbons & Pralines",
+      "descriptionHtml": "<p>A Roosha box of 6 bonbons and pralines, packed for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "bonbons-pralines",
+        "gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Bonbon & Praline Box of 6 | Roosha",
+        "description": "A Roosha box of 6 bonbons and pralines, packed for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "600.00"
+    },
+    {
+      "title": "Bonbon & Praline Box of 12",
+      "handle": "bonbon-praline-box-12",
+      "productType": "Bonbons & Pralines",
+      "descriptionHtml": "<p>A Roosha box of 12 bonbons and pralines, packed for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "bonbons-pralines",
+        "gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Bonbon & Praline Box of 12 | Roosha",
+        "description": "A Roosha box of 12 bonbons and pralines, packed for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1200.00"
+    },
+    {
+      "title": "Bonbon & Praline Box of 18",
+      "handle": "bonbon-praline-box-18",
+      "productType": "Bonbons & Pralines",
+      "descriptionHtml": "<p>A Roosha box of 18 bonbons and pralines, packed for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "bonbons-pralines",
+        "gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Bonbon & Praline Box of 18 | Roosha",
+        "description": "A Roosha box of 18 bonbons and pralines, packed for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1800.00"
+    },
+    {
+      "title": "Bonbon Box of 6",
+      "handle": "bonbon-box-6",
+      "productType": "Bonbons & Pralines",
+      "descriptionHtml": "<p>A Roosha box of 6 bonbons, packed for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "bonbons-pralines",
+        "gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Bonbon Box of 6 | Roosha",
+        "description": "A Roosha box of 6 bonbons, packed for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "600.00"
+    },
+    {
+      "title": "Bonbon Box of 12",
+      "handle": "bonbon-box-12",
+      "productType": "Bonbons & Pralines",
+      "descriptionHtml": "<p>A Roosha box of 12 bonbons, packed for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "bonbons-pralines",
+        "gifting",
+        "baby-shower",
+        "occasions",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "chefs-recommendation",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Bonbon Box of 12 | Roosha",
+        "description": "A Roosha box of 12 bonbons, packed for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1200.00"
+    },
+    {
+      "title": "Bonbon Box of 18",
+      "handle": "bonbon-box-18",
+      "productType": "Bonbons & Pralines",
+      "descriptionHtml": "<p>A Roosha box of 18 bonbons, packed for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "bonbons-pralines",
+        "gifting",
+        "baby-shower",
+        "occasions",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Bonbon Box of 18 | Roosha",
+        "description": "A Roosha box of 18 bonbons, packed for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1800.00"
+    },
+    {
+      "title": "Praline Box of 6",
+      "handle": "praline-box-6",
+      "productType": "Bonbons & Pralines",
+      "descriptionHtml": "<p>A Roosha box of 6 pralines, packed for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship",
+        "best-seller"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "bonbons-pralines",
+        "gifting",
+        "best-sellers",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Praline Box of 6 | Roosha",
+        "description": "A Roosha box of 6 pralines, packed for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "600.00"
+    },
+    {
+      "title": "Praline Box of 12",
+      "handle": "praline-box-12",
+      "productType": "Bonbons & Pralines",
+      "descriptionHtml": "<p>A Roosha box of 12 pralines, packed for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "bonbons-pralines",
+        "gifting",
+        "baby-shower",
+        "occasions",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Praline Box of 12 | Roosha",
+        "description": "A Roosha box of 12 pralines, packed for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1200.00"
+    },
+    {
+      "title": "Praline Box of 18",
+      "handle": "praline-box-18",
+      "productType": "Bonbons & Pralines",
+      "descriptionHtml": "<p>A Roosha box of 18 pralines, packed for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-line-chocolates.jpg",
+      "collections": [
+        "bonbons-pralines",
+        "gifting",
+        "baby-shower",
+        "occasions",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Praline Box of 18 | Roosha",
+        "description": "A Roosha box of 18 pralines, packed for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1800.00"
+    },
+    {
+      "title": "Hill Coconut Fudge",
+      "handle": "hill-coconut-fudge",
+      "productType": "The Artisanal Collection",
+      "descriptionHtml": "<p>A dense dark-chocolate fudge with real coconut. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-filled-cross.jpg",
+      "collections": [
+        "the-artisanal-collection",
+        "chefs-recommendation",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Hill Coconut Fudge | Roosha",
+        "description": "A dense dark-chocolate fudge with real coconut. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "600.00"
+    },
+    {
+      "title": "Pistachio Kunafa Bar",
+      "handle": "pistachio-kunafa-bar",
+      "productType": "The Artisanal Collection",
+      "descriptionHtml": "<p>Crisp kunafa and pistachio layered into a chocolate bar. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-filled-cross.jpg",
+      "collections": [
+        "the-artisanal-collection",
+        "baby-shower",
+        "occasions",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "chefs-recommendation",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Pistachio Kunafa Bar | Roosha",
+        "description": "Crisp kunafa and pistachio layered into a chocolate bar. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "575.00"
+    },
+    {
+      "title": "Cocoa Stick",
+      "handle": "cocoa-stick",
+      "productType": "The Artisanal Collection",
+      "descriptionHtml": "<p>A slender chocolate stick for platters and favours. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-filled-cross.jpg",
+      "collections": [
+        "the-artisanal-collection",
+        "chefs-recommendation",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Cocoa Stick | Roosha",
+        "description": "A slender chocolate stick for platters and favours. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "350.00"
+    },
+    {
+      "title": "Cocoa Stick Gift Box",
+      "handle": "cocoa-stick-gift-box",
+      "productType": "The Artisanal Collection",
+      "descriptionHtml": "<p>A gift box of chocolate sticks, tied for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-filled-cross.jpg",
+      "collections": [
+        "the-artisanal-collection",
+        "baby-shower",
+        "occasions",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "chefs-recommendation",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Cocoa Stick Gift Box | Roosha",
+        "description": "A gift box of chocolate sticks, tied for celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1199.00"
+    },
+    {
+      "title": "Kunafa Chocolate Box",
+      "handle": "kunafa-chocolate-box",
+      "productType": "The Artisanal Collection",
+      "descriptionHtml": "<p>Kunafa-filled chocolates in a celebration box. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-filled-cross.jpg",
+      "collections": [
+        "the-artisanal-collection",
+        "baby-shower",
+        "occasions",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "chefs-recommendation",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Kunafa Chocolate Box | Roosha",
+        "description": "Kunafa-filled chocolates in a celebration box. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1299.00"
+    },
+    {
+      "title": "Crackable Coconut Slab",
+      "handle": "crackable-coconut-slab",
+      "productType": "The Artisanal Collection",
+      "descriptionHtml": "<p>A coconut chocolate slab meant to be cracked and shared. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship",
+        "best-seller"
+      ],
+      "imageKey": "roosha-filled-cross.jpg",
+      "collections": [
+        "the-artisanal-collection",
+        "baby-shower",
+        "occasions",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "best-sellers",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Crackable Coconut Slab | Roosha",
+        "description": "A coconut chocolate slab meant to be cracked and shared. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "900.00"
+    },
+    {
+      "title": "Celebration Gold Bar",
+      "handle": "celebration-gold-bar",
+      "productType": "The Artisanal Collection",
+      "descriptionHtml": "<p>A gold-toned celebration bar for milestones. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-filled-cross.jpg",
+      "collections": [
+        "the-artisanal-collection",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Celebration Gold Bar | Roosha",
+        "description": "A gold-toned celebration bar for milestones. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "800.00"
+    },
+    {
+      "title": "Double Chocolate Heart",
+      "handle": "double-chocolate-heart",
+      "productType": "The Artisanal Collection",
+      "descriptionHtml": "<p>A heart of dark and milk chocolate for personal gifting. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-filled-cross.jpg",
+      "collections": [
+        "the-artisanal-collection",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Double Chocolate Heart | Roosha",
+        "description": "A heart of dark and milk chocolate for personal gifting. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "600.00"
+    },
+    {
+      "title": "Happy Birthday Chocolate Bar",
+      "handle": "happy-birthday-chocolate-bar",
+      "productType": "Celebration Chocolate Bars",
+      "descriptionHtml": "<p>A message bar for birthdays, ready to wrap. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship",
+        "best-seller"
+      ],
+      "imageKey": "roosha-festive-diwali.jpg",
+      "collections": [
+        "celebration-chocolate-bars",
+        "birthday",
+        "occasions",
+        "best-sellers",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Happy Birthday Chocolate Bar | Roosha",
+        "description": "A message bar for birthdays, ready to wrap. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "799.00"
+    },
+    {
+      "title": "Congratulations Chocolate Bar",
+      "handle": "congratulations-chocolate-bar",
+      "productType": "Celebration Chocolate Bars",
+      "descriptionHtml": "<p>A message bar for promotions, weddings, and new homes. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-festive-diwali.jpg",
+      "collections": [
+        "celebration-chocolate-bars",
+        "occasions",
+        "baby-shower",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Congratulations Chocolate Bar | Roosha",
+        "description": "A message bar for promotions, weddings, and new homes. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "799.00"
+    },
+    {
+      "title": "Thank You Chocolate Bar",
+      "handle": "thank-you-chocolate-bar",
+      "productType": "Celebration Chocolate Bars",
+      "descriptionHtml": "<p>A message bar for hosts, teams, and friends. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-festive-diwali.jpg",
+      "collections": [
+        "celebration-chocolate-bars",
+        "occasions",
+        "baby-shower",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Thank You Chocolate Bar | Roosha",
+        "description": "A message bar for hosts, teams, and friends. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "799.00"
+    },
+    {
+      "title": "Diwali Almond Celebration Bar",
+      "handle": "diwali-almond-celebration-bar",
+      "productType": "Celebration Chocolate Bars",
+      "descriptionHtml": "<p>An almond bar finished for Diwali gifting. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-festive-diwali.jpg",
+      "collections": [
+        "celebration-chocolate-bars",
+        "diwali-collection",
+        "festive-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Diwali Almond Celebration Bar | Roosha",
+        "description": "An almond bar finished for Diwali gifting. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "525.00"
+    },
+    {
+      "title": "Artisan's Edit",
+      "handle": "artisans-edit",
+      "productType": "Value Edits",
+      "descriptionHtml": "<p>A mixed edit of Roosha favourites, packed as one gift. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "value-edits",
+        "gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Artisan's Edit | Roosha",
+        "description": "A mixed edit of Roosha favourites, packed as one gift. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "2099.00"
+    },
+    {
+      "title": "Kunafa Edit",
+      "handle": "kunafa-edit",
+      "productType": "Value Edits",
+      "descriptionHtml": "<p>A kunafa-led assortment for people who like texture. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "value-edits",
+        "gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Kunafa Edit | Roosha",
+        "description": "A kunafa-led assortment for people who like texture. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1780.00"
+    },
+    {
+      "title": "Dark Cocoa Edit",
+      "handle": "dark-cocoa-edit",
+      "productType": "Value Edits",
+      "descriptionHtml": "<p>A darker assortment for serious cocoa drinkers. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "value-edits",
+        "gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Dark Cocoa Edit | Roosha",
+        "description": "A darker assortment for serious cocoa drinkers. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "2099.00"
+    },
+    {
+      "title": "Hazelnut Edit",
+      "handle": "hazelnut-edit",
+      "productType": "Value Edits",
+      "descriptionHtml": "<p>Hazelnut dragée, praline, and spread-friendly pieces in one box. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "value-edits",
+        "gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Hazelnut Edit | Roosha",
+        "description": "Hazelnut dragée, praline, and spread-friendly pieces in one box. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1555.00"
+    },
+    {
+      "title": "Truffle Duo",
+      "handle": "truffle-duo",
+      "productType": "Value Edits",
+      "descriptionHtml": "<p>Two truffle styles, boxed together. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "value-edits",
+        "gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Truffle Duo | Roosha",
+        "description": "Two truffle styles, boxed together. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1780.00"
+    },
+    {
+      "title": "Coffee Edit",
+      "handle": "coffee-edit",
+      "productType": "Value Edits",
+      "descriptionHtml": "<p>Coffee dragée and cocoa pieces for an after-dinner gift. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "value-edits",
+        "gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Coffee Edit | Roosha",
+        "description": "Coffee dragée and cocoa pieces for an after-dinner gift. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1350.00"
+    },
+    {
+      "title": "Caramel Edit",
+      "handle": "caramel-edit",
+      "productType": "Value Edits",
+      "descriptionHtml": "<p>Caramel truffle and toffee notes in one gift box. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "value-edits",
+        "gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Caramel Edit | Roosha",
+        "description": "Caramel truffle and toffee notes in one gift box. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1780.00"
+    },
+    {
+      "title": "Dragée Edit",
+      "handle": "dragee-edit",
+      "productType": "Value Edits",
+      "descriptionHtml": "<p>A tin-style edit of Roosha dragées. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "value-edits",
+        "gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Dragée Edit | Roosha",
+        "description": "A tin-style edit of Roosha dragées. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1350.00"
+    },
+    {
+      "title": "Birthday Blush Hamper",
+      "handle": "birthday-blush-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A softer birthday hamper with bars and a small assortment. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "birthday",
+        "hampers",
+        "gifting",
+        "occasions",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Birthday Blush Hamper | Roosha",
+        "description": "A softer birthday hamper with bars and a small assortment. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1449.00"
+    },
+    {
+      "title": "Birthday Splendour Hamper",
+      "handle": "birthday-splendour-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A fuller birthday hamper for the centre of the table. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "birthday",
+        "hampers",
+        "gifting",
+        "occasions",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Birthday Splendour Hamper | Roosha",
+        "description": "A fuller birthday hamper for the centre of the table. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1949.00"
+    },
+    {
+      "title": "Birthday Opulence Hamper",
+      "handle": "birthday-opulence-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A generous birthday hamper when the celebration is the gift. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "birthday",
+        "hampers",
+        "gifting",
+        "occasions",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Birthday Opulence Hamper | Roosha",
+        "description": "A generous birthday hamper when the celebration is the gift. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "2449.00"
+    },
+    {
+      "title": "Birthday Celebration Hamper",
+      "handle": "birthday-celebration-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>Our largest birthday hamper, with room for a message. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "birthday",
+        "hampers",
+        "gifting",
+        "occasions",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Birthday Celebration Hamper | Roosha",
+        "description": "Our largest birthday hamper, with room for a message. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "2899.00"
+    },
+    {
+      "title": "Happy Birthday Gift Box",
+      "handle": "happy-birthday-gift-box",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A compact birthday box when a hamper is more than you need. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "birthday",
+        "hampers",
+        "gifting",
+        "occasions",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Happy Birthday Gift Box | Roosha",
+        "description": "A compact birthday box when a hamper is more than you need. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1149.00"
+    },
+    {
+      "title": "Thank You Hamper",
+      "handle": "thank-you-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A hamper for hosts, mentors, and clients. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "occasions",
+        "anniversaries",
+        "weddings",
+        "house-warming",
+        "baby-shower",
+        "birthday",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Thank You Hamper | Roosha",
+        "description": "A hamper for hosts, mentors, and clients. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "2899.00"
+    },
+    {
+      "title": "Congratulations Hamper",
+      "handle": "congratulations-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A hamper for weddings, new homes, and good news. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "occasions",
+        "anniversaries",
+        "weddings",
+        "house-warming",
+        "baby-shower",
+        "birthday",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Congratulations Hamper | Roosha",
+        "description": "A hamper for weddings, new homes, and good news. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "2899.00"
+    },
+    {
+      "title": "Festive Gift Box",
+      "handle": "festive-gift-box",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A compact festive box for Diwali rounds and return gifts. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-festive-diwali.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "diwali-collection",
+        "festive-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Festive Gift Box | Roosha",
+        "description": "A compact festive box for Diwali rounds and return gifts. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "875.00"
+    },
+    {
+      "title": "Valley Haven Hamper",
+      "handle": "valley-haven-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A mid-size hamper with a calm, gift-ready edit. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "occasions",
+        "baby-shower",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Valley Haven Hamper | Roosha",
+        "description": "A mid-size hamper with a calm, gift-ready edit. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1699.00"
+    },
+    {
+      "title": "Storybook Hamper",
+      "handle": "storybook-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A narrative hamper of bars, dragée, and a small box. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "occasions",
+        "baby-shower",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Storybook Hamper | Roosha",
+        "description": "A narrative hamper of bars, dragée, and a small box. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "2199.00"
+    },
+    {
+      "title": "Burgundy Decadence Hamper",
+      "handle": "burgundy-decadence-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A deep burgundy hamper for people who want the richer edit. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "occasions",
+        "baby-shower",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Burgundy Decadence Hamper | Roosha",
+        "description": "A deep burgundy hamper for people who want the richer edit. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "3999.00"
+    },
+    {
+      "title": "Artisan Hamper",
+      "handle": "artisan-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>An artisan hamper led by filled bars and bonbons. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "occasions",
+        "baby-shower",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Artisan Hamper | Roosha",
+        "description": "An artisan hamper led by filled bars and bonbons. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "3099.00"
+    },
+    {
+      "title": "Hill Heritage Hamper",
+      "handle": "hill-heritage-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A heritage hamper with single-origin bars and classic toffee. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "occasions",
+        "baby-shower",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Hill Heritage Hamper | Roosha",
+        "description": "A heritage hamper with single-origin bars and classic toffee. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "4699.00"
+    },
+    {
+      "title": "Grand Gold Hamper",
+      "handle": "grand-gold-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A large gold-toned hamper for the main gift of the evening. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "occasions",
+        "diwali-collection",
+        "festive-gifting",
+        "baby-shower",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Grand Gold Hamper | Roosha",
+        "description": "A large gold-toned hamper for the main gift of the evening. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "8299.00"
+    },
+    {
+      "title": "Cellar & Cocoa Hamper",
+      "handle": "cellar-cocoa-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A celebration hamper arranged for pairing with a bottle you choose. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "diwali-collection",
+        "festive-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Cellar & Cocoa Hamper | Roosha",
+        "description": "A celebration hamper arranged for pairing with a bottle you choose. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "9999.00"
+    },
+    {
+      "title": "Indulgence Basket",
+      "handle": "indulgence-basket",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>An open basket of chocolates for housewarmings and anniversaries. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "occasions",
+        "baby-shower",
+        "anniversaries",
+        "house-warming",
+        "weddings",
+        "birthday",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Indulgence Basket | Roosha",
+        "description": "An open basket of chocolates for housewarmings and anniversaries. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "3399.00"
+    },
+    {
+      "title": "Diwali Celebration Gift Box",
+      "handle": "diwali-celebration-gift-box",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A Diwali box with a festive sleeve and a mixed selection. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-festive-diwali.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "diwali-collection",
+        "festive-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Diwali Celebration Gift Box | Roosha",
+        "description": "A Diwali box with a festive sleeve and a mixed selection. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1149.00"
+    },
+    {
+      "title": "Vintage Gold Hamper",
+      "handle": "vintage-gold-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A vintage-gold hamper for festive hosts. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "diwali-collection",
+        "festive-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Vintage Gold Hamper | Roosha",
+        "description": "A vintage-gold hamper for festive hosts. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "4349.00"
+    },
+    {
+      "title": "Ridge Crescent Hamper",
+      "handle": "ridge-crescent-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A curved-lid hamper for festive calls and family visits. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Ridge Crescent Hamper | Roosha",
+        "description": "A curved-lid hamper for festive calls and family visits. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "2799.00"
+    },
+    {
+      "title": "Midnight Gold Hamper",
+      "handle": "midnight-gold-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A darker festive hamper, sized for one household. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "diwali-collection",
+        "festive-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Midnight Gold Hamper | Roosha",
+        "description": "A darker festive hamper, sized for one household. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1350.00"
+    },
+    {
+      "title": "Golden Hour Hamper",
+      "handle": "golden-hour-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A warm festive hamper for evening deliveries. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "diwali-collection",
+        "festive-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Golden Hour Hamper | Roosha",
+        "description": "A warm festive hamper for evening deliveries. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1499.00"
+    },
+    {
+      "title": "Courtyard Hamper",
+      "handle": "courtyard-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A shareable festive hamper for the family table. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "diwali-collection",
+        "festive-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Courtyard Hamper | Roosha",
+        "description": "A shareable festive hamper for the family table. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1699.00"
+    },
+    {
+      "title": "Bazaar Street Hamper",
+      "handle": "bazaar-street-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A festive hamper with a little of every Roosha counter. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "diwali-collection",
+        "festive-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Bazaar Street Hamper | Roosha",
+        "description": "A festive hamper with a little of every Roosha counter. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "2699.00"
+    },
+    {
+      "title": "Quarter Festival Hamper",
+      "handle": "quarter-festival-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A larger festive hamper for offices and joint families. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-festive-diwali.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "diwali-collection",
+        "festive-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Quarter Festival Hamper | Roosha",
+        "description": "A larger festive hamper for offices and joint families. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "3499.00"
+    },
+    {
+      "title": "House of Celebration Hamper",
+      "handle": "house-of-celebration-hamper",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>Our largest festive hamper, built for the main gift. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hamper.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "diwali-collection",
+        "festive-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "House of Celebration Hamper | Roosha",
+        "description": "Our largest festive hamper, built for the main gift. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "9999.00"
+    },
+    {
+      "title": "Festival Glow Box",
+      "handle": "festival-glow-box",
+      "productType": "Hampers",
+      "descriptionHtml": "<p>A bright festive box for Diwali rounds. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-festive-diwali.jpg",
+      "collections": [
+        "hampers",
+        "gifting",
+        "diwali-collection",
+        "festive-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Festival Glow Box | Roosha",
+        "description": "A bright festive box for Diwali rounds. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "1099.00"
+    },
+    {
+      "title": "Burgundy Favour Box",
+      "handle": "burgundy-favour-box",
+      "productType": "Favour Boxes",
+      "descriptionHtml": "<p>A small burgundy box for wedding favours and thank-yous. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-favour-box.jpg",
+      "collections": [
+        "favour-boxes",
+        "weddings",
+        "gifting",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Burgundy Favour Box | Roosha",
+        "description": "A small burgundy box for wedding favours and thank-yous. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "600.00"
+    },
+    {
+      "title": "Forest Favour Box",
+      "handle": "forest-favour-box",
+      "productType": "Favour Boxes",
+      "descriptionHtml": "<p>A forest-green favour box for smaller celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-favour-box.jpg",
+      "collections": [
+        "favour-boxes",
+        "weddings",
+        "gifting",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Forest Favour Box | Roosha",
+        "description": "A forest-green favour box for smaller celebrations. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "500.00"
+    },
+    {
+      "title": "Rust Favour Box",
+      "handle": "rust-favour-box",
+      "productType": "Favour Boxes",
+      "descriptionHtml": "<p>A rust-toned favour box for festive tables. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-favour-box.jpg",
+      "collections": [
+        "favour-boxes",
+        "weddings",
+        "gifting",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Rust Favour Box | Roosha",
+        "description": "A rust-toned favour box for festive tables. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "450.00"
+    },
+    {
+      "title": "Olive Favour Box",
+      "handle": "olive-favour-box",
+      "productType": "Favour Boxes",
+      "descriptionHtml": "<p>An olive favour box for bulk return gifts. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-favour-box.jpg",
+      "collections": [
+        "favour-boxes",
+        "weddings",
+        "gifting",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Olive Favour Box | Roosha",
+        "description": "An olive favour box for bulk return gifts. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "350.00"
+    },
+    {
+      "title": "Brick Favour Box",
+      "handle": "brick-favour-box",
+      "productType": "Favour Boxes",
+      "descriptionHtml": "<p>A compact brick-red favour box. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-favour-box.jpg",
+      "collections": [
+        "favour-boxes",
+        "weddings",
+        "gifting",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Brick Favour Box | Roosha",
+        "description": "A compact brick-red favour box. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "300.00"
+    },
+    {
+      "title": "Client Signature Hamper",
+      "handle": "client-signature-hamper",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A client hamper quoted to your brand, quantity, and delivery list. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "corporate-gifting",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Client Signature Hamper | Roosha",
+        "description": "A client hamper quoted to your brand, quantity, and delivery list. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Appreciation Box",
+      "handle": "appreciation-box",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A thank-you box for teams and partners. Pricing confirmed on enquiry. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "corporate-gifting",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Appreciation Box | Roosha",
+        "description": "A thank-you box for teams and partners. Pricing confirmed on enquiry. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Leadership Collection",
+      "handle": "leadership-collection",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A leadership gift, packed to a brief. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "corporate-gifting",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Leadership Collection | Roosha",
+        "description": "A leadership gift, packed to a brief. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Prestige Hamper",
+      "handle": "prestige-hamper",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A prestige hamper for senior gifting programmes. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "corporate-gifting",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Prestige Hamper | Roosha",
+        "description": "A prestige hamper for senior gifting programmes. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Legacy Keepsake Box",
+      "handle": "legacy-keepsake-box",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A keepsake box for milestones and retirements. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "corporate-gifting",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Legacy Keepsake Box | Roosha",
+        "description": "A keepsake box for milestones and retirements. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Executive Hamper",
+      "handle": "executive-hamper",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>An executive hamper with branding options on request. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "corporate-gifting",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Executive Hamper | Roosha",
+        "description": "An executive hamper with branding options on request. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Host's Selection",
+      "handle": "hosts-selection",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A host gift selected with your event in mind. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "corporate-gifting",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Host's Selection | Roosha",
+        "description": "A host gift selected with your event in mind. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Meeting Bites",
+      "handle": "meeting-bites",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A smaller meeting gift for desks and conference days. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "corporate-gifting",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Meeting Bites | Roosha",
+        "description": "A smaller meeting gift for desks and conference days. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Team Welcome Hamper",
+      "handle": "team-welcome-hamper",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A welcome hamper for a new teammate's first week. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "employee-onboarding",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Team Welcome Hamper | Roosha",
+        "description": "A welcome hamper for a new teammate's first week. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Culture Welcome Box",
+      "handle": "culture-welcome-box",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A welcome box that can carry a short note from the team. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "employee-onboarding",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Culture Welcome Box | Roosha",
+        "description": "A welcome box that can carry a short note from the team. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "First Week Box",
+      "handle": "first-week-box",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A first-week box of chocolates, quoted for headcount. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "employee-onboarding",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "First Week Box | Roosha",
+        "description": "A first-week box of chocolates, quoted for headcount. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Welcome Aboard Box",
+      "handle": "welcome-aboard-box",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A welcome box for onboarding day. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "employee-onboarding",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Welcome Aboard Box | Roosha",
+        "description": "A welcome box for onboarding day. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Fresh Start Box",
+      "handle": "fresh-start-box",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A fresh-start box for new joiners. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "employee-onboarding",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Fresh Start Box | Roosha",
+        "description": "A fresh-start box for new joiners. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Sweet Start Hamper",
+      "handle": "sweet-start-hamper",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A sweet start hamper for induction week. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "employee-onboarding",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Sweet Start Hamper | Roosha",
+        "description": "A sweet start hamper for induction week. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "New Joiner Hamper",
+      "handle": "new-joiner-hamper",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A new-joiner hamper, packed to your brand colours on request. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "employee-onboarding",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "New Joiner Hamper | Roosha",
+        "description": "A new-joiner hamper, packed to your brand colours on request. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Journey Start Hamper",
+      "handle": "journey-start-hamper",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A journey-start hamper for larger onboarding batches. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "employee-onboarding",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Journey Start Hamper | Roosha",
+        "description": "A journey-start hamper for larger onboarding batches. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Small Thank You",
+      "handle": "small-thank-you",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A small return gift, priced once quantity is confirmed. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "return-favours",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Small Thank You | Roosha",
+        "description": "A small return gift, priced once quantity is confirmed. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Takeaway Treat",
+      "handle": "takeaway-treat",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A takeaway treat for guests leaving a celebration. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "return-favours",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Takeaway Treat | Roosha",
+        "description": "A takeaway treat for guests leaving a celebration. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Farewell Bite",
+      "handle": "farewell-bite",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A farewell bite for the end of an event. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "return-favours",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Farewell Bite | Roosha",
+        "description": "A farewell bite for the end of an event. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Gratitude Box",
+      "handle": "gratitude-box",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A gratitude box for hosts and helpers. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "return-favours",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Gratitude Box | Roosha",
+        "description": "A gratitude box for hosts and helpers. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Recognition Box",
+      "handle": "recognition-box",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A recognition box for awards and internal thanks. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "return-favours",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Recognition Box | Roosha",
+        "description": "A recognition box for awards and internal thanks. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Note of Thanks Hamper",
+      "handle": "note-of-thanks-hamper",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A short-note hamper for personal thanks at scale. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "return-favours",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Note of Thanks Hamper | Roosha",
+        "description": "A short-note hamper for personal thanks at scale. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Grace Gesture Hamper",
+      "handle": "grace-gesture-hamper",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A quiet gesture hamper for sensitive occasions. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "return-favours",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Grace Gesture Hamper | Roosha",
+        "description": "A quiet gesture hamper for sensitive occasions. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Closing Gift Hamper",
+      "handle": "closing-gift-hamper",
+      "productType": "Corporate & Gifting",
+      "descriptionHtml": "<p>A closing gift for the end of a project or celebration. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "request-quote"
+      ],
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "collections": [
+        "return-favours",
+        "wedding-corporate-gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Closing Gift Hamper | Roosha",
+        "description": "A closing gift for the end of a project or celebration. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "price": "0.00"
+    },
+    {
+      "title": "Roosha Gift Card",
+      "handle": "roosha-gift-card",
+      "productType": "Gift Cards",
+      "descriptionHtml": "<p>A Roosha gift card for someone who should choose their own box. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence.</p>",
+      "tags": [
+        "ready-to-ship"
+      ],
+      "imageKey": "roosha-hero-gift.jpg",
+      "collections": [
+        "gift-cards",
+        "gifting",
+        "shop-chocolates"
+      ],
+      "seo": {
+        "title": "Roosha Gift Card | Roosha",
+        "description": "A Roosha gift card for someone who should choose their own box. Crafted by Roosha in Himachal Pradesh for gifting and everyday indulgence."
+      },
+      "options": [
+        {
+          "name": "Amount",
+          "values": [
+            "₹1,000",
+            "₹2,000",
+            "₹5,000"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "price": "1000.00",
+          "options": {
+            "Amount": "₹1,000"
+          }
+        },
+        {
+          "price": "2000.00",
+          "options": {
+            "Amount": "₹2,000"
+          }
+        },
+        {
+          "price": "5000.00",
+          "options": {
+            "Amount": "₹5,000"
+          }
+        }
+      ]
+    }
+  ],
+  "collections": [
+    {
+      "handle": "shop-chocolates",
+      "title": "Shop All",
+      "descriptionHtml": "<p>The full Roosha cupboard — bars, dragée, bonbons, hampers, and gifts.</p>",
+      "imageKey": "roosha-bars-collection.jpg",
+      "create": false,
+      "seo": {
+        "title": "Shop All | Roosha",
+        "description": "The full Roosha cupboard — bars, dragée, bonbons, hampers, and gifts."
+      }
+    },
+    {
+      "handle": "dragees",
+      "title": "Dragée",
+      "descriptionHtml": "<p>Chocolate-coated nuts, fruits, and coffee, in tins and pouches.</p>",
+      "imageKey": "roosha-line-chocolates.jpg",
+      "create": true,
+      "seo": {
+        "title": "Dragée | Roosha",
+        "description": "Chocolate-coated nuts, fruits, and coffee, in tins and pouches."
+      }
+    },
+    {
+      "handle": "celebration-chocolate-bars",
+      "title": "Celebration Chocolate Bars",
+      "descriptionHtml": "<p>Message bars for birthdays, thank-yous, and Diwali.</p>",
+      "imageKey": "roosha-festive-diwali.jpg",
+      "create": true,
+      "seo": {
+        "title": "Celebration Chocolate Bars | Roosha",
+        "description": "Message bars for birthdays, thank-yous, and Diwali."
+      }
+    },
+    {
+      "handle": "toffee",
+      "title": "Toffee",
+      "descriptionHtml": "<p>Brittle, florentine, English toffee, and mango bites.</p>",
+      "imageKey": "roosha-bars-collection.jpg",
+      "create": true,
+      "seo": {
+        "title": "Toffee | Roosha",
+        "description": "Brittle, florentine, English toffee, and mango bites."
+      }
+    },
+    {
+      "handle": "chocolate-truffles",
+      "title": "Chocolate Truffles",
+      "descriptionHtml": "<p>Caramel, hazelnut, and cocoa-dusted truffles.</p>",
+      "imageKey": "roosha-line-chocolates.jpg",
+      "create": true,
+      "seo": {
+        "title": "Chocolate Truffles | Roosha",
+        "description": "Caramel, hazelnut, and cocoa-dusted truffles."
+      }
+    },
+    {
+      "handle": "single-origin-chocolate-bars",
+      "title": "Single Origin Chocolate Bars",
+      "descriptionHtml": "<p>Milk and dark bars from Ghana, Ecuador, São Tomé, and Madagascar.</p>",
+      "imageKey": "roosha-large-bar.jpg",
+      "create": true,
+      "seo": {
+        "title": "Single Origin Chocolate Bars | Roosha",
+        "description": "Milk and dark bars from Ghana, Ecuador, São Tomé, and Madagascar."
+      }
+    },
+    {
+      "handle": "chocolate-coated-shortbread-cookies",
+      "title": "Chocolate Coated Shortbread Cookies",
+      "descriptionHtml": "<p>Shortbread dipped in milk chocolate, dark chocolate, or nibs and nuts.</p>",
+      "imageKey": "roosha-bars-collection.jpg",
+      "create": true,
+      "seo": {
+        "title": "Chocolate Coated Shortbread Cookies | Roosha",
+        "description": "Shortbread dipped in milk chocolate, dark chocolate, or nibs and nuts."
+      }
+    },
+    {
+      "handle": "the-artisanal-collection",
+      "title": "The Artisanal Collection",
+      "descriptionHtml": "<p>Coconut fudge, kunafa, crackable slabs, and celebration shapes.</p>",
+      "imageKey": "roosha-filled-cross.jpg",
+      "create": true,
+      "seo": {
+        "title": "The Artisanal Collection | Roosha",
+        "description": "Coconut fudge, kunafa, crackable slabs, and celebration shapes."
+      }
+    },
+    {
+      "handle": "chocolate-spreads",
+      "title": "Chocolate Spreads",
+      "descriptionHtml": "<p>Hazelnut and salted caramel spreads.</p>",
+      "imageKey": "roosha-filled-bar.jpg",
+      "create": true,
+      "seo": {
+        "title": "Chocolate Spreads | Roosha",
+        "description": "Hazelnut and salted caramel spreads."
+      }
+    },
+    {
+      "handle": "bonbons-pralines",
+      "title": "Bonbons & Pralines",
+      "descriptionHtml": "<p>Boxes of 6, 12, and 18.</p>",
+      "imageKey": "roosha-line-chocolates.jpg",
+      "create": true,
+      "seo": {
+        "title": "Bonbons & Pralines | Roosha",
+        "description": "Boxes of 6, 12, and 18."
+      }
+    },
+    {
+      "handle": "hampers",
+      "title": "Hampers",
+      "descriptionHtml": "<p>Birthday, festive, and celebration hampers.</p>",
+      "imageKey": "roosha-hamper.jpg",
+      "create": true,
+      "seo": {
+        "title": "Hampers | Roosha",
+        "description": "Birthday, festive, and celebration hampers."
+      }
+    },
+    {
+      "handle": "birthday",
+      "title": "Birthday",
+      "descriptionHtml": "<p>Birthday bars, boxes, and hampers.</p>",
+      "imageKey": "roosha-festive-diwali.jpg",
+      "create": true,
+      "seo": {
+        "title": "Birthday | Roosha",
+        "description": "Birthday bars, boxes, and hampers."
+      }
+    },
+    {
+      "handle": "anniversaries",
+      "title": "Anniversaries",
+      "descriptionHtml": "<p>Thank-you bars, hampers, and boxes for anniversaries.</p>",
+      "imageKey": "roosha-hamper.jpg",
+      "create": true,
+      "seo": {
+        "title": "Anniversaries | Roosha",
+        "description": "Thank-you bars, hampers, and boxes for anniversaries."
+      }
+    },
+    {
+      "handle": "weddings",
+      "title": "Weddings",
+      "descriptionHtml": "<p>Favours, hampers, and celebration boxes for weddings.</p>",
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "create": true,
+      "seo": {
+        "title": "Weddings | Roosha",
+        "description": "Favours, hampers, and celebration boxes for weddings."
+      }
+    },
+    {
+      "handle": "house-warming",
+      "title": "House Warming",
+      "descriptionHtml": "<p>Hampers and boxes for a new home.</p>",
+      "imageKey": "roosha-hamper.jpg",
+      "create": true,
+      "seo": {
+        "title": "House Warming | Roosha",
+        "description": "Hampers and boxes for a new home."
+      }
+    },
+    {
+      "handle": "baby-shower",
+      "title": "Baby Shower",
+      "descriptionHtml": "<p>Gentle celebration gifts for a baby shower.</p>",
+      "imageKey": "roosha-favour-box.jpg",
+      "create": true,
+      "seo": {
+        "title": "Baby Shower | Roosha",
+        "description": "Gentle celebration gifts for a baby shower."
+      }
+    },
+    {
+      "handle": "diwali-collection",
+      "title": "Diwali Collection",
+      "descriptionHtml": "<p>Festive boxes and hampers for Diwali.</p>",
+      "imageKey": "roosha-festive-diwali.jpg",
+      "create": true,
+      "seo": {
+        "title": "Diwali Collection | Roosha",
+        "description": "Festive boxes and hampers for Diwali."
+      }
+    },
+    {
+      "handle": "festive-gifting",
+      "title": "Festive Gifting",
+      "descriptionHtml": "<p>Seasonal boxes and festive hampers.</p>",
+      "imageKey": "roosha-festive-diwali.jpg",
+      "create": false,
+      "seo": {
+        "title": "Festive Gifting | Roosha",
+        "description": "Seasonal boxes and festive hampers."
+      }
+    },
+    {
+      "handle": "gifting",
+      "title": "Gifting",
+      "descriptionHtml": "<p>Hampers, edits, and boxes chosen for giving.</p>",
+      "imageKey": "roosha-hero-gift.jpg",
+      "create": true,
+      "seo": {
+        "title": "Gifting | Roosha",
+        "description": "Hampers, edits, and boxes chosen for giving."
+      }
+    },
+    {
+      "handle": "occasions",
+      "title": "Occasions",
+      "descriptionHtml": "<p>Chocolate for birthdays, weddings, new homes, and thank-yous.</p>",
+      "imageKey": "roosha-hamper.jpg",
+      "create": true,
+      "seo": {
+        "title": "Occasions | Roosha",
+        "description": "Chocolate for birthdays, weddings, new homes, and thank-yous."
+      }
+    },
+    {
+      "handle": "corporate-gifting",
+      "title": "Corporate Gifting",
+      "descriptionHtml": "<p>Client and leadership gifts, quoted for your brief.</p>",
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "create": true,
+      "seo": {
+        "title": "Corporate Gifting | Roosha",
+        "description": "Client and leadership gifts, quoted for your brief."
+      }
+    },
+    {
+      "handle": "employee-onboarding",
+      "title": "Employee Onboarding",
+      "descriptionHtml": "<p>Welcome boxes and first-week hampers.</p>",
+      "imageKey": "roosha-favour-box.jpg",
+      "create": true,
+      "seo": {
+        "title": "Employee Onboarding | Roosha",
+        "description": "Welcome boxes and first-week hampers."
+      }
+    },
+    {
+      "handle": "return-favours",
+      "title": "Return Favours",
+      "descriptionHtml": "<p>Small gifts for guests, quoted by quantity.</p>",
+      "imageKey": "roosha-favour-box.jpg",
+      "create": true,
+      "seo": {
+        "title": "Return Favours | Roosha",
+        "description": "Small gifts for guests, quoted by quantity."
+      }
+    },
+    {
+      "handle": "favour-boxes",
+      "title": "Favour Boxes",
+      "descriptionHtml": "<p>Small coloured boxes for weddings and thank-yous.</p>",
+      "imageKey": "roosha-favour-box.jpg",
+      "create": true,
+      "seo": {
+        "title": "Favour Boxes | Roosha",
+        "description": "Small coloured boxes for weddings and thank-yous."
+      }
+    },
+    {
+      "handle": "best-sellers",
+      "title": "Best Sellers",
+      "descriptionHtml": "<p>The pieces Roosha guests ask for most.</p>",
+      "imageKey": "roosha-line-chocolates.jpg",
+      "create": true,
+      "seo": {
+        "title": "Best Sellers | Roosha",
+        "description": "The pieces Roosha guests ask for most."
+      }
+    },
+    {
+      "handle": "chefs-recommendation",
+      "title": "Chef's Recommendation",
+      "descriptionHtml": "<p>A shorter list from the Roosha kitchen.</p>",
+      "imageKey": "roosha-filled-cross.jpg",
+      "create": true,
+      "seo": {
+        "title": "Chef's Recommendation | Roosha",
+        "description": "A shorter list from the Roosha kitchen."
+      }
+    },
+    {
+      "handle": "value-edits",
+      "title": "Value Edits",
+      "descriptionHtml": "<p>Curated assortments — dark, kunafa, coffee, caramel, and more.</p>",
+      "imageKey": "roosha-hamper.jpg",
+      "create": true,
+      "seo": {
+        "title": "Value Edits | Roosha",
+        "description": "Curated assortments — dark, kunafa, coffee, caramel, and more."
+      }
+    },
+    {
+      "handle": "gift-cards",
+      "title": "Gift Cards",
+      "descriptionHtml": "<p>Let them choose their own Roosha box.</p>",
+      "imageKey": "roosha-hero-gift.jpg",
+      "create": true,
+      "seo": {
+        "title": "Gift Cards | Roosha",
+        "description": "Let them choose their own Roosha box."
+      }
+    },
+    {
+      "handle": "wedding-corporate-gifting",
+      "title": "Wedding & Corporate Gifting",
+      "descriptionHtml": "<p>Favours, onboarding, and corporate hampers.</p>",
+      "imageKey": "roosha-wedding-gifting.jpg",
+      "create": false,
+      "seo": {
+        "title": "Wedding & Corporate Gifting | Roosha",
+        "description": "Favours, onboarding, and corporate hampers."
+      }
+    }
+  ],
+  "pages": [
+    {
+      "title": "Build Your Own Hamper",
+      "handle": "build-your-own-hamper",
+      "body": "<h1>Build Your Own Hamper</h1><p>Tell us the occasion, the number of hampers, a budget, and whether you want bars, dragée, bonbons, or a festive sleeve. We will confirm the edit, a note card, and delivery before you pay.</p><p>WhatsApp +91 77778 77253 or write to hello@tryroosha.com.</p>"
+    },
+    {
+      "title": "Bulk Order",
+      "handle": "bulk-order",
+      "body": "<h1>Bulk Order</h1><p>Weddings, offices, and festive rounds are quoted on quantity, personalisation, and delivery city. Share your date, headcount, and whether boxes need a name or a logo.</p><p>WhatsApp +91 77778 77253 or write to hello@tryroosha.com.</p>"
+    },
+    {
+      "title": "Chocolate Tasting",
+      "handle": "chocolate-tasting",
+      "body": "<h1>Chocolate Tasting</h1><p>Roosha can host a small tasting for teams and private celebrations — single-origin bars, dragée, and a bonbon flight. Tell us the city, the group size, and the date you have in mind.</p>"
+    },
+    {
+      "title": "FAQs",
+      "handle": "faqs",
+      "templateSuffix": "faq",
+      "body": "<p>Answers on shipping, returns, and chocolate care.</p>"
+    }
+  ],
+  "navigation": {
+    "main": [
+      {
+        "title": "Shop",
+        "type": "COLLECTION",
+        "handle": "shop-chocolates",
+        "items": [
+          {
+            "title": "Collection",
+            "type": "COLLECTION",
+            "handle": "shop-chocolates",
+            "items": [
+              {
+                "title": "Dragée",
+                "type": "COLLECTION",
+                "handle": "dragees"
+              },
+              {
+                "title": "Celebration Chocolate Bars",
+                "type": "COLLECTION",
+                "handle": "celebration-chocolate-bars"
+              },
+              {
+                "title": "Toffee",
+                "type": "COLLECTION",
+                "handle": "toffee"
+              },
+              {
+                "title": "Chocolate Truffles",
+                "type": "COLLECTION",
+                "handle": "chocolate-truffles"
+              },
+              {
+                "title": "Single Origin Chocolate Bars",
+                "type": "COLLECTION",
+                "handle": "single-origin-chocolate-bars"
+              },
+              {
+                "title": "Chocolate Coated Shortbread Cookies",
+                "type": "COLLECTION",
+                "handle": "chocolate-coated-shortbread-cookies"
+              },
+              {
+                "title": "The Artisanal Collection",
+                "type": "COLLECTION",
+                "handle": "the-artisanal-collection"
+              },
+              {
+                "title": "Chocolate Spreads",
+                "type": "COLLECTION",
+                "handle": "chocolate-spreads"
+              },
+              {
+                "title": "Bonbons & Pralines",
+                "type": "COLLECTION",
+                "handle": "bonbons-pralines"
+              },
+              {
+                "title": "Shop All",
+                "type": "COLLECTION",
+                "handle": "shop-chocolates"
+              }
+            ]
+          },
+          {
+            "title": "Hampers",
+            "type": "COLLECTION",
+            "handle": "hampers",
+            "items": [
+              {
+                "title": "Festive Gift Box",
+                "type": "PRODUCT",
+                "handle": "festive-gift-box"
+              },
+              {
+                "title": "Burgundy Decadence Hamper",
+                "type": "PRODUCT",
+                "handle": "burgundy-decadence-hamper"
+              },
+              {
+                "title": "Hill Heritage Hamper",
+                "type": "PRODUCT",
+                "handle": "hill-heritage-hamper"
+              },
+              {
+                "title": "Valley Haven Hamper",
+                "type": "PRODUCT",
+                "handle": "valley-haven-hamper"
+              },
+              {
+                "title": "Grand Gold Hamper",
+                "type": "PRODUCT",
+                "handle": "grand-gold-hamper"
+              },
+              {
+                "title": "Artisan Hamper",
+                "type": "PRODUCT",
+                "handle": "artisan-hamper"
+              },
+              {
+                "title": "Indulgence Basket",
+                "type": "PRODUCT",
+                "handle": "indulgence-basket"
+              },
+              {
+                "title": "Storybook Hamper",
+                "type": "PRODUCT",
+                "handle": "storybook-hamper"
+              },
+              {
+                "title": "Shop All Hampers",
+                "type": "COLLECTION",
+                "handle": "hampers"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Occasions",
+        "type": "COLLECTION",
+        "handle": "occasions",
+        "items": [
+          {
+            "title": "Birthday",
+            "type": "COLLECTION",
+            "handle": "birthday"
+          },
+          {
+            "title": "Anniversaries",
+            "type": "COLLECTION",
+            "handle": "anniversaries"
+          },
+          {
+            "title": "Weddings",
+            "type": "COLLECTION",
+            "handle": "weddings"
+          },
+          {
+            "title": "House Warming",
+            "type": "COLLECTION",
+            "handle": "house-warming"
+          },
+          {
+            "title": "Baby Shower",
+            "type": "COLLECTION",
+            "handle": "baby-shower"
+          },
+          {
+            "title": "Diwali",
+            "type": "COLLECTION",
+            "handle": "diwali-collection"
+          }
+        ]
+      },
+      {
+        "title": "Gifting",
+        "type": "COLLECTION",
+        "handle": "gifting",
+        "items": [
+          {
+            "title": "Hampers",
+            "type": "COLLECTION",
+            "handle": "hampers"
+          },
+          {
+            "title": "Bulk Order",
+            "type": "PAGE",
+            "handle": "bulk-order"
+          },
+          {
+            "title": "Gift Cards",
+            "type": "COLLECTION",
+            "handle": "gift-cards"
+          }
+        ]
+      },
+      {
+        "title": "Corporate",
+        "type": "COLLECTION",
+        "handle": "corporate-gifting",
+        "items": [
+          {
+            "title": "Corporate Gifting",
+            "type": "COLLECTION",
+            "handle": "corporate-gifting"
+          },
+          {
+            "title": "Employee Onboarding",
+            "type": "COLLECTION",
+            "handle": "employee-onboarding"
+          },
+          {
+            "title": "Return Favours",
+            "type": "COLLECTION",
+            "handle": "return-favours"
+          }
+        ]
+      },
+      {
+        "title": "Build Your Own Hamper",
+        "type": "PAGE",
+        "handle": "build-your-own-hamper"
+      },
+      {
+        "title": "Best Sellers",
+        "type": "COLLECTION",
+        "handle": "best-sellers"
+      },
+      {
+        "title": "Diwali Collection",
+        "type": "COLLECTION",
+        "handle": "diwali-collection"
+      }
+    ],
+    "footerShop": [
+      {
+        "title": "Shop All",
+        "type": "COLLECTION",
+        "handle": "shop-chocolates"
+      },
+      {
+        "title": "Dragée",
+        "type": "COLLECTION",
+        "handle": "dragees"
+      },
+      {
+        "title": "Bonbons & Pralines",
+        "type": "COLLECTION",
+        "handle": "bonbons-pralines"
+      },
+      {
+        "title": "Hampers",
+        "type": "COLLECTION",
+        "handle": "hampers"
+      },
+      {
+        "title": "Best Sellers",
+        "type": "COLLECTION",
+        "handle": "best-sellers"
+      },
+      {
+        "title": "Diwali Collection",
+        "type": "COLLECTION",
+        "handle": "diwali-collection"
+      },
+      {
+        "title": "Corporate Gifting",
+        "type": "COLLECTION",
+        "handle": "corporate-gifting"
+      }
+    ],
+    "help": [
+      {
+        "title": "Contact Us",
+        "type": "PAGE",
+        "handle": "contact"
+      },
+      {
+        "title": "FAQs",
+        "type": "PAGE",
+        "handle": "faqs"
+      },
+      {
+        "title": "Our Story",
+        "type": "PAGE",
+        "handle": "our-story"
+      },
+      {
+        "title": "Chocolate Tasting",
+        "type": "PAGE",
+        "handle": "chocolate-tasting"
+      },
+      {
+        "title": "Shipping and Delivery Policy",
+        "type": "PAGE",
+        "handle": "shipping-delivery-policy"
+      },
+      {
+        "title": "Returns and Refunds Policy",
+        "type": "PAGE",
+        "handle": "return-refund-exchange-policy"
+      },
+      {
+        "title": "Privacy Policy",
+        "type": "PAGE",
+        "handle": "privacy-policy"
+      },
+      {
+        "title": "Terms and Conditions",
+        "type": "PAGE",
+        "handle": "terms-and-conditions"
+      }
+    ]
+  }
+}

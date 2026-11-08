@@ -297,6 +297,7 @@
         "eyebrow": "Wedding & corporate gifting",
         "heading": "Request a quote for your celebration.",
         "text": "Share your occasion, quantity, and personalisation needs. Our team will confirm feasibility, packaging, and pricing.",
+        "layout": "split",
         "form_type": "Wedding & Corporate Quote",
         "button_label": "Request a Quote",
         "fallback_asset": "roosha-wedding-gifting.jpg",

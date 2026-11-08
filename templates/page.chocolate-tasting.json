@@ -1,0 +1,60 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "intro": {
+      "type": "roosha-richtext-page",
+      "settings": {
+        "eyebrow": "Experience",
+        "heading": "Chocolate tasting",
+        "body": "<p>Roosha can host a small tasting for a team or a private celebration. A typical flight moves through a single-origin bar, a dragée, and a bonbon, with time to talk about what you actually like.</p><p>Tell us the city, the group size, and the date you have in mind. We confirm the format before anything is booked.</p>",
+        "background": "#faf7f2",
+        "padding_top": 64,
+        "padding_bottom": 20
+      }
+    },
+    "flight": {
+      "type": "roosha-feature-split",
+      "blocks": {
+        "a": { "type": "item", "settings": { "text": "Single-origin bars from Ghana, Ecuador, São Tomé, and Madagascar" } },
+        "b": { "type": "item", "settings": { "text": "A short dragée tasting: nut, fruit, or coffee" } },
+        "c": { "type": "item", "settings": { "text": "Bonbons to finish, with notes you can take home" } }
+      },
+      "block_order": ["a", "b", "c"],
+      "settings": {
+        "reverse": true,
+        "eyebrow": "A simple flight",
+        "heading": "Three tastes, not a lecture.",
+        "text": "Groups are kept small so everyone can taste the same piece at the same time.",
+        "fallback_asset": "roosha-line-chocolates.jpg",
+        "button_label": "Shop single origin",
+        "button_link": "/collections/single-origin-chocolate-bars",
+        "background": "#fffcf8",
+        "padding_top": 36,
+        "padding_bottom": 20
+      }
+    },
+    "enquiry": {
+      "type": "roosha-enquiry-form",
+      "settings": {
+        "eyebrow": "Book a tasting",
+        "heading": "Ask about a date",
+        "text": "Share the city, how many people, and whether this is for a team or a private table.",
+        "form_type": "Chocolate Tasting",
+        "button_label": "Enquire about a tasting",
+        "fallback_asset": "roosha-bars-collection.jpg",
+        "background": "#faf7f2",
+        "padding_top": 24,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": ["intro", "flight", "enquiry"]
+}

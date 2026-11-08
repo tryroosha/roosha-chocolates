@@ -1,0 +1,93 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "intro": {
+      "type": "roosha-richtext-page",
+      "settings": {
+        "eyebrow": "Occasions",
+        "heading": "Chocolate for the day itself",
+        "body": "<p>Birthday bars, wedding favours, a house-warming hamper, or a Diwali box. Start with the occasion, then choose how large the gift should be.</p>",
+        "background": "#faf7f2",
+        "padding_top": 64,
+        "padding_bottom": 20
+      }
+    },
+    "cards": {
+      "type": "roosha-collection-cards",
+      "blocks": {
+        "birthday": {
+          "type": "card",
+          "settings": {
+            "collection": "birthday",
+            "title": "Birthday",
+            "description": "Message bars, gift boxes, and birthday hampers.",
+            "button_label": "Shop"
+          }
+        },
+        "anniv": {
+          "type": "card",
+          "settings": {
+            "collection": "anniversaries",
+            "title": "Anniversaries",
+            "description": "Thank-you bars and hampers for a shared table.",
+            "button_label": "Shop"
+          }
+        },
+        "weddings": {
+          "type": "card",
+          "settings": {
+            "collection": "weddings",
+            "title": "Weddings",
+            "description": "Favours, bonbons, and celebration hampers.",
+            "button_label": "Shop"
+          }
+        },
+        "home": {
+          "type": "card",
+          "settings": {
+            "collection": "house-warming",
+            "title": "House warming",
+            "description": "A hamper for a new set of keys.",
+            "button_label": "Shop"
+          }
+        },
+        "baby": {
+          "type": "card",
+          "settings": {
+            "collection": "baby-shower",
+            "title": "Baby shower",
+            "description": "Small celebration gifts for the parents.",
+            "button_label": "Shop"
+          }
+        },
+        "diwali": {
+          "type": "card",
+          "settings": {
+            "collection": "diwali-collection",
+            "title": "Diwali",
+            "description": "Festive boxes and the larger seasonal hampers.",
+            "button_label": "Shop"
+          }
+        }
+      },
+      "block_order": ["birthday", "anniv", "weddings", "home", "baby", "diwali"],
+      "settings": {
+        "eyebrow": "Shop by occasion",
+        "heading": "Six places to begin.",
+        "subheading": "Each collection mixes ready-to-ship pieces with gifts we quote for a larger order.",
+        "background": "#fffcf8",
+        "padding_top": 28,
+        "padding_bottom": 72
+      }
+    }
+  },
+  "order": ["intro", "cards"]
+}

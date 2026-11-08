@@ -1,0 +1,60 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "intro": {
+      "type": "roosha-richtext-page",
+      "settings": {
+        "eyebrow": "Gifting",
+        "heading": "Build your own hamper",
+        "body": "<p>Choose the occasion, a budget, and the chocolates you want inside. We pack bars, dragée, bonbons, and a note card, then confirm the edit before you pay.</p><p>Useful for birthdays, hosts, and a small run of matching gifts.</p>",
+        "background": "#faf7f2",
+        "padding_top": 64,
+        "padding_bottom": 20
+      }
+    },
+    "choices": {
+      "type": "roosha-feature-split",
+      "blocks": {
+        "a": { "type": "item", "settings": { "text": "Occasion, budget, and number of hampers" } },
+        "b": { "type": "item", "settings": { "text": "Bars, dragée, truffles, or bonbons" } },
+        "c": { "type": "item", "settings": { "text": "A note card, sleeve, or name on request" } }
+      },
+      "block_order": ["a", "b", "c"],
+      "settings": {
+        "reverse": false,
+        "eyebrow": "What to tell us",
+        "heading": "We assemble it. You approve it.",
+        "text": "Share the date you need them, the city they are going to, and whether every hamper should match.",
+        "fallback_asset": "roosha-hamper.jpg",
+        "button_label": "Browse hampers",
+        "button_link": "/collections/hampers",
+        "background": "#fffcf8",
+        "padding_top": 36,
+        "padding_bottom": 20
+      }
+    },
+    "enquiry": {
+      "type": "roosha-enquiry-form",
+      "settings": {
+        "eyebrow": "Start a hamper",
+        "heading": "Send the brief",
+        "text": "Tell us the occasion, quantity, budget, and anything that should be written on the card.",
+        "form_type": "Build Your Own Hamper",
+        "button_label": "Request a hamper",
+        "fallback_asset": "roosha-hero-gift.jpg",
+        "background": "#faf7f2",
+        "padding_top": 24,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": ["intro", "choices", "enquiry"]
+}

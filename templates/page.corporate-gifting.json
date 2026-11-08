@@ -1,0 +1,90 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "intro": {
+      "type": "roosha-feature-split",
+      "blocks": {
+        "a": { "type": "item", "settings": { "text": "Client and leadership hampers" } },
+        "b": { "type": "item", "settings": { "text": "Welcome boxes for a new teammate's first week" } },
+        "c": { "type": "item", "settings": { "text": "A note or brand colour on request" } }
+      },
+      "block_order": ["a", "b", "c"],
+      "settings": {
+        "reverse": false,
+        "eyebrow": "Corporate",
+        "heading": "Chocolate gifts with a name on the brief.",
+        "text": "We quote corporate gifting from the occasion, the headcount, and where the boxes need to go. Branding is confirmed before anything is produced.",
+        "fallback_asset": "roosha-wedding-gifting.jpg",
+        "button_label": "View corporate gifts",
+        "button_link": "/collections/corporate-gifting",
+        "background": "#faf7f2",
+        "padding_top": 64,
+        "padding_bottom": 24
+      }
+    },
+    "ranges": {
+      "type": "roosha-collection-cards",
+      "blocks": {
+        "clients": {
+          "type": "card",
+          "settings": {
+            "collection": "corporate-gifting",
+            "title": "Client gifts",
+            "description": "Signature, prestige, and executive hampers.",
+            "button_label": "Shop"
+          }
+        },
+        "welcome": {
+          "type": "card",
+          "settings": {
+            "collection": "employee-onboarding",
+            "title": "Welcome boxes",
+            "description": "First-week hampers for new joiners.",
+            "button_label": "Shop"
+          }
+        },
+        "thanks": {
+          "type": "card",
+          "settings": {
+            "collection": "return-favours",
+            "title": "Thank-yous",
+            "description": "Small gifts once the quantity is known.",
+            "button_label": "Shop"
+          }
+        }
+      },
+      "block_order": ["clients", "welcome", "thanks"],
+      "settings": {
+        "eyebrow": "Three ways to send",
+        "heading": "Pick a starting point.",
+        "subheading": "Prices for these programmes are confirmed on enquiry.",
+        "background": "#fffcf8",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "enquiry": {
+      "type": "roosha-enquiry-form",
+      "settings": {
+        "eyebrow": "Corporate quote",
+        "heading": "Send the brief",
+        "text": "Tell us who the gift is for, how many, and the week they should arrive.",
+        "form_type": "Corporate Gifting",
+        "button_label": "Request a quote",
+        "fallback_asset": "roosha-hamper.jpg",
+        "background": "#faf7f2",
+        "padding_top": 24,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": ["intro", "ranges", "enquiry"]
+}

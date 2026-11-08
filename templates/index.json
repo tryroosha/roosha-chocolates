@@ -133,82 +133,62 @@
         "padding_bottom": 72
       }
     },
-    "roosha_bars": {
-      "type": "roosha-feature-split",
-      "blocks": {
-        "b1": {
-          "type": "item",
-          "settings": {
-            "text": "Mini Bars · 10–15 g · plain ₹10 · dried fruits ₹15 · filled ₹25"
-          }
-        },
-        "b2": {
-          "type": "item",
-          "settings": {
-            "text": "Regular Bars · 20–25 g · price on request"
-          }
-        },
-        "b3": {
-          "type": "item",
-          "settings": {
-            "text": "Large Bars · 60–80 g · plain or dried fruits · price on request"
-          }
-        }
-      },
-      "block_order": ["b1", "b2", "b3"],
+    "best_sellers": {
+      "type": "featured-collection",
       "settings": {
-        "reverse": false,
-        "eyebrow": "Chocolate bars",
-        "heading": "Everyday bars, thoughtfully sized.",
-        "text": "Compare mini, regular, and large formats for treats, return gifts, and fuller indulgence. Prices and flavours stay editable in your product catalogue.",
-        "fallback_asset": "roosha-bars-collection.jpg",
-        "button_label": "Shop Chocolate Bars",
-        "button_link": "/collections/chocolate-bars",
-        "background": "#faf7f2",
-        "padding_top": 72,
-        "padding_bottom": 72
+        "collection": "best-sellers",
+        "products_to_show": 8,
+        "eyebrow": "Most loved",
+        "title": "Best sellers",
+        "heading_size": "h1",
+        "description": "<p>The tins, truffles, and bars guests ask for first.</p>",
+        "show_description": true,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 28
       }
     },
-    "roosha_filled": {
-      "type": "roosha-feature-split",
-      "blocks": {
-        "f1": { "type": "item", "settings": { "text": "Kunafa · Strawberry · Blueberry" } },
-        "f2": { "type": "item", "settings": { "text": "Mango · Rasmalai · Paan" } },
-        "f3": { "type": "item", "settings": { "text": "Custom filling requests welcome" } }
-      },
-      "block_order": ["f1", "f2", "f3"],
+    "hamper_rail": {
+      "type": "featured-collection",
       "settings": {
-        "reverse": true,
-        "eyebrow": "Filled chocolate bars",
-        "heading": "Your Chocolate. Your Filling. Your Choice.",
-        "text": "Explore large filled bars with cross-section appeal. Select an available filling or submit a custom flavour request.",
-        "fallback_asset": "roosha-filled-cross.jpg",
-        "button_label": "Explore Filled Bars",
-        "button_link": "/collections/filled-bars",
-        "background": "#fffcf8",
-        "padding_top": 72,
-        "padding_bottom": 72
-      }
-    },
-    "roosha_line": {
-      "type": "roosha-feature-split",
-      "blocks": {
-        "l1": { "type": "item", "settings": { "text": "Plain chocolate without filling" } },
-        "l2": { "type": "item", "settings": { "text": "Chocolate with dried fruits" } },
-        "l3": { "type": "item", "settings": { "text": "Ideal for premium gift assortments" } }
-      },
-      "block_order": ["l1", "l2", "l3"],
-      "settings": {
-        "reverse": false,
-        "eyebrow": "Line chocolates",
-        "heading": "Elegant pieces for curated gifting.",
-        "text": "Individual line chocolates presented for special occasions, return gifts, and boutique assortments.",
-        "fallback_asset": "roosha-line-chocolates.jpg",
-        "button_label": "Shop Line Chocolates",
-        "button_link": "/collections/line-chocolates",
-        "background": "#faf7f2",
-        "padding_top": 72,
-        "padding_bottom": 72
+        "collection": "hampers",
+        "products_to_show": 8,
+        "eyebrow": "Gifting",
+        "title": "Hampers for the table",
+        "heading_size": "h1",
+        "description": "<p>Birthday, festive, and celebration hampers, ready to send.</p>",
+        "show_description": true,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "color_scheme": "scheme-2",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 48,
+        "padding_bottom": 36
       }
     },
     "roosha_studio": {
@@ -287,11 +267,10 @@
   "order": [
     "roosha_hero",
     "roosha_collections",
-    "roosha_bars",
-    "roosha_filled",
-    "roosha_line",
-    "roosha_studio",
+    "best_sellers",
+    "hamper_rail",
     "roosha_festival",
+    "roosha_studio",
     "roosha_quote",
     "roosha_story"
   ]

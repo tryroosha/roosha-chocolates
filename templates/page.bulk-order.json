@@ -1,0 +1,80 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "intro": {
+      "type": "roosha-richtext-page",
+      "settings": {
+        "eyebrow": "Gifting",
+        "heading": "Bulk orders",
+        "body": "<p>Weddings, offices, and festive rounds are quoted on quantity, personalisation, and the city they need to reach. Share your date and whether each box needs a name or a logo.</p>",
+        "background": "#faf7f2",
+        "padding_top": 64,
+        "padding_bottom": 20
+      }
+    },
+    "ranges": {
+      "type": "roosha-collection-cards",
+      "blocks": {
+        "favours": {
+          "type": "card",
+          "settings": {
+            "collection": "favour-boxes",
+            "title": "Favour boxes",
+            "description": "Small boxes for guests and thank-yous.",
+            "button_label": "View boxes"
+          }
+        },
+        "return": {
+          "type": "card",
+          "settings": {
+            "collection": "return-favours",
+            "title": "Return favours",
+            "description": "Quoted once the guest count is confirmed.",
+            "button_label": "View favours"
+          }
+        },
+        "corp": {
+          "type": "card",
+          "settings": {
+            "collection": "corporate-gifting",
+            "title": "Corporate gifts",
+            "description": "Client and leadership hampers, packed to a brief.",
+            "button_label": "View gifts"
+          }
+        }
+      },
+      "block_order": ["favours", "return", "corp"],
+      "settings": {
+        "eyebrow": "Often ordered together",
+        "heading": "Start from a collection, then tell us the quantity.",
+        "subheading": "Ready-to-ship pieces can go out as they are. Personalised and bulk runs need a quote.",
+        "background": "#fffcf8",
+        "padding_top": 28,
+        "padding_bottom": 20
+      }
+    },
+    "enquiry": {
+      "type": "roosha-enquiry-form",
+      "settings": {
+        "eyebrow": "Bulk quote",
+        "heading": "Tell us the numbers",
+        "text": "Include headcount, delivery city, and the date boxes need to arrive.",
+        "form_type": "Bulk Order",
+        "button_label": "Request a bulk quote",
+        "fallback_asset": "roosha-favour-box.jpg",
+        "background": "#faf7f2",
+        "padding_top": 24,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": ["intro", "ranges", "enquiry"]
+}

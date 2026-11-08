@@ -36,17 +36,19 @@
     padding: 7.2rem 0 5.6rem;
   }
   .roosha-hero-{{ section.id }}__content {
-    max-width: 58rem;
+    max-width: min(58rem, 100%);
+    min-width: 0;
     animation: rooshaHeroRise 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
   .roosha-hero-{{ section.id }}__brand {
     font-family: "Cormorant Garamond", Georgia, serif;
-    letter-spacing: 0.48em;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
-    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
     color: #faf7f2;
     margin: 0 0 1.6rem;
     font-weight: 500;
+    overflow-wrap: anywhere;
   }
   .roosha-hero-{{ section.id }}__eyebrow {
     display: inline-flex;
@@ -69,12 +71,18 @@
   .roosha-hero-{{ section.id }}__title {
     font-family: "Cormorant Garamond", Georgia, serif;
     font-weight: 500;
-    font-size: clamp(3.2rem, 6vw, 5.4rem);
-    line-height: 1.06;
+    font-size: clamp(2.8rem, 5.2vw, 5.4rem);
+    line-height: 1.08;
     letter-spacing: 0.01em;
     color: {{ section.settings.heading_color }};
     margin: 0 0 1.6rem;
-    max-width: 14ch;
+    max-width: min(14ch, 100%);
+    overflow-wrap: break-word;
+  }
+  @media screen and (min-width: 750px) {
+    .roosha-hero-{{ section.id }}__brand {
+      letter-spacing: 0.4em;
+    }
   }
   .roosha-hero-{{ section.id }}__text {
     font-size: 1.55rem;

@@ -145,6 +145,20 @@
   }
   @media screen and (min-width: 750px) {
     .roosha-enq-{{ section.id }}__form {
+      padding: 2.4rem;
+    }
+    .roosha-enq-{{ section.id }}--stacked .roosha-enq-{{ section.id }}__wrap {
+      max-width: 68rem;
+      margin: 0 auto;
+    }
+    .roosha-enq-{{ section.id }}--stacked .roosha-enq-{{ section.id }}__meta {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+  }
+  /* Keep form fields stacked through iPad portrait/landscape */
+  @media screen and (min-width: 1100px) {
+    .roosha-enq-{{ section.id }}__form {
       padding: 2.8rem;
     }
     .roosha-enq-{{ section.id }}__grid {
@@ -154,9 +168,8 @@
     .roosha-enq-{{ section.id }}__actions .button {
       width: auto;
       min-width: 22rem;
+      max-width: 100%;
     }
-  }
-  @media screen and (min-width: 990px) {
     .roosha-enq-{{ section.id }}__wrap {
       grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
       gap: 4.8rem;
@@ -168,11 +181,6 @@
     }
     .roosha-enq-{{ section.id }}--stacked .roosha-enq-{{ section.id }}__copy {
       text-align: center;
-    }
-    .roosha-enq-{{ section.id }}--stacked .roosha-enq-{{ section.id }}__meta {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.6rem;
-      text-align: left;
     }
     .roosha-enq-{{ section.id }}--stacked .roosha-enq-{{ section.id }}__media {
       display: none;

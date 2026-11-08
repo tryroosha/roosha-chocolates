@@ -196,7 +196,7 @@
     {%- liquid
       if section.settings.menu != blank
         if section.settings.menu_type_desktop == 'dropdown'
-          render 'header-dropdown-menu'
+          render 'roosha-header-menu'
         elsif section.settings.menu_type_desktop != 'drawer'
           render 'header-mega-menu'
         endif
@@ -264,7 +264,7 @@
 
       {%- liquid
         assign ash_wa_phone = settings.whatsapp_phone | default: '+917777877253' | replace: ' ', '' | replace: '-', '' | replace: '+', '' | replace: '(', '' | replace: ')', ''
-        assign ash_wa_text = 'Hi Ashtitva! I need help choosing jewellery.' | url_encode
+        assign ash_wa_text = 'Hi Roosha! I need help choosing chocolate.' | url_encode
         assign ash_wa_url = 'https://wa.me/' | append: ash_wa_phone | append: '?text=' | append: ash_wa_text
       -%}
       <a

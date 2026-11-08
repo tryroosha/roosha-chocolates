@@ -21,6 +21,9 @@
         <div class="menu-drawer__navigation-container">
           <nav class="menu-drawer__navigation">
             <ul class="menu-drawer__menu has-submenu list-menu" role="list">
+              {%- render 'roosha-drawer-menu' -%}
+              {%- comment -%} Catalogue navigation is rendered above. The Shopify menu stays unused until Online Store navigation access is available. {%- endcomment -%}
+              {%- if false -%}
               {%- for link in section.settings.menu.links -%}
                 <li>
                   {%- if link.links != blank -%}
@@ -154,6 +157,7 @@
                   </li>
                 {%- endif -%}
               {%- endfor -%}
+              {%- endif -%}
               {%- if settings.track_package_enable and settings.whatsapp_phone != blank -%}
                 <li>
                   {% render 'track-package-link',
@@ -167,7 +171,7 @@
           <div class="menu-drawer__utility-links">
             {%- liquid
               assign ash_wa_phone = settings.whatsapp_phone | default: '+917777877253' | replace: ' ', '' | replace: '-', '' | replace: '+', '' | replace: '(', '' | replace: ')', ''
-              assign ash_wa_text = 'Hi Ashtitva! I need help choosing jewellery.' | url_encode
+              assign ash_wa_text = 'Hi Roosha! I need help choosing chocolate.' | url_encode
               assign ash_wa_url = 'https://wa.me/' | append: ash_wa_phone | append: '?text=' | append: ash_wa_text
             -%}
             <a
@@ -181,7 +185,7 @@
               </span>
               <span class="menu-drawer__account-text">
                 <span class="menu-drawer__account-label">WhatsApp</span>
-                <span class="menu-drawer__account-hint">Help choosing jewellery</span>
+                <span class="menu-drawer__account-hint">Help choosing chocolate</span>
               </span>
               <span class="menu-drawer__account-arrow" aria-hidden="true">
                 {{- 'icon-arrow.svg' | inline_asset_content -}}
@@ -267,7 +271,7 @@
             -%}
             {%- if has_social -%}
               <div class="menu-drawer__social">
-                <p class="menu-drawer__social-label">Follow Ashtitva</p>
+                <p class="menu-drawer__social-label">Follow Roosha</p>
                 {% render 'social-icons' %}
               </div>
             {%- endif -%}

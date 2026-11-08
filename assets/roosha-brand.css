@@ -111,9 +111,6 @@ video {
   height: auto;
 }
 
-.page-width {
-  max-width: 100%;
-}
 
 /* Tablet / iPad: keep header + announcement inside the viewport */
 .announcement-bar__message {

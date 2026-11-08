@@ -33,9 +33,9 @@
     display: flex;
     align-items: flex-end;
     min-height: inherit;
-    padding: 6.4rem 0 4.8rem;
-    width: 100%;
-    max-width: 100%;
+    /* top/bottom only — keep .page-width side padding */
+    padding-top: 6.4rem;
+    padding-bottom: 4.8rem;
     box-sizing: border-box;
   }
   .roosha-hero-{{ section.id }}__content {
@@ -52,8 +52,9 @@
     color: #faf7f2 !important;
     margin: 0 0 1.2rem;
     font-weight: 500;
-    padding-right: 0.22em; /* offset trailing letter-spacing */
+    width: fit-content;
     max-width: 100%;
+    padding-right: 0.22em; /* offset trailing letter-spacing */
   }
   .roosha-hero-{{ section.id }}__eyebrow {
     display: flex;
@@ -141,7 +142,8 @@
       min-height: {{ section.settings.desktop_height }}px;
     }
     .roosha-hero-{{ section.id }}__inner {
-      padding: 10rem 0 7.2rem;
+      padding-top: 10rem;
+      padding-bottom: 7.2rem;
     }
   }
 {%- endstyle -%}
